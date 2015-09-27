@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/9/23 ?U?? 07:23:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.blog.model.BlogReplyVO" table="BLOGREPLY">
+<!--         <id name="replyNo" type="int"> -->
+<!--             <column name="REPLYNO" /> -->
+<!--             <generator class="assigned" /> -->
+<!--         </id> -->
+        <composite-id>
+            <key-property name="postNo" 
+                          column="POSTNO"/>
+            <key-property name="replyNo" 
+                          column="REPLYNO"/>
+        </composite-id>
+        
+<!--         <property name="replyNo" type="int"> -->
+<!--             <column name="REPLYNO" /> -->
+<!--         </property> -->
+<!--         <property name="postNo" type="java.lang.String"> -->
+<!--             <column name="POSTNO" /> -->
+<!--         </property> -->
+        <property name="replyMemberId" type="java.lang.String">
+            <column name="REPLYMEMBERID" />
+        </property>
+
+        <property name="replyContext" type="java.lang.String">
+            <column name="REPLYCONTEXT" />
+        </property>
+        <property name="replyDate" type="java.util.Date">
+            <column name="REPLYDATE" />
+        </property>
+        <property name="flagDelete" type="java.lang.String">
+            <column name="FLAGDELETE" />
+        </property>
+    </class>
+</hibernate-mapping>

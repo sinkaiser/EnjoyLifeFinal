@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/9/16 ?U?? 06:54:49 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.partner.model.PartnerVO" table="partner">
+        <id name="eventNo">
+            <column name="EVENTNO" />
+            <generator class="identity" />
+        </id>
+        <property name="eventType" type="java.lang.String">
+            <column name="EVENTTYPE" />
+        </property>
+        <property name="eventTitle" type="java.lang.String">
+            <column name="EVENTTITLE" />
+        </property>
+        <property name="eventContent" type="java.lang.String">
+            <column name="EVENTCONTENT" />
+        </property>
+        <property name="addr" type="java.lang.String">
+            <column name="ADDR" />
+        </property>
+        <property name="eventDate" type="java.sql.Timestamp">
+            <column name="EVENTDATE" />
+        </property>
+        <property name="modifyDate" type="java.sql.Timestamp">
+            <column name="MODIFYDATE" />
+        </property>
+        <property name="imgNo">
+            <column name="IMGNO" />
+        </property>
+        <property name="memberId" type="java.lang.String">
+            <column name="MEMBERID" />
+        </property>
+        <property name="hidden" type="java.lang.Integer">
+            <column name="HIDDEN" />
+        </property>
+        <property name="closed">
+            <column name="CLOSED" />
+        </property>
+    </class>
+</hibernate-mapping>

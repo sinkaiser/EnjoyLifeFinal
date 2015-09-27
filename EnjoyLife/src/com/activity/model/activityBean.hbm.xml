@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012/3/7 ?W?? 09:15:15 by Hibernate Tools 3.3.0.GA -->
+		
+<hibernate-mapping>
+    <class name="com.activity.model.ActivityBean" table="activity">
+        <id name="activityName" type="java.lang.String">
+            <column name="ACTIVITYNAME" />
+            <generator class="assigned" />
+        </id>
+        <property name="activityNo" type="int">
+            <column name="ACTIVITYNO" />
+            
+        </property>
+        <property name="activityDepiction" type="java.lang.String">
+            <column name="ACTIVITYDEPICTION" />
+        </property>
+        <property name="activityContent" type="java.lang.String">
+            <column name="ACTIVITYCONTENT" />
+        </property>
+        <property name="activityDate" type="java.lang.String">
+            <column name="ACTIVITYDATE" />
+        </property>
+        <property name="activityLocation" type="java.lang.String">
+            <column name="ACTIVITYLOCATION" />
+        </property>
+        <property name="activityContact" type="java.lang.String">
+            <column name="ACTIVITYCONTACT" />
+        </property>
+        <property name="photoPath" type="java.lang.String">
+            <column name="ACTIVITYPATH" />
+        </property>
+    </class>
+</hibernate-mapping>    		

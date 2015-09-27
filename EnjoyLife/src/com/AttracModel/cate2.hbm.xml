@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.AttracModel.Cate2Bean" table="cate2">
+               
+        <id name="cate2no" column="cate2no" type="integer" />       
+        <property name="cate2name" column="cate2name" type="string" />
+        <property name="cate1no" column="cate1no" type="integer" />
+        
+      
+    </class>
+</hibernate-mapping>

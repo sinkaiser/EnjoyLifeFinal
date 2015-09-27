@@ -1,0 +1,21 @@
+.attraclist {height:450px;  width:360px; overflow:hidden; overflow-y:scroll; 
+				border:5px ridge gray;padding: 0px;font-family:標楷體;margin:10px auto;}				
+#attracinfo {width:360px;height:270px;margin:10px auto;border:5px ridge gray;}
+.traveldiv{border:1px solid gray;width:97%;height:200px;margin:10px;}
+.attracdiv{margin:5px 5px 5px 165px;height:120px;position:relative;}	
+.attracdata {margin:5px;font-size: 20px;font-family:標楷體;}
+.attracpic {width:160px;height:120px;border:5px ridge gray;margin:40px 5px;float:left;}	
+.delbut {position: absolute; right: 1px; top: 1px;}
+.ui-menu-item {list-style-type:none;font-size: 20px;margin-left:0px;cursor:pointer;font-family:標楷體;text-align: center;}
+.ui-menu-item:hover {background-color:#d0d0d0;}
+.row{margin-bottom:10px;}
+.select{width:140px;font-size: 18px;height:4ex;margin:10px 20px 0px 20px;border-radius:15px;}
+.container {height:auto;width:1200px;border:1px solid gray;margin:25px auto;}
+#travel {border:1px solid gray;width:100%;height:auto;margin:10px auto;background-color:white;}
+#map {height: 300px;margin:10px auto}
+#alllist{text-align: center;}
+#attracadd{position:absolute; left:55%;bottom:1%; width:130px;font-size: 18px;height:4ex;}
+#canvans {position:absolute; left:15%;bottom:1%; width:130px;font-size: 18px;height:4ex;}
+.nextdirection{margin:5px;font-size: 20px;font-family:標楷體;color:red}
+.distance{margin:5px;font-size: 20px;font-family:標楷體;color:blue}
+.duration{margin:5px;font-size: 20px;font-family:標楷體;color:blue}

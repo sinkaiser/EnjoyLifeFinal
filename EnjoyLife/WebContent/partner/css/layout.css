@@ -1,0 +1,54 @@
+#main{position:relative;}
+
+/**
+ * Grid container
+ */
+#tiles{position:relative;margin:0;padding:0;list-style-type:none;}
+
+/**
+ * Grid items
+ */
+#tiles li{display:none;width:250px;padding:4px;border:1px solid #dedede;border-radius:2px;background-color:#fff;cursor:pointer;}
+#tiles li.inactive{visibility:hidden;opacity:0;}
+/* #tiles li img{display:block;} */
+
+/**
+ * Grid item text
+ */
+
+
+
+/**
+ * Loader
+ */
+#loader{margin:20px 0;}
+#loaderCircle{display:block;width:16px;height:16px;background:url(../img/loader.gif) no-repeat;}
+
+
+
+/**
+ * Progress bar for imagesLoaded
+ */
+.progress-bar{position:absolute;top:0;left:0;right:0;width:0;height:2px;background-color:#0BC20B;box-shadow:0 1px 3px rgba(11, 194, 11, 0.2);
+-webkit-transition:width 0.3s ease-out;
+-moz-transition:width 0.3s ease-out;
+-o-transition:width 0.3s ease-out;
+transition:width 0.3s ease-out;
+}
+
+/**
+ * Placerholder css
+ */
+.wookmark-placeholder{background-color:#eee;border:1px solid #dedede;border-radius:2px;z-index:-1;}
+
+
+.example-tiles{position:relative;margin:0;padding:0;}
+.example-tiles li{display:block;float:left;margin:5px;list-style-type:none;
+-webkit-transition:all 0.3s ease-out;
+-moz-transition:all 0.3s ease-out;
+-o-transition:all 0.3s ease-out;
+transition:all 0.3s ease-out;
+}
+.example-tiles a,
+.example-tiles a:hover{display:table-cell;width:200px;height:200px;padding:5px 8px;border:1px solid #ddd;border-radius:3px;background-color:#eee;box-shadow:0 1px 3px rgba(0, 0, 0, 0.4);color:#555;font-size:2em;font-weight:bold;text-decoration:none;text-align:center;vertical-align:middle;}
+.example-tiles a:hover{background-color:#ddd;}

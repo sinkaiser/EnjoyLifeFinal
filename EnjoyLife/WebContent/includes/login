@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog" style="width:350px">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;height:30px">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> 登入</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form" action="<c:url value="/secure/login.do" />" method="post">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> 帳號</label>
+              <input type="text" name="memberId" class="form-control" id="usrname" value="${param.memberId}" placeholder="輸入帳號">
+              <p>${error.username}</p>
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> 密碼</label>
+              <input type="password" name="password" value="${param.password}" class="form-control" id="psw" placeholder="輸入密碼">
+              <p>${error.password}</p>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="" checked>記住我</label>
+            </div>
+              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> 登入</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <!--<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> 關閉</button>-->
+           <a href="#">忘記密碼?</a>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+
+<script>
+$(document).ready(function(){
+    $("#login").click(function(){
+        $("#myModal").modal();
+     });
+     
+});
+</script>

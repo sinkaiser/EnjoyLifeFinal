@@ -1,0 +1,244 @@
+/*
+	Iridium by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+*/
+
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+
+	body
+	{
+	}
+
+	body,input,textarea,select
+	{
+		font-size: 11pt;
+	}
+
+/*********************************************************************************/
+/* Header                                                                        */
+/*********************************************************************************/
+
+	#header
+	{
+		margin:0px;
+		position: relative;
+		padding: 0em 0em;
+		text-align: center;
+	}
+	
+		.homepage #header
+		{
+			padding: 0em 0em;
+			margin:0px;
+			height:70px;
+		}
+
+		#header .container
+		{
+			height:10px;
+		}
+	.header1
+	{
+		background-color:#800040;
+		
+	}
+/*********************************************************************************/
+/* Logo                                                                          */
+/*********************************************************************************/
+
+	#logo
+	{
+		margin-bottom: 3em;
+	}
+	
+		#logo h1
+		{
+			color: #FFF;
+			padding-top:1.5em;
+		}
+	
+		#logo h1 a
+		{
+			display: block;
+			letter-spacing: 1px;
+			text-align: left;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-size: 3em;
+			font-weight: 900;
+			color: #FFF;
+		}
+
+		#logo span
+		{
+			display: block;
+			padding-top: 1em;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			font-size: 1.2em;
+			color: rgba(255,255,255,.5);
+		}			
+			
+
+/*********************************************************************************/
+/* Nav                                                                           */
+/*********************************************************************************/
+
+	#nav
+	{
+	margin-top:0px;
+	background-color:#DDDDDD;
+	text-align:left;
+	padding-left:10em;
+	}
+
+		#nav > ul > li
+		{
+			display: inline-block;
+			cursor:pointer;
+			
+		}
+		
+			#nav > ul > li:last-child
+			{
+				padding-right: 0;
+				
+			}
+
+			#nav > ul > li > a,
+			#nav > ul > li > span
+			{
+				display: block;
+				padding: 5px 1em;
+				letter-spacing: 1px;
+				text-decoration: none;
+				text-transform: uppercase;
+				font-weight: 200;
+				font-size: 1.4em;
+				outline: 0;
+				color: #4c4c4c;
+			}
+			#nav > ul > li:nth-child(6)
+			{
+			float:right;
+			padding-right:10px;
+			}
+			#nav > ul > li:nth-child(7)
+			{
+			float:right;
+			}
+
+/*			#nav > ul > li > a:hover
+			{
+				color: #FFF;
+			}
+*/
+			#nav > ul > li a:hover
+			{
+				background-color: #FFF;
+				margin: 0px;
+			}
+			#nav li.active a
+			{
+				background: none;
+				border-radius: 40px;
+				border: 2px solid;
+				border-color: rgba(255,255,255,.8);
+				color: #FFF;
+			}
+
+			#nav > ul > li > ul
+			{
+				display: none;
+				
+			}
+
+
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+
+	#main
+	{
+		padding: 4em 0em 4em 0em;
+	}
+	
+	#content
+	{
+		width:20em;
+	}
+	
+	#content header
+	{
+		margin-bottom: 2em;
+	}
+	
+	#content header h2
+	{
+		font-size: 2em;
+	}
+	
+	#content header .byline
+	{
+		font-size: 1.40em;
+	}
+	#sidebar
+	{
+		width:55em;
+		border-bottom: 1px solid #ECECEC;
+	}
+	#sidebar h2
+	{
+		display: block;
+		padding-bottom: 1em;
+		padding-top:0.5em;
+		font-size: 2.5em;
+	}
+	.dopage{
+		margin-top:20px;
+	}
+	#dopage > ul {
+		
+		display:inline-block;
+	}
+	
+	
+/*********************************************************************************/
+/* Featured                                                                      */
+/*********************************************************************************/
+	
+	#featured
+	{
+		padding: 6em 0em;
+	}
+
+/*********************************************************************************/
+/* Footer                                                                        */
+/*********************************************************************************/
+	
+	#footer
+	{
+		position: relative;
+		padding: 6em 0em;
+	}
+	
+	#footer h2
+	{
+		padding-bottom: 2em;
+		font-size: 1.4em;
+	}
+	
+/*********************************************************************************/
+/* Copyright                                                                     */
+/*********************************************************************************/
+	
+	#copyright
+	{
+		padding: 3em 0em;
+	}		
+
+
+

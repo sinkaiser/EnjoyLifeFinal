@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+ 					<div id="sidebar-viewR" class="3u">
+						<section>
+							<ul id="sideview">
+								<li>
+									<img src="${pageContext.request.contextPath}/images/153.jpg" alt="" />
+								</li>
+								<li>
+									<img src="${pageContext.request.contextPath}/images/154.jpg" alt="" />
+								</li>
+								<li>
+									<img src="${pageContext.request.contextPath}/images/156.png" alt="" />
+								</li>
+							</ul>
+						</section>
+					</div>   

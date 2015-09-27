@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/9/23 ?U?? 07:23:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.blog.model.BlogVO" table="BLOG">
+        <id name="postNo" type="java.lang.String">
+            <column name="POSTNO" />
+            <generator class="assigned" />
+        </id>
+        <property name="memberId" type="java.lang.String">
+            <column name="MEMBERID" />
+        </property>
+        <property name="postType" type="java.lang.String">
+            <column name="POSTTYPE" />
+        </property>
+        <property name="postTitle" type="java.lang.String">
+            <column name="POSTTITLE" />
+        </property>
+        <property name="pathPhoto" type="java.lang.String">
+            <column name="PATHPHOTO" />
+        </property>
+        <property name="postContext" type="java.lang.String">
+            <column name="POSTCONTEXT" />
+        </property>
+        <property name="AttractionsNo" type="int">
+            <column name="ATTRACTIONSNO" />
+        </property>
+        <property name="avgScore" type="double">
+            <column name="AVGSCORE" />
+        </property>
+        <property name="qtyToScore" type="int">
+            <column name="QTYTOSCORE" />
+        </property>
+        <property name="viewTotal" type="int">
+            <column name="VIEWTOTAL" />
+        </property>
+        <property name="postDate" type="java.util.Date">
+            <column name="POSTDATE" />
+        </property>
+        <property name="modifyDate" type="java.util.Date">
+            <column name="MODIFYDATE" />
+        </property>
+        <property name="flagDelete" type="java.lang.String">
+            <column name="FLAGDELETE" />
+        </property>
+        <property name="flagReport" type="java.lang.String">
+            <column name="FLAGREPORT" />
+        </property>
+<!--         <property name="base64Img" type="java.lang.String"> -->
+<!--             <column name="BASE64IMG" /> -->
+<!--         </property> -->
+    </class>
+</hibernate-mapping>

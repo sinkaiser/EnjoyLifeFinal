@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+			<!-- Header -->
+	
+			<!-- Nav -->
+				<nav id="nav" class="navbar-fixed-top">
+					<ul>
+						<li><a href="index.jsp">會員</a></li>
+						<li><a href="left-sidebar.html">規劃</a></li>
+						<li><a href="right-sidebar.html">日誌</a></li>
+						<li><a href="no-sidebar.html">找伴</a></li>
+						<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
+						<li><a href="index.jsp">註冊</a></li>
+						<li><a id="login">登入</a></li>
+					</ul>
+				</nav>
+	
+	

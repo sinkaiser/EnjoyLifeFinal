@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/9/14 ?U?? 08:13:29 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.util.ImgListBean" table="IMGLIST">
+        <id name="imgNo" type="int">
+            <column name="IMGNO" />
+            <generator class="identity" />
+        </id>
+        
+        <property name="imgContent" column="imgContent"/>
+        
+        <property name="imgType" type="java.lang.String">
+            <column name="IMGTYPE" />
+        </property>
+        <property name="imgName" type="java.lang.String">
+            <column name="IMGNAME" />
+        </property>
+    </class>
+</hibernate-mapping>
