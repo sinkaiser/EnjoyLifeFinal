@@ -22,7 +22,7 @@
 				<div class="row col-sm-10" > 
 					<div class="col-sm-3 col-md-2 sidebar">										
 						<ul class="nav nav-sidebar">						
-							<li><a target="frame" href="${pageContext.request.contextPath}/secure/logout.jsp">登出</a></li>
+<%-- 							<li><a target="frame" href="${pageContext.request.contextPath}/secure/logout.jsp">登出</a></li> --%>
 							<li><a target="frame" href="${pageContext.request.contextPath}/display/searchButton.jsp">搜尋會員</a></li>
 							<li><a target="frame" href="${pageContext.request.contextPath}/display/regisChange.jsp">修改個人資料</a></li>
 							<li><a target="frame" href="${pageContext.request.contextPath}/display/changePassword.jsp">修改密碼</a></li>
