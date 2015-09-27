@@ -27,7 +27,7 @@ import com.util.ImgListBean;
 import com.util.ImgListDao;
 import com.util.ImgListDaoHibernate;
 
-@WebServlet("/display/registration.do") 
+@WebServlet("/registration.do") 
 public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request,
