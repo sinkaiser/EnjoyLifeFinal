@@ -43,5 +43,6 @@
 			</div>
 		</div>
 		<%@include file="/includes/login" %>
+		<%@include file="/includes/register" %>
 	</body>
 </html>
