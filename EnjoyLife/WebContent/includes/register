@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/register.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 				<!-- Modal -->
   <div class="modal fade" id="myModal1" role="dialog" >
@@ -12,7 +15,7 @@
           <h4><span class="glyphicon glyphicon-lock"></span> 註冊</h4>
         </div>
         <div class="container" style="padding-top:20px">
-          <form method="post" class="form-horizontal" id="form" action="registration.do" enctype="multipart/form-data">
+          <form method="post" class="form-horizontal" id="form" action="<c:url value="/display/registration.do" />" enctype="multipart/form-data">
 		<fieldset>
 			<div class="form-group">
 				<label for="memberId" class="col-sm-2 control-label">帳號(*)：</label>

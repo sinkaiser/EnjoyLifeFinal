@@ -30,7 +30,7 @@
 							<li><a id="login">登入</a></li>
 						</c:if>
 						<c:if test="${!empty member}">
-							<li><a>登出</a></li>
+							<li><a href="${pageContext.request.contextPath}/secure/logout.jsp">登出</a></li>
 						</c:if>	
 					</ul>
 				</nav>
