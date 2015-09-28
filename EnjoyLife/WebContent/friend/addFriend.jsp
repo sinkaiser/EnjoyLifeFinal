@@ -19,9 +19,9 @@ label { float: left;}
 		<fieldset>
 			<legend>新增好友</legend>
 			<div class="form-group">
-				<label for="friendId" class="col-sm-2 control-label">好友ID(*)：</label>
+				<label for="friendId" class="control-label col-sm-3">好友ID(*)：</label>
 				<div class="col-xs-3">
-					<input class="form-control" type="text" class="friendId" id="friendId" name="friendId" value="${param.friendId}" title="請輸入好友帳號">
+					<input class="form-control" type="text" id="friendId" name="friendId" value="${param.friendId}" title="請輸入好友帳號">
 				</div>
 				<label>${ErrorMsg.friendId}</label>
 			</div>

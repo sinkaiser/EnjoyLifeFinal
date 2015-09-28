@@ -28,7 +28,7 @@
 			<c:if test="${row.FriendVO.unfriend==2}">
 				<tr>
 					<td width="50">
-					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="30" width="30"  onerror="this.style.display='none'">
+					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35"  onerror="this.style.display='none'">
 					</td>
 					<td>${row.FriendVO.friendId}</td>
 					<td><a href="${pageContext.request.contextPath}/friend/deleteFriend.do?id=${row.FriendVO.friendId}"/> <input type="button" class="btn btn-primary btn-xs" value="刪除好友"></a></td>
@@ -41,7 +41,7 @@
 			<c:if test="${row.FriendVO.unfriend==0}">
 				<tr>
 					<td>
-					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="30" width="30"  onerror="this.style.display='none'">
+					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35"  onerror="this.style.display='none'">
 					</td>
 					<td>${row.FriendVO.friendId}</td>
 					<td><a href="${pageContext.request.contextPath}/friend/deleteFriend.do?id=${row.FriendVO.friendId}"/> <input type="button" class="btn btn-primary btn-xs" value="取消申請"></a></td>					
@@ -54,7 +54,7 @@
 			<c:if test="${row.FriendVO.unfriend==1}">
 				<tr>
 					<td>
-					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="30" width="30" onerror="this.style.display='none'">
+					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35" onerror="this.style.display='none'">
 					</td>
 					<td>${row.FriendVO.friendId}</td>					
 					<td><a href="${pageContext.request.contextPath}/friend/updateFriend.do?id=${row.FriendVO.friendId}"/> <input type="button" class="btn btn-primary btn-xs" value="確認"></a></td>

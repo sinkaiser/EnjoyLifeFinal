@@ -58,6 +58,10 @@
 				<label for="birthday" class="col-sm-1 control-label">生日：</label>
 				<p> ${search.birthday}</p>	
 			</div>
+			<div class="form-group">
+				<label for="picture" class="col-sm-1 control-label">大頭貼：</label>
+				<p><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'"></p>
+			</div>
 		</fieldset>	
 		
 </body>
