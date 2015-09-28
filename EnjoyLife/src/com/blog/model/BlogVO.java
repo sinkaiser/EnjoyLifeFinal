@@ -7,7 +7,7 @@ public class BlogVO {
 	private String postTitle="";
 	private String pathPhoto="";
 	private String postContext 	="";
-	private int AttractionsNo 	=0;
+	private String AttractionsNo ="";
 	private double avgScore		=0;
 	private int qtyToScore	=0	;
 	private int viewTotal	=0	;
@@ -69,11 +69,11 @@ public class BlogVO {
 		this.postContext = postContent;
 	}
 
-	public int getAttractionsNo() {
+	public String getAttractionsNo() {
 		return AttractionsNo;
 	}
 
-	public void setAttractionsNo(int attractionsNo) {
+	public void setAttractionsNo(String attractionsNo) {
 		AttractionsNo = attractionsNo;
 	}
 

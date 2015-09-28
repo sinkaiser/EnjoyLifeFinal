@@ -14,6 +14,7 @@ import org.json.simple.JSONValue;
 import com.blog.model.BlogReplyDAO;
 import com.blog.model.BlogReplyVO;
 import com.blog.model.Hibernate.BlogReplyDAOHibernate;
+import com.member.model.MemberVO;
 import com.util.HibernateUtil;
 
 @WebServlet("/ReplyAddServlet")
@@ -27,7 +28,8 @@ public class ReplyAddServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String postno = request.getParameter("ArticleNo");
 		String reply  = request.getParameter("replyContex");
-		
+		MemberVO memBean =(MemberVO) request.getSession().getAttribute("member");
+		String memberId = memBean.getMemberId();
 		
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		BlogReplyDAO dao = new BlogReplyDAOHibernate(session);
@@ -36,7 +38,7 @@ public class ReplyAddServlet extends HttpServlet {
 		BlogReplyVO bean = new BlogReplyVO();
 		int replyno = dao.getReplyNo(postno)+1;
 		bean.setPostNo(postno);
-		bean.setReplyMemberId("yoman");
+		bean.setReplyMemberId(memberId);
 		bean.setReplyNo(replyno);
 		bean.setReplyContext(reply);
 		bean.setReplyDate(new java.util.Date());

@@ -18,6 +18,8 @@ import org.json.simple.JSONValue;
 import com.blog.model.BlogReplyDAO;
 import com.blog.model.BlogReplyVO;
 import com.blog.model.Hibernate.BlogReplyDAOHibernate;
+import com.member.model.MemberDAO;
+import com.member.model.MemberVO;
 import com.util.HibernateUtil;
 
 @WebServlet("/GetReplyServlet")
@@ -34,12 +36,18 @@ public class GetReplyServlet extends HttpServlet {
 		String returnValue ="";
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		BlogReplyDAO dao = new BlogReplyDAOHibernate(session);
+		MemberDAO memDao = new MemberDAO();
 		session.beginTransaction();
 		List<BlogReplyVO> list = dao.selectByPostNo(postNo);
 		if(list!=null){
 			for(BlogReplyVO bean:list){
 				Map<String,String> map = new HashMap<String,String>();
 				map.put("replyMemberId", bean.getReplyMemberId());
+				MemberVO memBean = memDao.SelectById(bean.getReplyMemberId());
+				System.out.println(bean.getReplyMemberId());
+				int picNo = memBean.getPicture();
+				System.out.println(picNo);
+				map.put("memPic", String.valueOf(picNo));
 				map.put("replyContext", bean.getReplyContext());
 				map.put("replyDate", bean.getReplyDate()+"");
 				result.add(map);

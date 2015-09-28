@@ -32,7 +32,7 @@
 		margin-bottom:5px;
 		width:250px;
 		word-break: break-all;
-		background-image:url('${pageContext.request.contextPath}/images/reply.png');
+		background-image:url('${pageContext.request.contextPath}/GetImg?imgid=${member.picture}');
 		background-size:100% 100%;
 	}
 </style>

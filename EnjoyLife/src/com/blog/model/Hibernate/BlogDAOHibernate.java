@@ -1,15 +1,6 @@
 package com.blog.model.Hibernate;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -24,32 +15,24 @@ import com.blog.model.BlogDAO;
 import com.blog.model.BlogVO;
 
 public class BlogDAOHibernate implements BlogDAO {
-	private String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=ELDB";
+
 	private Session session =null;
 	public BlogDAOHibernate(Session session){
 		this.session = session;
 	}
 
-	public BlogDAOHibernate(){
-		try {
-			DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}	
-
 	@Override
 	public BlogVO selectByPost(String postNo) {
-		String sql = "FROM BlogVO WHERE postNO=? AND flagDelete='F' AND flagReport='F'";
+		String sql = "FROM BlogVO WHERE postNO=?";
 		BlogVO result = null;
-		
+		System.out.println(postNo);
 		try {
 			Query query = session.createQuery(sql);
 			query.setParameter(0, postNo);
-			result = (BlogVO)query.list();
-//			for(BlogVO bean: list){
-//				result = bean;
-//			}
+			List<BlogVO> list = query.list();
+			for(BlogVO bean: list){
+				result = bean;
+			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}		
@@ -196,7 +179,7 @@ public class BlogDAOHibernate implements BlogDAO {
 //	}
 	
 	public static void main(String[] args) {
-		BlogDAOHibernate dao = new BlogDAOHibernate();
+//		BlogDAOHibernate dao = new BlogDAOHibernate();
 //		BlogVO bean = new BlogVO();
 //		dao.insertPost(bean);
 //		String serialNo = dao.getSerial();
