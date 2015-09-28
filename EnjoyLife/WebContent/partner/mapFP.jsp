@@ -141,7 +141,7 @@
 </div>
 <div id="menu-outer">
 		 <div id="menu">
-			<img src="images/arrow_left.png" id="menu-icon">	
+			<img src="../images/arrow_left.png" id="menu-icon">	
 		</div>
 		<div id="menu-content">
 		
@@ -172,10 +172,10 @@ function initMap() {
 		if ($("#menu-outer").css('right') == '-'+w+'px')
 		{
 			$("#menu-outer").animate({ right:'0px' }, 500 ,'swing');
-			$("#menu-icon").attr("src","images/arrow_right.png")
+			$("#menu-icon").attr("src","../images/arrow_right.png")
 		} else {
 			$("#menu-outer").animate( { right:'-'+w+'px' }, 500 ,'swing');
-			$("#menu-icon").attr("src","images/arrow_left.png")
+			$("#menu-icon").attr("src","../images/arrow_left.png")
 		}
 	
  	});
