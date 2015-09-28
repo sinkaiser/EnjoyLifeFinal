@@ -12,6 +12,7 @@
 <body>
 
 <div align="center">
+			<p>${result}</p>
 		    <c:forEach var="mem" varStatus="statusX" items="${AllComments}">
                    <c:if test="${statusX.first}" >
                         <c:out value="<table border='1' cellspacing='5' cellpadding='5' >" escapeXml="false"/>
@@ -38,6 +39,15 @@
                          <td>${mem.eventNo}</td>
                          <td>${formattedDate}</td>
                          <td>${mem.memberId}</td>
+                         <c:chose>
+                         	<c:when test"${mem.closed==1}">
+                         	<td><a href="comment/CommentHandle?handle=delete"+${mem.commentNo}><input type="button" name="delete" value="刪除"></a></td>
+                         	</c:when>
+                         	<c:otherwise>
+                         	<td><a href="comment/CommentHandle?handle=update"+${mem.commentNo}><input type="button" name="update" value="處理"></a></td>
+<!--                          click it create text -->
+                         	</c:otherwise>
+                         </c:chose>	
                     </tr>
                      <c:if test="${statusX.last}" >
                         <c:out value="</table>" escapeXml="flase" />
