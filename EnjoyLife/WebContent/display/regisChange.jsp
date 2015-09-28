@@ -74,7 +74,7 @@ label{float:left}
 					<input type="submit" id="submit" value="送出" class="btn btn-success">
 				</div>
 			</div>
-			<a href="${pageContext.request.contextPath}/index.jsp">回首頁</a>
+		
 		</fieldset>	
 	</form>
 	

@@ -3,8 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog" style="width:350px">
-    
+    <div class="modal-dialog" style="width:350px">  
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header" style="padding:35px 50px;height:30px">
@@ -22,7 +21,6 @@
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> 密碼</label>
               <input type="password" name="password" value="${param.password}" class="form-control" id="psw" placeholder="輸入密碼">
               <p>${error.password}</p>
-              <p>${error.LoginError}</p>
             </div>
             <div class="checkbox">
               <label><input type="checkbox" value="" checked>記住我</label>
@@ -43,9 +41,6 @@
 $(document).ready(function(){
     $("#login").click(function(){
         $("#myModal").modal();
-     });
-     
-     
-     
+     });      
 });
 </script>

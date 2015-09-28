@@ -57,9 +57,9 @@ div.desc {
   		</a>
   			<div class="desc">寄件備份</div>
 	</div>
-	<a href="${pageContext.request.contextPath}/message/writeMessage.jsp">傳送訊息</a><br>
-	<a href="${pageContext.request.contextPath}/message/selectMessageAll.do">查詢訊息</a><br>
-	<a href="${pageContext.request.contextPath}/message/selectMessage.do">寄件備份</a><br>
-	<a href="${pageContext.request.contextPath}/index.jsp">首頁</a>		
+<%-- 	<a href="${pageContext.request.contextPath}/message/writeMessage.jsp">傳送訊息</a><br> --%>
+<%-- 	<a href="${pageContext.request.contextPath}/message/selectMessageAll.do">查詢訊息</a><br> --%>
+<%-- 	<a href="${pageContext.request.contextPath}/message/selectMessage.do">寄件備份</a><br> --%>
+<%-- 	<a href="${pageContext.request.contextPath}/index.jsp">首頁</a>		 --%>
 </body>
 </html>

@@ -63,9 +63,9 @@ div.desc {
   		</a>
   			<div class="desc">刪除好友</div>
 	</div>
-	<a href="${pageContext.request.contextPath}/friend/addFriend.jsp">新增好友</a><br>
-	<a href="${pageContext.request.contextPath}/friend/selectFriend.do">查詢好友</a><br>
-	<a href="${pageContext.request.contextPath}/friend/deleteFriend.jsp">刪除好友</a><br>
-	<a href="${pageContext.request.contextPath}/index.jsp">回首頁</a>
+<%-- 	<a href="${pageContext.request.contextPath}/friend/addFriend.jsp">新增好友</a><br> --%>
+<%-- 	<a href="${pageContext.request.contextPath}/friend/selectFriend.do">查詢好友</a><br> --%>
+<%-- 	<a href="${pageContext.request.contextPath}/friend/deleteFriend.jsp">刪除好友</a><br> --%>
+<%-- 	<a href="${pageContext.request.contextPath}/index.jsp">回首頁</a> --%>
 </body>
 </html>

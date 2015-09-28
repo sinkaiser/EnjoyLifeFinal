@@ -53,7 +53,7 @@
 					<input type="reset" id="reset" class="btn btn-primary" value="清除">
 				</div>
 			</div>
-			<a href="${pageContext.request.contextPath}/index.jsp">請按此回首頁</a>
+		
 		</fieldset>	
 	</form>
 </div>

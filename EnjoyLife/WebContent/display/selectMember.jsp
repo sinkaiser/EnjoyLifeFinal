@@ -6,11 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <style type="text/css">
+.ui-helper-hidden-accessible { display:none; }
  label { float: left;}  
 </style>
 <title>會員資料</title>
@@ -32,6 +34,8 @@
   			</div>
   			<div id="div1"></div> 
 		</form>
+		<br>
+		<br>		
 <fieldset>
 			<legend >會員資料</legend>
 			<div class="form-group">
@@ -55,7 +59,7 @@
 				<p> ${search.birthday}</p>	
 			</div>
 		</fieldset>	
-		<a href="${pageContext.request.contextPath}/index.jsp">回首頁</a>
+		
 </body>
 <script> 
     $( function () { 
