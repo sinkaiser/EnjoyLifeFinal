@@ -22,6 +22,7 @@ import com.blog.model.BlogVO;
 import com.blog.model.ElSettingDAO;
 import com.blog.model.Hibernate.BlogDAOHibernate;
 import com.blog.model.Hibernate.ElSettingDAOHibernate;
+import com.member.model.MemberVO;
 import com.util.HibernateUtil;
 
 @WebServlet("/BlogPostServlet")
@@ -40,9 +41,11 @@ public class BlogPostServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String errorMessage = "";
-		String memberId = "testAccount";
+		String memberId = "";
 		String postNo   = "";
 		
+		MemberVO memBean =(MemberVO) request.getSession().getAttribute("member");
+		memberId = memBean.getMemberId();
 		request.setCharacterEncoding("UTF-8");
 		String bTitle = request.getParameter("bTitle");
 		if(bTitle.trim()=="" || bTitle==null){
@@ -55,7 +58,7 @@ public class BlogPostServlet extends HttpServlet {
 		}
 		String bPlace = request.getParameter("bPlace");
 		if(bTitle==null){
-			bTitle = "999999";
+			bTitle = "";
 		}
 		String bType = request.getParameter("bType");
 			
@@ -83,7 +86,7 @@ public class BlogPostServlet extends HttpServlet {
 //			response.setContentType("text/html; charset=UTF-8");
 //			response.sendRedirect(request.getContextPath()+"/blog/newpost.jsp");
 			session.getTransaction().rollback();
-			request.getRequestDispatcher("/blog/postBlog.jsp").forward(request, response);
+			request.getRequestDispatcher("/BlogListServlet?Index=0&&pType=ALL").forward(request, response);
 			
 			return;
 		}
@@ -98,7 +101,7 @@ public class BlogPostServlet extends HttpServlet {
 		bean.setModifyDate(date);
 		bean.setPathPhoto(blogImgPaht);
 		bean.setPostContext(bContext);
-		bean.setAttractionsNo(Integer.parseInt(bPlace));
+		bean.setAttractionsNo(bPlace);
 		
 		boolean result = blogDao.insertPost(bean);
 		if(result){

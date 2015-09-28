@@ -96,7 +96,7 @@
 							<label>簡單描述</label>&nbsp;&nbsp;&nbsp;<span id="nowtxt"></span><br>
 							<textarea id="INtext" name="bContext" class="form-control" style="width: 400px; height: 50px; resize:none"></textarea>
 							
-							<label>景點</label><input type="text" name="bPlace" class="form-control" style="width:200px" maxlength="20">
+							<label>景點</label><input type="text" id="findAttrc" name="bPlace" class="form-control" style="width:200px" maxlength="20">
 							
 							<input id="send" class="btn btn-lg" type="submit" value="發布日誌" 
 								style="background-color:#428bca;color:#DDDDDD">
@@ -448,6 +448,29 @@
             return false;
         }
     });
+    
+    $("#findAttrc").autocomplete({
+        source: function(request, response) {
+        $.ajax({
+        url: "${pageContext.request.contextPath}/SearchAttracServlet",
+        type: "POST",
+        dataType: "json",
+        data: { name: request.term},
+        success: function( data ) {               
+            response( $.map( data, function( item ) {
+            return {
+                label: item.attrno+"__"+item.attrname,
+                value: item.attrno+"__"+item.attrname,
+            }
+            }));
+        },
+        error: function (error) {
+           alert('error: ' + error);
+        }
+        });
+        },
+        minLength: 2
+        });    
 }(jQuery));	
 </script>
 </html>

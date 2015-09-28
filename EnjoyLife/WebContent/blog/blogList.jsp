@@ -7,12 +7,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@include file="/includes/link" %>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.min.css" />
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" >
+<%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" > --%>
 	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/skel-noscript.css' type="text/css" />
 	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/style.css' type="text/css" />
 	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/style-desktop.css' type="text/css" />
-	<script	type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<%-- 	<script	type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.4.min.js"></script> --%>
+<%-- 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script> --%>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>	
 	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
@@ -23,14 +23,20 @@
 		padding:5px;
 		margin: 5px;
 		display:inline-block;
-		width:100%;
+		width:250px;
+		height:430px;
 		box-shadow:5px 5px 15px rgba(10,125,225,0.4);
-
+	}
+	.layoutSide{
+		background-color:#CCEEFF;
+		display:block;
+		height:auto;
+		
 	}
 	.blogImg{
 		border:5px solid gray;
 		margin:10px;
-		width:200px;
+		width:220px;
 		float:left;
 		overflow:hidden;
 	}
@@ -39,7 +45,7 @@
 		font-size:12pt;
 	}
 	.lab-size{
-		font-size:12pt;
+		font-size:10pt;
 	}
 	.dataFont{
 		font-size:11pt;
@@ -73,6 +79,9 @@
 	.mainBody{
 /* 		margin-top:50px; */
 	}
+/* 	.modal-headerX{ */
+/* 		min-height:16.43px;padding:15px;border-bottom:1px solid #DDDDDD; */
+/* 		} */
 </style>
 <script type="text/javascript">
 	function getAllReply(ArticleNo){
@@ -90,7 +99,8 @@
 					var eleDiv3 = document.createElement("div");
 					
 					var eleImg = document.createElement("Img");
-					eleImg.setAttribute("src", "../images/bao.png");
+
+					eleImg.setAttribute("src", "${pageContext.request.contextPath}/GetImg?imgid="+value.memPic);
 					eleImg.setAttribute("width", "50px");
 					eleImg.setAttribute("height", "50px");
 					eleDiv1.appendChild(eleImg);
@@ -166,28 +176,27 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="row mainBody">
-					<div class="col-md-3">
+					<div class="col-md-3 layoutSide">
 						<a href="${pageContext.request.contextPath}/BlogListServlet?Index=0&&pType=ALL" class="btn btn-default btn-lg active btn-block" role="button">日誌列表</a><br>
 						<a href="${pageContext.request.contextPath}/blog/postBlog.jsp" class="btn btn-default btn-lg active btn-block" role="button">新增日誌</a><br>
 						<a href="#" class="btn btn-default btn-lg active btn-block" role="button">我的日誌</a>
 					</div>
 					<div class="col-md-7">
 						<form action="${pageContext.request.contextPath}/BlogListServlet" method="GET">
-							<div class="blogList">
-							<span>選擇日誌類型</span>
-							<select id="selectGroup" name="pType">
-								<option value=""></option>
-								<option value="ALL">全部</option>
-								<option value="TL">旅遊</option>
-								<option value="DF">美食</option>
-								<option value="ML">心情</option>
-								<option value="FT">搞笑</option>
-								<option value="OT">其他</option>
-							</select>	
+						
+							<div class="" >
+								<span>選擇日誌類型</span>
+								<input type="radio" name="pType" id="type1" value="ALL" checked>全部
+								<input type="radio" name="pType" id="type2" value="TL" > 旅遊					
+								<input type="radio" name="pType" id="type3" value="DF" > 美食								
+								<input type="radio" name="pType" id="type4" value="ML" > 心情
+								<input type="radio" name="pType" id="type5" value="FT" > 搞笑
+								<input type="radio" name="pType" id="type6" value="OT" > 其他
 							</div>
 							<% request.getSession().getAttribute("blogList"); %> 
 							<% request.getSession().getAttribute("listIndex");%>
 							<% request.getSession().getAttribute("selType");%>
+							<div class="row">
 							<c:if test="${blogList.size() == 0}"><br><h3>此類型沒有任何文章</h3></c:if>
 							<c:forEach var="lists" items="${blogList}">
 								<input type="hidden" id="role" value="T" />
@@ -195,17 +204,24 @@
 									<img class="blogImg" src="${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=T&&pathImg=${lists.pathPhoto}">
 									<br>
 									<span class="label label-primary lab-size">日誌編號 </span><span class="dataFont">&nbsp;${lists.postNo}</span>
-									<span class="label label-primary lab-size">會員ID</span><span class="dataFont">&nbsp;${lists.memberId}</span><br><br>
-									<span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;${lists.postType}</span>
-									<span class="label label-primary lab-size">標題 </span><span class="dataFont">&nbsp;${lists.postTitle}</span><br><br>
-									<span class="label label-primary lab-size">內文</span><span class="dataFont">&nbsp;${lists.postContext}</span>
-									<input type="button" value="閱讀全文" class="btn btn-default btn-xs" data-toggle="modal" data-target="#postModal" onclick="viewArticle('${lists.postNo}')">
-									<br><br>
+									<span class="label label-primary lab-size">會員ID</span><span class="dataFont">&nbsp;${lists.memberId}</span>
+									<c:choose>
+										<c:when test="${lists.postType=='TL'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;旅遊</span></c:when>
+										<c:when test="${lists.postType=='DF'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;美食</span></c:when>
+										<c:when test="${lists.postType=='ML'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;心情</span></c:when>
+										<c:when test="${lists.postType=='FT'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;搞笑</span></c:when>
+										<c:when test="${lists.postType=='OT'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;其他</span></c:when>
+									</c:choose>
+									<span class="label label-primary lab-size">標題 </span><span class="dataFont">&nbsp;${lists.postTitle}</span><br>
 									<span class="label label-primary">星級評分</span>&nbsp;${lists.avgScore}顆星
 									<span class="label label-primary">瀏覽人數</span>&nbsp;${lists.viewTotal}
-									<span class="label label-primary">發文日期</span>&nbsp;${lists.postDate}<br><br>								
+									<span class="label label-primary">發文日期</span>&nbsp;${lists.postDate}<br>							
+									<span class="label label-primary lab-size">內文</span><span class="dataFont">&nbsp;${lists.postContext}</span>
+									<input type="button" value="閱讀全文" class="btn btn-default btn-xs" data-toggle="modal" data-target="#postModal" onclick="viewArticle('${lists.postNo}')">
+									<br>
 								</div>
 							</c:forEach>
+							</div>
 								<% request.getSession().removeAttribute("blogList"); %> 		  
 							<input type="submit" id="btnSend" value="send" style="display:none;">
 							<input type="text" name="Index" value="0"  style="display:none;">
@@ -218,7 +234,7 @@
 						</nav>
 			
 						<!-- 互動視窗 -->
-						<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+						<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true" >
 						  <div class="modal-dialog modal-lg">
 						    <div class="modal-content">
 						      <div class="modal-header">		
@@ -261,7 +277,7 @@
 						</div>		
 							
 					</div>
-					<div class="col-md-2"></div>	
+					<div class="col-md-2 layoutSide"></div>	
 			</div>			
 		</div>
 		
@@ -276,8 +292,19 @@
 <script type="text/javascript">
  (function($){ 	
 	 $("[name='Index']").val('${listIndex}');
-	 var a = ${selType};
-	 $('#selectGroup option:[value='+a+']').attr('selected', true);
+	 var selectedType = "${selType}";
+	 if(selectedType=="ALL"){ $('#type1').attr('checked','true')}
+	 if(selectedType=="TL"){ $('#type2').attr('checked','true')}
+	 if(selectedType=="DF"){ $('#type3').attr('checked','true')}
+	 if(selectedType=="ML"){ $('#type4').attr('checked','true')}
+	 if(selectedType=="FT"){ $('#type5').attr('checked','true')}
+	 if(selectedType=="OT"){ $('#type6').attr('checked','true')}
+	 
+	 $("[name='pType']").change(function(){
+		 $('#btnSend').click();
+	 })
+	 
+	 $("[name='pType']").attr('selected', true);
 // 	 if($('#role').val()!="T"){ 
 // 		 $("[name='Index']").val('0');
 // 		 $('#btnSend').click();
@@ -307,6 +334,7 @@
 	$('#btnReply').click(function(){
 		var ArticleNo = $('#artiNo').text().trim();
 		var context = $('#txtRely').val();
+
 		if(context!=''){
 			$.ajax({
 				type:"get",
@@ -314,7 +342,7 @@
 				dataType:"json",
 				data:{"ArticleNo":ArticleNo,"replyContex":context},
 				success:function(data){		
-					console.log(data);
+
 					if(data=='failed'){
 						alert('新增留言失敗，請重試一次');
 					}else{
@@ -325,6 +353,8 @@
 			})
 		}
 	})
+	
+	
  }(jQuery));
  </script>
 </html>

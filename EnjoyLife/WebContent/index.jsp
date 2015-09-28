@@ -7,12 +7,23 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@include file="/includes/link" %>
 	<script src="js/Template2.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/register.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
 	<link rel='stylesheet' href='css/skel-noscript.css' type="text/css" />
 	<link rel='stylesheet' href='css/style.css' type="text/css" />
 	<link rel='stylesheet' href='css/style-desktop.css' type="text/css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
-	
+<style type="text/css">
+	label.error{
+	/*   background-image: url(images/unchecked.png) no-repeat 0px 0px; */
+  	padding-left: 16px;
+  	padding-bottom: 2px;
+  	font-weight: bold;
+  	color: #EA5200;
+	}
+</style>		
 </head>
 <body class="homepage">
 		<!-- Header -->
@@ -75,6 +86,8 @@
 			</div>
 		</div>
 		<%@include file="/includes/login" %>
+		<%@include file="/includes/logout" %>
 		<%@include file="/includes/register" %>
+		
 	</body>
 </html>

@@ -23,7 +23,7 @@
         <property name="postContext" type="java.lang.String">
             <column name="POSTCONTEXT" />
         </property>
-        <property name="AttractionsNo" type="int">
+        <property name="AttractionsNo" type="java.lang.String">
             <column name="ATTRACTIONSNO" />
         </property>
         <property name="avgScore" type="double">

@@ -1,11 +1,14 @@
 package com.AttracHiber;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.transform.Transformers;
 
 import com.AttracModel.AttracBean;
 import com.AttracModel.AttracDao;
@@ -158,5 +161,20 @@ public class AttracDaoHiber implements AttracDao {
 		return result;
 	}
 
-
+	public List<Object[]> selectByName(String name){
+		List<Object[]> result = null;
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			System.out.println("AAAAAAA");
+			session.beginTransaction();
+			Query query = session.createQuery("select rownumber, stitle from AttracBean where stitle like '%"+name+"%'");	
+//			Query query =session.createSQLQuery("select attracno,stitle from Attrac t where stitle like '%"+name+"%'").setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+			result = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}		
+		return result;
+	}
 }
