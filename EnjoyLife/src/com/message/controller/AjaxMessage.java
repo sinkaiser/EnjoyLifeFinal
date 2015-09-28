@@ -25,6 +25,7 @@ public class AjaxMessage extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String eno=request.getParameter("eno");
 		String messageFrom=request.getParameter("messageFrom");
 		String messageTo=request.getParameter("messageTo");
 		String messageTitle="您有新的活動請求";
@@ -34,13 +35,13 @@ public class AjaxMessage extends HttpServlet {
 		System.out.println(messageTo);
 		System.out.println(messageTitle);
 		System.out.println(message);
-		
 		//MessageService service=new MessageService();
 		MessageVO vo=new MessageVO();
-		vo.setMessage(message);
+		vo.setMessage(messageFrom+"想參加你的活動。他留給你的訊息："+message+"<br>是否同意一起呢？  <a href='http://enjoylife.cloudapp.net/EnjoyLife/partner/HiddenEventServlet?eno="+eno+"'><button>同意</button></a><button>拒絕</button>");
 		vo.setMessageFrom(messageFrom);
 		vo.setMessageTitle(messageTitle);
 		vo.setMessageTo(messageTo);
+		System.out.println(vo.getMessage());
 		response.setContentType("text/html; charset=UTF-8");
 		
 		

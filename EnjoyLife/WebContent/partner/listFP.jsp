@@ -60,6 +60,10 @@
 body{
 		padding-top:90px;
 	}
+.form-textarea{
+	width:500px;
+	height:150px;
+}
 </style>
 
 </head>
@@ -173,7 +177,7 @@ body{
 												src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
 												height="30" width="30" onerror="this.style.display='none'">
 												<h2>${mem.PartnerVO.eventTitle}
-													<a href="#" data-toggle="modal" data-target="#myModal3" onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${mem.PartnerVO.memberId}','${mem.PartnerVO.eventContent}')"><img style="float: right" src="img/plusone2.png"
+													<a href="#" data-toggle="modal" data-target="#myModal3" onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${mem.PartnerVO.memberId}')"><img style="float: right" src="img/plusone2.png"
 														id="plusone" width="32" height="32" alt="+1"></a>
 												</h2>
 
@@ -238,36 +242,26 @@ body{
 				<div class="modal-body">
 					<form name="insertMemberFormA" action="NewEventServlet" id="jinsert"
 						method="POST" enctype="multipart/form-data">
-						<table border="1">
-							<tbody>
-								<tr bgcolor=#C1FFE4>
-									<td width="120" height="40">事件類型:</td>
-									<td width="600" height="40" align="left"><input id='num'
-										style="text-align: left" name="type" type="text" size="14">
-								</tr>
-								<tr bgcolor=#C1FFE4>
-									<td width="120" height="40">標題:</td>
-									<td width="600" height="40" align="left"><input id='num'
-										style="text-align: left" name="title" type="text" size="14">
-									</td>
-								</tr>
-								<tr bgcolor=#C1FFE4>
-									<td width="120" height="40">內文:</td>
-									<td width="600" height="40" align="left"><textarea
-										name="content" type="text" size="54"></textarea></td>
-								</tr>
-								<tr bgcolor=#C1FFE4>
-									<td width="120" height="40">地點:</td>
-									<td width="600" height="40" align="left"><input
-										name="address" type="text" size="54"></td>
-								</tr>
-								<tr bgcolor=#C1FFE4>
-									<td width="120" height="40">圖片:</td>
-									<td width="600" height="40" align="left"><input
-										name="photo" type="file" size="14" accept="image/*"></td>
-								</tr>
-							</tbody>
-						</table>
+						<div class="form-group">
+							<label>事件類型:</label><br>
+							<input id='num' style="text-align: left" name="type" type="text" size="14">
+						</div>
+						<div class="form-group">
+							<label>標題:</label><br>
+							<input id='num' style="text-align: left" name="title" type="text" size="42">
+						</div>
+						<div class="form-group">
+							<label>內文:</label><br>
+							<textarea name="content" type="text" size="54" class="form-textarea"></textarea>
+						</div>
+						<div class="form-group">
+							<label>地點:</label><br>
+							<input name="address" type="text" size="54">
+						</div>
+						<div class="form-group">
+							<label>圖片:</label><br>
+							<input name="photo" type="file" size="14" accept="image/*">
+						</div>
 					</form>
 
 				</div>
@@ -292,48 +286,27 @@ body{
       <div class="modal-body">
 
 		<form name="insertMemberFormB" action="UpdateEventServlet" id="jupdate" method="POST">
-			<table border="1" >
-			<tbody >
-			<tr bgcolor=#C1FFE4 >
-			    <input id='num' style="text-align:left" name="eno" type="hidden" size="14">
-			</tr>
-			<tr bgcolor=#C1FFE4 >
-			    <td width="120" height="40">事件類型:</td>
-			    <td width="600" height="40" align="left" >
+		    <input id='num' style="text-align:left" name="eno" type="hidden" size="14">
+		    <div class="form-group">
+			    <label>事件類型:</label><br>
 			    <input id='num' style="text-align:left" name="type" type="text" size="14">
-			</tr>
-			<tr bgcolor=#C1FFE4 >
-			    <td width="120" height="40">標題:</td>
-			    <td width="600" height="40" align="left" >
-			         <input id='num' style="text-align:left" name="title" type="text" size="14">
-			    </td>
-			</tr>
-			<tr bgcolor=#C1FFE4 >
-			    <td width="120" height="40">內文:</td>
-			    <td width="600" height="40" align="left" >
-			         <input name="content" type="text" size="54">
-			    </td>
-			</tr>
-			<tr bgcolor=#C1FFE4 >
-			    <td width="120" height="40">地點:</td>
-			    <td width="600" height="40" align="left" >
-			         <input name="address" type="text" size="54">
-			    </td>
-			</tr>
-			<tr bgcolor=#C1FFE4 >
-			    <td width="120" height="40">圖片:</td>
-			    <td width="600" height="40" align="left" >
-			         <input name="photo" type="file" size="14" accept="image/*">
-			    </td>
-			</tr>
-<!-- 			<tr bgcolor='tan' > -->
-<!-- 			    <td height="50" colspan="2" align="center"> -->
-<!-- 			       <input type="submit" value="送出" > -->
-<!-- 			    </td> -->
-<!-- 			</tr> -->
-			
-			</tbody>
-			</table>
+			</div>
+			<div class="form-group">
+			    <label>標題:</label><br>
+			    <input id='num' style="text-align:left" name="title" type="text" size="42">
+			</div>
+			<div class="form-group">
+			    <label>內文:</label><br>
+			    <textarea name="content" type="text" size="54" class="form-textarea"></textarea>
+			</div>
+			<div class="form-group">
+			    <label>地點:</label><br>
+		        <input name="address" type="text" size="54">
+		    </div>
+		    <div class="form-group">
+			    <label>圖片:</label><br>
+			    <input name="photo" type="file" size="14" accept="image/*">
+		    </div>
 		</form>
 		
       </div>
@@ -360,32 +333,14 @@ body{
       </div>
       <div class="modal-body">
 		<form name="insertMemberFormA" action="../comment/NewCommentServlet" id="jcomment" method="POST">
-			<table border="1" >
-			
-			<tbody >
-		
-			<tr bgcolor=#C1FFE4 >
-			         <input name="eno" id="eno" type="hidden" size="54" value="${param.t}">
-			</tr>
-			<tr bgcolor=#C1FFE4 >
-			    <td width="120" height="40">檢舉原因:</td>
-			    <td width="600" height="40" align="left" >
-<!-- 			         <input name="content" type="text" size="54"> -->
-			         <select id="selectoption" name="content">
-			         	<option>這則貼文是垃圾訊息或詐騙</option>
-			         	<option>這則貼文是廣告</option>
-			         	<option>色情內容</option>
-			         	<option>違反智慧財產權</option>
-			         </select>
-			    </td>
-			</tr>
-<!-- 			<tr bgcolor='tan' > -->
-<!-- 			    <td height="50" colspan="2" align="center"> -->
-<!-- 			       <input type="submit" value="送出" > -->
-<!-- 			    </td> -->
-<!-- 			</tr> -->
-			</tbody>
-			</table>
+        <input name="eno" id="eno" type="hidden" size="54" value="${param.t}">
+	    <label>檢舉原因:</label>
+	         <select id="selectoption" name="content">
+	         	<option>這則貼文是垃圾訊息或詐騙</option>
+	         	<option>這則貼文是廣告</option>
+	         	<option>色情內容</option>
+	         	<option>違反智慧財產權</option>
+	         </select>
 		</form>
       </div>
       <div class="modal-footer">
@@ -468,40 +423,11 @@ body{
       <div class="modal-body">
 
 		<form name="insertMemberFormC" action="${pageContext.request.contextPath}/message/writeMessage.do" id="jmessage" method="POST">
-			<table border="1" >
-			<tbody >
-			
-			<tr bgcolor=#C1FFE4 >
-			    <input id='xxxeno' style="text-align:left" name="eno" type="text" size="14">
-			</tr>
-		
-			<tr bgcolor=#C1FFE4 >
-			    <td width="120" height="40">我是:</td>
-			    <td width="600" height="40" align="left" >
-			    <input id='xxx1' style="text-align:left" id="messageFrom" name="messageFrom" value="${member.memberId}" type="hidden" size="14">
-			</tr>
-			<tr bgcolor=#C1FFE4 >
-			    <td width="120" height="40">寄給:</td>
-			    <td width="600" height="40" align="left" >
-			    <input id='xxx2' style="text-align:left" id="messageTo" name="messageTo" type="hidden" size="14">
-			</tr>
-			
-			<tr bgcolor=#C1FFE4 >
-			    <td width="120" height="40">信件內容:</td>
-			    <td width="600" height="40" align="left" >
-			         <input id="xxx3" name="message" type="hidden" size="54">
-			    </td>
-			</tr>
-			
-			
-<!-- 			<tr bgcolor='tan' > -->
-<!-- 			    <td height="50" colspan="2" align="center"> -->
-<!-- 			       <input type="submit" value="送出" > -->
-<!-- 			    </td> -->
-<!-- 			</tr> -->
-			
-			</tbody>
-			</table>
+		    <input id='xxxeno' style="text-align:left" name="eno" type="hidden" size="14">
+		    <input id='xxx1' style="text-align:left" id="messageFrom" name="messageFrom" value="${member.memberId}" type="hidden" size="14">
+		    <input id='xxx2' style="text-align:left" id="messageTo" name="messageTo" type="hidden" size="14">
+		    <label>你還想說:</label><br>
+	        <textarea id="xxx3" name="message" class="form-textarea"></textarea>
 		</form>
 		
       </div>
@@ -520,7 +446,7 @@ body{
 	$('#btn1').click(function() {
 		$('#btn2').click()
 		$.ajax({
-			url: "http://localhost:8080/EnjoyLife0925_final/AjaxMessage",
+			url: "${pageContext.request.contextPath}//AjaxMessage",
             data: {
             		"eno": $("#xxxeno").val(),
             		"messageFrom": $("#xxx1").val(),
@@ -629,11 +555,11 @@ body{
 	function jsubmit(){
 		document.getElementById("jupdate").submit();
 	}
-	function attend(xxxeno,xxx1,xxx2,xxx3){
+	function attend(xxxeno,xxx1,xxx2){
 		$("[name='eno']").val(xxxeno);
  		$("[name='messageFrom']").val(xxx1);
  		$("[name='messageTo']").val(xxx2);
- 		$("[name='message']").val(xxx3);
+ 		//$("[name='message']").val(xxx3);
 	}
 	
 	function jmessage(){
