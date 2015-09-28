@@ -14,7 +14,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 Connection conn = null;
 PreparedStatement stmt = null;
 ResultSet rs = null;
-String url = "jdbc:sqlserver://localhost:1433;DatabaseName=enjoylife";
+String url = "jdbc:sqlserver://i7zjbwchx7.database.windows.net:1433;database=EnjoyLife";
 String query = "select cate2no,cate2name from cate2 where cate1no=?";
 String cate1no = request.getParameter("cate1no");
 String countyno = request.getParameter("countyno");

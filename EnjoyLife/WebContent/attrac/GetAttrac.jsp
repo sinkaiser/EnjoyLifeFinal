@@ -13,7 +13,7 @@
 response.setHeader("Access-Control-Allow-Origin", "*");
 ResultSet rset = null;
 PreparedStatement stmt=null;
-String url2 = "jdbc:sqlserver://localhost:1433;DatabaseName=enjoylife";
+String url2 = "jdbc:sqlserver://i7zjbwchx7.database.windows.net:1433;database=EnjoyLife";
 String query=null;	
 String cate1no = request.getParameter("cate1no");
 String cate2no = request.getParameter("cate2no");
