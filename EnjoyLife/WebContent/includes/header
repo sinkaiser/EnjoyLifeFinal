@@ -20,17 +20,20 @@
 			<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li><a href="index4Member.jsp">會員</a></li>
+						<li><a href="indexMember.jsp">會員</a></li>
 						<li><a href="${pageContext.request.contextPath}/attrac/Attracdesign.jsp">規劃</a></li>
 						<li><a href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
 						<li><a href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li>
 						<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
-						<c:if test="${empty member}">
+						<c:if test="${empty member}">							
 							<li><a id="register">註冊</a></li>
 							<li><a id="login" >登入</a></li>
 						</c:if>
-						<c:if test="${!empty member}">
-							<li><a>登出</a></li>
+						<c:if test="${!empty member}">							
+							<li><a href="${pageContext.request.contextPath}/secure/logout.jsp">登出</a></li>
+							<li><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="30" width="30" onerror="this.style.display='none'"> 
+								${member.memberName}
+							</li>
 						</c:if>	
 					</ul>
 				</nav>

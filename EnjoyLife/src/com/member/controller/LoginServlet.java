@@ -64,7 +64,7 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect(dest);
 			}else{
 			String path = request.getContextPath();
-			response.sendRedirect(path+"/index4Member.jsp");}
+			response.sendRedirect(path+"/index.jsp");}
 		}
 	}
 	@Override
