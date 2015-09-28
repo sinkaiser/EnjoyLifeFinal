@@ -41,22 +41,22 @@ public class UpdateEventServlet extends HttpServlet {
 		// 設定輸入資料的編碼
 		request.setCharacterEncoding("UTF-8");
 		// 讀取使用者所輸入，由瀏覽器送來的 type 欄位內的資料
-		String eventType = request.getParameter("type");
+		String eventType = request.getParameter("type2");
 
 		// 讀取使用者所輸入，由瀏覽器送來的 title 欄位內的資料
-		String eventTitle = request.getParameter("title");
+		String eventTitle = request.getParameter("title2");
 		// 檢查使用者所輸入的資料
 		if (eventTitle == null || eventTitle.trim().length() == 0) {
 			errorMessage.add("必須輸入標題");
 		}
 		// 讀取使用者所輸入，由瀏覽器送來的 content 欄位內的資料
-		String eventContent = request.getParameter("content");
+		String eventContent = request.getParameter("content2");
 		// 檢查使用者所輸入的資料
 		if (eventContent == null || eventContent.trim().length() == 0) {
 			errorMessage.add("必須輸入內文");
 		}
 		// 讀取使用者所輸入，由瀏覽器送來的 address 欄位內的資料
-		String addr = request.getParameter("address");
+		String addr = request.getParameter("address2");
 		// 檢查使用者所輸入的資料
 		if (addr == null || addr.trim().length() == 0) {
 			errorMessage.add("地址欄必須輸入");
@@ -75,7 +75,7 @@ public class UpdateEventServlet extends HttpServlet {
 		int hidden = 0;
 		int closed = 0;
 		
-		String eventNo = request.getParameter("eno");
+		String eventNo = request.getParameter("eno2");
 		if (eventNo == null || eventNo.trim().length() == 0) {
 			errorMessage.add("必須輸入事件編號");
 		}

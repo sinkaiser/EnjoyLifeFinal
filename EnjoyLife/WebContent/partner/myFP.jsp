@@ -77,7 +77,8 @@ body{
 			<li><a href="../indexMember.jsp">會員</a></li>
 			<li><a href="${pageContext.request.contextPath}/attrac/Attracdesign.jsp">規劃</a></li>
 			<li><a href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
-			<li><a href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li>
+<%-- 			<li><a href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li> --%>
+			<li><a href="${pageContext.request.contextPath}/partner/FindByIDServlet">我的找伴</a></li>
 			<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
 			<c:if test="${empty member}">							
 				<li><a id="register">註冊</a></li>
@@ -106,10 +107,10 @@ body{
 						</div>
 						<button type="button" id="btnsearch" onclick="searchsubmit()" class="btn btn-default" id="button1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 						<div class="btn-group" id="button-toggle">
-							<a href="${pageContext.request.contextPath}/partner/mapFP.jsp"><button type="button" class="btn btn-default"
-									id="btn-left">地圖</button></a> <a
-								href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet"><button
-									type="button" class="btn btn-default" id="btn-right-list">列表</button></a>
+							<a href="${pageContext.request.contextPath}/partner/FindByIDOverServlet"><button type="button" class="btn btn-default"
+									id="btn-left">已結束</button></a> <a
+								href="${pageContext.request.contextPath}/partner/FindByIDServlet"><button
+									type="button" class="btn btn-default" id="btn-right-list">進行中</button></a>
 						</div >
 						<div class="btn-group" style="margin-left:170px">
 						<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -158,7 +159,7 @@ body{
 											<td><img style="float: left"
 												src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
 												height="30" width="30" onerror="this.style.display='none'">
-												<h2>${mem.PartnerVO.eventTitle}
+												<h2 style="color:blue">${mem.PartnerVO.eventTitle}
 													<a href="#" data-toggle="modal" data-target="#myModal3" onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${mem.PartnerVO.memberId}')"><img style="float: right" src="img/plusone2.png"
 														id="plusone" width="32" height="32" alt="+1"></a>
 												</h2>
@@ -172,7 +173,7 @@ body{
 													
 													<span><a href="#"><img src="../partner/img/icon-location.png">${mem.PartnerVO.memberId}</a></span>
 													 <a href="${pageContext.request.contextPath}/partner/FindByTypeServlet?mType=${mem.PartnerVO.eventType}"><img src="../partner/img/icon-tag.png">${mem.PartnerVO.eventType}
-													 <a href="mapFP.jsp?inputAdd=${mem.PartnerVO.addr}" title="${mem.PartnerVO.addr}"><img src="../partner/img/icon-location.png">${mem.PartnerVO.getAddr().toString().substring(0,3)}</a>
+													 <a href="mapFP.jsp?inputAdd=${mem.PartnerVO.addr}" title="${mem.PartnerVO.addr}"><img src="../partner/img/icon-location.png">${mem.PartnerVO.getAddr().toString().substring(0,3)}</a><br>
 													<fmt:formatDate value="${mem.PartnerVO.eventDate}"
 														var="formattedDate" type="date" pattern="yyyy年M月d日 H:mm" />
 													<a href="#" title="${formattedDate}"><img src="../partner/img/icon-time.png">

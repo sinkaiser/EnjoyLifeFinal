@@ -21,8 +21,8 @@ import com.member.model.MemberVO;
 import com.partner.model.PartnerService;
 import com.partner.model.PartnerVO;
 
-@WebServlet("/partner/FindByIDServlet")
-public class FindByIDServlet extends HttpServlet {
+@WebServlet("/partner/FindByIDOverServlet")
+public class FindByIDOverServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,7 +53,7 @@ public class FindByIDServlet extends HttpServlet {
 		
 		MemberDAO_interface dao = new MemberDAO();
 		List<Map<String,Object>> mp = new ArrayList<Map<String,Object>>();
-		List<PartnerVO> list = service.findById(memberId);
+		List<PartnerVO> list = service.findByIdOver(memberId);
 		for(PartnerVO vo:list){
 			Map<String,Object> map = new HashMap<String,Object>();
 			MemberVO a=dao.SelectById(vo.getMemberId());

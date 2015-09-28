@@ -136,6 +136,27 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 		}
 		return result;
 	}
+	
+	@Override
+	public List<PartnerVO> selectByIdOver(String memberId) {
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		List<PartnerVO> result = new ArrayList<PartnerVO>();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from PartnerVO where hidden=0 and closed=1 and memberId = ? order by eventDate desc");
+			query.setParameter(0, memberId);
+			List<Object> list = query.list();
+			for(Object item :list){
+				result.add((PartnerVO)item);
+			}
+			
+			session.beginTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 	@Override
 	public List<PartnerVO> selectByEventType(String eventType) {

@@ -9,6 +9,7 @@ public interface PartnerDAO_interface {
           public PartnerVO hidden(PartnerVO partnerVO);
           public List<PartnerVO> selectByEventNo(Integer eventNo);
           public List<PartnerVO> selectById(String memberId);
+          public List<PartnerVO> selectByIdOver(String memberId);
           public List<PartnerVO> selectByEventType(String eventType);
           public List<PartnerVO> selectByEventTitleAndEventContent(String eventTitle,String eventContent);
           public List<PartnerVO> getAll();

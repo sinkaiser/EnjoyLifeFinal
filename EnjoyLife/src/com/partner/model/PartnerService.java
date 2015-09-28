@@ -136,6 +136,13 @@ public class PartnerService {
 		return list;
 	}
 	
+	public List<PartnerVO> findByIdOver(String memberId){
+		List<PartnerVO> list = new ArrayList<PartnerVO>();
+		PartnerDAO_interface dao = new PartnerDAOHibernate();
+		list = dao.selectByIdOver(memberId);
+		return list;
+	}
+	
 	public List<PartnerVO> findByNo(Integer eventNo){
 		List<PartnerVO> list = new ArrayList<PartnerVO>();
 		PartnerDAO_interface dao = new PartnerDAOHibernate();

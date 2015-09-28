@@ -84,10 +84,11 @@ public class HiddenEventServlet extends HttpServlet {
  			request.setAttribute("partnerBean", map);
  			// 依照執行的結果挑選適當的view元件，送回相關訊息
  			// 產生 RequestDispatcher 物件 rd
- 			RequestDispatcher rd = request
- 					.getRequestDispatcher("ShowAllPartnerServlet");
- 			// 請容器代為呼叫下一棒程式
- 			rd.forward(request, response);
+// 			RequestDispatcher rd = request
+// 					.getRequestDispatcher("ShowAllPartnerServlet");
+// 			// 請容器代為呼叫下一棒程式
+// 			rd.forward(request, response);
+ 			response.sendRedirect(request.getContextPath()+"/partner/ShowAllPartnerServlet");
  			return;
  		} catch (IOException e) {
  			// 依照執行的結果挑選適當的view元件，送回相關訊息
