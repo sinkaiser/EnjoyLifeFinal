@@ -87,8 +87,7 @@
 	</form>
         </div>
         <div class="modal-footer">
-          <p>加入會員 <a href="#">註冊</a></p>
-          <p>忘記密碼 <a href="#">密碼?</a></p>
+          
         </div>
       </div>
       
@@ -101,4 +100,5 @@ $(document).ready(function(){
         $("#myModal1").modal();
      });
 });
+
 </script>	
