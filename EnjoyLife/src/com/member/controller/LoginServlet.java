@@ -39,10 +39,11 @@ public class LoginServlet extends HttpServlet {
 		if(password==null || password.length()==0) {
 			errors.put("password", "請輸入密碼");
 		}
-		
+		request.getSession().setAttribute("error", errors);
 		if(errors!=null && !errors.isEmpty()) {
-			request.getRequestDispatcher(
-					"/secure/login.jsp").forward(request, response);
+//			request.getRequestDispatcher(
+//					"/secure/login.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/index.jsp");
 			return;
 		}
 		
@@ -52,8 +53,10 @@ public class LoginServlet extends HttpServlet {
 //根據model執行結果，導向view
 		if(bean==null) {
 			errors.put("LoginError", "該帳號不存在或密碼錯誤");
-			request.getRequestDispatcher(
-					"/secure/login.jsp").forward(request, response);
+			request.getSession().setAttribute("error", errors);
+//			request.getRequestDispatcher(
+//					"/secure/login.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/index.jsp");
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", bean);

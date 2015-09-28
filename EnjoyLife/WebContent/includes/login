@@ -5,6 +5,8 @@
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog" style="width:350px">  
       <!-- Modal content-->
+    <% request.getSession().getAttribute("error"); %>
+    <% request.getSession().getAttribute("member"); %>
       <div class="modal-content">
         <div class="modal-header" style="padding:35px 50px;height:30px">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -15,12 +17,12 @@
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> 帳號</label>
               <input type="text" name="memberId" class="form-control" id="usrname" value="${param.memberId}" placeholder="輸入帳號">
-              <p>${error.username}</p>
+              <p style="color:red">${error.username}</p>
             </div>
             <div class="form-group">
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> 密碼</label>
               <input type="password" name="password" value="${param.password}" class="form-control" id="psw" placeholder="輸入密碼">
-              <p>${error.password}</p>
+              <p style="color:red">${error.password}${error.LoginError}</p>
             </div>
             <div class="checkbox">
               <label><input type="checkbox" value="" checked>記住我</label>
@@ -41,6 +43,20 @@
 $(document).ready(function(){
     $("#login").click(function(){
         $("#myModal").modal();
-     });      
+     });
+     
+      var isLogin = "${member.memberId}";
+	    
+	 if(isLogin=='' || isLogin==null){
+		 $("#myModal").modal();
+	 }
+	 
+     var errMsg1 = "${error.username}";
+     var errMsg2 = "${error.password}";
+     var errMsg3 = "${error.LoginError}";
+     if(errMsg1!='' || errMsg2!='' || errMsg3!=''){
+
+   		 $("#myModal").modal();
+     }      
 });
 </script>

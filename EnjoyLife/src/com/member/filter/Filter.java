@@ -62,7 +62,7 @@ public class Filter implements javax.servlet.Filter {
 				session.setAttribute("dest", uri);
 				
 				String path =request.getContextPath();
-				response.sendRedirect(path+"/secure/login.jsp");
+				response.sendRedirect(path+"/index.jsp");
 			}
 	}
 
