@@ -32,9 +32,10 @@
 						</c:if>
 						<c:if test="${!empty member}">							
 							<li><a id="logout">登出</a></li>
-							<li><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="30" width="30" onerror="this.style.display='none'"> 
-								${member.memberName}
+							<li><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'"> 
+							<strong><span style="font-size:25px;font-family:微軟正黑體;color:#4545FF;">${member.memberName}</span></strong>
 							</li>
+							
 						</c:if>	
 					</ul>
 				</nav>
