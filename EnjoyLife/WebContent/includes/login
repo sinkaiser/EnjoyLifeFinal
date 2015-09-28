@@ -22,6 +22,7 @@
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> 密碼</label>
               <input type="password" name="password" value="${param.password}" class="form-control" id="psw" placeholder="輸入密碼">
               <p>${error.password}</p>
+              <p>${error.LoginError}</p>
             </div>
             <div class="checkbox">
               <label><input type="checkbox" value="" checked>記住我</label>
@@ -43,6 +44,8 @@ $(document).ready(function(){
     $("#login").click(function(){
         $("#myModal").modal();
      });
+     
+     
      
 });
 </script>

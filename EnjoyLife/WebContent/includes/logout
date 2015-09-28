@@ -16,10 +16,10 @@
           <h4><span class="glyphicon glyphicon-lock"></span> 登出</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-          	<h3>您已經登出</h3>
+          	<h3>您確定要登出?</h3>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal" id="modalout"><a href="${pageContext.request.contextPath}/index.jsp">確定</a></button>
+          <button type="submit" class="btn btn-info pull-left" data-dismiss="modal" id="modalout"><a href="${pageContext.request.contextPath}/index.jsp">確定</a></button>
         </div>
       </div>
       
