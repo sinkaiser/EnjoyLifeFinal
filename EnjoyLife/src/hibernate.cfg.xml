@@ -38,9 +38,9 @@
 		<mapping resource="com/AttracModel/photos.hbm.xml" />
 		
 		
-		<mapping resource="com/little/model/LittleBean.hbm.xml"/>
-  		<mapping resource="com/little/model/TargetListBean.hbm.xml"/>
-  		<mapping resource="com/little/model/TypeListBean.hbm.xml"/>
+<!-- 		<mapping resource="com/little/model/LittleBean.hbm.xml"/> -->
+<!--   		<mapping resource="com/little/model/TargetListBean.hbm.xml"/> -->
+<!--   		<mapping resource="com/little/model/TypeListBean.hbm.xml"/> -->
   
 	</session-factory>
 </hibernate-configuration>
