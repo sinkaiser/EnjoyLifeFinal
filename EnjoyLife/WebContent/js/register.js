@@ -76,7 +76,7 @@
 							required: "請輸入E-mail",
 						    email: "請輸入正確的E-mail格式"
 						},
-						birthDay:{
+						birthday:{
 							required: "請輸入生日",
 							date:"請輸入合法的日期"
 						},
