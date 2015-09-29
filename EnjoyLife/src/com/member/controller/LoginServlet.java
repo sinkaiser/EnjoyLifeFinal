@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 		if(errors!=null && !errors.isEmpty()) {
 //			request.getRequestDispatcher(
 //					"/secure/login.jsp").forward(request, response);
-			response.sendRedirect(request.getContextPath()+"/index.jsp");
+			response.sendRedirect(request.getContextPath()+"/indexfix.jsp");
 			return;
 		}
 		System.out.println(3);
@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute("error", errors);
 //			request.getRequestDispatcher(
 //					"/secure/login.jsp").forward(request, response);
-			response.sendRedirect(request.getContextPath()+"/index.jsp");
+			response.sendRedirect(request.getContextPath()+"/indexfix.jsp");
 		} else {
 			System.out.println(5);
 			HttpSession session = request.getSession();

@@ -183,12 +183,13 @@
 										<div class="col-xs-3">
 											<input type="file" class="form-control" id="picture" name="picture" title="請輸入圖片">
 										</div>
-									</div>
+									</div>							
 									<div class="form-group">
 										<div class="col-sm-offset-2 col-sm-10"
 											style="padding-left: 170px">
-											<input type="submit" id="submit" class="btn btn-success"
-												value="送出"> <input type="reset" id="reset" class="btn btn-primary" value="清除">
+<!-- 											<input type="button" id="buttonToggle" class="btn btn-primary" value="toggle">								 -->
+											<input type="submit" id="submit" class="btn btn-success" value="送出"> 
+											<input type="reset" id="reset" class="btn btn-primary" value="清除">											
 										</div>
 									</div>
 								</fieldset>
@@ -212,7 +213,14 @@
 				Enjoy Life
 			</div>
 		</div>
-		
+<script>
+    (function($){	  
+	    $('#buttonToggle').click(function(){	
+	    	$('#memberId').val("pppppp");
+	    });
+	   
+    }(jQuery));
+</script>		
 		
 		
 		
