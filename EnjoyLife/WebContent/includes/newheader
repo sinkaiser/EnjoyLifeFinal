@@ -28,7 +28,7 @@
 			<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
 			
 			<c:if test="${!empty member}">							
-				<li><a id="logout" >登出</a></li>
+				<button type="submit" class="btn btn-default" id="logout" >登出</button>
 				<li><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'"> 
 					${member.memberName}
 				</li>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html >
 <html>
 <head>
@@ -62,13 +63,13 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
-					<div class="navbar-form navbar-left" role="search" style="width:1280px;text-align:center;">
-						<div class="form-group" style="margin-right:30px;width:300px;margin-left:250px">
+					<div class="navbar-form navbar-left" role="search" style="width:1150px;text-align:center;">
+						<div class="form-group" style="margin-right:20px;width:300px;margin-left:250px">
 							<input type="text" class="form-control" placeholder="Search"
 								id="inputAdd" value="${inputAdd}" />
 						</div>
 						<button type="button" class="btn btn-default" id="button1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-						<div class="btn-group" id="button-toggle" style="left:150px;">
+						<div class="btn-group" id="button-toggle" style="left:100px;">
 							<a href="#"><button type="button" class="btn btn-default"
 									id="btn-left-map">地圖</button></a> <a
 								href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet"><button
@@ -106,7 +107,6 @@
 		</div>
 		
 </div>
-<%@include file="/includes/logout" %>
 <script>
 	!window.jQuery && document.write("<script src='js/jquery-2.1.4.min.js'><\/script>")
 </script>		
