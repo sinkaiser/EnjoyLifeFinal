@@ -106,6 +106,7 @@
 		</div>
 		
 </div>
+<%@include file="/includes/logout" %>
 <script>
 	!window.jQuery && document.write("<script src='js/jquery-2.1.4.min.js'><\/script>")
 </script>		
