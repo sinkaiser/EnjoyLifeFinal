@@ -64,13 +64,9 @@ int maxno=0;
 			if((cate2no.equalsIgnoreCase("10")||cate2no.equalsIgnoreCase("200"))
 	 				&&countyno.equalsIgnoreCase("10")){
 				System.out.println("00000");
-				query="select  attrac.AttracNo,stitle,addr,photoname,photodata "+
-						"from( select AttracNo ,photodata, photoname ,sort "+
-								"from ( select  AttracNo ,photodata, photoname ,row_number() "+
-										"over (partition by AttracNo order by photoname asc)as sort "+
-										"from photos )APS where sort=1)APS1 "+
-						"full join attrac on APS1.AttracNo=attrac.AttracNo "+"where cate1no=? "+			
-						"order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
+								"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort from photos )APS where sort=1)APS1 "+
+						"full join attrac on APS1.AttracNo=attrac.AttracNo "+"where cate1no=? order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setInt(2, firstno);			
