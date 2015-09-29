@@ -40,7 +40,7 @@ public class CloseEventServlet extends HttpServlet {
 		// 設定輸入資料的編碼
 		request.setCharacterEncoding("UTF-8");
 		
-		String eventNo = request.getParameter("eno");
+		String eventNo = request.getParameter("eno3");
 		if (eventNo == null || eventNo.trim().length() == 0) {
 			errorMessage.add("必須輸入編號");
 		}
@@ -88,7 +88,7 @@ public class CloseEventServlet extends HttpServlet {
 // 					.getRequestDispatcher("ShowAllPartnerServlet");
 // 			// 請容器代為呼叫下一棒程式
 // 			rd.forward(request, response);
- 			response.sendRedirect(request.getContextPath()+"/partner/ShowAllPartnerServlet");
+ 			response.sendRedirect(request.getContextPath()+"/message/selectMessageAll.do");
  			return;
  		} catch (IOException e) {
  			// 依照執行的結果挑選適當的view元件，送回相關訊息
