@@ -8,21 +8,21 @@
 <title>ENJOY LIFE</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@include file="/includes/link" %>
-	<link rel='stylesheet' href='css/activityPage/skel-noscript.css' type="text/css" />
-	<link rel='stylesheet' href='css/activityPage/style.css' type="text/css" />
-	<link rel='stylesheet' href='css/activityPage/style-desktop.css' type="text/css" />
+	<link rel='stylesheet' href='${pageContext.request.contextPath}/activityPage/css/skel-noscript.css' type="text/css" />
+	<link rel='stylesheet' href='${pageContext.request.contextPath}/activityPage/css/style.css' type="text/css" />
+	<link rel='stylesheet' href='${pageContext.request.contextPath}/activityPage/css/style-desktop.css' type="text/css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 </head>
 <body class="homepage">
-<sql:setDataSource dataSource="jdbc/activity" var="activity" scope="application"/>
+<sql:setDataSource dataSource="jdbc/ELDB" var="activity" scope="application"/>
   <sql:query var="rs" dataSource="${activity}">
   			Select * from (select ROW_NUMBER() OVER(ORDER BY activityNo) 
   			AS 'RowNo', * from [activity]) as t where t.RowNo between 6 and 10
   </sql:query>
 
 		<!-- Header -->
-<%@include file="/includes/header" %>
+<%@include file="/includes/newheader" %>
 		<!-- Main -->
 		<div id="main">
 			<div class="container">
@@ -149,9 +149,8 @@
 		<!-- Copyright -->
 		<div id="copyright">
 			<div class="container">
-				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+				Enjoy Life
 			</div>
 		</div>
-		<%@include file="/includes/login" %>
 	</body>
 </html>

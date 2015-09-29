@@ -21,22 +21,17 @@
 			<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/indexMember.jsp">會員</a></li>
-						<li><a href="${pageContext.request.contextPath}/attrac/Attracdesign.jsp">規劃</a></li>
-						<li><a href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
-						<li><a href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li>
-						<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
 						<c:if test="${empty member}">							
-							<li><a id="register">註冊</a></li>
-							<li><a id="login" >登入</a></li>
-						</c:if>
-						<c:if test="${!empty member}">							
-							<li><a id="logout">登出</a></li>
-							<li><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'"> 
-							<strong><span style="font-size:25px;font-family:微軟正黑體;color:#4545FF;">${member.memberName}</span></strong>
+							<li style="float:right">
+							<form role="form" action="<c:url value="/secure/login.do" />" method="post" id="loginform">
+							<label for="usrname"><span class="glyphicon glyphicon-user"></span> 帳號</label>
+							<input type="text" name="memberId" class="form-control" id="usrname" value="${param.memberId}" placeholder="輸入帳號">
+							<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> 密碼</label>
+              				<input type="password" name="password" value="${param.password}" class="form-control" id="psw" placeholder="輸入密碼">
+              				<button type="submit" class="btn btn-default" id="login" >登入</button>
+							</form>
 							</li>
-							
-						</c:if>	
+						</c:if>
 					</ul>
 				</nav>
 		</div>

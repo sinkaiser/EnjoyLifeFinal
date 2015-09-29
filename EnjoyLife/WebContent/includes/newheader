@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+			<!-- Header -->
+
+	<nav class="navbar-fixed-top">	
+	<div class="header1">	
+		<div id="header" >
+			<div class="container"> 
+				
+				<!-- Logo -->
+				<div id="logo">
+					<h1><a href="index.jsp">Enjoy Life</a></h1>
+				</div>
+				
+				
+				
+			</div>
+		</div>
+		<div>
+			<!-- Nav -->
+				<nav id="nav">
+					<ul>
+			<li><a href="${pageContext.request.contextPath}/indexMember.jsp">會員</a></li>
+			<li><a href="${pageContext.request.contextPath}/attrac/Attracdesign.jsp">規劃</a></li>
+			<li><a href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
+			<li><a href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li>
+			<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
+			
+			<c:if test="${!empty member}">							
+				<li><a href="${pageContext.request.contextPath}/secure/logout.jsp">登出</a></li>
+				<li><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="30" width="30" onerror="this.style.display='none'"> 
+					${member.memberName}
+				</li>
+			</c:if>	
+		</ul>
+				</nav>
+		</div>
+	</div>
+	</nav>

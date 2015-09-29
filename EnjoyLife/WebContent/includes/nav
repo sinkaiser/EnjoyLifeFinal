@@ -11,8 +11,12 @@
 						<li><a href="right-sidebar.html">日誌</a></li>
 						<li><a href="no-sidebar.html">找伴</a></li>
 						<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
-						<li><a href="index.jsp">註冊</a></li>
-						<li><a id="login">登入</a></li>
+						<c:if test="${!empty member}">							
+						<li><a href="${pageContext.request.contextPath}/secure/logout.jsp">登出</a></li>
+						<li><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="30" width="30" onerror="this.style.display='none'"> 
+						${member.memberName}
+						</li>
+						</c:if>
 					</ul>
 				</nav>
 	

@@ -27,7 +27,7 @@
 </head>
 <body class="homepage">
 		<!-- Header -->
-<%@include file="/includes/header" %>	
+<%@include file="/includes/newheader" %>	
 		<!-- Main -->
 		<div id="main">
 			<div class="container">
@@ -82,12 +82,9 @@
 		<!-- Copyright -->
 		<div id="copyright">
 			<div class="container">
-				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+				Enjoy Life
 			</div>
 		</div>
-		<%@include file="/includes/login" %>
 		<%@include file="/includes/logout" %>
-		<%@include file="/includes/register" %>
-		
 	</body>
 </html>
