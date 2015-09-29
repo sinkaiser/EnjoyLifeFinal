@@ -93,6 +93,12 @@ public class PartnerService {
 		return result;
 	}
 	
+	public PartnerVO closeEvent(PartnerVO partnerVO){
+		PartnerDAO_interface dao = new PartnerDAOHibernate();
+		PartnerVO result = dao.close(partnerVO);
+		return result;
+	}
+	
 	public boolean deleteEvent(Integer eventNo){
 		PartnerDAO_interface dao = new PartnerDAOHibernate();
 		boolean result = dao.delete(eventNo);

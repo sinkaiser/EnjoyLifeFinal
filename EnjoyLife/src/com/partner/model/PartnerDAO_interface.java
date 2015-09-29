@@ -7,6 +7,7 @@ public interface PartnerDAO_interface {
           public PartnerVO update(PartnerVO partnerVO);
           public boolean delete(Integer eventNo);
           public PartnerVO hidden(PartnerVO partnerVO);
+          public PartnerVO close(PartnerVO partnerVO);
           public List<PartnerVO> selectByEventNo(Integer eventNo);
           public List<PartnerVO> selectById(String memberId);
           public List<PartnerVO> selectByIdOver(String memberId);

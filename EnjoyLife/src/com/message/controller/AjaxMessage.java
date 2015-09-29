@@ -37,7 +37,7 @@ public class AjaxMessage extends HttpServlet {
 		System.out.println(message);
 		//MessageService service=new MessageService();
 		MessageVO vo=new MessageVO();
-		vo.setMessage(messageFrom+"想參加你的活動。他留給你的訊息："+message+"<br>是否同意一起呢？  <a href='http://localhost:8080/EnjoyLife/partner/HiddenEventServlet?eno="+eno+"'><button>同意</button></a><button>拒絕</button>");
+		vo.setMessage(messageFrom+"想參加你的活動。他留給你的訊息："+message+"<br>是否同意一起呢？  <a href='http://localhost:8080/EnjoyLife/partner/CloseEventServlet?eno3="+eno+"'><button>同意</button></a><button>拒絕</button>");
 		vo.setMessageFrom(messageFrom);
 		vo.setMessageTitle(messageTitle);
 		vo.setMessageTo(messageTo);

@@ -95,6 +95,24 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 	}
 
 	@Override
+	public PartnerVO close(PartnerVO partnerVO) {
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		PartnerVO result =null;
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("UPDATE PartnerVO set closed = 1 where eventNo = ?");
+			query.setParameter(0, partnerVO.getEventNo());
+			query.executeUpdate();
+			
+			session.beginTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	@Override
 	public List<PartnerVO> selectByEventNo(Integer eventNo) {
 		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
 		List<PartnerVO> result = new ArrayList<PartnerVO>();
