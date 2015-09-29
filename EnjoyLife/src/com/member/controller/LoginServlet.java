@@ -46,10 +46,10 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/index.jsp");
 			return;
 		}
-		
+		System.out.println(3);
 //呼叫model
 		MemberVO bean = service.login(username, password);
-		
+		System.out.println(4);
 //根據model執行結果，導向view
 		if(bean==null) {
 			errors.put("LoginError", "該帳號不存在或密碼錯誤");
@@ -58,15 +58,18 @@ public class LoginServlet extends HttpServlet {
 //					"/secure/login.jsp").forward(request, response);
 			response.sendRedirect(request.getContextPath()+"/index.jsp");
 		} else {
+			System.out.println(5);
 			HttpSession session = request.getSession();
 			session.setAttribute("member", bean);
 			
 			String dest = (String) session.getAttribute("dest");
 			if(dest!=null && dest.length()!=0){
+				System.out.println(6);
 				session.removeAttribute("dest");
 				response.sendRedirect(dest);
 			}else{
 			String path = request.getContextPath();
+			System.out.println(60);
 			response.sendRedirect(path+"/index.jsp");}
 		}
 	}

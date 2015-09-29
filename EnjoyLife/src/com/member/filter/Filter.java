@@ -55,9 +55,13 @@ public class Filter implements javax.servlet.Filter {
 //					    } 
 //					}			  			    
 			MemberVO bean = (MemberVO) session.getAttribute("member");
+			System.out.println(1);
+			
 			if(bean!=null){
+				System.out.println(7);
 				chain.doFilter(request, response);
 			}else{
+				System.out.println(2);
 				String uri = request.getRequestURI();
 				session.setAttribute("dest", uri);
 				
