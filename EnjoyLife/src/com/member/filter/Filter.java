@@ -17,7 +17,7 @@ import com.member.model.MemberService;
 import com.member.model.MemberVO;
 
 @WebFilter(
-	urlPatterns={"/indexMember.jsp","/blog/*","/partner/*"}
+	urlPatterns={"/indexMember.jsp","/blog/*","/partner/*","/comment/*","/view/*","/attrac/*","/activityPage/*"}
 //	"/display/*"
 )	
 public class Filter implements javax.servlet.Filter {
