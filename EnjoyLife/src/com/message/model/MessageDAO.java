@@ -23,7 +23,7 @@ public class MessageDAO {
 		}
 	}
 	
-	private static final String SELECT_BY_MESSAGEFROM = "Select * from Message where messageFrom = ?";
+	private static final String SELECT_BY_MESSAGEFROM = "Select * from Message where messageFrom = ? order by talkDate desc";
 	public List<MessageVO> select_by_messageFrom(String messageFrom) {
 		List<MessageVO> list = new ArrayList<MessageVO>();		
 		Connection conn = null;
@@ -74,7 +74,7 @@ public class MessageDAO {
 		return list;
 	}
 	
-	private static final String SELECT_BY_MESSAGENO = "Select * from Message where messageNo = ?";
+	private static final String SELECT_BY_MESSAGENO = "Select * from Message where messageNo = ? order by talkDate desc";
 	public List<MessageVO> select_by_messageNO(int messageNo) {
 		List<MessageVO> list = new ArrayList<MessageVO>();		
 		Connection conn = null;
@@ -125,7 +125,7 @@ public class MessageDAO {
 		return list;
 	}
 	
-	private static final String SELECT_BY_MESSAGETO = "Select * from Message where messageTo = ?";
+	private static final String SELECT_BY_MESSAGETO = "Select * from Message where messageTo = ? order by talkDate desc";
 	public List<MessageVO> select_by_messageTo(String messageTo) {
 		List<MessageVO> list = new ArrayList<MessageVO>();		
 		Connection conn = null;
