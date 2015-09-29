@@ -137,7 +137,7 @@ try {
 //		String friend = request.getParameter("friend");		
 		if (!errorMessage.isEmpty()) {
 			RequestDispatcher rd = request
-					.getRequestDispatcher("/display/register.jsp");
+					.getRequestDispatcher("/indexfix.jsp");
 			rd.forward(request, response);
 			return;
 		}
@@ -155,16 +155,17 @@ try {
 			if(memberDAO.SelectById(memberId)!=null){
 				errorMessage.put("memberId","帳號ID重複");
 				RequestDispatcher rd = request
-						.getRequestDispatcher("/display/register.jsp");
+						.getRequestDispatcher("/indexfix.jsp");
 				rd.forward(request, response);
 				return;
 			}else{				
 							
 				bean.setPicture(picture);				
 				memberDAO.insert(bean);
+				session.setAttribute("regisOK", "註冊成功");
 				session.setAttribute("member", bean);
 				response.sendRedirect(
-				response.encodeRedirectURL(request.getContextPath()+"/display/registerSuccess.jsp"));
+				response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
 				return;	
 			}			
 		}
