@@ -17,6 +17,9 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>	
 	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/rater.css' type="text/css" />
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.rater.js"></script>	
+	
 
 <style>
 	*{
@@ -85,6 +88,11 @@
 /* 	.modal-headerX{ */
 /* 		min-height:16.43px;padding:15px;border-bottom:1px solid #DDDDDD; */
 /* 		} */
+	.lab_reply{
+		font-family:微軟正黑體;
+		font-weight: bold;
+		color:#007799;
+	}
 </style>
 <script type="text/javascript">
 	function getAllReply(ArticleNo){
@@ -154,15 +162,17 @@
 			data:{"PostNo":ArticleNo},
 			success:function(data){
 				var obj = data;
+				var rDate = data.postDate.substring(1,16);
 				$('#postModalLabel').text(data.postTitle);				 
 				$('#fullImg').attr("src","${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=F&&pathImg="+data.pathPhoto);			 	
 				$('#artiNo').text(' '+data.postNo);
 				$('#artiMem').text(' '+data.memberId);
-				$('#artiPlace').text(' --'+data.AttractionsNo);
-				$('#artiDate').text(' '+data.postDate);
+				$('#artiPlace').text(' '+data.AttractionsNo);
+				$('#artiDate').text(' '+rDate);
 				$('#artiContext').text(' '+data.postContent);
 				$('#artiScore').text(' '+data.avgScore+'顆星');
-				$('#artiView').text(' '+data.viewTotal+' views');				
+				$('#artiView').text(' '+data.viewTotal+' views');		
+				
 // 				var childWindow = document.getElementById("myFrame").contentWindow;//mainFrame這個id是父頁面iframe的id 
 //  			childWindow.document;//獲取子頁面中的document對象； txtBlogNo
 // 				var childBlogNo = childWindow.document.getElementById("txtBlogNo");
@@ -196,6 +206,7 @@
 								<input type="radio" name="pType" id="type5" value="FT" > 搞笑
 								<input type="radio" name="pType" id="type6" value="OT" > 其他
 							</div>
+						
 							<% request.getSession().getAttribute("blogList"); %> 
 							<% request.getSession().getAttribute("listIndex");%>
 							<% request.getSession().getAttribute("selType");%>
@@ -209,11 +220,11 @@
 									<span class="label label-primary lab-size">日誌編號 </span><span class="dataFont">&nbsp;${lists.postNo}</span>
 									<span class="label label-primary lab-size">會員ID</span><span class="dataFont">&nbsp;${lists.memberId}</span>
 									<c:choose>
-										<c:when test="${lists.postType=='TL'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;旅遊</span></c:when>
-										<c:when test="${lists.postType=='DF'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;美食</span></c:when>
-										<c:when test="${lists.postType=='ML'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;心情</span></c:when>
-										<c:when test="${lists.postType=='FT'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;搞笑</span></c:when>
-										<c:when test="${lists.postType=='OT'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;其他</span></c:when>
+										<c:when test="${lists.postType=='TL'}"><span class="label label-primary lab-size">類型</span><span class="dataFont">&nbsp;旅遊</span></c:when>
+										<c:when test="${lists.postType=='DF'}"><span class="label label-primary lab-size">類型</span><span class="dataFont">&nbsp;美食</span></c:when>
+										<c:when test="${lists.postType=='ML'}"><span class="label label-primary lab-size">類型</span><span class="dataFont">&nbsp;心情</span></c:when>
+										<c:when test="${lists.postType=='FT'}"><span class="label label-primary lab-size">類型</span><span class="dataFont">&nbsp;搞笑</span></c:when>
+										<c:when test="${lists.postType=='OT'}"><span class="label label-primary lab-size">類型</span><span class="dataFont">&nbsp;其他</span></c:when>
 									</c:choose>
 									<fmt:formatDate value="${lists.postDate}" 
 													var="formattedDate" type="date" pattern="yyyy年M月d日 HH:mm" />
@@ -256,15 +267,15 @@
 							        	</div>
 			
 							        	<div class="col-md-5" style="padding-left:0px;margin-left:15px"">
-							        		日誌編號 <span id="artiNo" class="arti"></span><br><br>
+							        		<label class="lab_reply">日誌編號</label> <span id="artiNo" class="arti"></span><br><br>
 							        		<span id="artiMem" class="arti"></span>
-							        		在<span id="artiPlace" class="arti"></span><br><br>
-							        		於<span id="artiDate" class="arti"></span>
-							        		說<br><br>
+							        		<label class="lab_reply">在--</label><span id="artiPlace" class="arti"></span><br><br>
+							        		<label class="lab_reply">於</label><span id="artiDate" class="arti"></span>
+							        		<label class="lab_reply">說</label><br>
 							        		<span id="artiContext" class="arti"></span><br><br>
-							        		星級 <span id="artiScore" class="arti"></span>
-							        		瀏覽次數<span id="artiView" class="arti"></span><br><br>
-							        		
+							        		<label class="lab_reply">星級</label> <span id="artiScore" class="arti"></span>
+							        		<label class="lab_reply">瀏覽次數</label><span id="artiView" class="arti"></span><br>
+							        		<div id="starScore"></div><br>
 			<%-- 				        		<iframe src="${pageContext.request.contextPath}/blog/blogReply.jsp"  --%>
 			<!-- 				        			id="myFrame" width="100%" height="500px" frameborder="1" scrolling="auto"></iframe> -->
 											<div id="replyDiv" class="replyfomat"></div>			
@@ -316,6 +327,7 @@
 // 	 }
 	 
 	 $("#selectGroup").change(function(){
+		 $("[name='Index']").val('0');
 		 $('#btnSend').click();
 	 })
 	 
@@ -358,7 +370,7 @@
 			})
 		}
 	})
-	
+	$("#starScore").rater("/BlogScoreServlet");
 	
  }(jQuery));
  </script>
