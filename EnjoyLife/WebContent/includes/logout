@@ -2,10 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Modal -->
-<c:remove var="member"/>
-<%
-  session.invalidate();
-%>
   <div class="modal fade" id="myModalout" role="dialog">
     <div class="modal-dialog" style="width:350px">
     
@@ -16,11 +12,12 @@
           <h4><span class="glyphicon glyphicon-lock"></span> 登出</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
+        	<form role="form" action="logout.do"" method="post">
           	<h3>您確定要登出?</h3>
+          	<button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> 登出</button>   
+          	</form>     
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-info pull-left" data-dismiss="modal" id="modalout"><a href="${pageContext.request.contextPath}/index.jsp">確定</a></button>
-        </div>
+        
       </div>
       
     </div>

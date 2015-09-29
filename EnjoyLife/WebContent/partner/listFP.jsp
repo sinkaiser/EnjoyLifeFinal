@@ -64,6 +64,9 @@ body{
 	width:500px;
 	height:150px;
 }
+#inputAdd{
+	width:300px;
+}
 </style>
 
 </head>
@@ -79,10 +82,7 @@ body{
 			<li><a href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
 			<li><a href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li>
 			<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
-			<c:if test="${empty member}">							
-				<li><a id="register">註冊</a></li>
-				<li><a id="login">登入</a></li>
-			</c:if>
+			
 			<c:if test="${!empty member}">							
 				<li><a href="${pageContext.request.contextPath}/secure/logout.jsp">登出</a></li>
 				<li><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="30" width="30" onerror="this.style.display='none'"> 
@@ -97,21 +97,21 @@ body{
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					
-					<div class="navbar-form navbar-left" role="search" style="width:900px">
-						<div class="form-group">
+					<div class="navbar-form navbar-left" role="search" style="width:1280px;text-align:center;">
+						<div class="form-group" style="margin-right:30px;width:300px;margin-left:250px">
 						<form action="SearchServlet" id="jsearch" method="post">
 							<input type="text" class="form-control" placeholder="Search"
 								id="inputAdd" name="eventTitleContent" value="${inputAdd}" />
 						</form>
 						</div>
 						<button type="button" id="btnsearch" onclick="searchsubmit()" class="btn btn-default" id="button1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-						<div class="btn-group" id="button-toggle">
+						<div class="btn-group" id="button-toggle" style="left:150px;">
 							<a href="${pageContext.request.contextPath}/partner/mapFP.jsp"><button type="button" class="btn btn-default"
 									id="btn-left">地圖</button></a> <a
 								href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet"><button
 									type="button" class="btn btn-default" id="btn-right-list">列表</button></a>
 						</div >
-						<div class="btn-group" style="margin-left:170px">
+						<div class="btn-group" style="margin-left:80px;float:right;">
 						<button type="button" class="btn btn-primary" data-toggle="modal"
 						data-target="#newPartner" onclick="createEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventTitle}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}')">
 	  					我要新增找伴活動

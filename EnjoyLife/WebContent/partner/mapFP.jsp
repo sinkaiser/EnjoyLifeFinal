@@ -21,6 +21,17 @@
 		height: 560px;
 		width: 1349px;
 	}
+	.navbar-inverse{
+	height:50px;
+}
+.form-textarea {
+	width: 500px;
+	height: 150px;
+}
+
+#inputAdd {
+	width: 300px;
+}
 </style>	
 <title>Insert title here</title>
 </head>
@@ -31,98 +42,43 @@
 <nav class="navbar-fixed-top">
 	<nav id="nav">
 		<ul>
-			<li><a href="#">會員</a></li>
-			<li><a href="#">規劃</a></li>
-			<li><a href="#">日誌</a></li>
-			<li><a href="#">找伴</a></li>
-			<li><a href="#">活動資訊</a></li>
-			<li><a href="#">註冊</a></li>
-			<li><a id="#">登入</a></li>
+			<li><a href="../indexMember.jsp">會員</a></li>
+			<li><a href="${pageContext.request.contextPath}/attrac/Attracdesign.jsp">規劃</a></li>
+			<li><a href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
+			<li><a href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li>
+			<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
+			
+			<c:if test="${!empty member}">							
+				<li><a href="${pageContext.request.contextPath}/secure/logout.jsp">登出</a></li>
+				<li><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="30" width="30" onerror="this.style.display='none'"> 
+					${member.memberName}
+				</li>
+			</c:if>
 		</ul>
 	</nav>
 		<nav class="navbar navbar-inverse" role="navigation">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">Brand</a>
-				</div>
+			<div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
-								<span class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-								<li class="divider"></li>
-								<li><a href="#">One more separated link</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
-								<span class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-								<li class="divider"></li>
-								<li><a href="#">One more separated link</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
-								<span class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-								<li class="divider"></li>
-								<li><a href="#">One more separated link</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
-								<span class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Action</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Another action</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-								<li class="divider"></li>
-								<li><a href="#">One more separated link</a></li>
-							</ul></li>
-					</ul>
-					<div class="navbar-form navbar-left" role="search">
-						<div class="form-group">
+					<div class="navbar-form navbar-left" role="search" style="width:1280px;text-align:center;">
+						<div class="form-group" style="margin-right:30px;width:300px;margin-left:250px">
 							<input type="text" class="form-control" placeholder="Search"
 								id="inputAdd" value="${inputAdd}" />
 						</div>
-						<button type="button" class="btn btn-default" id="button1">查詢</button>
-						<div class="btn-group" id="button-toggle">
+						<button type="button" class="btn btn-default" id="button1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+						<div class="btn-group" id="button-toggle" style="left:150px;">
 							<a href="#"><button type="button" class="btn btn-default"
 									id="btn-left-map">地圖</button></a> <a
 								href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet"><button
 									type="button" class="btn btn-default" id="btn-right">列表</button></a>
+						</div>
+						<div class="btn-group" style="margin-left:80px;float:right;">
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+						data-target="#newPartner" onclick="createEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventTitle}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}')">
+	  					我要新增找伴活動
+						</button>
 						</div>
 					</div>
 
