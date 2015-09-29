@@ -30,7 +30,7 @@
 			<c:if test="${!empty member}">							
 				<button type="submit" class="btn btn-default" id="logout" >登出</button>
 				<li><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'"> 
-					${member.memberName}
+					<strong><span style="font-size:25px;font-family:微軟正黑體;color:#FF9900;">${member.memberName}</span></strong>
 				</li>
 			</c:if>	
 		</ul>
