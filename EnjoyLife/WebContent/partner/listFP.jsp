@@ -26,6 +26,9 @@
 <link rel='stylesheet' href='css/style-desktop.css' type="text/css" />
 <link rel='stylesheet' href='css/bootstrap-theme.css' type="text/css" />
 <link rel='stylesheet' href='css/bootstrap.css' type="text/css" />
+<script src="../js/skel.min.js"></script>
+<script src="../js/skel-panels.min.js"></script>
+<script src="../js/init.js"></script>
 
 <style type="text/css">
 #contentp {

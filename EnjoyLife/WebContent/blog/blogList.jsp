@@ -171,8 +171,7 @@
 </head>
 <body class="homepage">
 		<!-- Header -->
-<%@include file="/includes/header" %>	
-<%@include file="/includes/login" %>
+<%@include file="/includes/newheader" %>	
 		<!-- Main -->
 		<div id="main">
 			<div class="row mainBody">
@@ -287,7 +286,7 @@
 				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
 			</div>
 		</div>
-		
+		<%@include file="/includes/logout" %>
 </body>
 <script type="text/javascript">
  (function($){ 	

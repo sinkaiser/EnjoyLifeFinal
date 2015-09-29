@@ -5,14 +5,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>規劃頁</title>
+<%@include file="/includes/link" %>
 <script src="scripts/jquery-2.1.4.min.js"></script>
 <script src="scripts/jquery.tinyMap-3.2.18.min.js"></script>
 <script src="scripts/jquery-ui.js"></script>
 <script src="scripts/bootstrap.min.js"></script>
 <link rel="stylesheet" href="scripts/bootstrap.min.css">
 <link rel="stylesheet" href="css/attracdesign.css">
+<link rel='stylesheet' href='../css/skel-noscript.css' type="text/css" />
+<link rel='stylesheet' href='../css/style.css' type="text/css" />
+<link rel='stylesheet' href='../css/style-desktop.css' type="text/css" />
+<style>
+.homepage{
+	padding-top:110px;
+}
+</style>
 </head>
-<body>
+<body class="homepage">
+<%@include file="/includes/newheader" %>
 <div class="container">
 	<div class="row">
 		<div class="col-md-8" >
@@ -65,6 +75,13 @@
 		</div>
     </div>
 </div>
+<div id="copyright">
+			<div class="container">
+				Enjoy Life
+			</div>
+		</div>
+		<%@include file="/includes/logout" %>
+</body>
 <script src="scripts/attraclistJQ.js"></script>
 <script src="scripts/attractravel.js"></script>
 <script src="scripts/html2canvas.js"></script>

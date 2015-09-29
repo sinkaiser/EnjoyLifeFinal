@@ -28,7 +28,7 @@
 
 <body class="homepage">
 		<!-- Header -->
-<%@include file="/includes/header" %>	
+<%@include file="/includes/newheader" %>	
 		<!-- Main -->
 		<div id="main">
 			<div class="container">
