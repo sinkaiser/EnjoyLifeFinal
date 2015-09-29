@@ -86,7 +86,8 @@
 		});
 		
 		function addr(){
-			
+			var img=$("<img></img>").attr("src","Data/ajax-loader2.gif").attr("height","15").attr("width","350").attr("id","listloader");
+			$("#listdiv").prepend(img);
 			$.ajax({
 				url:"GetAttrac.jsp",
 				type:"get",
@@ -96,6 +97,7 @@
 					"countyno":$("#select3").val(),
 					"distno":$("#select4").val()},
 				success:function(data){
+					$("#listloader").remove();
 					$("#attracinfo").empty();
 					$("#menu li").remove();
 					$(".col-md-4 label").remove();

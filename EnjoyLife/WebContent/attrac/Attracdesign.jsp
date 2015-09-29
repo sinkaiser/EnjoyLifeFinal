@@ -44,8 +44,10 @@
        </div>
        <div class="col-md-4" style="position:relative;height:880px;">
        			<h1 id="alllist">清單列表</h1>
+       			<div id="listdiv">
 		       <ul id="menu" class="attraclist">	       			
 			   </ul>      
+       			</div>
 		       <div id="attracinfo">
 		       </div>
 		       <input id="canvans" type="button" value="輸出行程圖檔"  >
