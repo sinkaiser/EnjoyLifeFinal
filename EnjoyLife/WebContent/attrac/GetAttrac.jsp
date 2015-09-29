@@ -23,7 +23,7 @@ int crossdistno=Integer.parseInt(countyno)/10;
 String cross=crossdistno+"";
 	try {
 		DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-		Connection conn = DriverManager.getConnection(url2, "sa", "sa123456");
+		Connection conn = DriverManager.getConnection(url2, "enjoylife", "P@ssw0rd");
 		//選擇全類型 全台灣
 		if((cate2no.equalsIgnoreCase("10")||cate2no.equalsIgnoreCase("200"))
 				&&countyno.equalsIgnoreCase("10")){

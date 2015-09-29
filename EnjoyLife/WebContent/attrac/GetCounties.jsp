@@ -18,7 +18,7 @@ String url2 = "jdbc:sqlserver://i7zjbwchx7.database.windows.net:1433;database=En
 String query2 = "select countyno,countyname from counties ";
 try{
 	DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-	conn = DriverManager.getConnection(url2, "sa", "sa123456");
+	conn = DriverManager.getConnection(url2, "enjoylife", "P@ssw0rd");
 
 	stmt = conn.prepareStatement(query2);
 	 rs = stmt.executeQuery();

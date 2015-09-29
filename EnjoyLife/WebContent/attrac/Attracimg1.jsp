@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE html >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,13 +10,22 @@
 <script src="scripts/bootstrap.min.js"></script>
 <style type="text/css">
 #listselects{width:170px;position:fixed;left:140px;border:5px ridge gray;padding:10px}
+#butt1{margin:10px auto}
 #ul1{width:1300px;margin:20px auto;height:auto}
 li{list-style:none;width:300px;float:left;margin-left:5px;}
 li div {border:5px ridge gray;padding: 5px;margin-bottom:5px;word-break:break-all }
 li div img {width:280px;margin:5px auto;display:block;}
 li div p{text-align: center;font-size: 20px;font-family:標楷體;}
 .select{width:140px;font-size: 18px;height:4ex;border-radius:15px;margin:5px auto}
-
+#creattable {border:2px double black;
+		font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+		font-size: 20px;
+	 	margin: 0px auto; 
+		width: 600px;
+		text-align: left;
+		border-collapse: collapse;
+		position: relative;
+	 	table-layout:fixed;}
 table {	border:2px double black;font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;font-size: 20px;
 	 	margin: 0px auto; width: 850px;text-align: left;border-collapse: collapse;position: relative;table-layout:fixed;}
 td {	font-size: 22px;padding: 8px;background: #e8edff;color: #669;border-top:2px double black;border-bottom: 2px double black;}
@@ -23,6 +33,8 @@ tr:hover td {background: #d0dafd;color: #339;}
 .input{	width: 450px;}
 .xbody{height:100px;width:450px;resize:none;overflow:auto;}
 #title{text-align:center; border:2px double black;font-size: 22px;width:130px;}
+#cate1no {font-size: 18px;height:4ex}
+#cate2no {font-size: 18px;height:4ex}
 </style>
 </head>
 <body>
@@ -35,7 +47,11 @@ tr:hover td {background: #d0dafd;color: #339;}
 	       </select><br>
 	       <select id="select4" class="select" >            
 	       </select>
+			<button id="butt1" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" value="creat" style="width:135px">
+			新增景點
+			</button>
 </div>
+
 
 	<ul id="ul1">
 		<li></li>
@@ -59,11 +75,11 @@ tr:hover td {background: #d0dafd;color: #339;}
 		</tr>	
 		<tr>
 		<td id="title">分類一
-			<td id="cate1" colspan="3"></select></td>
+			<td id="cate1" colspan="3"></td>
 		</tr>		
 		<tr>
 		<td id="title">分類二
-			<td id="cate2" colspan="3"></select></td>
+			<td id="cate2" colspan="3"></td>
 		</tr>
 		<tr>
 		<td id="title">開放時間
@@ -103,6 +119,67 @@ tr:hover td {background: #d0dafd;color: #339;}
     </div>
   </div>
 </div>
+
+ <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+  <div class="modal-dialog" role="document" id="doc">
+    <div class="modal-content" style="width:700px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div  class="modal-body" style="width:700px;">
+        <s:form action="myAction3" namespace="/myNamespace" method="post">
+		<table id="creattable">	
+		<tr>
+		<td id="title">標題
+			<input  type="hidden" name="picmode" />			
+			<td colspan="3"><input type="text" class="input" name="bean.stitle"></td>
+		</tr>	
+		<tr>
+		<td id="title">分類一
+			<td colspan="3"><select id="cate1no" class="form-control"  name="bean.cat1no"></select></td>
+		</tr>		
+		<tr>
+		<td id="title">分類二
+			<td colspan="3"><select id="cate2no" class="form-control"  name="bean.cat2no"></select></td>
+		</tr>
+		<tr>
+		<td id="title">開放時間
+			<td colspan="3"><input type="text" class="input" name="bean.time"></td>
+		</tr>
+		<tr>
+		<td id="title">地址
+		<td colspan="3"><input type="text" class="input" name="bean.address"></td>
+		</tr>		
+		<tr>
+		<td id="title">捷運
+		<td colspan="3"><input type="text" class="input" name="bean.mrt"></td>
+		</tr>
+		<tr>
+		<td id="title">簡介
+		<td colspan="3"><input type="text" class="input" name="bean.info"></td>
+		</tr>	
+		<tr>
+		<td id="title">內容
+		<td colspan="3"><textarea class="xbody" name="bean.xbody"></textarea></td>
+		</tr>	 	
+		<tr>
+		<td id="title">照片
+		<td colspan="3" >
+			<input type="file" id="file_input" accept="image/jpeg, image/png, image/gif, image/jpg"  multiple style="width:80px;height:30px;font-size:15px"/>  
+			<div  id="selectpic" style="height:200px;overflow:auto;"></div>
+		</td>
+		</tr>
+		</table>
+		<div class="modal-footer">
+	        <input type="button" id="cancelbut" class="btn btn-default" value="取消" data-dismiss="modal" style="width:80px;height:30px;font-size:15px">
+			<input type="submit" class="btn btn-primary" value="確定" style="width:80px;height:30px;font-size:15px;" >
+		</div>
+		</s:form> 		
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>		
 (function($){
 	var oul=document.getElementById("ul1");
@@ -120,7 +197,9 @@ tr:hover td {background: #d0dafd;color: #339;}
 					var cate1no=this.cate1no;
 					var cate1name=this.cate1name;
 					var opt=$("<option></option>").val(cate1no).text(cate1name);
+					var opt2=$("<option></option>").val(cate1no).text(cate1name);
 					$("#select1").append(opt);
+					$("#cate1no").append(opt2);
 				}else if(this.countyno!=null){
 					var countyno=this.countyno;
 					var countyname=this.countyname;
@@ -140,7 +219,9 @@ tr:hover td {background: #d0dafd;color: #339;}
 							var cate2no=this.cate2no;
 							var cate2name=this.cate2name;
 							var opt=$("<option></option>").val(cate2no).text(cate2name);
+							var opt2=$("<option></option>").val(cate2no).text(cate2name);
 							$("#select2").append(opt);
+							$("#cate2no").append(opt2);
 						}else if(this.distno!=null){
 							var distno=this.distno;
 							var distname=this.distname;
@@ -154,6 +235,35 @@ tr:hover td {background: #d0dafd;color: #339;}
 			})
 		}
 	})
+	
+	$('#file_input').change(function(){
+			var selectpic = document.getElementById("selectpic"); 
+			var input = document.getElementById("file_input"); 
+			var files = this.files 
+			console.log(files.length)
+			var i=0;
+			$('#selectpic').empty();
+			if(files.length>4){
+				alert("請只能選擇四張照片")
+			}else{
+				while(i<files.length){
+					var file=files[i];
+					var reader = new FileReader(); 
+					reader.readAsDataURL(file); 
+					var j=1;
+					reader.onload = function(e){ 
+					selectpic.innerHTML += '<img  height="150" width="200" src="'+this.result+'" id="img'+j+'" /><input type="hidden" name="picstring" value="['+this.result+']" />' 
+					j++;
+					} 		
+					i++;
+				}
+			}
+	})
+	$("#cancelbut").click(function(){
+		$(":text").val("");
+		$(".xbody").val("");
+		$("#selectpic").empty();
+	})	
 	$("#select4").change(function(){
 		$("#ul1 li").empty();
 		offset=0;
@@ -164,6 +274,23 @@ tr:hover td {background: #d0dafd;color: #339;}
 		offset=0;
 		getlist();
 	});	
+	$("#cate1no").change(function (){
+		$.ajax({
+			url:"GetCate2.jsp",
+			type:"get",
+			dataType:"json",
+			data:{"cate1no":$("#cate1no").val()},
+			success:function(data){
+				$("#cate2no option").remove();
+				$.each(data,function(){
+					var cate2no=this.cate2no;
+					var cate2name=this.cate2name;
+					var opt=$("<option></option>").val(cate2no).text(cate2name);
+					$("#cate2no").append(opt);						
+				})
+			}
+		})
+	});
 	$("#select1").change(function (){
 		$.ajax({
 			url:"GetCate2.jsp",
@@ -316,17 +443,17 @@ tr:hover td {background: #d0dafd;color: #339;}
 	}
 
 	$(window).bind('scroll resize', function(){
-		　　var $this = $(this);
-		　　var $this_Top=$this.scrollTop();
+		var $this = $(this);
+		var $this_Top=$this.scrollTop();
 
-		　　//當高度小於100時，關閉區塊 
-		　　if($this_Top < 200){
-		　　　$('#selects').stop().animate({top:"20px"});
-		　　　}
-		　　　　if($this_Top > 200){
-		　　　　$('#selects').stop().animate({top:"20px"});
-		　　　 }
-		　　}).scroll();
+		if($this_Top < 200){
+				$('#selects').stop().animate({top:"40px"});
+		}
+		 if($this_Top > 200){
+				$('#selects').stop().animate({top:"300px"});
+		}
+	}).scroll();
+	
 })(jQuery);
 </script>
 </body>

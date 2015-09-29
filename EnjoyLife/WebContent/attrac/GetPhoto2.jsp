@@ -32,7 +32,7 @@ String cross=crossdistno+"";
 int maxno=0;
 	try {
 		DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-		Connection conn = DriverManager.getConnection(url2, "sa", "sa123456");
+		Connection conn = DriverManager.getConnection(url2, "enjoylife", "P@ssw0rd");
  		if(attracno!=null){
 			query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort from photos )APS where sort=1)APS1 full join attrac "+
 					 "on APS1.AttracNo=attrac.AttracNo where attrac.AttracNo=?";

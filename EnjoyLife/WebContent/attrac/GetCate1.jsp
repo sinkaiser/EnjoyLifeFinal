@@ -23,7 +23,7 @@ String query = "select countyno,countyname from counties ";
 
 try{
 	DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-	conn = DriverManager.getConnection(url, "sa", "sa123456");
+	conn = DriverManager.getConnection(url, "enjoylife", "P@ssw0rd");
 
 	stmt = conn.prepareStatement(query2);
 	 rs = stmt.executeQuery();

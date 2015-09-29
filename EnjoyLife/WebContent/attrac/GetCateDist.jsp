@@ -21,7 +21,7 @@ String countyno = request.getParameter("countyno");
 String query2 = "select distno,distname from dist where countyno=?";
 try{
 	DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-	conn = DriverManager.getConnection(url, "sa", "sa123456");
+	conn = DriverManager.getConnection(url, "enjoylife", "P@ssw0rd");
 
 	stmt = conn.prepareStatement(query);
 	stmt.setString(1,cate1no);

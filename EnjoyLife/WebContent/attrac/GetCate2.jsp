@@ -19,7 +19,7 @@ String query = "select cate2no,cate2name from cate2 where cate1no=?";
 String cate1no = request.getParameter("cate1no");
 try{
 	DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-	conn = DriverManager.getConnection(url, "sa", "sa123456");
+	conn = DriverManager.getConnection(url, "enjoylife", "P@ssw0rd");
 
 	stmt = conn.prepareStatement(query);
 	stmt.setString(1,cate1no);
