@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h3>資料修改完成</h3>
-	<p>${message}</p>
-	<a href="${pageContext.request.contextPath}/index.jsp">請按此回首頁</a>
+<%-- 	<p>${message}</p> --%>
+<%-- 	<a href="${pageContext.request.contextPath}/index.jsp">請按此回首頁</a> --%>
 </body>
 </html>
