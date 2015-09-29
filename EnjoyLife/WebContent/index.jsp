@@ -34,6 +34,13 @@
 				<div class="row"> 
 					
 					<!-- Content -->
+					<c:if test="${!empty regisOK }">
+							<c:remove var="regisOK" scope="session" />
+							<script type="text/javascript">
+								alert("註冊成功");
+							</script>
+	
+						</c:if>
 					<div id="content" class="8u skel-cell-important">
 						<section>
 							<header>

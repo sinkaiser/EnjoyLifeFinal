@@ -162,6 +162,7 @@ try {
 							
 				bean.setPicture(picture);				
 				memberDAO.insert(bean);
+				session.setAttribute("regisOK", "註冊成功");
 				session.setAttribute("member", bean);
 				response.sendRedirect(
 				response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));

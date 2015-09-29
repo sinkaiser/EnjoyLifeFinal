@@ -117,48 +117,41 @@
 							<header style="margin-bottom:10px;" >
 								<h4>註冊</h4>
 							</header> <!-- Modal content-->
-					<div class="modal-content">
-						
+					<div class="modal-content">						
 						<div class="container" style="padding-top: 20px;width:500px;">
-							<form method="post"  id="form"
-								action="registration.do" >
+							<form method="post"  id="form" action="registration.do" enctype="multipart/form-data" >
 								<fieldset>
 									<div class="form-group">
 										<label for="memberId" class="col-sm-4 control-label" style="padding:0px;" >帳號(*)：</label>
 										<div class="col-xs-3">
-											<input type="text" class="form-control" id="memberId"
-												name="memberId" value="${param.memberId}" title="請輸入帳號">
+											<input type="text" class="form-control" id="memberId" name="memberId" value="${param.memberId}" title="請輸入帳號">
 											<label>${ErrorMsg.memberId}</label>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="password" class="col-sm-2 control-label" style="padding-top:0px;">密碼(*)：</label>
 										<div class="col-xs-3">
-											<input type="password" class="form-control" id="password"
-												name="password" value="${param.password}" title="請輸入密碼">
+											<input type="password" class="form-control" id="password" name="password" value="${param.password}" title="請輸入密碼">
 											<label>${ErrorMsg.password}</label>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="password" class="col-sm-2 control-label" style="padding-top:0px;">確認密碼：</label>
 										<div class="col-xs-3">
-											<input type="password" class="form-control"
-												id="passwordCheck" name="passwordCheck" title="請再次輸入密碼">
+											<input type="password" class="form-control" id="passwordCheck" name="passwordCheck" title="請再次輸入密碼">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="memberName" class="col-sm-2 control-label" style="padding-top:0px;">姓名(*)：</label>
 										<div class="col-xs-3">
-											<input type="text" class="form-control" id="memberName"
-												name="memberName" value="${param.memberName}" title="請輸入帳號">
+											<input type="text" class="form-control" id="memberName" name="memberName" value="${param.memberName}" title="請輸入帳號">
 											<label>${ErrorMsg.memberName}</label>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="email" class="col-sm-2 control-label" style="padding-top:0px;">E-mail(*)：</label>
 										<div class="col-xs-3">
-											<input type="text" class="form-control" id="email"
-												name="email" value="${param.email}" title="請輸入E-mail信箱">
+											<input type="text" class="form-control" id="email" name="email" value="${param.email}" title="請輸入E-mail信箱">
 											<label>${ErrorMsg.email}</label>
 										</div>
 									</div>
@@ -174,32 +167,28 @@
 									<div class="form-group">
 										<label for="birthday" class="col-sm-2 control-label" style="padding-top:0px;">生日：</label>
 										<div class="col-xs-3">
-											<input type="text" class="form-control" id="birthday"
-												name="birthday" value="${param.birthday}" title="請輸入生日日期">
+											<input type="text" class="form-control" id="birthday" name="birthday" value="${param.birthday}" title="請輸入生日日期">
 											<label>${ErrorMsg.birthday}</label>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="address" class="col-sm-2 control-label" style="padding-top:0px;">地址：</label>
 										<div class="col-xs-3">
-											<input type="text" class="form-control" id="address"
-												name="address" value="${param.address}" title="請輸入地址">
+											<input type="text" class="form-control" id="address" name="address" value="${param.address}" title="請輸入地址">
 											<label>${ErrorMsg.address}</label>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="picture" class="col-sm-2 control-label" style="padding-top:0px;">圖片：</label>
 										<div class="col-xs-3">
-											<input type="file" class="form-control" id="picture"
-												name="picture" title="請輸入圖片">
+											<input type="file" class="form-control" id="picture" name="picture" title="請輸入圖片">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-sm-offset-2 col-sm-10"
 											style="padding-left: 170px">
 											<input type="submit" id="submit" class="btn btn-success"
-												value="送出"> <input type="reset" id="reset"
-												class="btn btn-primary" value="清除">
+												value="送出"> <input type="reset" id="reset" class="btn btn-primary" value="清除">
 										</div>
 									</div>
 								</fieldset>
