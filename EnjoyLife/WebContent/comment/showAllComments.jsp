@@ -39,15 +39,14 @@
                          <td>${mem.eventNo}</td>
                          <td>${formattedDate}</td>
                          <td>${mem.memberId}</td>
-                         <c:chose>
-                         	<c:when test"${mem.closed==1}">
+
+							<c:if test="${mem.closed==1}">
                          	<td><a href="comment/CommentHandle?handle=delete"+${mem.commentNo}><input type="button" name="delete" value="刪除"></a></td>
-                         	</c:when>
-                         	<c:otherwise>
+							</c:if>
+							
+                         	<c:if test="${mem.closed!=1}">
                          	<td><a href="comment/CommentHandle?handle=update"+${mem.commentNo}><input type="button" name="update" value="處理"></a></td>
-<!--                          click it create text -->
-                         	</c:otherwise>
-                         </c:chose>	
+                    		</c:if>
                     </tr>
                      <c:if test="${statusX.last}" >
                         <c:out value="</table>" escapeXml="flase" />
