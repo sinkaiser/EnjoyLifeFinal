@@ -48,15 +48,16 @@
 						</section>
 					</div>
 					<!-- Content -->
-					<div id="content" class="8u skel-cell-important">
+					<div id="sidebar-viewR" class="4u">
 						<section>
-							<header>
-								<h2>HOT</h2>
-								<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
-							</header>
-							<a href="#" class="image full"><img src="images/pic07.jpg" alt="" /></a>
-							<p>This is <strong>Iridium</strong>, a responsive HTML5 site template freebie by <a href="http://templated.co">TEMPLATED</a>. Released for free under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so use it for whatever (personal or commercial) &ndash; just give us credit! Check out more of our stuff at <a href="http://templated.co">our site</a> or follow us on <a href="http://twitter.com/templatedco">Twitter</a>.</p>
-							<p>Sed etiam vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue justo quis nisl. Fusce mattis viverra elit. Fusce quis tortor. Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget lorem ipsum dolor.</p>
+							<ul id="sideview">
+								<li>
+									<img src="${pageContext.request.contextPath}/activityPage/images/love.jpg" alt="" />
+								</li>
+								<li>
+									<img src="${pageContext.request.contextPath}/activityPage/images/love1.jpg" alt="" />
+								</li>
+							</ul>
 						</section>
 					</div>
 				</div>
@@ -76,81 +77,14 @@
 		</div>
 
 		<!-- Footer -->
-		<div id="featured">
-			<div class="container">
-				<div class="row">
-					<div class="4u">
-						<h2>Aenean elementum facilisis</h2>
-						<a href="#" class="image full"><img src="images/pic01.jpg" alt="" /></a>
-						<p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. Quisque dictum. Pellentesque viverra vulputate enim.</p>
-						<p><a href="#" class="button">More Details</a></p>
-					</div>
-					<div class="4u">
-						<h2>Fusce ultrices fringilla</h2>
-						<a href="#" class="image full"><img src="images/pic02.jpg" alt="" /></a>
-						<p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. Quisque dictum. Pellentesque viverra vulputate enim.</p>
-						<p><a href="#" class="button">More Details</a></p>
-					</div>
-					<div class="4u">
-						<h2>Etiam rhoncus volutpat erat</h2>
-						<a href="#" class="image full"><img src="images/pic03.jpg" alt="" /></a>
-						<p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. Quisque dictum. Pellentesque viverra vulputate enim.</p>
-						<p><a href="#" class="button">More Details</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-
 
 		<!-- Footer -->
-		<div id="footer">
-			<div class="container">
-				<div class="row">
-					<div class="4u">
-						<section>
-							<h2>Latest Posts</h2>
-							<ul class="default">
-								<li><a href="#">Pellentesque lectus gravida blandit</a></li>
-								<li><a href="#">Lorem ipsum consectetuer adipiscing</a></li>
-								<li><a href="#">Phasellus nibh pellentesque congue</a></li>
-								<li><a href="#">Cras vitae metus aliquam pharetra</a></li>
-								<li><a href="#">Maecenas vitae orci feugiat eleifend</a></li>
-							</ul>
-						</section>
-					</div>
-					<div class="4u">
-						<section>
-							<h2>Ultrices fringilla</h2>
-							<ul class="default">
-								<li><a href="#">Pellentesque lectus gravida blandit</a></li>
-								<li><a href="#">Lorem ipsum consectetuer adipiscing</a></li>
-								<li><a href="#">Phasellus nibh pellentesque congue</a></li>
-								<li><a href="#">Cras vitae metus aliquam pharetra</a></li>
-								<li><a href="#">Maecenas vitae orci feugiat eleifend</a></li>
-							</ul>
-						</section>
-					</div>
-					<div class="4u">
-						<section>
-							<h2>Aenean elementum</h2>
-							<ul class="default">
-								<li><a href="#">Pellentesque lectus gravida blandit</a></li>
-								<li><a href="#">Lorem ipsum consectetuer adipiscing</a></li>
-								<li><a href="#">Phasellus nibh pellentesque congue</a></li>
-								<li><a href="#">Cras vitae metus aliquam pharetra</a></li>
-								<li><a href="#">Maecenas vitae orci feugiat eleifend</a></li>
-							</ul>
-						</section>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<!-- Copyright -->
 		<div id="copyright">
 			<div class="container">
 				Enjoy Life
 			</div>
 		</div>
+		<%@include file="/includes/logout" %>
 	</body>
 </html>
