@@ -44,7 +44,7 @@
        </div>
        <div class="col-md-4" style="position:relative;height:880px;">
        			<h1 id="alllist">清單列表</h1>
-		       <ul id="menu" class="attraclist">	         			
+		       <ul id="menu" class="attraclist">	       			
 			   </ul>      
 		       <div id="attracinfo">
 		       </div>
@@ -54,9 +54,17 @@
 		       <input type="hidden" id="addr">
 		       <a id="auto" style="display:none;"></a>
        </div>
-		<div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-		  <div class="modal-dialog modal-lg">
+		<div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+		  <div class="modal-dialog modal-sm">
 		    <div class="modal-content">
+		      <div class="modal-header">
+			      <h4 class="modal-title" id="myModalLabel" style="font-size:18px;color:red">錯誤訊息</h4>
+			   </div>
+			   <div class="modal-body" style="font-size:30px">
+			   </div>
+			   <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" data-dismiss="modal">確定</button>
+		      </div>
 		    </div>
 		  </div>
 		</div>

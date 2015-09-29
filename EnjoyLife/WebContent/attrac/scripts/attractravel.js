@@ -1,7 +1,7 @@
 (function($){
 	$("#menu").on("click",".ui-menu-item",function(){
 		$("#attracinfo").empty();
-		var img=$("<img></img>").attr("src","attrac/Data/ajax-loader.gif");
+		var img=$("<img></img>").attr("src","Data/ajax-loader.gif").attr("height","262").attr("width","350");
 		$("#attracinfo").append(img);
 		$.ajax({
 			url:"GetPhoto2.jsp",
@@ -23,7 +23,7 @@
 					if(null!=photoname){
 						var img=$("<img></img>").attr("src",photodata).attr("height","262").attr("width","350").attr("id","imgid");					
 					}else{
-						 img=$("<img></img>").attr("src","attrac/Data/nopic.png").attr("height","262").attr("width","350").attr("id","imgid");
+						 img=$("<img></img>").attr("src","Data/nopic.png").attr("height","262").attr("width","350").attr("id","imgid");
 					}
 					$("#attracinfo").after(title);
 					$("#attracinfo").append(img);												
@@ -49,7 +49,7 @@
 			var alltitle=$('span[name="attractitle"]').text();
 			var addtitle=$("#labelid").text();
 			var list=document.getElementsByName("newattrac");
-			if(list.length<10){
+			if(list.length<9){
 				if(alltitle.indexOf(addtitle)==-1){
 				$("#travel").append("<div name='newattrac' class='traveldiv'><img  class='attracpic'src="+$("#imgid").attr('src')+">"+
 									"<div  class='attracdiv'><input class='delbut'type='button'value='移除'><span name='attractitle' class='attracdata' >"+$("#labelid").text()+"</span><br>"+
@@ -58,12 +58,15 @@
 				}else{
 					//alert("該景點已加入")
 					var text=document.createTextNode("該景點已加入");
-					$('.modal-content').prepend(text)
+					$('.modal-body').empty();
+					$('.modal-body').prepend(text)
 					$('#myModal').modal('toggle')	
 				}
 			}else{
-				$('.modal-content').text("show")
-				$('#myModal').modal('toggle')	
+				var text=document.createTextNode("景點最多9筆");
+				$('.modal-body').empty();
+				$('.modal-body').prepend(text);
+				$('#myModal').modal('toggle');
 			}
 		}else{
 			$('div[name="default"]').html("<h1>請選擇景點</h1>");

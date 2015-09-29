@@ -86,6 +86,7 @@
 		});
 		
 		function addr(){
+			
 			$.ajax({
 				url:"GetAttrac.jsp",
 				type:"get",
