@@ -13,13 +13,13 @@
 response.setHeader("Access-Control-Allow-Origin", "*");
 ResultSet rset = null;
 PreparedStatement stmt=null;
-String url2 = "jdbc:sqlserver://localhost:1433;DatabaseName=Attractions";
+String url2 = "jdbc:sqlserver://i7zjbwchx7.database.windows.net:1433;database=EnjoyLife";
 String query=null;	
 String query2=null;	
 String attracno = request.getParameter("attracno");
 	try {
 		DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-		Connection conn = DriverManager.getConnection(url2, "sa", "passw0rd");
+		Connection conn = DriverManager.getConnection(url2, "enjoylife", "P@ssw0rd");
  		if(attracno!=null){
 			query2="select * FROM photos  where AttracNo=?";
 			stmt = conn.prepareStatement(query2);
