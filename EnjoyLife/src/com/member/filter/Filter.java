@@ -17,7 +17,7 @@ import com.member.model.MemberService;
 import com.member.model.MemberVO;
 
 @WebFilter(
-	urlPatterns={"/friend/*","/blog/postBlog.jsp"}
+	urlPatterns={"/indexMember.jsp","/blog/*","/partner/*"}
 //	"/display/*"
 )	
 public class Filter implements javax.servlet.Filter {
@@ -66,7 +66,7 @@ public class Filter implements javax.servlet.Filter {
 				session.setAttribute("dest", uri);
 				
 				String path =request.getContextPath();
-				response.sendRedirect(path+"/index.jsp");
+				response.sendRedirect(path+"/indexfix.jsp");
 			}
 	}
 
