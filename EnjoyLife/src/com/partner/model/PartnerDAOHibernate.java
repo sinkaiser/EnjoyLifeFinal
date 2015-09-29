@@ -118,7 +118,7 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 		List<PartnerVO> result = new ArrayList<PartnerVO>();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("from PartnerVO where hidden=0 and eventNo = ? order by eventDate desc");
+			Query query = session.createQuery("from PartnerVO where hidden=0 and closed=0 and eventNo = ? order by eventDate desc");
 			query.setParameter(0, eventNo);
 			List<Object> list = query.list();
 			for(Object item :list){
@@ -139,7 +139,7 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 		List<PartnerVO> result = new ArrayList<PartnerVO>();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("from PartnerVO where hidden=0 and memberId = ? order by eventDate desc");
+			Query query = session.createQuery("from PartnerVO where hidden=0 and closed=0 and memberId = ? order by eventDate desc");
 			query.setParameter(0, memberId);
 			List<Object> list = query.list();
 			for(Object item :list){
@@ -160,7 +160,7 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 		List<PartnerVO> result = new ArrayList<PartnerVO>();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("from PartnerVO where hidden=1 and closed=0 and memberId = ? order by eventDate desc");
+			Query query = session.createQuery("from PartnerVO where hidden=0 and closed=1 and memberId = ? order by eventDate desc");
 			query.setParameter(0, memberId);
 			List<Object> list = query.list();
 			for(Object item :list){
@@ -181,7 +181,7 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 		List<PartnerVO> result = new ArrayList<PartnerVO>();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("from PartnerVO where hidden=0 and eventType = ? order by eventDate desc");
+			Query query = session.createQuery("from PartnerVO where hidden=0 and closed=0 and eventType = ? order by eventDate desc");
 			query.setParameter(0, eventType);
 			List<Object> list = query.list();
 			for(Object item :list){
@@ -202,7 +202,7 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 		List<PartnerVO> result = new ArrayList<PartnerVO>();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("from PartnerVO where hidden=0 and (eventContent like ?) order by eventDate desc");
+			Query query = session.createQuery("from PartnerVO where hidden=0 and closed=0 and (eventContent like ?) order by eventDate desc");
 			query.setParameter(0, "%"+eventContent+"%");
 			List<Object> list = query.list();
 			for(Object item :list){

@@ -40,7 +40,7 @@ public class CloseEventServlet extends HttpServlet {
 		// 設定輸入資料的編碼
 		request.setCharacterEncoding("UTF-8");
 		
-		String eventNo = request.getParameter("eno3");
+		String eventNo = request.getParameter("eno");
 		if (eventNo == null || eventNo.trim().length() == 0) {
 			errorMessage.add("必須輸入編號");
 		}

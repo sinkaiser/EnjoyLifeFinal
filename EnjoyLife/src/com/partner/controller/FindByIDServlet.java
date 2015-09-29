@@ -87,7 +87,7 @@ public class FindByIDServlet extends HttpServlet {
 		
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("myFP.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("listFP22.jsp");
 		rd.forward(request, response);
 	}
 
