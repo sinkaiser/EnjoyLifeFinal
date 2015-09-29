@@ -1,5 +1,8 @@
 (function($){
 	$("#menu").on("click",".ui-menu-item",function(){
+		$("#attracinfo").empty();
+		var img=$("<img></img>").attr("src","attrac/Data/ajax-loader.gif").attr("height","262").attr("width","350").attr("id","imgid");
+		$("#attracinfo").append(img);
 		$.ajax({
 			url:"GetPhoto2.jsp",
 			type:"get",
