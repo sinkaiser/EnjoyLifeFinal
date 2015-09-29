@@ -53,7 +53,7 @@ public class BlogDAOHibernate implements BlogDAO {
 				query.setParameter(0, postType);
 			}
 			query.setFirstResult(index);
-			query.setMaxResults(10);
+			query.setMaxResults(9);
 			list = (List<BlogVO>)query.list();
 		} catch (HibernateException e) {
 			e.printStackTrace();

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,17 +19,19 @@
 	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 
 <style>
+	*{
+		max-width:1280px;
+	}
 	.blogList{
 		border:2px solid #428bca;
 		padding:5px;
 		margin: 5px;
 		display:inline-block;
-		width:250px;
+		width:240px;
 		height:430px;
 		box-shadow:5px 5px 15px rgba(10,125,225,0.4);
 	}
 	.layoutSide{
-		background-color:#CCEEFF;
 		display:block;
 		height:auto;
 		
@@ -121,8 +124,9 @@
 					eleP2.appendChild(txtP2);
 					eleP2.setAttribute("class", "p_rp_context");
 					
+					var rDate = value.replyDate.substring(1,16);
 					var eleP3 = document.createElement("p");
-					var txtP3  = document.createTextNode(value.replyDate);
+					var txtP3  = document.createTextNode(rDate);
 					eleP3.appendChild(txtP3);
 					eleP3.setAttribute("class", "p_rp_date");
 					
@@ -211,10 +215,12 @@
 										<c:when test="${lists.postType=='FT'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;搞笑</span></c:when>
 										<c:when test="${lists.postType=='OT'}"><span class="label label-primary lab-size">日誌類型</span><span class="dataFont">&nbsp;其他</span></c:when>
 									</c:choose>
+									<fmt:formatDate value="${lists.postDate}" 
+													var="formattedDate" type="date" pattern="yyyy年M月d日 HH:mm" />
 									<span class="label label-primary lab-size">標題 </span><span class="dataFont">&nbsp;${lists.postTitle}</span><br>
 									<span class="label label-primary">星級評分</span>&nbsp;${lists.avgScore}顆星
 									<span class="label label-primary">瀏覽人數</span>&nbsp;${lists.viewTotal}
-									<span class="label label-primary">發文日期</span>&nbsp;${lists.postDate}<br>							
+									<span class="label label-primary">發文日期</span>&nbsp;${formattedDate}<br>							
 									<span class="label label-primary lab-size">內文</span><span class="dataFont">&nbsp;${lists.postContext}</span>
 									<input type="button" value="閱讀全文" class="btn btn-default btn-xs" data-toggle="modal" data-target="#postModal" onclick="viewArticle('${lists.postNo}')">
 									<br>

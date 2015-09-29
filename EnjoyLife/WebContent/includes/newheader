@@ -23,7 +23,7 @@
 					<ul>
 			<li><a href="${pageContext.request.contextPath}/indexMember.jsp">會員</a></li>
 			<li><a href="${pageContext.request.contextPath}/attrac/Attracdesign.jsp">規劃</a></li>
-			<li><a href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
+			<li><a href="${pageContext.request.contextPath}/BlogListServlet?Index=0&&pType=ALL">日誌</a></li>
 			<li><a href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li>
 			<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
 			

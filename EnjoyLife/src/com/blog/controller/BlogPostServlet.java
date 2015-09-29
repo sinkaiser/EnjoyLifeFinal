@@ -86,7 +86,7 @@ public class BlogPostServlet extends HttpServlet {
 //			response.setContentType("text/html; charset=UTF-8");
 //			response.sendRedirect(request.getContextPath()+"/blog/newpost.jsp");
 			session.getTransaction().rollback();
-			request.getRequestDispatcher("/BlogListServlet?Index=0&&pType=ALL").forward(request, response);
+			request.getRequestDispatcher("/blog/postBlog.jsp").forward(request, response);
 			
 			return;
 		}
@@ -108,7 +108,7 @@ public class BlogPostServlet extends HttpServlet {
 			if(eldao.udpateSerial(postNo)){
 				session.getTransaction().commit();
 				response.setContentType("text/html;charset=UTF-8");
-				response.sendRedirect(request.getContextPath()+"/blog/blogList.jsp");
+				response.sendRedirect(request.getContextPath()+"/BlogListServlet?Index=0&&pType=ALL");
 			}else{
 				session.getTransaction().rollback();
 				return;
@@ -184,8 +184,8 @@ public class BlogPostServlet extends HttpServlet {
 	
 	public int[] imgToArray(String imgBase64, String diglog,String[] diglogInfo,String dlText,int fontSize, String path){
 		
-		java.awt.Color color = new java.awt.Color(255,0,0);
-		Font font = new java.awt.Font("標楷體",java.awt.Font.PLAIN,fontSize);
+		java.awt.Color color = new java.awt.Color(0,0,0);
+		Font font = new java.awt.Font("標楷體",java.awt.Font.PLAIN,fontSize+2);
 		int[] imageArray=null;
 		try {
 			String sImg = imgBase64.substring("data:image/png;base64,".length());
@@ -209,7 +209,7 @@ public class BlogPostServlet extends HttpServlet {
 			g2d.setFont(font);
 			int text_x = (int)Math.round(Double.parseDouble(diglogInfo[1]))+(int)Math.round(Double.parseDouble(diglogInfo[5]));
 			int text_y = (int)Math.round(Double.parseDouble(diglogInfo[0]))+(int)Math.round(Double.parseDouble(diglogInfo[4]));
-			g2d.drawString(dlText,text_x,text_y);
+			g2d.drawString(dlText,text_x,text_y+15);
 			g2d.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER)); // 透明度設置結束
 			imageArray = new int[width * height];
 			imageArray = image.getRGB(0, 0, width, height, imageArray, 0, width);
