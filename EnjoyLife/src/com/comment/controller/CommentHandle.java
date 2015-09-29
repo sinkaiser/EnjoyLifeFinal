@@ -26,7 +26,8 @@ public class CommentHandle extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("");
+		response.setContentType("text/html;charset=UTF-8");
+		
 		String url=request.getContextPath();
 		String handle=request.getParameter("handle");
 		String commentNo=request.getParameter("commentNo");
@@ -50,12 +51,25 @@ public class CommentHandle extends HttpServlet {
 		}
 		else if(handle.equals("update")){
 			CommentVO Vo=new CommentVO();
-			CommentService Service=new CommentService();
+			Vo.setClosed(1);
+			Vo.setClosed(Integer.parseInt(commentNo));
+			CommentService service=new CommentService();
+			
+			service.updateComment(Vo);
+			
+			request.setAttribute("reslut", commentNo+"update 應該成功");
+			
+			RequestDispatcher rd=request.getRequestDispatcher(url+"showAllComments.jsp");
+			rd.forward(request, response);
+			return;
 			
 		}
 		else{
 			
-			response.getWriter().write("??");
+			request.setAttribute("reslut", "沒發生任何事情");
+			
+			RequestDispatcher rd=request.getRequestDispatcher(url+"showAllComments.jsp");
+			rd.forward(request, response);
 			return;
 			
 		}

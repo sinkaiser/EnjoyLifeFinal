@@ -47,6 +47,7 @@
                          	<c:if test="${mem.closed!=1}">
                          	<td><a href="comment/CommentHandle?handle=update"+${mem.commentNo}><input type="button" name="update" value="處理"></a></td>
                     		</c:if>
+                    	
                     </tr>
                      <c:if test="${statusX.last}" >
                         <c:out value="</table>" escapeXml="flase" />
