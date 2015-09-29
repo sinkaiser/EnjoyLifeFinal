@@ -49,7 +49,7 @@
 							required: true,
 						    email: true
 						},
-						birthDay:{
+						birthday:{
 							required: true,
 							date:true
 						},
