@@ -3,7 +3,6 @@ package com.partner.model;
 public class PartnerVO implements java.io.Serializable{
 	private Integer eventNo;
 	private String eventType;
-	private String eventTitle;
 	private String eventContent;
 	private String addr;
 	private java.sql.Timestamp eventDate;
@@ -12,6 +11,7 @@ public class PartnerVO implements java.io.Serializable{
 	private String memberId;
 	private Integer hidden;
 	private Integer closed;
+	private String memberName;
 	
 
 //	public PartnerVO() {
@@ -41,12 +41,6 @@ public class PartnerVO implements java.io.Serializable{
 	}
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
-	}
-	public String getEventTitle() {
-		return eventTitle;
-	}
-	public void setEventTitle(String eventTitle) {
-		this.eventTitle = eventTitle;
 	}
 	public String getEventContent() {
 		return eventContent;
@@ -95,6 +89,12 @@ public class PartnerVO implements java.io.Serializable{
 	}
 	public void setClosed(Integer closed) {
 		this.closed = closed;
+	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 	
 }

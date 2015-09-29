@@ -49,7 +49,6 @@ public class NewEventServlet extends HttpServlet {
 
 		String addr=null;
 		String eventType=null;
-		String eventTitle=null;
 		String eventContent=null;
 		
 		DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -74,10 +73,6 @@ public class NewEventServlet extends HttpServlet {
 			    	if(name.equals("type")) {
 //			    		System.out.println(value);
 			    		eventType=value;
-			    	}
-			    	if(name.equals("title")) {
-//			    		System.out.println(value);
-			    		eventTitle=value;
 			    	}
 			    	if(name.equals("content")) {
 //			    		System.out.println(value);
@@ -134,10 +129,7 @@ public class NewEventServlet extends HttpServlet {
 		// 設定輸入資料的編碼
 		request.setCharacterEncoding("UTF-8");
 
-		// 檢查使用者所輸入的資料
-		if (eventTitle == null || eventTitle.trim().length() == 0) {
-			errorMessage.add("必須輸入標題");
-		}
+		
 		// 檢查使用者所輸入的資料
 		if (eventContent == null || eventContent.trim().length() == 0) {
 			errorMessage.add("必須輸入內文");
@@ -155,6 +147,7 @@ public class NewEventServlet extends HttpServlet {
 //		String memberId=(String) session.getAttribute("memberId");
 		MemberVO bean=(MemberVO) session.getAttribute("member");
 		String memberId = bean.getMemberId();
+		String memberName = bean.getMemberName();
 		
 		int hidden = 0;
 		int closed = 0;
@@ -170,7 +163,6 @@ public class NewEventServlet extends HttpServlet {
 		
 		// MemberBean 扮演封裝輸入資料的角色
  		partnerVO.setEventType(eventType);
- 		partnerVO.setEventTitle(eventTitle);
  		partnerVO.setEventContent(eventContent);
  		partnerVO.setAddr(addr);
  		partnerVO.setEventDate(eventDate);
@@ -178,6 +170,7 @@ public class NewEventServlet extends HttpServlet {
  		partnerVO.setMemberId(memberId);
  		partnerVO.setHidden(hidden);
  		partnerVO.setClosed(closed);
+ 		partnerVO.setMemberName(memberName);
  		try {
  			PartnerService service = new PartnerService();
  			

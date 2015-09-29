@@ -45,13 +45,12 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 		try {
 			session.beginTransaction();
 //			session.update(partnerVO);
-			Query query = session.createQuery("UPDATE PartnerVO set eventType=?, eventTitle=?, eventContent=?, addr=?, modifyDate=? where eventNo = ?");
+			Query query = session.createQuery("UPDATE PartnerVO set eventType=?, eventContent=?, addr=?, modifyDate=? where eventNo = ?");
 			query.setParameter(0, partnerVO.getEventType());
-			query.setParameter(1, partnerVO.getEventTitle());
-			query.setParameter(2, partnerVO.getEventContent());
-			query.setParameter(3, partnerVO.getAddr());
-			query.setParameter(4, partnerVO.getModifyDate());
-			query.setParameter(5, partnerVO.getEventNo());
+			query.setParameter(1, partnerVO.getEventContent());
+			query.setParameter(2, partnerVO.getAddr());
+			query.setParameter(3, partnerVO.getModifyDate());
+			query.setParameter(4, partnerVO.getEventNo());
 			query.executeUpdate();
 			session.beginTransaction().commit();
 		} catch (HibernateException e) {
@@ -143,7 +142,7 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 		List<PartnerVO> result = new ArrayList<PartnerVO>();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("from PartnerVO where hidden=0 and closed=1 and memberId = ? order by eventDate desc");
+			Query query = session.createQuery("from PartnerVO where hidden=1 and closed=0 and memberId = ? order by eventDate desc");
 			query.setParameter(0, memberId);
 			List<Object> list = query.list();
 			for(Object item :list){
@@ -180,15 +179,13 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 	}
 
 	@Override
-	public List<PartnerVO> selectByEventTitleAndEventContent(
-			String eventTitle, String eventContent) {
+	public List<PartnerVO> selectByEventTitleAndEventContent(String eventContent) {
 		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
 		List<PartnerVO> result = new ArrayList<PartnerVO>();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("from PartnerVO where hidden=0 and (eventTitle like ? or eventContent like ?) order by eventDate desc");
-			query.setParameter(0, "%"+eventTitle+"%");
-			query.setParameter(1, "%"+eventContent+"%");
+			Query query = session.createQuery("from PartnerVO where hidden=0 and (eventContent like ?) order by eventDate desc");
+			query.setParameter(0, "%"+eventContent+"%");
 			List<Object> list = query.list();
 			for(Object item :list){
 				result.add((PartnerVO)item);

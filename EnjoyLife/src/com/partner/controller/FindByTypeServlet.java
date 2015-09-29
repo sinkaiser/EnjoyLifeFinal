@@ -54,10 +54,10 @@ public class FindByTypeServlet extends HttpServlet {
 		
 		
 		
-		System.out.println(1);
-		for(PartnerVO bean:list){
-			System.out.println(bean.getEventTitle());
-		}
+//		System.out.println(1);
+//		for(PartnerVO bean:list){
+//			System.out.println(bean.getEventTitle());
+//		}
 		
 		
 		

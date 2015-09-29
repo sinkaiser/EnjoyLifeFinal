@@ -11,7 +11,7 @@ public interface PartnerDAO_interface {
           public List<PartnerVO> selectById(String memberId);
           public List<PartnerVO> selectByIdOver(String memberId);
           public List<PartnerVO> selectByEventType(String eventType);
-          public List<PartnerVO> selectByEventTitleAndEventContent(String eventTitle,String eventContent);
+          public List<PartnerVO> selectByEventTitleAndEventContent(String eventContent);
           public List<PartnerVO> getAll();
           public List<PartnerVO> getAllAdmin();
           public List<PartnerVO> selectByIndex(int index);

@@ -25,7 +25,6 @@ public class PartnerService {
 			Map<String,String> m1 = new HashMap<String,String>();
 			m1.put("eventNo", bean.getEventNo().toString());
 			m1.put("eventType", bean.getEventType().toString());
-			m1.put("eventTitle", bean.getEventTitle().toString());
 			m1.put("eventContent", bean.getEventContent().toString());
 			m1.put("addr", bean.getAddr().toString());
 			m1.put("eventDate", bean.getEventDate().toString());
@@ -60,7 +59,6 @@ public class PartnerService {
 			
 			m1.put("eventNo", bean.getEventNo().toString());
 			m1.put("eventType", bean.getEventType().toString());
-			m1.put("eventTitle", bean.getEventTitle().toString());
 			m1.put("eventContent", bean.getEventContent().toString());
 			m1.put("addr", bean.getAddr().toString());
 			m1.put("eventDate", bean.getEventDate().toString());
@@ -118,7 +116,7 @@ public class PartnerService {
 	public List<PartnerVO> findEventBySearch(String eventTitle, String eventContent){
 		List<PartnerVO> list = new ArrayList<PartnerVO>();
 		PartnerDAO_interface dao = new PartnerDAOHibernate();
-		list = dao.selectByEventTitleAndEventContent(eventTitle, eventContent);
+		list = dao.selectByEventTitleAndEventContent(eventContent);
 		return list;
 	}
 	

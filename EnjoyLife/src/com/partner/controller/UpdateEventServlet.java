@@ -43,12 +43,6 @@ public class UpdateEventServlet extends HttpServlet {
 		// 讀取使用者所輸入，由瀏覽器送來的 type 欄位內的資料
 		String eventType = request.getParameter("type2");
 
-		// 讀取使用者所輸入，由瀏覽器送來的 title 欄位內的資料
-		String eventTitle = request.getParameter("title2");
-		// 檢查使用者所輸入的資料
-		if (eventTitle == null || eventTitle.trim().length() == 0) {
-			errorMessage.add("必須輸入標題");
-		}
 		// 讀取使用者所輸入，由瀏覽器送來的 content 欄位內的資料
 		String eventContent = request.getParameter("content2");
 		// 檢查使用者所輸入的資料
@@ -95,7 +89,6 @@ public class UpdateEventServlet extends HttpServlet {
 		PartnerVO partnerVO = new PartnerVO();
 		partnerVO.setEventNo(i);
 		partnerVO.setEventType(eventType);
-		partnerVO.setEventTitle(eventTitle);
 		partnerVO.setEventContent(eventContent);
 		partnerVO.setAddr(addr);
 		partnerVO.setModifyDate(modifyDate);

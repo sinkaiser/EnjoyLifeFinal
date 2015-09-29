@@ -11,9 +11,6 @@
         <property name="eventType" type="java.lang.String">
             <column name="EVENTTYPE" />
         </property>
-        <property name="eventTitle" type="java.lang.String">
-            <column name="EVENTTITLE" />
-        </property>
         <property name="eventContent" type="java.lang.String">
             <column name="EVENTCONTENT" />
         </property>
@@ -31,6 +28,9 @@
         </property>
         <property name="memberId" type="java.lang.String">
             <column name="MEMBERID" />
+        </property>
+        <property name="memberName" type="java.lang.String">
+            <column name="MEMBERNAME" />
         </property>
         <property name="hidden" type="java.lang.Integer">
             <column name="HIDDEN" />

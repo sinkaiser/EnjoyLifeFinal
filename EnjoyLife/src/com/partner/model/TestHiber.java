@@ -10,7 +10,6 @@ public class TestHiber {
 		
 		
 		partnerVO.setEventType("1");
- 		partnerVO.setEventTitle("1");
  		partnerVO.setEventContent("1");
  		partnerVO.setAddr("1");
  		partnerVO.setEventDate(new java.sql.Timestamp(0));

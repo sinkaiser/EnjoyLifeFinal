@@ -26,9 +26,6 @@
 <link rel='stylesheet' href='css/style-desktop.css' type="text/css" />
 <link rel='stylesheet' href='css/bootstrap-theme.css' type="text/css" />
 <link rel='stylesheet' href='css/bootstrap.css' type="text/css" />
-<script src="../js/skel.min.js"></script>
-<script src="../js/skel-panels.min.js"></script>
-<script src="../js/init.js"></script>
 
 <style type="text/css">
 #contentp {
@@ -67,9 +64,6 @@ body{
 	width:500px;
 	height:150px;
 }
-#inputAdd{
-	width:300px;
-}
 </style>
 
 </head>
@@ -85,7 +79,10 @@ body{
 			<li><a href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
 			<li><a href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li>
 			<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
-			
+			<c:if test="${empty member}">							
+				<li><a id="register">註冊</a></li>
+				<li><a id="login">登入</a></li>
+			</c:if>
 			<c:if test="${!empty member}">							
 				<li><a href="${pageContext.request.contextPath}/secure/logout.jsp">登出</a></li>
 				<li><img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="30" width="30" onerror="this.style.display='none'"> 
@@ -100,23 +97,23 @@ body{
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					
-					<div class="navbar-form navbar-left" role="search" style="width:1280px;text-align:center;">
-						<div class="form-group" style="margin-right:30px;width:300px;margin-left:250px">
+					<div class="navbar-form navbar-left" role="search" style="width:900px">
+						<div class="form-group">
 						<form action="SearchServlet" id="jsearch" method="post">
 							<input type="text" class="form-control" placeholder="Search"
 								id="inputAdd" name="eventTitleContent" value="${inputAdd}" />
 						</form>
 						</div>
 						<button type="button" id="btnsearch" onclick="searchsubmit()" class="btn btn-default" id="button1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-						<div class="btn-group" id="button-toggle" style="left:150px;">
+						<div class="btn-group" id="button-toggle">
 							<a href="${pageContext.request.contextPath}/partner/mapFP.jsp"><button type="button" class="btn btn-default"
 									id="btn-left">地圖</button></a> <a
 								href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet"><button
 									type="button" class="btn btn-default" id="btn-right-list">列表</button></a>
 						</div >
-						<div class="btn-group" style="margin-left:80px;float:right;">
+						<div class="btn-group" style="margin-left:170px">
 						<button type="button" class="btn btn-primary" data-toggle="modal"
-						data-target="#newPartner" onclick="createEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventTitle}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}')">
+						data-target="#newPartner" onclick="createEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}')">
 	  					我要新增找伴活動
 						</button>
 						</div>
@@ -136,13 +133,14 @@ body{
 
 				<div class="detail">
 					<p id="filters" class="cxbtn_group">
-						<a class="cxbtn" href="javascript://" data-filter="all">Reset filters</a>
+						<a class="cxbtn" href="javascript://" data-filter="all">全部類別</a>
 						<a class="cxbtn" href="javascript://" data-filter="購物">購物</a>
 						<a class="cxbtn" href="javascript://" data-filter="餐飲">餐飲</a> 
 						<a class="cxbtn" href="javascript://" data-filter="娛樂">娛樂</a>
 						<a class="cxbtn" href="javascript://" data-filter="運動">運動</a>
 						<a class="cxbtn" href="javascript://" data-filter="藝文">藝文</a>
 						<a class="cxbtn" href="javascript://" data-filter="交通">交通</a>
+						<a class="cxbtn" href="javascript://" data-filter="其他">其他</a>
 					</p>
 				</div>
 
@@ -161,19 +159,18 @@ body{
 											<td><img style="float: left"
 												src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
 												height="30" width="30" onerror="this.style.display='none'">
-												<h2>${mem.PartnerVO.eventTitle}
+												<span><p>  ${mem.PartnerVO.memberName}</p></span>
+												
 													<a href="#" data-toggle="modal" data-target="#myModal3" onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${mem.PartnerVO.memberId}')"><img style="float: right" src="img/plusone2.png"
-														id="plusone" width="32" height="32" alt="+1"></a>
-												</h2>
+														id="plusone" title="我要參加" width="32" height="32" alt="+1"></a>
 
 
 												<p id="contentp">${mem.PartnerVO.eventContent}</p>
 												<img src="${pageContext.request.contextPath}/GetImg?imgid=${mem.PartnerVO.imgNo}"
-												height="180" width="220" title="${mem.PartnerVO.eventTitle}">
+												height="180" width="220">
 
 												<div class="post_meta" style="margin: 0">
 													
-													<span><a href="#"><img src="../partner/img/icon-location.png">${mem.PartnerVO.memberId}</a></span>
 													 <a href="${pageContext.request.contextPath}/partner/FindByTypeServlet?mType=${mem.PartnerVO.eventType}"><img src="../partner/img/icon-tag.png">${mem.PartnerVO.eventType}
 													 <a href="mapFP.jsp?inputAdd=${mem.PartnerVO.addr}" title="${mem.PartnerVO.addr}"><img src="../partner/img/icon-location.png">${mem.PartnerVO.getAddr().toString().substring(0,3)}</a>
 													<fmt:formatDate value="${mem.PartnerVO.eventDate}"
@@ -189,7 +186,11 @@ body{
 													</c:if>
 
 													<c:if test="${mem.PartnerVO.memberId.equals(member.memberId)}">
-														<a href="#" data-toggle="modal" data-target="#myModal" onclick="editEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventTitle}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}','${mem.PartnerVO.imgNo}')"><img src="../partner/img/icon-more.png")">編輯</a>
+														<a href="#" data-toggle="modal" data-target="#myModal" onclick="editEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}','${mem.PartnerVO.imgNo}')"><img src="../partner/img/icon-more.png")">編輯</a>
+													</c:if>
+													
+													<c:if test="${mem.PartnerVO.memberId.equals(member.memberId)}">
+														<a href="#" data-toggle="modal" data-target="#deleteModal" onclick="deleteEvent(${mem.PartnerVO.eventNo})"><img src="../partner/img/icon-more.png")">刪除</a>
 													</c:if>
 												</div></td>
 										</tr>
@@ -229,11 +230,14 @@ body{
 						method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<label>事件類型:</label><br>
-							<input id='num' style="text-align: left" name="type" type="text" size="14">
-						</div>
-						<div class="form-group">
-							<label>標題:</label><br>
-							<input id='num' style="text-align: left" name="title" type="text" size="42">
+							<select id="num" name="type">
+					         	<option>購物</option>
+					         	<option>餐飲</option>
+					         	<option>娛樂</option>
+					         	<option>運動</option>
+					         	<option>藝文</option>
+					         	<option>交通</option>
+					        </select>
 						</div>
 						<div class="form-group">
 							<label>內文:</label><br>
@@ -253,7 +257,7 @@ body{
 
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
 					<button type="button" class="btn btn-primary" onclick="createsubmit()">送出</button>
 				</div>
 			</div>
@@ -276,11 +280,14 @@ body{
 		    <input id='num' style="text-align:left" name="eno2" type="hidden" size="14">
 		    <div class="form-group">
 			    <label>事件類型:</label><br>
-			    <input id='num' style="text-align:left" name="type2" type="text" size="14">
-			</div>
-			<div class="form-group">
-			    <label>標題:</label><br>
-			    <input id='num' style="text-align:left" name="title2" type="text" size="42">
+			    <select id="num" name="type2">
+		         	<option>購物</option>
+		         	<option>餐飲</option>
+		         	<option>娛樂</option>
+		         	<option>運動</option>
+		         	<option>藝文</option>
+		         	<option>交通</option>
+		        </select>
 			</div>
 			<div class="form-group">
 			    <label>內文:</label><br>
@@ -306,6 +313,34 @@ body{
     </div>
   </div>
 </div>
+
+
+
+
+
+<!-- 刪除貼文Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">刪除貼文</h4>
+      </div>
+      <div class="modal-body">
+		<form name="insertMemberFormE" action="HiddenEventServlet" id="jdelete" method="POST">
+		    <input id='num' style="text-align:left" name="eno3" type="hidden" size="14">
+		</form>
+		<h2>確定刪除貼文</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="deletebuttonclose" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" id="deletebutton" class="btn btn-primary"  onclick="jdeletesubmit()">確定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -559,10 +594,10 @@ body{
 		
 	})
 	
-	function editEvent(num1,num2,num3,num4,num5,num6){
+	//編輯貼文function
+	function editEvent(num1,num2,num4,num5,num6){
 		$("[name='eno2']").val(num1);
 		$("[name='type2']").val(num2);
-		$("[name='title2']").val(num3);
 		$("[name='content2']").val(num4);
 		$("[name='address2']").val(num5);
 		$("[name='imgNo']").val(num6);
@@ -601,18 +636,23 @@ body{
 			}
 		
 	})
+	function jsubmit(){
+		document.getElementById("jupdate").submit();
+	}
 	
-	
-	
+	//刪除貼文function
+	function deleteEvent(num1){
+		$("[name='eno3']").val(num1);
+	}
+	function jdeletesubmit(){
+		document.getElementById("jdelete").submit();
+	}
 	
 // 	function sendImgNo(){
 // 		document.getElementsByName("imgNo");
 // 		$("[name='imgNo']").val();
 // 	}
 	
-	function jsubmit(){
-		document.getElementById("jupdate").submit();
-	}
 	function attend(xxxeno,xxx1,xxx2){
 		$("[name='eno']").val(xxxeno);
  		$("[name='messageFrom']").val(xxx1);
