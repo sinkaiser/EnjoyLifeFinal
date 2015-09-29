@@ -9,12 +9,12 @@
 <link rel="stylesheet" href="scripts/bootstrap.min.css">
 <script src="scripts/bootstrap.min.js"></script>
 <style type="text/css">
-#listselects{width:170px;position:fixed;left:140px;border:5px ridge gray;padding:10px}
+#listselects{width:170px;position:fixed;left:80px;border:5px ridge gray;padding:10px}
 #butt1{margin:10px auto}
-#ul1{width:1300px;margin:20px auto;height:auto}
-li{list-style:none;width:300px;float:left;margin-left:5px;}
+#ul1{width:1280px;margin:20px 0px 0px 210px;height:auto}
+li{list-style:none;width:220px;float:left;margin-left:5px;}
 li div {border:5px ridge gray;padding: 5px;margin-bottom:5px;word-break:break-all }
-li div img {width:280px;margin:5px auto;display:block;}
+li div img {width:200px;margin:5px auto;display:block;}
 li div p{text-align: center;font-size: 20px;font-family:標楷體;}
 .select{width:140px;font-size: 18px;height:4ex;border-radius:15px;margin:5px auto}
 #creattable {border:2px double black;
@@ -35,9 +35,10 @@ tr:hover td {background: #d0dafd;color: #339;}
 #title{text-align:center; border:2px double black;font-size: 22px;width:130px;}
 #cate1no {font-size: 18px;height:4ex}
 #cate2no {font-size: 18px;height:4ex}
+*{max-width: 1280px}
 </style>
 </head>
-<body>
+<body >
 <div id="listselects">
 			<select id="select1" class="select" >            
 	       </select><br>
@@ -357,7 +358,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 	 					var addimg=document.createElement("img");
 	 					adddiv.id=attracno;					
 	 					addimg.src=photodata==null?"Data/nopic.png":photodata;
-	 					addimg.style.width="280px";
+	 					addimg.style.width="200px";
 	 					adddiv.appendChild(addimg);
 	 					var addp=document.createElement("p");
 	 					addp.innerHTML=stitle;
@@ -447,10 +448,10 @@ tr:hover td {background: #d0dafd;color: #339;}
 		var $this_Top=$this.scrollTop();
 
 		if($this_Top < 200){
-				$('#selects').stop().animate({top:"40px"});
+				$('#listselects').stop().animate({top:"20px"});
 		}
 		 if($this_Top > 200){
-				$('#selects').stop().animate({top:"300px"});
+				$('#listselects').stop().animate({top:"20px"});
 		}
 	}).scroll();
 	

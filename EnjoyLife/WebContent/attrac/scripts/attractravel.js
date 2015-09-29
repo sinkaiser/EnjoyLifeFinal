@@ -20,7 +20,7 @@
 					if(null!=photoname){
 						var img=$("<img></img>").attr("src",photodata).attr("height","262").attr("width","350").attr("id","imgid");					
 					}else{
-						 img=$("<img></img>").attr("src","Data/nopic.png").attr("height","262").attr("width","350").attr("id","imgid");
+						 img=$("<img></img>").attr("src","attrac/Data/nopic.png").attr("height","262").attr("width","350").attr("id","imgid");
 					}
 					$("#attracinfo").after(title);
 					$("#attracinfo").append(img);												
