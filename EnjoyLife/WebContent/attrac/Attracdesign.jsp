@@ -39,19 +39,6 @@
 		       </div>
 		       <div id="travel">
 			       	<div name="default" class="traveldiv" style="text-align:center"><h1>請增加景點</h1></div>	
-	<!-- 	       		<div name='newattrac' class='traveldiv'> -->
-	<!-- 					<img  class='attracpic'src=""> -->
-	<!-- 					<div  class='attracdiv'> -->
-	<!-- 						<input class='delbut'type='button'value='移除'> -->
-	<!-- 						<span name='attractitle' class='attracdata' ></span><br> -->
-	<!-- 						<span name='attracaddr' class='attracdata'>地址:</span><br> -->
-	<!-- 						<span name="nextdirection" class='nextdirection' ></span><br> -->
-	<!-- 						<span name="distance" class='distance'></span><br> -->
-	<!-- 						<span name="duration" class='duration'></span> -->
-	<!-- 					</div> -->
-	<!-- 					<div> -->
-	<!-- 					</div> -->
-	<!-- 				</div> -->
 		       </div>
 		    </div>   
        </div>
