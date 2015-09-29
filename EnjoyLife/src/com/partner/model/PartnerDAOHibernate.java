@@ -224,7 +224,7 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 		Transaction tx = null; 
 		try {
 			tx=session.beginTransaction();
-			Query query = session.createQuery("from PartnerVO where hidden=0 order by eventDate desc");
+			Query query = session.createQuery("from PartnerVO where hidden=0 and closed=0 order by eventDate desc");
 			result = query.list();
 			
 			tx.commit();

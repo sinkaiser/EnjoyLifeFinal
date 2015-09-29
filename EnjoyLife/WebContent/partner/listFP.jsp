@@ -192,20 +192,22 @@ body {
 								<li data-filter-class='["${mem.PartnerVO.eventType}"]'>
 									<table>
 										<tr>
-											<td><img style="float: left"
-												src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
-												height="30" width="30" onerror="this.style.display='none'">
-												<span><p>${mem.PartnerVO.memberName}</p></span> <a href="#"
-												data-toggle="modal" data-target="#myModal3"
-												onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${mem.PartnerVO.memberId}')"><img
-													style="float: right" src="img/plusone2.png" id="plusone"
-													title="我要參加" width="32" height="32" alt="+1"></a>
-
-
-												<p id="contentp">${mem.PartnerVO.eventContent}</p> <img
-												src="${pageContext.request.contextPath}/GetImg?imgid=${mem.PartnerVO.imgNo}"
-												height="180" width="220">
-
+											<td>
+												<div>
+													<img style="float: left"
+													src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
+													height="30" width="30" onerror="this.style.display='none'">
+													<p style="float: left">${mem.PartnerVO.memberName}</p> 
+													<a href="#" data-toggle="modal" data-target="#myModal3"
+													onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${mem.PartnerVO.memberId}')"><img
+														style="margin-left:130px" src="img/plusone2.png" id="plusone"
+														title="我要參加" width="32" height="32" alt="+1"></a>
+												</div>
+												<div style="margin: 5px auto">
+													<p id="contentp">${mem.PartnerVO.eventContent}</p> <img
+													src="${pageContext.request.contextPath}/GetImg?imgid=${mem.PartnerVO.imgNo}"
+													height="180" width="220">
+												</div>
 												<div class="post_meta" style="margin: 0">
 
 													<a
