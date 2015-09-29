@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/9/11 ?U?? 03:51:32 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.little.model/TargetBean" table="targetList">
+        <id name="targetNo">
+            <column name="TARGETNO" />
+            <generator class="identity" />
+        </id>
+       
+        <property name="targetRole" type="java.lang.String">
+            <column name="targetRole" />
+        </property>
+    </class>
+</hibernate-mapping>
