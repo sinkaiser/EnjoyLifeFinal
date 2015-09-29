@@ -187,7 +187,7 @@
 									<div class="form-group">
 										<div class="col-sm-offset-2 col-sm-10"
 											style="padding-left: 170px">
-<!-- 											<input type="button" id="buttonToggle" class="btn btn-primary" value="toggle">								 -->
+											<input type="button" id="demo" class="btn btn-default" value="DEMO">								
 											<input type="submit" id="submit" class="btn btn-success" value="送出"> 
 											<input type="reset" id="reset" class="btn btn-primary" value="清除">											
 										</div>
@@ -215,8 +215,15 @@
 		</div>
 <script>
     (function($){	  
-	    $('#buttonToggle').click(function(){	
-	    	$('#memberId').val("pppppp");
+	    $('#demo').click(function(){	
+	    	$('#memberId').val("demoId");
+	    	$('#password').val("11111");
+	    	$('#passwordCheck').val("11111");
+	    	$('#memberName').val("大家好");
+	    	$('#email').val("demo@gmail.com");
+	    	$('#sex').val("男");
+	    	$('#birthday').val("1988-05-05");
+	    	$('#address').val("台北市");
 	    });
 	   
     }(jQuery));
