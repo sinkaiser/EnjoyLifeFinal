@@ -204,6 +204,19 @@
 		
 		display:inline-block;
 	}
+	#sidebar-view{
+		padding-left:0px;
+	}
+	#sidebar-viewR{
+		padding-left:70px;
+		margin-top:50px;
+	}
+	#sideview > li > img{
+		border:solid 3px #BEBEBE;
+		margin-top:5px;
+		width:350px;
+		height:350px;
+	}
 	
 	
 /*********************************************************************************/

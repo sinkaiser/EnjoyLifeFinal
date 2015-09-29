@@ -21,9 +21,9 @@
 }
 </style>
 </head>
-<body class="homepage">
+<body class="homepage" >
 <%@include file="/includes/newheader" %>
-<div class="container">
+<div class="container" >
 	<div class="row">
 		<div class="col-md-8" >
 	       <select id="select1" class="select" >            

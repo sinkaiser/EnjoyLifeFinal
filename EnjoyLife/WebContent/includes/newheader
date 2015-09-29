@@ -6,7 +6,6 @@
 	<nav class="navbar-fixed-top">	
 	<div class="header1">	
 		<div id="header" >
-			<div class="container"> 
 				
 				<!-- Logo -->
 				<div id="logo">
@@ -15,7 +14,6 @@
 				
 				
 				
-			</div>
 		</div>
 		<div>
 			<!-- Nav -->
