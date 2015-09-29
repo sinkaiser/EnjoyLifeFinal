@@ -21,7 +21,7 @@
 			<result name="success" >/OutFile.jsp</result>
 		</action>
 		<action name="myAction3" class="com.AttracAction.updateAction">
-			<result name="success" >/Attracimg1.jsp</result>
+			<result name="success" type="redirect" >/Attracimg1.jsp</result>
 		</action>
 		
 	</package> 
