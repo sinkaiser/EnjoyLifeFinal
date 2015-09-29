@@ -41,11 +41,15 @@
                          <td>${mem.memberId}</td>
 
 							<c:if test="${mem.closed==1}">
-                         	<td><a href="comment/CommentHandle?handle=delete"+${mem.commentNo}><input type="button" name="delete" value="刪除"></a></td>
+                         	<td><a href="comment/CommentHandle?handle=delete"+${mem.commentNo}><input type="button" name="delete" value="刪除"></a>
+                         	<input type="button" value="寫信">
+                         	</td>
 							</c:if>
 							
                          	<c:if test="${mem.closed!=1}">
-                         	<td><a href="comment/CommentHandle?handle=update"+${mem.commentNo}><input type="button" name="update" value="處理"></a></td>
+                         	<td><a href="comment/CommentHandle?handle=update"+${mem.commentNo}><input type="button" name="update" value="處理"></a>
+               				 <input type="button" value="寫信">
+                         	</td>
                     		</c:if>
                     	
                     </tr>
