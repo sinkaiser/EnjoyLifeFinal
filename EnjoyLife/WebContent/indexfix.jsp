@@ -36,7 +36,7 @@
 		background-color:#FFF;
 		display: inline-block;
 	}
-	#submit, #reset{
+	#submit, #reset,#demo{
 		width:60px;
 	}
 	.row{
@@ -185,9 +185,9 @@
 										</div>
 									</div>							
 									<div class="form-group">
-										<div class="col-sm-offset-2 col-sm-10"
-											style="padding-left: 170px">
-											<input type="button" id="demo" class="btn btn-default" value="DEMO">								
+										<div class="col-sm-offset-1 col-sm-10"
+											style="padding-left: 140px">
+											<input type="button" id="demo" class="btn btn-defult" value="展示">																		
 											<input type="submit" id="submit" class="btn btn-success" value="送出"> 
 											<input type="reset" id="reset" class="btn btn-primary" value="清除">											
 										</div>
