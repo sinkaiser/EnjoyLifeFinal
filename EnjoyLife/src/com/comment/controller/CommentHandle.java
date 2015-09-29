@@ -55,6 +55,8 @@ public class CommentHandle extends HttpServlet {
 			Vo.setClosed(Integer.parseInt(commentNo));
 			CommentService service=new CommentService();
 			
+			
+			
 			service.updateComment(Vo);
 			
 			request.setAttribute("reslut", commentNo+"update 應該成功");
