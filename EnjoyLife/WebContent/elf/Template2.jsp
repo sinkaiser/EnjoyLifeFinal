@@ -16,6 +16,7 @@
 <div>
 <img id="xxx" src="img/dog2.gif" class="img-circle" height="100px" width="100px">
 <button id="say" type="button" class="btn btn-default"></button>
+<br>
 <input id="ooo" value="請輸入" type="hidden">
 <input id="sumit" value="送出資料" type="hidden">
 
@@ -24,10 +25,11 @@
 
         <script>
 			(function($){
-				var time="${meber.registerdate}" //time
-				var name="${meber.memberName}" //name
-				var member="${meber}" //true
-				var imgid="${meber.imgId}"
+				var time="${member.registerDate}" //time
+				var name="${member.memberName}" //name
+				var member="${member}" //true
+				var imgid="${member.picture}"
+				
 				
 				$.getJSON("${pageContext.request.contextPath}/GetLittleJson",{"id":1},function(data){
 					
