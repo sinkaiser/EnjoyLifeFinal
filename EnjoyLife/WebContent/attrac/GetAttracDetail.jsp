@@ -33,7 +33,7 @@ String attracno = request.getParameter("attracno");
 			} 
 			stmt.close();
  			rset.close();
- 			query="SELECT  *  FROM  attrac full join cate1 on attrac.cate1no=cate1.cate1no full join cate2 on attrac.cate2no=cate2.cate2no where AttracNo=?";
+ 			query="SELECT  *  FROM  attrac full join cate1 on attrac.cate1no=cate1.cate1no full join cate2 on attrac.cate2no=cate2.cate2no where AttracNo=? and show=1";
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, attracno);
 			rset = stmt.executeQuery();

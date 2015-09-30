@@ -61,9 +61,9 @@ tr:hover td {background: #d0dafd;color: #339;}
 	       </select><br>
 	       <select id="select4" class="select" >            
 	       </select>
-<!-- 			<button id="butt1" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" value="creat" style="width:135px"> -->
-<!-- 			新增景點 -->
-<!-- 			</button> -->
+			<button id="butt1" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" value="creat" style="width:135px">
+			新增景點
+			</button>
 	<img id="loadimg" src="Data/ajax-loader.gif" style="display:none;width: 140px" >
 </div>
 
@@ -142,7 +142,7 @@ tr:hover td {background: #d0dafd;color: #339;}
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div  class="modal-body" style="width:700px;">
-        <s:form action="myAction3" namespace="/myNamespace" method="post">
+        <s:form action="myAction3"  method="post">
 		<table id="creattable">	
 		<tr>
 		<td id="title">標題

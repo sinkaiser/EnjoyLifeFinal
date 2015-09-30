@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +20,8 @@
 <%-- 	<div><p id="success">${xxx}</p></div> --%>
 
 		<thead>
-			<tr>
+			<tr>				
+				<td>大頭照</td>
 				<td>會員帳號</td>
 				<td>會員名稱</td>
 				<td>會員信箱</td>
@@ -29,10 +31,13 @@
 		<tbody>
 		<c:forEach var="row" items="${all}">			
 				<tr name="${row.memberId}">
+				<td><img src="${pageContext.request.contextPath}/GetImg?imgid=${row.picture}" height="35" width="35"  onerror="this.style.display='none'"></td>			
 					<td>${row.memberId}</td>
 					<td>${row.memberName}</td>
 					<td>${row.email}</td>
-					<td>${row.registerDate}</td>
+					<fmt:formatDate value="${row.registerDate}" var="formattedDate" type="date" pattern="yyyy年M月d日 H:mm" />
+					<td>${formattedDate}</td>
+<%-- 					<td>${row.registerDate}</td> --%>
 					<td><select name="sel">
 					<c:if test="${row.permission=='0'}">
 						<option selected="selected" value="0">正常</option>

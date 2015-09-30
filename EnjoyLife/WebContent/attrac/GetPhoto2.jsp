@@ -35,7 +35,7 @@ int maxno=0;
 		Connection conn = DriverManager.getConnection(url2, "enjoylife", "P@ssw0rd");
  		if(attracno!=null){
 			query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort from photos )APS where sort=1)APS1 full join attrac "+
-					 "on APS1.AttracNo=attrac.AttracNo where attrac.AttracNo=?";
+					 "on APS1.AttracNo=attrac.AttracNo where attrac.AttracNo=? and show=1";
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, attracno);
 			rset = stmt.executeQuery();
@@ -66,7 +66,7 @@ int maxno=0;
 				System.out.println("00000");
 				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
 								"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort from photos )APS where sort=1)APS1 "+
-						"full join attrac on APS1.AttracNo=attrac.AttracNo "+"where cate1no=? order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+						"full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setInt(2, firstno);			
@@ -75,7 +75,7 @@ int maxno=0;
 				System.out.println("11111"+cate1no+countyno);			
 				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
 					"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and countyno=? order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and countyno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, countyno);
@@ -84,7 +84,7 @@ int maxno=0;
 				System.out.println("22222");
 				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
 						"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-						"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and cate2no =? order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+						"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and cate2no =? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, cate2no);
@@ -94,7 +94,7 @@ int maxno=0;
 				System.out.println("33333");
 				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
 					  "from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo "+"where cate1no=? and countyno=? and distno=? order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo "+"where cate1no=? and countyno=? and distno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, countyno);
@@ -104,7 +104,7 @@ int maxno=0;
 				System.out.println("44444");
 				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
 					"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo "+"where cate1no=? and cate2no = ? and countyno=? order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo "+"where cate1no=? and cate2no = ? and countyno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, cate2no);
@@ -114,7 +114,7 @@ int maxno=0;
 				System.out.println("55555");
 				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
 						"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-						"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and cate2no = ? and countyno=? and distno=? order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+						"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and cate2no = ? and countyno=? and distno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, cate2no);

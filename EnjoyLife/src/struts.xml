@@ -12,16 +12,16 @@
 	<constant name="struts.custom.i18n.resources" value="globalMessages" />
 	
 	
-	<package name="myPackage" namespace="/myNamespace" extends="struts-default">
+	<package name="myPackage"  extends="struts-default">
 
 		<action name="myAction" class="com.AttracAction.xmlAction">
-			<result name="success" >/OutFile.jsp</result>
+			<result name="success" >/attrac/OutFile.jsp</result>
 		</action>
 		<action name="myAction2" class="com.AttracAction.insertAction">
-			<result name="success" >/OutFile.jsp</result>
+			<result name="success" >/attrac/OutFile.jsp</result>
 		</action>
 		<action name="myAction3" class="com.AttracAction.updateAction">
-			<result name="success" type="redirect" >/Attracimg1.jsp</result>
+			<result name="success" type="redirect" >/attrac/Attracimg1.jsp</result>
 		</action>
 		
 	</package> 
