@@ -1,6 +1,7 @@
 package com.AttracAction;
 
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -32,15 +33,23 @@ public class ConvertToBase64 {
 				InputStream ins =urllink.openConnection().getInputStream();
 				System.out.println("Get connect finish");
 				BufferedImage bufferedImage = ImageIO.read(ins);
+				
+				double w=bufferedImage.getWidth();
+				double h=bufferedImage.getHeight();
+				int dw=500;          //指定壓縮大小 w爲500
+			    int dh=(int) (500/(w/h));
+			    BufferedImage tag= new BufferedImage(dw,dh,BufferedImage.TYPE_INT_RGB); 
+		        tag.getGraphics().drawImage(bufferedImage.getScaledInstance(dw, dh, Image.SCALE_SMOOTH), 0, 0,  null);
+				
 				baos = new ByteArrayOutputStream();
 				if(link.toLowerCase().indexOf("jpg")!=-1||link.toLowerCase().indexOf("jpeg")!=-1){
-					ImageIO.write(bufferedImage, "jpg", baos);
+					ImageIO.write(tag, "jpg", baos);
 					base64pic = "data:image/jpeg;base64,";					
 				}else if(link.toLowerCase().indexOf("png")!=-1){
-					ImageIO.write(bufferedImage, "png", baos);
+					ImageIO.write(tag, "png", baos);
 					base64pic = "data:image/png;base64,";					
 				}else if(link.toLowerCase().indexOf("gif")!=-1){
-					ImageIO.write(bufferedImage, "gif", baos);
+					ImageIO.write(tag, "gif", baos);
 					base64pic = "data:image/gif;base64,";
 				}
 	            baos.flush();

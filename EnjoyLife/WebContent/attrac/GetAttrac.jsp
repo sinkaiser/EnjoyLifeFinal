@@ -27,39 +27,39 @@ String cross=crossdistno+"";
 		//選擇全類型 全台灣
 		if((cate2no.equalsIgnoreCase("10")||cate2no.equalsIgnoreCase("200"))
 				&&countyno.equalsIgnoreCase("10")){
-			query="select * from attrac where cate1no=?";
+			query="select * from attrac where cate1no=? and show=1";
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, cate1no);
 		//選擇全類型 跨區
 		}else if((cate2no.equalsIgnoreCase("10")||cate2no.equalsIgnoreCase("200"))
 				&&distno.equalsIgnoreCase(cross)){
-			query="select * from attrac where cate1no=? and countyno=?";
+			query="select * from attrac where cate1no=? and countyno=? and show=1";
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, cate1no);
 			stmt.setString(2, countyno);
 		//選擇全台灣
 		}else if(countyno.equalsIgnoreCase("10")){
-			query="select * from attrac where cate1no=? and cate2no = ?";
+			query="select * from attrac where cate1no=? and cate2no = ? and show=1";
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, cate1no);
 			stmt.setString(2, cate2no);
 		//選擇全類型 區域
 		}else if((cate2no.equalsIgnoreCase("10")||cate2no.equalsIgnoreCase("200"))
 				&&!countyno.equalsIgnoreCase("10")){
-			query="select * from attrac where cate1no=? and countyno=? and distno=?";
+			query="select * from attrac where cate1no=? and countyno=? and distno=? and show=1";
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, cate1no);
 			stmt.setString(2, countyno);
 			stmt.setString(3, distno);
 		//選擇	
 		}else if(distno.equalsIgnoreCase(cross)){
-			query="select * from attrac where cate1no=? and cate2no = ? and countyno=?";
+			query="select * from attrac where cate1no=? and cate2no = ? and countyno=? and show=1";
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, cate1no);
 			stmt.setString(2, cate2no);
 			stmt.setString(3, countyno);
 		}else{
-			query="select * from attrac where cate1no=? and cate2no = ? and countyno=? and distno=?";
+			query="select * from attrac where cate1no=? and cate2no = ? and countyno=? and distno=? and show=1";
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, cate1no);
 			stmt.setString(2, cate2no);
