@@ -41,6 +41,7 @@
 			<div class="col-sm-3 col-md-2 sidebar">
 				
 				<ul class="nav nav-sidebar">
+
 					<li><a target="frame" href="${pageContext.request.contextPath}/Manager">會員管理</a></li>
 					<li><a href="">景點管理</a></li>
 					<li><a href="">糾團管理</a></li>
