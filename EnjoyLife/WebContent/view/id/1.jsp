@@ -19,9 +19,9 @@
   			Select * from activity  
   			where activityNo = 1
   </sql:query>
-<body class="homepageview">
+<body class="homepage">
 		<!-- Header -->
-<%@include file="/includes/nav" %>	
+<%@include file="/includes/newheader" %>	
 		<!-- Main -->
 		<div id="main">
 			<div class="container">

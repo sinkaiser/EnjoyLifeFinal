@@ -2,9 +2,11 @@ package com.blog.controller;
 
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -23,6 +25,8 @@ import com.blog.model.ElSettingDAO;
 import com.blog.model.Hibernate.BlogDAOHibernate;
 import com.blog.model.Hibernate.ElSettingDAOHibernate;
 import com.member.model.MemberVO;
+import com.sun.image.codec.jpeg.JPEGCodec;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import com.util.HibernateUtil;
 
 @WebServlet("/BlogPostServlet")
@@ -167,15 +171,37 @@ public class BlogPostServlet extends HttpServlet {
 		imageResult.setRGB(0, height*2, width, height, imgArray3, 0, width);// 设置3部分的RGB
 		imageResult.setRGB(0, height*3, width, height, imgArray4, 0, width);// 设置4部分的RGB
 		
+		
+
+		double w=imageResult.getWidth();
+		double h=imageResult.getHeight();
+
+		int dw=500; // 指定壓縮大小 w爲500
+		int dh=(int) (500/(w/h));
+
+		BufferedImage tag= new BufferedImage(dw,dh,BufferedImage.TYPE_INT_RGB);  
+		tag.getGraphics().drawImage(imageResult.getScaledInstance(dw, dh, Image.SCALE_SMOOTH), 0, 0,  null);
+
+		FileOutputStream out = null;
 		String blogPath = "D:\\"+memAccount+ "\\"+ postNo +".png";
-		File outFile = new File(blogPath);
+		String blogDir = "D:\\"+memAccount;
+		File outFile = new File(blogDir);
 		if(!outFile.exists()){
 			outFile.mkdirs();
 		}
 		try {
-			ImageIO.write(imageResult, "png", outFile);// 写图片
+//			ImageIO.write(imageResult, "png", outFile);// 写图片
+			out=new FileOutputStream(blogPath); 
+			JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out); 
+			encoder.encode(tag);		
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally{
+			try {
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}		
 		return blogPath;
 	}
@@ -220,4 +246,5 @@ public class BlogPostServlet extends HttpServlet {
 		}		
 		return imageArray;
 	}
+
 }

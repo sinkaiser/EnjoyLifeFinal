@@ -88,7 +88,7 @@ body {
 		<li><a
 			href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
 		<li><a
-			href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li>
+			href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet">找伴</a></li>
 		<li><a
 			href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
 
@@ -107,7 +107,7 @@ body {
 			id="bs-example-navbar-collapse-1">
 
 			<div class="navbar-form navbar-left" role="search"
-				style="width: 1280px; text-align: center;">
+				style="width: 1150px; text-align: center;">
 				<!-- Split button -->
 				<div class="btn-group">
 					<button type="button" class="btn btn-primary">我的徵求</button>
