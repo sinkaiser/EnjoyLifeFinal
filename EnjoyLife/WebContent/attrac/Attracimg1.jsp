@@ -64,7 +64,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 <!-- 			<button id="butt1" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" value="creat" style="width:135px"> -->
 <!-- 			新增景點 -->
 <!-- 			</button> -->
-	<img id="loadimg" src="Data/ajax-loader.gif" style="display:none;" >
+	<img id="loadimg" src="Data/ajax-loader.gif" style="display:none;width: 140px" >
 </div>
 
 	<div id="listdiv">
@@ -363,6 +363,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 	 			"distno":$("#select4").val()},
 	 		success:function(data){
 	 			if(data.length==0){
+	 				loadimg.style.display="none";
 	 				return;
 	 			}
 // 	 			$("#listloader").remove();
@@ -393,6 +394,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 	}
 
 	$("#ul1 li").on('click','div',function(){
+		loadimg.style.display="inline";
 		$.ajax({
 	 		url:"GetAttracDetail.jsp",
 	 		type:"get",
@@ -401,6 +403,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 	 		success:function(data){
 	 					var result=document.getElementById("result")
 	 					$("#result").empty();
+	 					loadimg.style.display="none";
 	 			$.each(data,function(){
 	 					$("#stitle").text(this.stitle);
 	 					var attracno=this.attracNo;
