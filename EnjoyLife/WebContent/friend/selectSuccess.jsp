@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="../css/table.css" />
 <title>好友名單</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -30,7 +31,8 @@
 					<td width="50">
 					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35"  onerror="this.style.display='none'">
 					</td>
-					<td style="color:#500000">${row.FriendVO.friendId}</td>
+					<td><a name="${row.FriendVO.friendId}" data-toggle="modal" data-target=".bs-example-modal-sm">${row.FriendVO.friendId}</a>
+					${row.FriendVO.friendId}</td>
 					<td><a href="${pageContext.request.contextPath}/friend/deleteFriend.do?id=${row.FriendVO.friendId}"/> <input type="button" class="btn btn-primary btn-xs" value="刪除好友"></a></td>
 				</tr>
 			</c:if>	
@@ -63,6 +65,28 @@
 		</c:forEach>							
 	</tbody>	
 </table>
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div id='no' ></div>
+    </div>
+  </div>
+</div>
+<script>
+$('a[data-toggle="modal"]').click(function(){
+	var aa=$(this).attr("name");	
+	$('div[id="no"]').empty();	
+// 	console.log(aa);
+	$.getJSON("${pageContext.request.contextPath}/GetParnerJson",{"no":aa},function(data){
+ 		console.log(data[0]);
+		var EventType=data[0].EventType;
+		var EventContent=data[0].EventContent;
+		var Addr=data[0].Addr;		
+			$('div[id="no"]').append("<table class='table table-bordered'><tr><td><h3>類型:"+EventType+"</h3></td></tr>"+"<tr><td><h3>內容:"+EventContent+"</h3></td></tr>"+"<tr><td><h3>地址:"+Addr+"</h3></td></tr>"+"</table>");				
+	});
+	
+})
+</script>
 <a href="${pageContext.request.contextPath}/friend/friend.jsp">好友首頁</a>
 </body>
 </html>
