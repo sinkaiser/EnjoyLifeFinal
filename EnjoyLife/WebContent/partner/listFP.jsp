@@ -84,9 +84,9 @@ body {
 	<ul>
 		<li><a href="${pageContext.request.contextPath}/indexMember.jsp">會員</a></li>
 		<li><a
-			href="${pageContext.request.contextPath}/attrac/Attracdesign.jsp">規劃</a></li>
+			href="${pageContext.request.contextPath}/attrac/Attracimg1.jsp">景點</a></li>
 		<li><a
-			href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
+			href="${pageContext.request.contextPath}/BlogListServlet?Index=0&&pType=ALL">日誌</a></li>
 		<li><a
 			href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet">找伴</a></li>
 		<li><a
@@ -533,7 +533,8 @@ body {
 			</div>
 		</div>
 	</div>
-
+	
+	
 
 
 
