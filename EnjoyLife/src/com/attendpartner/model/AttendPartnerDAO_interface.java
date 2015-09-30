@@ -7,4 +7,5 @@ public interface AttendPartnerDAO_interface {
 	public AttendPartnerVO update(AttendPartnerVO attendPartnerVO);
 	public AttendPartnerVO attend(AttendPartnerVO attendPartnerVO);
 	public List<AttendPartnerVO> selectByEventNoPartnrt(Integer eventNo,String partner);
+	public List<AttendPartnerVO> selectByEventNo(Integer eventNo);
 }

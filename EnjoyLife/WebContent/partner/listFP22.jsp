@@ -208,9 +208,6 @@ body {
 													src="${pageContext.request.contextPath}/GetImg?imgid=${mem.PartnerVO.imgNo}"
 													width="220">
 												</div>
-												<div>
-													夥伴：${member.memberName}
-												</div>
 												<div class="post_meta" style="margin: 0">
 
 													<a

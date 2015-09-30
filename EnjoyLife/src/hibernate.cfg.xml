@@ -27,6 +27,7 @@
 		<mapping resource="com/blog/model/BlogSortVO.hbm.xml" />
 		<mapping resource="com/blog/model/BlogTagsVO.hbm.xml" />
 		<mapping resource="com/blog/model/ElSettingVO.hbm.xml" />
+		<mapping resource="com/attendpartner/model/attendpartner.hbm.xml" />
 		<mapping resource="com/partner/model/partner.hbm.xml" />
 		<mapping resource="com/comment/model/comment.hbm.xml" />
 <!-- 		<mapping resource="com/activity/model/activityBean.hbm.xml" /> -->
