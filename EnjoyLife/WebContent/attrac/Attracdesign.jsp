@@ -11,10 +11,10 @@
 <script src="scripts/jquery-ui.js"></script>
 <script src="scripts/bootstrap.min.js"></script>
 <link rel="stylesheet" href="scripts/bootstrap.min.css">
-<link rel="stylesheet" href="css/attracdesign.css">
 <link rel='stylesheet' href='../css/skel-noscript.css' type="text/css" />
 <link rel='stylesheet' href='../css/style.css' type="text/css" />
 <link rel='stylesheet' href='../css/style-desktop.css' type="text/css" />
+<link rel="stylesheet" href="css/attracdesign.css">
 <style>
 .homepage{
 	padding-top:110px;
@@ -34,7 +34,7 @@
 </nav>
 <div class="container" >
 	<div class="row">
-		<div class="col-md-8" >
+		<div class="col-md-8" style="padding: 0px">
 	       <select id="select1" class="select" >            
 	       </select>
 	       <select id="select2" class="select" >            
@@ -51,12 +51,11 @@
 		       </div>
 		    </div>   
        </div>
-       <div class="col-md-4" style="position:relative;height:880px;">
+       <div class="col-md-4" style="position:relative;height:910px;padding: 0px">
        			<h1 id="alllist">清單列表</h1>
-       			<div id="listdiv">
-			       <ul id="menu" class="attraclist">	       			
-				   </ul>      
-       			</div>
+       			<img  id="listloader"src="Data/ajax-loader2.gif" style="margin-left:20px;width: 350px;height:15px;visibility:hidden;">
+			    <ul id="menu" class="attraclist">	       			
+				</ul>      
 		       <div id="attracinfo">
 		       </div>
 		       <input id="canvans" type="button" value="輸出行程圖檔"  >

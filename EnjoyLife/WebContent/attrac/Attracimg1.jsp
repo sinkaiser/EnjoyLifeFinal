@@ -395,6 +395,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 
 	$("#ul1 li").on('click','div',function(){
 		loadimg.style.display="inline";
+		alert($(this).attr("src"))
 		$.ajax({
 	 		url:"GetAttracDetail.jsp",
 	 		type:"get",
