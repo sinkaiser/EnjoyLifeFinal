@@ -26,7 +26,7 @@ public class MemberDAO implements MemberDAO_interface{
 			e.printStackTrace();
 		}
 	}	
-	private static final String SELECT_BY_ID = "Select memberId, password, memberName, email, sex, birthday, registerdate, address, picture  from Member where memberId = ?";
+	private static final String SELECT_BY_ID = "Select memberId, password, memberName, email, sex, birthday, registerdate, address, picture, permission  from Member where memberId = ?";
 	private static final String SELECT_ALL = "Select memberId, memberName, email, sex, birthday, registerdate, address, picture,permission  from Member";
 	private static final String INSERT = "Insert into Member (memberId, password, memberName, email, sex, birthday, registerdate, address, picture, permission) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String DELETE = "Delete from Member where memberId=?";
@@ -52,6 +52,7 @@ public class MemberDAO implements MemberDAO_interface{
 				result.setRegisterDate(rset.getTimestamp("registerdate"));
 				result.setAddress(rset.getString("address"));
 				result.setPicture(rset.getInt("picture"));
+				result.setPermission(rset.getInt("permission"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
