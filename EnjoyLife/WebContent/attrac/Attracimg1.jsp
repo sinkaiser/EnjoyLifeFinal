@@ -64,6 +64,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 <!-- 			<button id="butt1" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" value="creat" style="width:135px"> -->
 <!-- 			新增景點 -->
 <!-- 			</button> -->
+	<img id="loadimg" src="Data/ajax-loader.gif" style="display:none;" >
 </div>
 
 	<div id="listdiv">
@@ -74,7 +75,6 @@ tr:hover td {background: #d0dafd;color: #339;}
 		<li id="li1"></li>		
 	</ul>
 	</div>
-	
 <div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -199,9 +199,11 @@ tr:hover td {background: #d0dafd;color: #339;}
 (function($){
 	var oul=document.getElementById("ul1");
 	var oli=oul.getElementsByTagName("li");
+	var loadimg =document.getElementById("loadimg")
 	var lilen=oli.length;
 	var offset=0;
 	var door=true;
+// 	loadimg.style.display="inline";
 	$.ajax({
 		url:"GetCate1.jsp",
 		type:"get",
@@ -349,6 +351,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 	function getlist(){	
 // 		var img=$("<img></img>").attr("src","Data/ajax-loader2.gif").attr("height","15").attr("width","350").attr("id","listloader");
 // 		$("#listdiv").prepend(img);
+		loadimg.style.display="inline";
 		$.ajax({
 	 		url:"GetPhoto2.jsp",
 	 		type:"get",
@@ -363,6 +366,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 	 				return;
 	 			}
 // 	 			$("#listloader").remove();
+				loadimg.style.display="none";
 	 			$.each(data,function(){
 	 					var index=getShort();
 	 					var photoname=this.photoname;
