@@ -50,6 +50,7 @@ public class GetReplyServlet extends HttpServlet {
 				map.put("memPic", String.valueOf(picNo));
 				map.put("replyContext", bean.getReplyContext());
 				map.put("replyDate", bean.getReplyDate()+"");
+				map.put("flagDelete", bean.getFlagDelete()+"");
 				result.add(map);
 			}
 			session.getTransaction().commit();

@@ -24,4 +24,24 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/attrac/*</url-pattern>
   </filter-mapping>
+  
+    <login-config>
+  	<auth-method>FORM</auth-method>
+  	<form-login-config>
+  		<form-login-page>/WEB-INF/login/login.jsp</form-login-page>
+  		<form-error-page>/WEB-INF/login/error.jsp</form-error-page>
+  	</form-login-config>
+  </login-config>
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>xxx</web-resource-name>
+  		<url-pattern>/admin/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>admin</role-name>
+  	</auth-constraint>
+  	<user-data-constraint>
+  		<transport-guarantee>NONE</transport-guarantee>
+  	</user-data-constraint>
+  </security-constraint>
 </web-app>

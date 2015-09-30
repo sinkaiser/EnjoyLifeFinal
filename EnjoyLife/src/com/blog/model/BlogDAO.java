@@ -19,5 +19,6 @@ public interface BlogDAO {
 	public abstract boolean updateViewAmount(String postNo);
 	
 	public abstract boolean updateAvgScore(int score, String postNo);
+	public List<BlogVO> selectAll();
 	
 }

@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2015/9/11 ?W?? 09:11:19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.little.model/LittleBean" table="little1">
+    <class name="com.little.model.LittleBean" table="little1">
         <id name="elfNo" column ="elfNo" >
             <generator class="identity" />
         </id>

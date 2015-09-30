@@ -154,6 +154,20 @@ public class BlogDAOHibernate implements BlogDAO {
 		return result;
 	}
 	
+	@Override
+	public List<BlogVO> selectAll() {
+		List<BlogVO> result=null;
+		String sql="from BlogVO";
+		try {
+			Query query = session.createQuery(sql);
+			result=query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 //	public String pathToBase64(String path){
 //		String sBase64 =null;
 //		try {
