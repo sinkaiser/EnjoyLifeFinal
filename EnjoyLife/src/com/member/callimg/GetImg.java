@@ -52,7 +52,7 @@ public class GetImg extends HttpServlet {
 			fi=new FileInputStream(path+url);
 			os=response.getOutputStream();
 			int size=0;
-			byte[] data=new byte[1024];
+			byte[] data=new byte[1024*8];
 			while((size=fi.read(data))!=-1){
 				os.write(data);
 			}
