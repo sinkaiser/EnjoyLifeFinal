@@ -79,8 +79,8 @@ public class LoginServlet extends HttpServlet {
 			}else{
 			String path = request.getContextPath();
 			System.out.println(60);
-//			response.sendRedirect(path+"/index.jsp");
-			response.sendRedirect(path+"/BlogListServlet?Index=0&&pType=ALL");
+			response.sendRedirect(path+"/index.jsp");
+//			response.sendRedirect(path+"/BlogListServlet?Index=0&&pType=ALL");
 			}
 		}
 	}
