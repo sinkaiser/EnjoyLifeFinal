@@ -131,7 +131,7 @@
 					var angle=0;
 					function bb(){
 						
-						if(flag!=null){
+						if(flag){
 							
 							angle=angle+10
 							$("#xxx").rotate(angle);
@@ -148,7 +148,7 @@
 						}
 					}
 					
-					var timeoutId=setInterval(aa, 2000);
+					var timeoutId=setInterval(aa, 5000);
 					var timeoutId=setInterval(bb, 250);
 					
 				})

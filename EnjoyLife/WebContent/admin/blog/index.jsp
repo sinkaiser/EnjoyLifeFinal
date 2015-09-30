@@ -9,16 +9,21 @@
     <title>Visual Admin Dashboard - Home</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
-    <!-- 
-    Visual Admin Template
-    http://www.templatemo.com/preview/templatemo_455_visual_admin
-    -->
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+
+
     <link href="${pageContext.request.contextPath}/admin/blog/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/admin/blog/css/bootstrap.min.css" rel="stylesheet">
+<%--     <link href="${pageContext.request.contextPath}/admin/blog/css/bootstrap.min.css" rel="stylesheet"> --%>
     <link href="${pageContext.request.contextPath}/admin/blog/css/templatemo-style.css" rel="stylesheet">
     
   </head>
   <body>  
+  <script src="js/jquery-2.1.4.min.js"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  
     <!-- Left column -->
     <div class="templatemo-flex-row">
 
@@ -103,22 +108,18 @@
             <div id="blogReply" class="col-1">      
                     
             
-              <div class="templatemo-content-widget white-bg">
-                <i class="fa fa-times"></i>                
+               <div class="templatemo-content-widget white-bg">
+                <i class="fa fa-times"></i>
                 <div class="media">
                   <div class="media-left">
-                      <img class="media-object img-circle" src="imgNo" alt="Sunset">
+                      <img class="media-object img-circle" src="images/sunset.jpg" alt="Sunset">
                   </div>
                   <div class="media-body">
-                    <h2 class="media-heading text-uppercase" style="float:left">replyMemberId</h2>
-                    <p style="float:right">replyDate</p>
-                    <br><br>
-                    <p>replyContext</p>  
-                    <button name="delete" type="button" class="btn btn-danger">刪除</button>
-                    <button name="send" type="button" class="btn btn-info">寄信</button>
-                  </div>        
+                    <h2 class="media-heading text-uppercase">Consectur Fusce Enim</h2>
+                    <p>Phasellus dapibus nulla quis risus auctor, non placerat augue consectetur.</p>  
+                  </div>
                 </div>                
-              </div>   		
+              </div>    		
               
               
                         
@@ -142,31 +143,45 @@
             | Designed by <a href="http://www.templatemo.com" target="_parent">templatemo</a></p>
           </footer>  
           
+         
+<!-- log -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">寄信</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">對象:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">訊息:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- log -->
+
+
         
-<!--         Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> -->
-<!--   Launch demo modal -->
-<!-- </button> -->
-
-
-<!-- 			<!-- 彈出 --> -->
-<!-- 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> -->
-<!-- 			  <div class="modal-dialog"> -->
-<!-- 			    <div class="modal-content"> -->
-<!-- 			      <div class="modal-header"> -->
-<!-- 			        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
-<!-- 			        <h4 class="modal-title" id="myModalLabel">Modal title</h4> -->
-<!-- 			      </div> -->
-<!-- 			      <div class="modal-body"> -->
-<!-- 			        ... -->
-<!-- 			      </div> -->
-<!-- 			      <div class="modal-footer"> -->
-<!-- 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-<!-- 			        <button type="button" class="btn btn-primary">Save changes</button> -->
-<!-- 			      </div> -->
-<!-- 			    </div> -->
-<!-- 			  </div> -->
-<!-- 			</div> -->
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -176,10 +191,6 @@
     </div>
     </div>
   
-    <!-- JS -->
-    <script src="js/jquery-2.1.4.min.js"></script>      <!-- jQuery -->
-    <script src="js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
-    <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
     <script>
 		(function($){
 			var memberId;
@@ -201,7 +212,20 @@
 			$.getJSON("${pageContext.request.contextPath}/AdminGetBlogAllJson",{},function(data){
 				$.each(data,function(){
 					postNo=this.postNo //已取
+					
 					postType=this.postType
+					if(postType=="TL"){
+						postType="旅遊";
+					}else if(postType=="DF"){
+						postType="美食";
+					}else if(postType=="ML"){
+						postType="心情";
+					}else if(postType=="FT"){
+						postType="搞笑";
+					}else if(postType=="OT"){
+						postType="其他";
+					}
+					
 					postTitle=this.postTitle
 					postDate=this.postDate.substr(0,16);
 					modifyDate=this.modifyDate.substr(0,16);
@@ -221,7 +245,7 @@
 					
 					AttractionsNo=this.AttractionsNo
 					
-					$('#bd').append("<tr name='oneBlog'><td name='postNo'>"+postNo+"</td><td>"+postType+"</td><td>"+postTitle+"</td><td>"+postDate+"</td><td name='hidden'>"+modifyDate+"<input name='AttractionsNo' type='hidden' value="+AttractionsNo+"><input name='flagReport' type='hidden' value="+flagReport+"><input name='flagDelete' type='hidden' value="+flagDelete+"><input name='viewTotal' type='hidden' value="+viewTotal+"><input name='qtyToScore' type='hidden' value="+qtyToScore+"><input name='avgScore' type='hidden' value="+avgScore+"><input name='memberId' type='hidden' value="+memberId+"><input name='pathPhoto' type='hidden' value="+pathPhoto+"><input name='postContext' type='hidden' value="+postContext+"></td></tr>")
+					$('#bd').append("<tr name='oneBlog'><td name='postNo'>"+postNo+"</td><td>"+postType+"</td><td name='postTitle'>"+postTitle+"</td><td>"+postDate+"</td><td name='hidden'>"+modifyDate+"<input name='AttractionsNo' type='hidden' value="+AttractionsNo+"><input name='flagReport' type='hidden' value="+flagReport+"><input name='flagDelete' type='hidden' value="+flagDelete+"><input name='viewTotal' type='hidden' value="+viewTotal+"><input name='qtyToScore' type='hidden' value="+qtyToScore+"><input name='avgScore' type='hidden' value="+avgScore+"><input name='memberId' type='hidden' value="+memberId+"><input name='pathPhoto' type='hidden' value="+pathPhoto+"><input name='postContext' type='hidden' value="+postContext+"></td></tr>")
 // 					$('td[name=hidden]').append("<input name='postContent' type='hidden' value="+postContent+">");
 // 					$('td[name=hidden]').append("<input name='pathPhoto' type='hidden' value="+pathPhoto+">");
 // 					$('td[name=hidden]').append("<input name='memberId' type='hidden' value="+memberId+">");
@@ -236,7 +260,7 @@
 					pathPhoto=$(this).find("input[name='pathPhoto']").val();
 					memberId=$(this).find("input[name='memberId']").val();
 					postContext=$(this).find("input[name='postContext']").val();
-					alert(postContext);
+					
 					
 					$("#img").attr("src","${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=a&&pathImg="+pathPhoto);
 					$("#memberId").text(memberId);
@@ -296,18 +320,24 @@
 
 							
 							if(flagDelete==0){
-							$('#blogReply').append('<div class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="return" type="button" class="btn btn-success">恢復</button><button name="send" type="button" class="btn btn-info">寄信</button></div></div></div>');
+							$('#blogReply').append('<div name="oneReply" class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="return" type="button" class="btn btn-success">恢復</button><button name="send" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@twbootstrap">寫信</button></div></div></div>');
 							}else{
-							$('#blogReply').append('<div class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="delete" type="button" class="btn btn-danger">刪除</button><button name="send" type="button" class="btn btn-info">寄信</button></div></div></div>'   );
+							$('#blogReply').append('<div name="oneReply" class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" name="replyMemberId" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="delete" type="button" class="btn btn-danger">刪除</button><button name="send" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@twbootstrap">寫信</button></div></div></div>');
 							}
 							
 						})
 						
 						$('#blogReply').on("click","button[name='delete']",function(){
-								
+							
+							
 						})
 						$('#blogReply').on("click","button[name='send']",function(){
-								
+							
+							var xxx=$(this).parents("div[name='oneReply']").find("h2[name='replyMemberId']").text();
+							
+							$("#recipient-name").val(xxx);
+							$("#message-text").val("你因違反網站XX規定刪除你在文章");
+							
 						})
 					
 					
