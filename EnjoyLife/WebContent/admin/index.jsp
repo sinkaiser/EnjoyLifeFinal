@@ -55,7 +55,7 @@
 					<li><a href="#">匯出</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="">會員管理</a></li>
+					<li><a target="frame" href="${pageContext.request.contextPath}/Manager">會員管理</a></li>
 					<li><a href="">景點管理</a></li>
 					<li><a href="">糾團管理</a></li>
 					<li><a href="blog/index.jsp" target="frame">文章管理</a></li>

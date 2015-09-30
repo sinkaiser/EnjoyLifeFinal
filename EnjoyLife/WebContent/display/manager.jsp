@@ -29,17 +29,17 @@
 		<tbody>
 		<c:forEach var="row" items="${all}">			
 				<tr name="${row.memberId}">
-					<td><input type="text" value="${row.memberId}"></td>
-					<td><input type="text" value="${row.memberName}"></td>
-					<td><input type="text" value="${row.email}"></td>
-					<td><input type="text" value="${row.registerDate}"></td>
+					<td>${row.memberId}</td>
+					<td>${row.memberName}</td>
+					<td>${row.email}</td>
+					<td>${row.registerDate}</td>
 					<td><select name="sel">
 					<c:if test="${row.permission=='0'}">
-						<option selected="selected" value="0">白名單</option>
+						<option selected="selected" value="0">正常</option>
 						<option value="3">黑名單</option>
 					</c:if>
 					<c:if test="${row.permission=='3'}">
-						<option value="0">白名單</option>
+						<option value="0">正常</option>
 						<option selected="selected" value="3">黑名單</option>
 					</c:if>
 					
@@ -61,6 +61,5 @@
 	}(jQuery));
 	
 </script>
-<a href="${pageContext.request.contextPath}/index.jsp">首頁</a>
 </body>
 </html>
