@@ -59,7 +59,7 @@ public class AdminGetBlogAllJson extends HttpServlet {
 				map.put("modifyDate", vo.getModifyDate().toString());
 				map.put("pathPhoto", vo.getPathPhoto());
 				map.put("postContext", vo.getPostContext());
-				map.put("postNo", vo.getPostDate().toString());
+				map.put("postDate", vo.getPostDate().toString());
 				map.put("postNo", String.valueOf(vo.getPostNo()));
 				map.put("postTitle", vo.getPostTitle());
 				map.put("postType", vo.getPostType());

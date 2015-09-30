@@ -166,7 +166,7 @@
 			var flagDelete;
 			var flagReport;
 			var pathPhoto;
-			var postContent;
+			var postContext;
 			var AttractionsNo;
 			
 			
@@ -175,10 +175,10 @@
 					postNo=this.postNo //已取
 					postType=this.postType
 					postTitle=this.postTitle
-					postDate=this.postDate
-					modifyDate=this.modifyDate
+					postDate=this.postDate.substr(0,16);
+					modifyDate=this.modifyDate.substr(0,16);
 					
-					postContent=this.postContent//hiddn
+					postContext=this.postContext//hiddn
 					pathPhoto=this.pathPhoto
 					memberId=this.memberId
 					
@@ -188,11 +188,12 @@
 					
 					flagDelete=this.flagDelete
 					flagReport=this.flagReport
+					console.log(postDate);
 					
 					
 					AttractionsNo=this.AttractionsNo
 					
-					$('#bd').append("<tr name='oneBlog'><td name='postNo'>"+postNo+"</td><td>"+postType+"</td><td>"+postDate+"</td><td>"+postTitle+"</td><td name='hidden'>"+modifyDate+"<input name='AttractionsNo' type='hidden' value="+AttractionsNo+"><input name='flagReport' type='hidden' value="+flagReport+"><input name='flagDelete' type='hidden' value="+flagDelete+"><input name='viewTotal' type='hidden' value="+viewTotal+"><input name='qtyToScore' type='hidden' value="+qtyToScore+"><input name='avgScore' type='hidden' value="+avgScore+"><input name='memberId' type='hidden' value="+memberId+"><input name='pathPhoto' type='hidden' value="+pathPhoto+"><input name='postContent' type='hidden' value="+postContent+"></td></tr>")
+					$('#bd').append("<tr name='oneBlog'><td name='postNo'>"+postNo+"</td><td>"+postType+"</td><td>"+postTitle+"</td><td>"+postDate+"</td><td name='hidden'>"+modifyDate+"<input name='AttractionsNo' type='hidden' value="+AttractionsNo+"><input name='flagReport' type='hidden' value="+flagReport+"><input name='flagDelete' type='hidden' value="+flagDelete+"><input name='viewTotal' type='hidden' value="+viewTotal+"><input name='qtyToScore' type='hidden' value="+qtyToScore+"><input name='avgScore' type='hidden' value="+avgScore+"><input name='memberId' type='hidden' value="+memberId+"><input name='pathPhoto' type='hidden' value="+pathPhoto+"><input name='postContext' type='hidden' value="+postContext+"></td></tr>")
 // 					$('td[name=hidden]').append("<input name='postContent' type='hidden' value="+postContent+">");
 // 					$('td[name=hidden]').append("<input name='pathPhoto' type='hidden' value="+pathPhoto+">");
 // 					$('td[name=hidden]').append("<input name='memberId' type='hidden' value="+memberId+">");
@@ -206,10 +207,12 @@
 				$('#bd').on('click','tr[name="oneBlog"]',function(){
 					pathPhoto=$(this).find("input[name='pathPhoto']").val();
 					memberId=$(this).find("input[name='memberId']").val();
-					postContent=$(this).find("input[name='postContent']").val();
-					$("#img").attr("src","${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=T&&pathImg="+pathPhoto);
+					postContext=$(this).find("input[name='postContext']").val();
+					alert(postContext);
+					
+					$("#img").attr("src","${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=a&&pathImg="+pathPhoto);
 					$("#memberId").text(memberId);
-					$("#postContent").text(postContent);
+					$("#postContent").text(postContext);
 					
 					avgScore=$(this).find("input[name='avgScore']").val();
 					qtyToScore=$(this).find("input[name='qtyToScore']").val();
@@ -265,9 +268,9 @@
 
 							
 							if(flagDelete==0){
-							$('#blogReply').append('<div class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img class="media-object img-circle" src="EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="return" type="button" class="btn btn-success">恢復</button><button name="send" type="button" class="btn btn-info">寄信</button></div></div></div>');
+							$('#blogReply').append('<div class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="return" type="button" class="btn btn-success">恢復</button><button name="send" type="button" class="btn btn-info">寄信</button></div></div></div>');
 							}else{
-							$('#blogReply').append('<div class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img class="media-object img-circle" src="EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="delete" type="button" class="btn btn-danger">刪除</button><button name="send" type="button" class="btn btn-info">寄信</button></div></div></div>'   );
+							$('#blogReply').append('<div class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="delete" type="button" class="btn btn-danger">刪除</button><button name="send" type="button" class="btn btn-info">寄信</button></div></div></div>'   );
 							}
 							
 						})

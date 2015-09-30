@@ -32,41 +32,23 @@
 				<a class="navbar-brand" href="">享樂生活管理</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">圖表</a></li>
-					<li><a href="#">設定</a></li>
-					<li><a href="#">外型</a></li>
-					<li><a href="#">幫助</a></li>
-				</ul>
-				<form class="navbar-form navbar-right">
-					<input class="form-control" placeholder="收尋..">
-				</form>
+				
 			</div>
 		</div>
 	</nav>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
+				
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">瀏覽 <span
-							class="sr-only">(current)</span></a></li>
-					<li><a href="host.jsp"  target="aa">回報</a></li>
-					<li><a href="#">分析</a></li>
-					<li><a href="#">匯出</a></li>
-				</ul>
-				<ul class="nav nav-sidebar">
-					<li><a href="">會員管理</a></li>
+					<li><a target="frame" href="${pageContext.request.contextPath}/Manager">會員管理</a></li>
 					<li><a href="">景點管理</a></li>
 					<li><a href="">糾團管理</a></li>
 					<li><a href="blog/index.jsp" target="frame">文章管理</a></li>
 					<li><a href="">活動管理</a></li>
 					<li><a href="efl/little.jsp" target="frame">小精靈設定</a></li>
 				</ul>
-				<ul class="nav nav-sidebar">
-					<li><a href="">吃飯</a></li>
-					<li><a href="">睡覺</a></li>
-					<li><a href="">打咚咚</a></li>
-				</ul>
+				
 			</div>
 		
 			

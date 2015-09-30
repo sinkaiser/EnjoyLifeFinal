@@ -66,6 +66,13 @@
 	
 </style>		
 </head>
+  <c:if test="${!empty black }">
+	<c:remove var="black" scope="session" />
+	<script type="text/javascript">
+		alert("已經成為黑名單");
+	</script>
+	
+	</c:if>
 <sql:setDataSource dataSource="jdbc/ELDB" var="blog" scope="application"/>
   <sql:query var="rs" dataSource="${blog}">
   			Select top 1 [photoPath] from activity 

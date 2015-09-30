@@ -58,6 +58,15 @@ public class LoginServlet extends HttpServlet {
 //					"/secure/login.jsp").forward(request, response);
 			response.sendRedirect(request.getContextPath()+"/indexfix.jsp");
 		} else {
+			if(bean.getPermission()==3){
+				HttpSession session = request.getSession();
+				session.setAttribute("black", "已經成為黑名單");
+				System.out.println(500);
+				response.sendRedirect(request.getContextPath()+"/indexfix.jsp");
+				return;
+			}
+			System.out.println(Integer.toString(bean.getPermission()));
+			System.out.println(bean.getMemberId());
 			System.out.println(5);
 			HttpSession session = request.getSession();
 			session.setAttribute("member", bean);
