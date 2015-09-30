@@ -26,13 +26,6 @@
 	}
 </style>		
 </head>
-  <c:if test="${!empty black }">
-	<c:remove var="black" scope="session" />
-	<script type="text/javascript">
-		alert("已經成為黑名單");
-	</script>
-	
-	</c:if>
 <body class="homepage">
 		<!-- Header -->
 <%@include file="/includes/newheader" %>	

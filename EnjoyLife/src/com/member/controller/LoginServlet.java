@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("black", "已經成為黑名單");
 				System.out.println(500);
-				response.sendRedirect(request.getContextPath()+"/index.jsp");
+				response.sendRedirect(request.getContextPath()+"/indexfix.jsp");
 				return;
 			}
 			System.out.println(Integer.toString(bean.getPermission()));
