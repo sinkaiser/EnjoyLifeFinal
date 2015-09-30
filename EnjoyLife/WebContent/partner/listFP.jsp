@@ -219,7 +219,7 @@ body {
 													<a href="#" title="${formattedDate}">
 														<img src="../partner/img/icon-time.png">
 														<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="M月d日 H:mm" /> ${formattedDate}</a> 
-														
+														<br>
 														<c:if test="${!mem.PartnerVO.memberId.equals(member.memberId)}">
 															<a href="#" data-toggle="modal" data-target="#myModal2"
 																onclick="openNewWindow(${mem.PartnerVO.eventNo})"><img
