@@ -8,11 +8,14 @@
 <script src="scripts/jquery-2.1.4.min.js"></script>
 <link rel="stylesheet" href="scripts/bootstrap.min.css">
 <script src="scripts/bootstrap.min.js"></script>
+<link rel='stylesheet' href='../css/skel-noscript.css' type="text/css" />
+<link rel='stylesheet' href='../css/style.css' type="text/css" />
+<link rel='stylesheet' href='../css/style-desktop.css' type="text/css" />
 <style type="text/css">
-#listselects{width:170px;position:fixed;left:80px;border:5px ridge gray;padding:10px}
+#listselects{width:170px;position:fixed;left:80px;border:5px ridge gray;padding:10px;margin-top:110px;}
 #butt1{margin:10px auto}
-#ul1{width:1280px;margin:20px 0px 0px 210px;height:auto}
-li{list-style:none;width:220px;float:left;margin-left:5px;}
+#ul1{width:1280px;margin:20px 0px 0px 280px;height:auto;}
+#li1{list-style:none;width:220px;float:left;margin-left:5px;}
 li div {border:5px ridge gray;padding: 5px;margin-bottom:5px;word-break:break-all }
 li div img {width:200px;margin:5px auto;display:block;}
 li div p{text-align: center;font-size: 20px;font-family:標楷體;}
@@ -36,9 +39,19 @@ tr:hover td {background: #d0dafd;color: #339;}
 #cate1no {font-size: 18px;height:4ex}
 #cate2no {font-size: 18px;height:4ex}
 *{max-width: 1280px}
+.homepage{
+	padding-top:110px;
+}
 </style>
 </head>
-<body >
+<body class="homepage">
+<%@include file="/includes/newheader" %>
+<nav style="width:100%;text-align:center;" >
+		<div class="btn-group" role="group"  style="width:500px;left:30px;" aria-label="..." >
+			<a href="${pageContext.request.contextPath}/attrac/Attracimg1.jsp"><button type="button" class="btn btn-primary" style="width:100px;margin-right:20px" >景點列表</button></a>
+			<a href="${pageContext.request.contextPath}/attrac/Attracdesign.jsp"><button type="button" class="btn btn-primary" style="width:100px;margin-left:20px" >規劃</button></a>
+		</div>	
+</nav>
 <div id="listselects">
 			<select id="select1" class="select" >            
 	       </select><br>
@@ -48,18 +61,19 @@ tr:hover td {background: #d0dafd;color: #339;}
 	       </select><br>
 	       <select id="select4" class="select" >            
 	       </select>
-			<button id="butt1" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" value="creat" style="width:135px">
-			新增景點
-			</button>
+<!-- 			<button id="butt1" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" value="creat" style="width:135px"> -->
+<!-- 			新增景點 -->
+<!-- 			</button> -->
 </div>
 
-
+	<div id="listdiv">
 	<ul id="ul1">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>		
+		<li id="li1"></li>
+		<li id="li1"></li>
+		<li id="li1"></li>
+		<li id="li1"></li>		
 	</ul>
+	</div>
 	
 <div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
@@ -333,6 +347,8 @@ tr:hover td {background: #d0dafd;color: #339;}
 		})
 	});
 	function getlist(){	
+// 		var img=$("<img></img>").attr("src","Data/ajax-loader2.gif").attr("height","15").attr("width","350").attr("id","listloader");
+// 		$("#listdiv").prepend(img);
 		$.ajax({
 	 		url:"GetPhoto2.jsp",
 	 		type:"get",
@@ -346,6 +362,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 	 			if(data.length==0){
 	 				return;
 	 			}
+// 	 			$("#listloader").remove();
 	 			$.each(data,function(){
 	 					var index=getShort();
 	 					var photoname=this.photoname;
@@ -448,10 +465,10 @@ tr:hover td {background: #d0dafd;color: #339;}
 		var $this_Top=$this.scrollTop();
 
 		if($this_Top < 200){
-				$('#listselects').stop().animate({top:"20px"});
+				$('#listselects').stop().animate({top:"50px"});
 		}
 		 if($this_Top > 200){
-				$('#listselects').stop().animate({top:"20px"});
+				$('#listselects').stop().animate({top:"50px"});
 		}
 	}).scroll();
 	

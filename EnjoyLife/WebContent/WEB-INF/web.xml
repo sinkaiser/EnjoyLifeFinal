@@ -7,8 +7,8 @@
     <res-sharing-scope>Shareable</res-sharing-scope>
   </resource-ref>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>indexfix.html</welcome-file>
+    <welcome-file>indexfix.jsp</welcome-file>
   </welcome-file-list>
   <resource-ref>
     <res-ref-name>jdbc/Attrac</res-ref-name>

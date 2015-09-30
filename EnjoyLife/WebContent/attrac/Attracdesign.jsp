@@ -19,10 +19,19 @@
 .homepage{
 	padding-top:110px;
 }
+#alllist,#alllist1{
+	font-size:30px;
+}
 </style>
 </head>
 <body class="homepage" >
 <%@include file="/includes/newheader" %>
+<nav style="width:100%;text-align:center;" >
+		<div class="btn-group" role="group"  style="width:500px;left:30px;" aria-label="..." >
+			<a href="${pageContext.request.contextPath}/attrac/Attracimg1.jsp"><button type="button" class="btn btn-primary" style="width:100px;margin-right:20px" >景點列表</button></a>
+			<a href="${pageContext.request.contextPath}/attrac/Attracdesign.jsp"><button type="button" class="btn btn-primary" style="width:100px;margin-left:20px" >規劃</button></a>
+		</div>	
+</nav>
 <div class="container" >
 	<div class="row">
 		<div class="col-md-8" >
@@ -38,15 +47,15 @@
 		       <div id="map">	       
 		       </div>
 		       <div id="travel">
-			       	<div name="default" class="traveldiv" style="text-align:center"><h1>請增加景點</h1></div>	
+			       	<div name="default" class="traveldiv" style="text-align:center"><h1 id="alllist1">請增加景點</h1></div>	
 		       </div>
 		    </div>   
        </div>
        <div class="col-md-4" style="position:relative;height:880px;">
        			<h1 id="alllist">清單列表</h1>
        			<div id="listdiv">
-		       <ul id="menu" class="attraclist">	       			
-			   </ul>      
+			       <ul id="menu" class="attraclist">	       			
+				   </ul>      
        			</div>
 		       <div id="attracinfo">
 		       </div>

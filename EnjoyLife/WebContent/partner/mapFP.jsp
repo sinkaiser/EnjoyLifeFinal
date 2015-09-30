@@ -58,12 +58,11 @@ body {
 					href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
 
 				<c:if test="${!empty member}">
-					<li><a
-						href="${pageContext.request.contextPath}/secure/logout.jsp">登出</a></li>
-					<li><img
-						src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}"
-						height="30" width="30" onerror="this.style.display='none'">
-						${member.memberName}</li>
+					<li style="line-height:30px;float:right">							
+						<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'" style="margin-bottom:25px" > 
+						<label style="height:30px;margin-bottom:26px;font-size:25px;font-family:微軟正黑體;" >${member.memberName}</label>
+						<button type="submit" class="btn btn-primary" id="logout" style="margin-bottom:26px" >登出</button>
+					</li>
 				</c:if>
 			</ul>
 		</nav>
