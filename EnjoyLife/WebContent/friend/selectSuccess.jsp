@@ -30,8 +30,8 @@
 					<td width="50">
 					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35"  onerror="this.style.display='none'">
 					</td>
-					<td><a name="${row.FriendVO.friendId}" data-toggle="modal" data-target=".bs-example-modal-sm">${row.FriendName}</a>
-					</td>
+					<td><a name="${row.FriendVO.friendId}" data-toggle="modal" data-target=".bs-example-modal-sm">${row.FriendName}</a></td>
+					<td><span class="badge">${row.Count}</span></td>
 					<td><a href="${pageContext.request.contextPath}/friend/deleteFriend.do?id=${row.FriendVO.friendId}"/> <input type="button" class="btn btn-primary btn-xs" value="刪除好友"></a></td>
 				</tr>
 			</c:if>	

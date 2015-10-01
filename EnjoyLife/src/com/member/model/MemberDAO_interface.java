@@ -13,4 +13,5 @@ public interface MemberDAO_interface {
           public int UPDATEPWD(MemberVO memberVO);
           public int updatepermission(MemberVO memberVO);
 		  public JSONArray SelectByIdLike(String memberId);
+		  public int SelectByCount(String memberId);
 }

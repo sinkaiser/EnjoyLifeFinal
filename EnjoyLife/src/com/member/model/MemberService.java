@@ -77,5 +77,12 @@ public class MemberService {
 		}
 		return result;		
 	}
+	public int SelectByCount(String friendId){
+		int result = 0;
+		if(friendId!=null){
+			result = memberDAO.SelectByCount(friendId);
+		}
+		return result;		
+	}
 	
 }

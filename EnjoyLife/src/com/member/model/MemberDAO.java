@@ -366,5 +366,45 @@ public class MemberDAO implements MemberDAO_interface{
 		}
 		return list;
 	}
-
+	private static final String SELECT_BY_COUNT = "select count(*) from partner where MemberId = ? and Hidden=0 and Closed=0";
+	public int SelectByCount(String memberId) {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rset = null;
+		try {
+			conn = ds.getConnection();
+			stmt = conn.prepareStatement(SELECT_BY_COUNT);
+			stmt.setString(1, memberId);
+			rset = stmt.executeQuery();
+			if(rset.next()){
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rset != null) {
+				try {
+					rset.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
 }
