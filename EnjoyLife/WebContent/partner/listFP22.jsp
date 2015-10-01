@@ -194,51 +194,49 @@ body {
 										<tr>
 											<td>
 												<div>
-													<img style="float: left"
-													src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
+													<img style="float: left" src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
 													height="30" width="30" onerror="this.style.display='none'">
 													<p style="float: left">${mem.PartnerVO.memberName}</p> 
 													<a href="#" data-toggle="modal" data-target="#myModal3"
-													onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${mem.PartnerVO.memberId}')"><img
-														style="margin-left:130px" src="img/plusone2.png" id="plusone"
-														title="我要參加" width="32" height="32" alt="+1"></a>
+														onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${mem.PartnerVO.memberId}')">
+														<img style="margin-left:130px" src="img/plusone2.png" id="plusone"
+														title="我要參加" width="32" height="32" alt="+1">
+													</a>
 												</div>
 												<div style="margin: 5px auto">
-													<p id="contentp">${mem.PartnerVO.eventContent}</p> <img
-													src="${pageContext.request.contextPath}/GetImg?imgid=${mem.PartnerVO.imgNo}"
-													width="220">
+													<p id="contentp">${mem.PartnerVO.eventContent}</p>
+													<img src="${pageContext.request.contextPath}/GetImg?imgid=${mem.PartnerVO.imgNo}" width="220">
 												</div>
 												<div class="post_meta" style="margin: 0">
 
-													<a
-														href="${pageContext.request.contextPath}/partner/FindByTypeServlet?mType=${mem.PartnerVO.eventType}"><img
-														src="../partner/img/icon-tag.png">${mem.PartnerVO.eventType}
-														<a href="mapFP.jsp?inputAdd=${mem.PartnerVO.addr}"
-														title="${mem.PartnerVO.addr}"><img
-															src="../partner/img/icon-location.png">${mem.PartnerVO.getAddr().toString().substring(0,3)}</a>
-														<fmt:formatDate value="${mem.PartnerVO.eventDate}"
-															var="formattedDate" type="date" pattern="yyyy年M月d日 H:mm" />
-														<a href="#" title="${formattedDate}"><img
-															src="../partner/img/icon-time.png"> <fmt:formatDate
-																value="${mem.PartnerVO.eventDate}" var="formattedDate"
-																type="date" pattern="M月d日 H:mm" /> ${formattedDate}</a> <c:if
-															test="${!mem.PartnerVO.memberId.equals(member.memberId)}">
+													<a href="${pageContext.request.contextPath}/partner/FindByTypeServlet?mType=${mem.PartnerVO.eventType}">
+														<img src="../partner/img/icon-tag.png">${mem.PartnerVO.eventType}
+													</a>
+													<a href="mapFP.jsp?inputAdd=${mem.PartnerVO.addr}" title="${mem.PartnerVO.addr}">
+														<img src="../partner/img/icon-location.png">${mem.PartnerVO.getAddr().toString().substring(0,3)}
+													</a>
+													<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="yyyy年M月d日 H:mm" />
+													<a href="#" title="${formattedDate}">
+														<img src="../partner/img/icon-time.png">
+														<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="M月d日 H:mm" />
+														${formattedDate}
+													</a>
+													<c:if test="${!mem.PartnerVO.memberId.equals(member.memberId)}">
 															<a href="#" data-toggle="modal" data-target="#myModal2"
-																onclick="openNewWindow(${mem.PartnerVO.eventNo})"><img
-																src="../partner/img/icon-more.png">檢舉</a>
-														</c:if> <c:if
-															test="${mem.PartnerVO.memberId.equals(member.memberId)}">
+																onclick="openNewWindow(${mem.PartnerVO.eventNo})">
+															<img src="../partner/img/icon-more.png">檢舉</a>
+													</c:if>
+													<c:if test="${mem.PartnerVO.memberId.equals(member.memberId)}">
 															<a href="#" data-toggle="modal" data-target="#myModal"
 																onclick="editEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}','${mem.PartnerVO.imgNo}')"><img
 																src="../partner/img/icon-more.png")">編輯</a>
-														</c:if> <c:if
-															test="${mem.PartnerVO.memberId.equals(member.memberId)}">
-															<a href="#" data-toggle="modal"
-																data-target="#deleteModal"
-																onclick="deleteEvent(${mem.PartnerVO.eventNo})"><img
-																src="../partner/img/icon-more.png")">刪除</a>
-														</c:if>
-												</div></td>
+													</c:if>
+													<c:if test="${mem.PartnerVO.memberId.equals(member.memberId)}">
+														<a href="#" data-toggle="modal" data-target="#deleteModal" onclick="deleteEvent(${mem.PartnerVO.eventNo})">
+														<img src="../partner/img/icon-more.png">刪除</a>
+													</c:if>
+												</div>
+											</td>
 										</tr>
 									</table>
 
