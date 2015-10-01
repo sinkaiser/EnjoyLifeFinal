@@ -1,9 +1,14 @@
 package com.message.controller;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
 
+
+
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.friend.model.FriendVO;
+import com.member.model.MemberDAO;
+import com.member.model.MemberDAO_interface;
 import com.member.model.MemberVO;
 import com.message.model.MessageService;
 import com.message.model.MessageVO;
@@ -33,11 +41,21 @@ public class selectMessageAll extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		MemberVO bean = (MemberVO)session.getAttribute("member");
-		String messageTo = bean.getMemberId();		
+		String messageTo = bean.getMemberId();
+		MemberDAO_interface dao = new MemberDAO();
 		MessageService mservice = new MessageService();
+		List<Map<String,Object>> mapAll = new ArrayList<Map<String,Object>>();
 		// MemberBean 扮演封裝輸入資料的角色		
 		List<MessageVO> bean2 = mservice.select_by_messageto(messageTo);
-		request.setAttribute("messageTo", bean2);
+		
+		for(MessageVO MessageVO:bean2){
+			Map<String,Object> map = new HashMap<String, Object>();
+			MemberVO memberbean = dao.SelectById(MessageVO.getMessageFrom());
+			map.put("MemberVO", memberbean);
+			map.put("MessageVO", MessageVO);
+			mapAll.add(map);
+		}
+		request.setAttribute("Message", mapAll);
 		request.getRequestDispatcher("/message/selectMessageAll.jsp").forward(request, response);
 		return;				
 		}
