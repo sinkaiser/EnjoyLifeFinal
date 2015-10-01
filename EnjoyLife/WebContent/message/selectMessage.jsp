@@ -14,10 +14,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<table class="table table-hover" style="margin: 10px;width: 500px">
+<table class="table table-hover" style="margin: 10px;width: 650px">
 	<thead>
 		<tr><th>寄件備份</th></tr>
 		<tr>
+			<th>大頭照</th>
+			<th>帳號</th>
 			<th>收件人</th>
 			<th>信件主旨</th>
 <!-- 			<th>信件內容</th> -->
@@ -25,15 +27,17 @@
 		</tr>
 	</thead>
 	<tbody>	
-		<c:forEach var="row" items="${message}">
-			<c:if test="${row.showMessage==0}">
+		<c:forEach var="row" items="${Message}">
+			<c:if test="${row.MessageVO.showMessage==0}">
 				<tr>
-					<td>${row.messageTo}</td>
-					<td><a name="${row.messageNo}" data-toggle="modal" data-target=".bs-example-modal-sm">${row.messageTitle}</td>
+					<td><img src="${pageContext.request.contextPath}/GetImg?imgid=${row.MemberVO.picture}" height="35" width="35" "></td>					
+					<td>${row.MessageVO.messageTo}</td>
+					<td>${row.MemberVO.memberName}</td>
+					<td><a name="${row.MessageVO.messageNo}" data-toggle="modal" data-target=".bs-example-modal-sm">${row.MessageVO.messageTitle}</td>
 <%-- 					<td>${row.message}</td> --%>
-					<fmt:formatDate value="${row.talkDate}" var="formattedDate" type="date" pattern="yyyy年M月d日 H:mm" />
+					<fmt:formatDate value="${row.MessageVO.talkDate}" var="formattedDate" type="date" pattern="yyyy年M月d日 H:mm" />
 					<td>${formattedDate}</td>
-					<td><a href="${pageContext.request.contextPath}/message/updateMessage1.do?mid=${row.messageNo}"/> <input class="btn btn-primary btn-xs" type="button" value="刪除訊息"></a></td>
+					<td><a href="${pageContext.request.contextPath}/message/updateMessage1.do?mid=${row.MessageVO.messageNo}"/> <input class="btn btn-primary btn-xs" type="button" value="刪除訊息"></a></td>
 				</tr>	
 			</c:if>	
 		</c:forEach>							
@@ -59,7 +63,7 @@ $('a[data-toggle="modal"]').click(function(){
 		var MessageTitle=data[0].MessageTitle;
 		var TalkDate=data[0].TalkDate;
 		var Message=data[0].Message;		
-			$('div[id="no"]').append("<table class='table table-hover'><tr><td><h3>收件人:"+MessageTo+"</h3></td></tr>"+"<tr><td><h3>主旨:"+MessageTitle+"</h3></td></tr>"+"<tr><td><h3>訊息內容:"+Message+"</h3></td></tr>"+"<tr><td><h3>訊息時間:"+TalkDate+"</h3></td></tr></table>");				
+			$('div[id="no"]').append("<table class='table table-hover'><tr><td><h3>會員帳號:"+MessageTo+"</h3></td></tr>"+"<tr><td><h3>信件主旨:"+MessageTitle+"</h3></td></tr>"+"<tr><td><h3>訊息內容:"+Message+"</h3></td></tr>"+"<tr><td><h3>訊息時間:"+TalkDate+"</h3></td></tr></table>");				
 	});
 	
 })
