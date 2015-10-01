@@ -173,6 +173,31 @@
 				$('#artiScore').text(' '+data.avgScore+'顆星');
 				$('#artiView').text(' '+data.viewTotal+' views');		
 				
+				var memId = "${member.memberId}";
+				$('#delDiv').empty();
+				
+				var eleA1 = document.createElement("a");
+				eleA1.setAttribute("href", "#");
+				eleA1.setAttribute("class", "del_report_css");
+					
+				var eleSpan1 = document.createElement("span");
+				var txt1 = document.createTextNode("檢舉");
+				eleSpan1.appendChild(txt1);
+				eleA1.appendChild(eleSpan1);
+				$('#delDiv').appendChild(eleA1);	
+				if(memId == data.memberId){
+					var eleA2 = document.createElement("a");
+					eleA2.setAttribute("href", "#");
+					eleA2.setAttribute("class", "del_report_css");
+					
+					var eleSpan2 = document.createElement("span");
+					var txt2 = document.createTextNode("刪除");
+					eleSpan2.appendChild(txt2);
+					eleA2.appendChild(eleSpan2);
+			
+					$('#delDiv').appendChild(eleA2);
+				}
+				
 // 				var childWindow = document.getElementById("myFrame").contentWindow;//mainFrame這個id是父頁面iframe的id 
 //  			childWindow.document;//獲取子頁面中的document對象； txtBlogNo
 // 				var childBlogNo = childWindow.document.getElementById("txtBlogNo");
@@ -210,6 +235,7 @@
 							<% request.getSession().getAttribute("blogList"); %> 
 							<% request.getSession().getAttribute("listIndex");%>
 							<% request.getSession().getAttribute("selType");%>
+							<% request.getSession().getAttribute("member");%>
 							<div class="row">
 							<c:if test="${blogList.size() == 0}"><br><h3>此類型沒有任何文章</h3></c:if>
 							<c:forEach var="lists" items="${blogList}">
@@ -252,7 +278,7 @@
 						<!-- 互動視窗 -->
 						<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true" >
 						  <div class="modal-dialog modal-lg">
-						    <div class="modal-content">
+						    <div class="modal-content" id="postModalA">
 						      <div class="modal-header">		
 						        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 						        <div class="col-md-1"></div>
@@ -274,10 +300,9 @@
 							        		<label class="lab_reply">說</label><br>
 							        		<span id="artiContext" class="arti"></span><br><br>
 							        		<label class="lab_reply">星級</label> <span id="artiScore" class="arti"></span>
-							        		<label class="lab_reply">瀏覽次數</label><span id="artiView" class="arti"></span><br>
-							        		<div id="starScore"></div><br>
-			<%-- 				        		<iframe src="${pageContext.request.contextPath}/blog/blogReply.jsp"  --%>
-			<!-- 				        			id="myFrame" width="100%" height="500px" frameborder="1" scrolling="auto"></iframe> -->
+							        		<label class="lab_reply">瀏覽次數</label><span id="artiView" class="arti"></span><br>							        							 
+											<div id="delDiv"></div>
+			
 											<div id="replyDiv" class="replyfomat"></div>			
 											<textarea class="form-control" rows='3' placeholder="回點什麼吧..."
 												style="resize: none;width:300px;float:left" id="txtRely"></textarea>
@@ -370,8 +395,18 @@
 			})
 		}
 	})
-	$("#starScore").rater("/BlogScoreServlet");
 	
+	$('#postModal').on('hidden.bs.modal',function(){	       
+		$('#fullImg').attr('src','');
+		$('#artiNo').text='';
+		$('#artiMem').text='';
+		$('#artiPlace').text='';
+		$('#artiDate').text='';
+		$('#artiContext').text='';
+		$('#artiScore').text='';
+		$('#artiView').text='';
+		$('#replyDiv').empty();	
+	}) 
  }(jQuery));
  </script>
 </html>
