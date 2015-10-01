@@ -17,7 +17,7 @@
 <table class="table table-hover" style="margin: 10px;width: 500px">
 	<thead>
 	<tr>
-		<td></td><th>好友列表</th><td></td>
+		<td></td><th>好友列表</th><th>找伴活動</th><td></td>
 <!-- 		<th>好友</th> -->
 		
 	</tr>
