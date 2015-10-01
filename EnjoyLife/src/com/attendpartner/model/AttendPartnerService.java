@@ -17,4 +17,11 @@ public class AttendPartnerService {
 		list = dao.selectByEventNo(eventNo);
 		return list;
 	}
+
+	public List<AttendPartnerVO> findAll() {
+		List<AttendPartnerVO> list = new ArrayList<AttendPartnerVO>();
+		AttendPartnerDAO_interface dao = new AttendPartnerDAOHibernate();
+		list = dao.getAll();
+		return list;
+	}
 }

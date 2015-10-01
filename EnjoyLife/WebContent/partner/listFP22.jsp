@@ -222,7 +222,7 @@ body {
 														${formattedDate}
 													</a>
 													<br>
-													參加者：
+													參加者：${mem.aname}
 												</div>
 											</td>
 										</tr>

@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.partner.model.PartnerVO;
 
@@ -65,7 +66,7 @@ public class AttendPartnerDAOHibernate implements AttendPartnerDAO_interface {
 	}
 
 	@Override
-	public List<AttendPartnerVO> selectByEventNoPartnrt(Integer eventNo, String partner) {
+	public List<AttendPartnerVO> selectByEventNoPartner(Integer eventNo, String partner) {
 		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
 		List<AttendPartnerVO> result = new ArrayList<AttendPartnerVO>();
 		try {
@@ -107,4 +108,23 @@ public class AttendPartnerDAOHibernate implements AttendPartnerDAO_interface {
 		return result;
 	}
 
+	@Override
+	public List<AttendPartnerVO> getAll() {
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		List<AttendPartnerVO> result = null;
+		Transaction tx = null; 
+		try {
+			tx=session.beginTransaction();
+			Query query = session.createQuery("from AttendPartnerVO");
+			result = query.list();
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
 }

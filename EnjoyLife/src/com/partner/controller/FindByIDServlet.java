@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.attendpartner.model.AttendPartnerDAO;
+import com.attendpartner.model.AttendPartnerDAOHibernate;
+import com.attendpartner.model.AttendPartnerDAO_interface;
+import com.attendpartner.model.AttendPartnerService;
+import com.attendpartner.model.AttendPartnerVO;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDAO_interface;
 import com.member.model.MemberVO;
@@ -52,12 +57,19 @@ public class FindByIDServlet extends HttpServlet {
 		PartnerService service = new PartnerService();
 		
 		MemberDAO_interface dao = new MemberDAO();
+		AttendPartnerDAO_interface apservice = new AttendPartnerDAO();
 		List<Map<String,Object>> mp = new ArrayList<Map<String,Object>>();
+		
+		
+		
 		List<PartnerVO> list = service.findById(memberId);
 		for(PartnerVO vo:list){
 			Map<String,Object> map = new HashMap<String,Object>();
 			MemberVO a=dao.SelectById(vo.getMemberId());
 			int imgNo=a.getPicture();
+			//List<AttendPartnerVO> b = apservice.selectByEventNoPartner(memberId,memberId);
+			//String aname = ((AttendPartnerVO) b).getPartner();
+			//map.put("aname",aname);
 			map.put("PartnerVO",vo);
 			map.put("imgNo",imgNo);
 			mp.add(map);
