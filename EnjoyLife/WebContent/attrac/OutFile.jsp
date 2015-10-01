@@ -18,7 +18,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 </head>
 <body>
 
-<s:form action="myAction2" >
+<s:form action="myAction2" method="post">
 		<s:submit value="Upload to SQL" />
 </s:form>  
 
