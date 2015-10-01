@@ -221,20 +221,8 @@ body {
 														<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="M月d日 H:mm" />
 														${formattedDate}
 													</a>
-													<c:if test="${!mem.PartnerVO.memberId.equals(member.memberId)}">
-															<a href="#" data-toggle="modal" data-target="#myModal2"
-																onclick="openNewWindow(${mem.PartnerVO.eventNo})">
-															<img src="../partner/img/icon-more.png">檢舉</a>
-													</c:if>
-													<c:if test="${mem.PartnerVO.memberId.equals(member.memberId)}">
-															<a href="#" data-toggle="modal" data-target="#myModal"
-																onclick="editEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}','${mem.PartnerVO.imgNo}')"><img
-																src="../partner/img/icon-more.png")">編輯</a>
-													</c:if>
-													<c:if test="${mem.PartnerVO.memberId.equals(member.memberId)}">
-														<a href="#" data-toggle="modal" data-target="#deleteModal" onclick="deleteEvent(${mem.PartnerVO.eventNo})">
-														<img src="../partner/img/icon-more.png">刪除</a>
-													</c:if>
+													<br>
+													參加者：
 												</div>
 											</td>
 										</tr>

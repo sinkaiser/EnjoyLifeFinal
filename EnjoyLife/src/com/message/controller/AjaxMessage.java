@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.attendpartner.model.AttendPartnerDAOHibernate;
+import com.attendpartner.model.AttendPartnerDAO_interface;
+import com.attendpartner.model.AttendPartnerService;
+import com.attendpartner.model.AttendPartnerVO;
 import com.message.model.MessageDAO;
 import com.message.model.MessageService;
 import com.message.model.MessageVO;
@@ -30,6 +34,24 @@ public class AjaxMessage extends HttpServlet {
 		String messageTo=request.getParameter("messageTo");
 		String messageTitle="您有新的活動請求";
 		String message=request.getParameter("message");
+		
+		
+		
+		AttendPartnerVO attendPartnerVO = new AttendPartnerVO();
+		Integer ieventNo = Integer.parseInt(eno);
+		Integer attend =0;
+		attendPartnerVO.setEventNo(ieventNo);
+		attendPartnerVO.setPartner(messageFrom);
+		attendPartnerVO.setAttend(attend);
+		
+		
+		AttendPartnerService service = new AttendPartnerService();
+		//AttendPartnerDAO_interface dao = new AttendPartnerDAOHibernate();
+		service.addattend(attendPartnerVO);
+		request.setAttribute("AllPartners", attendPartnerVO);
+		
+		
+		
 		
 		System.out.println(messageFrom);
 		System.out.println(messageTo);

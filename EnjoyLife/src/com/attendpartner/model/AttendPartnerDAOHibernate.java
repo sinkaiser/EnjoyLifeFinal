@@ -51,7 +51,7 @@ public class AttendPartnerDAOHibernate implements AttendPartnerDAO_interface {
 		AttendPartnerVO result =null;
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("UPDATE AttendPartnerVO SET hidden = 1 WHERE eventNo = ? AND partner = ?");
+			Query query = session.createQuery("UPDATE AttendPartnerVO SET eventNo = ? AND partner = ? AND attend = 1");
 			query.setParameter(0, attendPartnerVO.getEventNo());
 			query.setParameter(1, attendPartnerVO.getPartner());
 			query.executeUpdate();
