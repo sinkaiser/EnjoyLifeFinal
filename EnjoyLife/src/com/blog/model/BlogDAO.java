@@ -21,5 +21,6 @@ public interface BlogDAO {
 	public abstract boolean updateAvgScore(int score, String postNo);
 	public List<BlogVO> selectAll();
 	public List<BlogVO> selectByFlagReport(int page);
+	public boolean reportChange(String flag, String postNo);
 	
 }

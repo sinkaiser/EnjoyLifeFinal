@@ -186,6 +186,23 @@ public class BlogDAOHibernate implements BlogDAO {
 		return result;
 	}
 	
+	@Override
+	public boolean reportChange(String flag, String postNo) {
+		String sql = "UPDATE BlogVO SET flagReport=? WHERE postNo=?";
+		boolean result = false;
+
+		try {
+			Query query = session.createQuery(sql);
+			query.setParameter(0, flag);
+			query.setParameter(1, postNo);
+			int i = query.executeUpdate();
+			result = true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 //	public String pathToBase64(String path){
 //		String sBase64 =null;
 //		try {

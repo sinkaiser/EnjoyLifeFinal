@@ -196,7 +196,10 @@
     </div>
   
     <script>
+    var a
 		(function($){
+			
+		
 			var memberId;
 			var postNo;
 			var postType;
@@ -287,6 +290,8 @@
 					memberId=$(this).find("input[name='memberId']").val();
 					postContext=$(this).find("input[name='postContext']").val();
 					
+					a=$(this).find('td[name="postNo"]').text();
+					
 					
 					$("#img").attr("src","${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=a&&pathImg="+pathPhoto);
 					$("#memberId").text(memberId);
@@ -319,35 +324,8 @@
 					$("#viewTotal").attr("style","width:"+viewTotal+"%");
 					
 					postNo=$(this).find('td[name="postNo"]').text();
-					alert(postNo);
 					
 					
-					$('#blogdelete').bind('click',function(){
-				
-						$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":postNo,"type":"delete"},"success":function(data){
-							if(data=="ok"){
-								alert("成功");
-							}else{
-								alert("失敗");
-							}
-							
-						}})
-					});
-					
-					
-					
-					$('#blogok').bind('click',function(){
-						
-					
-						$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":postNo,"type":"delete"},"success":function(data){
-							if(data=="ok"){
-								alert("成功");
-							}else{
-								alert("失敗");
-							}
-							
-						}})
-					});
 					
 					
 					var postNo;
@@ -385,14 +363,36 @@
 							
 							
 						})
-						$('#blogReply').on("click","button[name='send']",function(){
-							
-							
-							
-						})
+
 					});
 				});
 			}) };
+			//outside
+			
+			$('#blogdelete').bind('click',function(){
+			
+				$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":a,"type":"delete"},"success":function(data){
+					alert(a);
+					if(data=="ok"){
+						alert("成功");
+					}else{
+						alert("失敗");
+					}
+					
+				}})
+			});
+			
+			$('#blogok').bind('click',function(){
+				alert(a);
+				$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":a,"type":"ok"},"success":function(data){
+					if(data=="ok"){
+						alert("取消檢舉");
+					}else{
+						alert("失敗");
+					}
+					
+				}})
+			});
 			
 			
 		}(jQuery));
