@@ -67,12 +67,12 @@
 		<div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 		  <div class="modal-dialog modal-sm">
 		    <div class="modal-content">
-		      <div class="modal-header">
-			      <h4 class="modal-title" id="myModalLabel" style="font-size:18px;color:red">錯誤訊息</h4>
+		      <div>
+			      <h4  id="myModalLabel" style="font-size:22px;color:red;background-color:#BEBEBE">錯誤訊息</h4>
 			   </div>
-			   <div class="modal-body" style="font-size:30px">
+			   <div class="modal-body" style="font-size:30px;text-align:center;">
 			   </div>
-			   <div class="modal-footer">
+			   <div style="text-align:center;background-color:#BEBEBE">
 		        <button type="button" class="btn btn-primary" data-dismiss="modal">確定</button>
 		      </div>
 		    </div>

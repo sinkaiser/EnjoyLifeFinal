@@ -56,7 +56,6 @@
 									"<span name='attracaddr' class='attracdata'>地址:"+$('#addr').val()+"</span><br><span name='nextdirection' class='nextdirection'></span><br>"+
 									"<span name='distance' class='distance'></span><br><span name='duration' class='duration'></span></div></div>");	
 				}else{
-					//alert("該景點已加入")
 					var text=document.createTextNode("該景點已加入");
 					$('.modal-body').empty();
 					$('.modal-body').prepend(text)
