@@ -76,8 +76,8 @@ public class BlogPostServlet extends HttpServlet {
 			return;
 		}
 
-		BlogPostServlet test = new BlogPostServlet();
-		String blogImgPaht = test.mergeImgs(request,response,memberId, postNo);
+		BlogPostServlet bps = new BlogPostServlet();
+		String blogImgPaht = bps.mergeImgs(request,response,memberId, postNo);
 		if(blogImgPaht.equals("failed")){
 			errorMessage = errorMessage+"<請選擇圖片上傳>";
 		}
@@ -176,14 +176,14 @@ public class BlogPostServlet extends HttpServlet {
 		double w=imageResult.getWidth();
 		double h=imageResult.getHeight();
 
-		int dw=500; // 指定壓縮大小 w爲500
-		int dh=(int) (500/(w/h));
+		int dw=400; // 指定壓縮大小 w爲500
+		int dh=(int) (400/(w/h));
 
 		BufferedImage tag= new BufferedImage(dw,dh,BufferedImage.TYPE_INT_RGB);  
 		tag.getGraphics().drawImage(imageResult.getScaledInstance(dw, dh, Image.SCALE_SMOOTH), 0, 0,  null);
 
 		FileOutputStream out = null;
-		String blogPath = "D:\\"+memAccount+ "\\"+ postNo +".png";
+		String blogPath = "D:\\"+memAccount+ "\\"+ postNo +".jpg";
 		String blogDir = "D:\\"+memAccount;
 		File outFile = new File(blogDir);
 		if(!outFile.exists()){

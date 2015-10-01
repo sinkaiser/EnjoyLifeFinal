@@ -48,7 +48,7 @@ public class GetBlogImgServlet extends HttpServlet {
 		BufferedImage imageResult = new BufferedImage(width, height,BufferedImage.TYPE_INT_RGB);
 		imageResult.setRGB(0, 0, width, height, imageArray, 0, width);
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		ImageIO.write(imageResult,"png",bos);
+		ImageIO.write(imageResult,"jpeg",bos);
 		response.setContentType("image/*"); //設置返回的文件類型
 		OutputStream toClient=response.getOutputStream(); //得到向客戶端輸出二進制數據的對象
 		toClient.write(bos.toByteArray()); //輸出數據
