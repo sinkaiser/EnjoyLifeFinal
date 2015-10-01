@@ -168,6 +168,24 @@ public class BlogDAOHibernate implements BlogDAO {
 		return result;
 	}
 	
+	@Override
+	public List<BlogVO> selectByFlagReport(int page) {
+		List<BlogVO> result=null;
+//		String sql="from BlogVO where flagReport=1";
+		String sql="from BlogVO";
+		try {
+			Query query = session.createQuery(sql);
+			
+			query.setFirstResult(page*10);
+			query.setMaxResults(10);
+			result=query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 //	public String pathToBase64(String path){
 //		String sBase64 =null;
 //		try {

@@ -31,12 +31,13 @@
 		<mapping resource="com/partner/model/partner.hbm.xml" />
 		<mapping resource="com/comment/model/comment.hbm.xml" />
 <!-- 		<mapping resource="com/activity/model/activityBean.hbm.xml" /> -->
-		<mapping resource="com/AttracModel/attrac.hbm.xml" />
-		<mapping resource="com/AttracModel/cate1.hbm.xml" />
-		<mapping resource="com/AttracModel/cate2.hbm.xml" />
-		<mapping resource="com/AttracModel/counties.hbm.xml" />
-		<mapping resource="com/AttracModel/dist.hbm.xml" />
-		<mapping resource="com/AttracModel/photos.hbm.xml" />
+
+<!-- 		<mapping resource="com/AttracModel/attrac.hbm.xml" /> -->
+<!-- 		<mapping resource="com/AttracModel/cate1.hbm.xml" /> -->
+<!-- 		<mapping resource="com/AttracModel/cate2.hbm.xml" /> -->
+<!-- 		<mapping resource="com/AttracModel/counties.hbm.xml" /> -->
+<!-- 		<mapping resource="com/AttracModel/dist.hbm.xml" /> -->
+<!-- 		<mapping resource="com/AttracModel/photos.hbm.xml" /> -->
 		
 		
 		<mapping resource="com/little/model/LittleBean.hbm.xml"/>

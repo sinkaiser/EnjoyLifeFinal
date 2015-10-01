@@ -37,7 +37,7 @@
             
              <div class="col-2">
               <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
-                <i class="fa fa-times"></i>
+                
                 <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">網誌列表</h2></div>
                 <div class="table-responsive">
                   <table class="table table-striped table-bordered table-hover">
@@ -56,7 +56,11 @@
                     <tbody id="bd">
                        
                     </tbody>
-                  </table>    
+                    
+                  </table>
+                  <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
+                  <div id="tablefoot"class="panel-heading templatemo-position-relative"></div>   
+                  </div> 
                 </div>  
                 
                                         
@@ -98,8 +102,8 @@
 				</div>
 				<div>
 					<p>評價：</p>
-					<button type="button" class="btn btn-danger">刪除</button>
-					<button type="button" class="btn btn-success">無視</button>
+					<button id="blogdelete" type="button" class="btn btn-danger">刪除</button>
+					<button id="blogok" type="button" class="btn btn-success">沒問題</button>
 				</div>
             </div>
             
@@ -207,12 +211,34 @@
 			var pathPhoto;
 			var postContext;
 			var AttractionsNo;
+			var page=0;
+			first(page);
 			
-			
-			$.getJSON("${pageContext.request.contextPath}/AdminGetBlogAllJson",{},function(data){
+			function first(page){
+			$.getJSON("${pageContext.request.contextPath}/AdminGetBlogbyFlagReprot",{"page":page},function(data){
+// 			$.getJSON("${pageContext.request.contextPath}/AdminGetBlogAllJson",{},function(data){
+					$('#bd').empty();
+					var pagee=page+1
+					if(page==0){
+						$('#tablefoot').append("<span style='margin-right:10px'>現在第"+pagee+"頁</span><span name='next'>下一頁</span></div>")
+					}
+					else{
+						$('#tablefoot').append("<div><span name='back'>上一頁</span><span style='margin-right:10px;margin-left:10px'>現在第"+pagee+"頁</span><span name='next'>下一頁</span></div>")
+					}
+					 $('#tablefoot').one("click","span[name='next']",function(){
+						 page=page+1;
+						 $('#tablefoot').empty();
+						 first(page);
+					 });
+ 					 $('#tablefoot').one("click","span[name='back']",function(){
+ 						page=page-1;
+ 						$('#tablefoot').empty();
+ 						first(page);
+					 });
+					 
+					
 				$.each(data,function(){
 					postNo=this.postNo //已取
-					
 					postType=this.postType
 					if(postType=="TL"){
 						postType="旅遊";
@@ -240,7 +266,7 @@
 					
 					flagDelete=this.flagDelete
 					flagReport=this.flagReport
-					console.log(postDate);
+					
 					
 					
 					AttractionsNo=this.AttractionsNo
@@ -293,6 +319,36 @@
 					$("#viewTotal").attr("style","width:"+viewTotal+"%");
 					
 					postNo=$(this).find('td[name="postNo"]').text();
+					alert(postNo);
+					
+					
+					$('#blogdelete').bind('click',function(){
+				
+						$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":postNo,"type":"delete"},"success":function(data){
+							if(data=="ok"){
+								alert("成功");
+							}else{
+								alert("失敗");
+							}
+							
+						}})
+					});
+					
+					
+					
+					$('#blogok').bind('click',function(){
+						
+					
+						$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":postNo,"type":"delete"},"success":function(data){
+							if(data=="ok"){
+								alert("成功");
+							}else{
+								alert("失敗");
+							}
+							
+						}})
+					});
+					
 					
 					var postNo;
 					var replyNo;
@@ -317,12 +373,10 @@
 							flagDelete=this.flagDelete;
 							memPic=this.memPic;
 							
-
-							
 							if(flagDelete==0){
-							$('#blogReply').append('<div name="oneReply" class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="return" type="button" class="btn btn-success">恢復</button><button name="send" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@twbootstrap">寫信</button></div></div></div>');
+							$('#blogReply').append('<div name="oneReply" class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="return" type="button" class="btn btn-success">恢復</button></div></div></div>');
 							}else{
-							$('#blogReply').append('<div name="oneReply" class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" name="replyMemberId" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="delete" type="button" class="btn btn-danger">刪除</button><button name="send" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@twbootstrap">寫信</button></div></div></div>');
+							$('#blogReply').append('<div name="oneReply" class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" name="replyMemberId" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="delete" type="button" class="btn btn-danger">刪除</button></div></div></div>');
 							}
 							
 						})
@@ -333,18 +387,12 @@
 						})
 						$('#blogReply').on("click","button[name='send']",function(){
 							
-							var xxx=$(this).parents("div[name='oneReply']").find("h2[name='replyMemberId']").text();
 							
-							$("#recipient-name").val(xxx);
-							$("#message-text").val("你因違反網站XX規定刪除你在文章");
 							
 						})
-					
-					
 					});
 				});
-			})
-			
+			}) };
 			
 			
 		}(jQuery));
