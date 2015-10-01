@@ -43,18 +43,20 @@ public class selectFriend extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		MemberVO bean = (MemberVO)session.getAttribute("member");
-		String memberId = bean.getMemberId();		
+		String memberId = bean.getMemberId();	
 		FriendService service = new FriendService();
 		// MemberBean 扮演封裝輸入資料的角色		
 		List<FriendVO> bean2 = service.select_by_friend(memberId);
 		MemberDAO_interface dao = new MemberDAO();
 		List<Map<String,Object>> mp = new ArrayList<Map<String,Object>>();
 		for(FriendVO friend:bean2){
-			Map<String,Object> map = new HashMap<String, Object>();			
+			Map<String,Object> map = new HashMap<String, Object>();	
 			MemberVO bean9 = dao.SelectById(friend.getFriendId());
 			int picture = bean9.getPicture();
+			String friendname = bean9.getMemberName();
 			map.put("FriendVO", friend);
 			map.put("Picture", picture);
+			map.put("FriendName", friendname);
 			mp.add(map);
 		}
 		request.setAttribute("selectFriend", mp);
