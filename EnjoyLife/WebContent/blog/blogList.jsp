@@ -93,6 +93,14 @@
 		font-weight: bold;
 		color:#007799;
 	}
+	.deldiv_css{
+		text-align: right;
+		width:300px;
+	}
+	.deldiv_css span{
+		font-size: 8pt;
+		color:#00BBFF;
+	}
 </style>
 <script type="text/javascript">
 	function getAllReply(ArticleNo){
@@ -181,21 +189,21 @@
 				eleA1.setAttribute("class", "del_report_css");
 					
 				var eleSpan1 = document.createElement("span");
-				var txt1 = document.createTextNode("檢舉");
+				var txt1 = document.createTextNode("  檢舉");
 				eleSpan1.appendChild(txt1);
 				eleA1.appendChild(eleSpan1);
-				$('#delDiv').appendChild(eleA1);	
+				$('#delDiv').append((eleA1));	
 				if(memId == data.memberId){
 					var eleA2 = document.createElement("a");
 					eleA2.setAttribute("href", "#");
 					eleA2.setAttribute("class", "del_report_css");
 					
 					var eleSpan2 = document.createElement("span");
-					var txt2 = document.createTextNode("刪除");
+					var txt2 = document.createTextNode("  刪除");
 					eleSpan2.appendChild(txt2);
 					eleA2.appendChild(eleSpan2);
 			
-					$('#delDiv').appendChild(eleA2);
+					$('#delDiv').append(eleA2);
 				}
 				
 // 				var childWindow = document.getElementById("myFrame").contentWindow;//mainFrame這個id是父頁面iframe的id 
@@ -301,7 +309,7 @@
 							        		<span id="artiContext" class="arti"></span><br><br>
 							        		<label class="lab_reply">星級</label> <span id="artiScore" class="arti"></span>
 							        		<label class="lab_reply">瀏覽次數</label><span id="artiView" class="arti"></span><br>							        							 
-											<div id="delDiv"></div>
+											<div id="delDiv" class="deldiv_css"></div>
 			
 											<div id="replyDiv" class="replyfomat"></div>			
 											<textarea class="form-control" rows='3' placeholder="回點什麼吧..."
@@ -340,10 +348,10 @@
 	 if(selectedType=="ML"){ $('#type4').attr('checked','true')}
 	 if(selectedType=="FT"){ $('#type5').attr('checked','true')}
 	 if(selectedType=="OT"){ $('#type6').attr('checked','true')}
-	 
 	 $("[name='pType']").change(function(){
 		 $('#btnSend').click();
 	 })
+// 	 $("[name='pType']").trigger('change');
 	 
 	 $("[name='pType']").attr('selected', true);
 // 	 if($('#role').val()!="T"){ 

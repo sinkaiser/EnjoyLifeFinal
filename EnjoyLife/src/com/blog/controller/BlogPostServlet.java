@@ -183,8 +183,8 @@ public class BlogPostServlet extends HttpServlet {
 		tag.getGraphics().drawImage(imageResult.getScaledInstance(dw, dh, Image.SCALE_SMOOTH), 0, 0,  null);
 
 		FileOutputStream out = null;
-		String blogPath = "D:\\"+memAccount+ "\\"+ postNo +".jpg";
-		String blogDir = "D:\\"+memAccount;
+		String blogPath = "C:\\EnjoyLifePic\\"+memAccount+ "\\"+ postNo +".jpg";
+		String blogDir = "C:\\EnjoyLifePic\\"+memAccount;
 		File outFile = new File(blogDir);
 		if(!outFile.exists()){
 			outFile.mkdirs();
