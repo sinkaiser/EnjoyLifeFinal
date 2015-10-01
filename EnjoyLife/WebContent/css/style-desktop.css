@@ -54,6 +54,8 @@
 	#logo
 	{
 		margin-bottom: 3em;
+		width:350px;
+		float:left;
 	}
 	
 		#logo h1
@@ -126,7 +128,6 @@
 			#nav > ul > li:nth-child(6)
 			{
 			float:right;
-			padding-right:10px;
 			}
 			#nav > ul > li:nth-child(7)
 			{
@@ -284,7 +285,7 @@
 /*********************************************************************************/
 
 .modal-header, h4, .close {
-      background-color: #5cb85c;
+      background-color: #0066CC;
       color:white;
       text-align: center;
       font-size: 25px;

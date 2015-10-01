@@ -6,14 +6,20 @@
 	<nav class="navbar-fixed-top">	
 	<div class="header1">	
 		<div id="header" >
-			<div class="container"> 
+			<div class="container" > 
 				
 				<!-- Logo -->
 				<div id="logo">
 					<h1><a href="index.jsp">Enjoy Life</a></h1>
 				</div>
 				
-				
+				<div style="width:750px;margin-left:200px;">
+					<img id="xxx" src="images/dog2.gif" class="img-circle" height="60px" width="60px">
+					<button id="say" type="button" class="btn btn-default" style="margin-bottom:15px;"></button>
+					<br>
+					<input id="ooo" value="請輸入" type="hidden">
+					<input id="sumit" value="送出資料" type="hidden">
+				</div>
 				
 			</div>
 		</div>
@@ -28,8 +34,15 @@
 							<input type="text" name="memberId" class="form-control" id="usrname" value="${param.memberId}" placeholder="輸入帳號">
 							<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> 密碼</label>
               				<input type="password" name="password" value="${param.password}" class="form-control" id="psw" placeholder="輸入密碼">
-              				<button type="submit" class="btn btn-primary" id="login" >登入</button>
+              				<button type="submit" class="btn btn-info" id="login" >登入</button>
 							</form>
+							</li>
+						</c:if>
+						<c:if test="${!empty member}">
+							<li style="line-height:30px;float:right;">							
+							<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'"> 
+							<label style="height:30px;margin-bottom:26px;font-size:25px;font-family:微軟正黑體;" >${member.memberName}</label>
+							<button type="button" class="btn btn-info" id="logout" data-toggle="modal" data-target="#myModalout" style="margin-bottom:26px" >登出</button>
 							</li>
 						</c:if>
 					</ul>

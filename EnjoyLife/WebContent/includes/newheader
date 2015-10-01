@@ -29,7 +29,7 @@
 			<li style="line-height:30px;">							
 				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'"> 
 				<label style="height:30px;margin-bottom:26px;font-size:25px;font-family:微軟正黑體;" >${member.memberName}</label>
-				<button type="submit" class="btn btn-primary" id="logout" style="margin-bottom:26px" >登出</button>
+				<button type="button" class="btn btn-info" id="logout" data-toggle="modal" data-target="#myModalout" style="margin-bottom:26px" >登出</button>
 			</li>
 			</c:if>
 		</ul>

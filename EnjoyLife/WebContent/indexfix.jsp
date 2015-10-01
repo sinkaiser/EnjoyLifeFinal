@@ -2,18 +2,28 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <title>ENJOY LIFE</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<%@include file="/includes/link" %>
-	<script src="js/Template2.js"></script>
+	
+	<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.4.min.js"></script>
+	<link rel='stylesheet' href='css/bootstrap.min.css' type="text/css" />
+	<link rel='stylesheet' href='css/jquery-ui.min.css' type="text/css" />
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/register.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+	<script src="js/date.js"></script>
+	<script src="js/moment-with-locales.js"></script>
+	<script src="js/bootstrap-datetimepicker.js"></script>
+	<script src="js/jQueryRotate.js"></script>
 	<link rel='stylesheet' href='css/skel-noscript.css' type="text/css" />
 	<link rel='stylesheet' href='css/style.css' type="text/css" />
+	<link rel='stylesheet' href='css/style-desktop.css' type="text/css" />
 	<link rel='stylesheet' href='css/style-desktop.css' type="text/css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
@@ -41,9 +51,6 @@
 	}
 	.row{
 		width:1280px
-	}
-	.modal-content{
-		height:600px;
 	}
 	.modal-content input{
 		width:300px;
@@ -90,7 +97,7 @@
 				<div class="row"> 
 					
 					<!-- Content -->
-					<div id="content" class="7u skel-cell-important">
+					<div id="content" class="6u skel-cell-important">
 						<section>
 					<div id="carousel-example-generic" class="carousel slide"
 						data-ride="carousel" style="width:550px;">
@@ -232,11 +239,166 @@
 	    	$('#birthday').val("1988-05-05");
 	    	$('#address').val("台北市");
 	    });
+	    
+	    var time="${member.registerDate}" //time
+			var name="${member.memberName}" //name
+			var member="${member}" //true
+			var imgid="${member.picture}"
+			
+			
+			$.getJSON("${pageContext.request.contextPath}/GetLittleJson",{"id":1},function(data){
+				
+				var elfNo;
+				var targetNo;
+				var nevin;
+				var typeNo;
+				var beginTime;
+				var endTime;
+				var flag1=false;
+				
+				if(time){
+					if((new Date()-new Date(time))>new Date(1000*60*60*24*30*3)){
+						alert("超過");
+						flag1=true;
+					}
+				}
+				var arrayObj=new Array(0);
+				var date=new Date();
+				var begin;	
+				var end;
+				console.log(time)
+				$.each(data,function(){
+					
+					beginTime=this.beginTime;
+					endTime=this.endTime;
+				
+					begin=new Date(beginTime);
+					end=new Date(endTime);
+					
+					elfNo=this.elfNo;
+					targetNo=this.targetNo;
+					nevin=this.nevin;
+					typeNo=this.typeNo;
+					
+					
+					if(date<end && date>begin){  //文章沒過期
+						if(member){     //是會員
+						
+						
+						
+							if(flag1){		     //老會員
+								if(targetNo==3||targetNo==4){
+//										alert("老會員")
+									arrayObj.push(nevin+"A0A"+typeNo);
+								}
+							}			
+							else{				//新會員
+								if(targetNo==2||targetNo==4){
+//										alert("新會員")
+									arrayObj.push(nevin+"A0A"+typeNo);
+								}
+							}
+						}
+						else{					//不是會員
+							if(targetNo==2||targetNo==4){
+//									alert("不是會員")
+
+								arrayObj.push(nevin+"A0A"+typeNo);
+							}
+						}
+					}
+				});
+				
+				function aa(){
+					var ran=Math.floor(Math.random()*arrayObj.length);
+					console.log(arrayObj[ran]);
+					var rans=arrayObj[ran].split("A0A");
+					
+						
+					console.log(rans[1]);
+					
+					if(rans[1]==1){
+						$('#say').attr("class","btn btn-primary")
+						$('#xxx').attr("src","images/dog2.gif");
+						$('#say').text("公告:"+rans[0]);
+					}
+					else if(rans[1]==2){
+						$('#say').attr("class","btn btn-success")
+						$('#xxx').attr("src","images/dog2.gif");
+						$('#say').text("廣告:"+rans[0]);
+					}
+					else if(rans[1]==3){
+						$('#say').attr("class","btn btn-info")
+						$('#xxx').attr("src","images/dog2.gif");
+						$('#say').text("提醒:"+rans[0]);
+					}
+					else if(rans[1]==4){
+						
+						$('#say').attr("class","btn btn-info")
+						var imgid=rans[0].split("imgid=");
+						var name=imgid[0].split("?name=");
+						$('#xxx').attr("src","${pageContext.request.contextPath}/GetImg?imgid="+imgid[1]);
+						$('#say').text("會員["+name[1]+"]:"+name[0]);
+					}
+				}
+				
+				var flag=true;
+				var angle=0;
+				function bb(){
+					
+					if(flag){
+						
+						angle=angle+10
+						$("#xxx").rotate(angle);
+						if(angle>45){
+							flag=false;
+						}
+					}else{
+					
+						angle=angle-10;
+						$("#xxx").rotate(angle);
+						if(angle<0){
+							flag=true;
+						}
+					}
+				}
+				
+				var timeoutId=setInterval(aa, 5000);
+				var timeoutId=setInterval(bb, 250);
+				
+			})
+			if(member){
+				$('#xxx').dblclick(function(){
+					$('#say').text("讓我幫你昭告天下");
+					$('#ooo').attr("type","text");
+					$('#sumit').attr("type","button").click(function(){
+						
+					var nevin=$('#ooo').val();
+					var begin=new Date();
+					var end=new Date(1000*60*5+ begin.getTime());
+					
+					begin=begin.format("isoDateTime");
+					var a=begin.split("T");
+					end=end.format("isoDateTime");
+					var b=end.split("T");
+					begin=a[0]+" "+a[1];
+					end=b[0]+" "+b[1];
+							$.ajax({"type":"post","url":"${pageContext.request.contextPath}/Little","dataType":"text","data":{"do":"insert","targetNo":4,"typeNo":4,"beginTime":begin,"endTime":end,"nevin":nevin+"?name="+name+"imgid="+imgid},
+								"success":function(da){
+								$('#ooo').text("");
+								$('#ooo').attr("type","hidden");
+								$('#say').text("訊息已經送出");
+								$('#sumit').attr("type","hidden")
+								}
+							});			
+					});			
+				})
+			}
 	   
     }(jQuery));
 </script>		
 		
 		
-		
+	<%@include file="/includes/logout" %>	
 	</body>
 </html>

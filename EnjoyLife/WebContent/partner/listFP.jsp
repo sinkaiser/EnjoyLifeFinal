@@ -96,7 +96,8 @@ body {
 			<li style="line-height:30px;float:right">							
 				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'" style="margin-bottom:25px"> 
 				<label style="height:30px;margin-bottom:26px;font-size:25px;font-family:微軟正黑體;" >${member.memberName}</label>
-				<button type="submit" class="btn btn-primary" id="logout" style="margin-bottom:26px" >登出</button>
+				<button type="button" class="btn btn-primary" id="logout" data-toggle="modal"
+						data-target="#myModalout" style="margin-bottom:26px" >登出</button>
 			</li>
 		</c:if>
 	</ul>
@@ -253,7 +254,41 @@ body {
 		</div>
 	</div>
 
+	<!-- Modal -->
+  	<div class="modal fade" id="myModalout" role="dialog" aria-labelledby="" tabindex="-1">
+    	<div class="modal-dialog" style="width:350px">
+    
+      	<!-- Modal content-->
+      	<div class="modal-content">
+        	<div class="modal-header" style="padding:35px 50px;height:30px">
+          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+          	<h4><span class="glyphicon glyphicon-lock"></span> 登出</h4>
+        	</div>
+        	<div class="modal-body" style="padding:40px 50px;">
+        		<form role="form" action="${pageContext.request.contextPath}/logout.do"" method="post">
+          		<h3>您確定要登出?</h3>
+          		<button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> 登出</button>   
+          		</form>     
+        	</div>
+	        
+	      </div>
+      
+    	</div>
+  	</div> 
 
+<!-- <script>
+ 	$().ready(function(){
+     	$("#logout").click(function(){
+         	$("#myModalout").modal();
+      	});
+ 	$("#modalout").click(function() {
+ 
+     	      location.reload();
+ 
+ 		});     
+     
+ 	});
+ </script> -->
 
 
 

@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <title>ENJOY LIFE</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<%@include file="/includes/link" %>
+	<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.4.min.js"></script>
+	<link rel='stylesheet' href='css/bootstrap.min.css' type="text/css" />
+	<link rel='stylesheet' href='css/jquery-ui.min.css' type="text/css" />
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script src="js/Template2.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/register.js"></script>
