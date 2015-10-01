@@ -70,7 +70,7 @@ tr:hover td {background: #d0dafd;color: #339;}
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><img src="Data/glyphicons-208-remove-2.png" width="24px"></button>
       </div>
       <div  class="modal-body" >
 		<table >	
@@ -126,11 +126,11 @@ tr:hover td {background: #d0dafd;color: #339;}
   </div>
 </div>
 
- <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
-  <div class="modal-dialog" role="document" id="doc">
-    <div class="modal-content" style="width:700px;">
+ <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="border:5px solid;">
+  <div class="modal-dialog" role="document" id="doc" style="width:700px">
+    <div class="modal-content" style="width:700px">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><img src="Data/glyphicons-208-remove-2.png" width="24px"></button>
       </div>
       <div  class="modal-body" style="width:700px;">
         <s:form action="myAction3"  method="post">
@@ -265,11 +265,6 @@ tr:hover td {background: #d0dafd;color: #339;}
 					i++;
 				}
 			}
-	})
-	$("#cancelbut").click(function(){
-		$(":text").val("");
-		$(".xbody").val("");
-		$("#selectpic").empty();
 	})	
 	$("#select4").change(function(){
 		$("#ul1 li").empty();
@@ -357,12 +352,9 @@ tr:hover td {background: #d0dafd;color: #339;}
 				loadimg.style.display="none";
 	 			$.each(data,function(){
 	 					var index=getShort();
-	 					var photoname=this.photoname;
 	 					var stitle=this.stitle;
 	 					var attracno=this.attracNo;
-	 					var addr=this.address;
 	 					var photodata=this.photodata;
-	 					var index=getShort();
 	 					var adddiv=document.createElement("div");
 	 					var addimg=document.createElement("img");
 	 					adddiv.id=attracno;					
@@ -379,9 +371,14 @@ tr:hover td {background: #d0dafd;color: #339;}
 	 		}				
 		})
 	}
-
+	$('#myModal2').on('hidden.bs.modal', function (e) {
+		$(":text").val("");
+		$(".xbody").val("");
+		$("#selectpic").empty();
+	})
+	
 	$("#ul1 li").on('click','div',function(){
-		loadimg.style.display="inline";
+		loadimg.style.display="inline";	
 		$.ajax({
 	 		url:"GetAttracDetail.jsp",
 	 		type:"get",

@@ -49,22 +49,24 @@ int maxno=0;
 				m1.put("photodata", rset.getString("photodata"));
 				l1.add(m1);
 			} 
+			stmt.close();
+			rset.close();
 			String jsonString = JSONValue.toJSONString(l1);                    
 			 out.println(jsonString);
  		}
  		if(attracno==null){
- 			query="select top 1 AttracNo from attrac order by AttracNo desc";
- 			stmt = conn.prepareStatement(query);
- 			rset = stmt.executeQuery();
- 			if(rset.next()) {
- 				maxno=rset.getInt("AttracNo");
-			} 		
- 			stmt.close();
- 			rset.close();
+//  			query="select top 1 AttracNo from attrac order by AttracNo desc";
+//  			stmt = conn.prepareStatement(query);
+//  			rset = stmt.executeQuery();
+//  			if(rset.next()) {
+//  				maxno=rset.getInt("AttracNo");
+// 			} 		
+//  			stmt.close();
+//  			rset.close();
 			if((cate2no.equalsIgnoreCase("10")||cate2no.equalsIgnoreCase("200"))
 	 				&&countyno.equalsIgnoreCase("10")){
 				System.out.println("00000");
-				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
+				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
 								"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort from photos )APS where sort=1)APS1 "+
 						"full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
@@ -73,7 +75,7 @@ int maxno=0;
 			}else if((cate2no.equalsIgnoreCase("10")||cate2no.equalsIgnoreCase("200"))
 					&&distno.equalsIgnoreCase(cross)){
 				System.out.println("11111"+cate1no+countyno);			
-				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
+				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
 					"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
 					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and countyno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
@@ -82,7 +84,7 @@ int maxno=0;
 				stmt.setInt(3, firstno);	
 			}else if(countyno.equalsIgnoreCase("10")){
 				System.out.println("22222");
-				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
+				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
 						"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
 						"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and cate2no =? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
@@ -92,9 +94,9 @@ int maxno=0;
 			}else if((cate2no.equalsIgnoreCase("10")||cate2no.equalsIgnoreCase("200"))
 					&&!countyno.equalsIgnoreCase("10")){
 				System.out.println("33333");
-				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
+				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
 					  "from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo "+"where cate1no=? and countyno=? and distno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and countyno=? and distno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, countyno);
@@ -102,9 +104,9 @@ int maxno=0;
 				stmt.setInt(4, firstno);
 			}else if(distno.equalsIgnoreCase(cross)){
 				System.out.println("44444");
-				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
+				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
 					"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo "+"where cate1no=? and cate2no = ? and countyno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and cate2no = ? and countyno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, cate2no);
@@ -112,7 +114,7 @@ int maxno=0;
 				stmt.setInt(4, firstno);
 			}else{
 				System.out.println("55555");
-				query="select  attrac.AttracNo,stitle,addr,photoname,photodata from( select AttracNo ,photodata, photoname ,sort "+
+				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
 						"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
 						"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and cate2no = ? and countyno=? and distno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
@@ -130,8 +132,6 @@ int maxno=0;
 					Map m1 = new HashMap(); 
 					m1.put("attracNo",rset.getString("AttracNo")); 
 					m1.put("stitle", rset.getString("stitle"));
-					m1.put("address",rset.getString("addr"));
-					m1.put("photoname",rset.getString("photoname")); 
 					m1.put("photodata", rset.getString("photodata"));
 					l1.add(m1);
 			} 
