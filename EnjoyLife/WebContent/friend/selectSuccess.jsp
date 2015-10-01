@@ -82,8 +82,10 @@ $('a[data-toggle="modal"]').click(function(){
  			$.each(data,function(){
  	 				var EventType=this.EventType;
  	 	 			var EventContent=this.EventContent;
- 	 	 			var Addr=this.Addr;		
- 	 	 				$('div[id="no"]').append("<table style='border-style:inset;' class='table table-striped'><tr><td>找伴類型:"+EventType+"</td></tr>"+"<tr><td>內容:"+EventContent+"</td></tr>"+"<tr><td>地址:"+Addr+"</td></tr>"+"</table>");
+ 	 	 			var Addr=this.Addr;
+ 	 	 			var ImgNo=this.ImgNo;
+ 	 	 				$('div[id="no"]').append("<table style='border-style:inset;' class='table table-striped'><tr><td>找伴類型:"+EventType+"</td></tr>"+"<tr><td>內容:"+EventContent+"</td></tr>"+"<tr><td>照片:"+"<img src='${pageContext.request.contextPath}/GetImg?imgid="+ImgNo+"'height='150' width='200' style='display:block; margin:auto;'>"+"</td></tr>"+"<tr><td>地址:"+Addr+"</td></tr>"+"</table>");
+ 	 	 				
  	 		})
  		}		
  		else{

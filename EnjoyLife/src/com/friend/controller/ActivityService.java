@@ -22,6 +22,7 @@ public class ActivityService {
 			m1.put("EventType",bean9.getEventType());
 			m1.put("EventContent",bean9.getEventContent());
 			m1.put("Addr",bean9.getAddr());	
+			m1.put("ImgNo",bean9.getImgNo().toString());	
 			l1.add(m1);
 		}
 		 jsonString = JSONValue.toJSONString(l1);                    
