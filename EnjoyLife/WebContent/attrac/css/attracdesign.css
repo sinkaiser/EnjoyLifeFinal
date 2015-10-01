@@ -10,7 +10,7 @@
 .ui-menu-item:hover {background-color:#d0d0d0;}
 .row{margin: 0px 0px 10px 15px}
 .select{width:140px;font-size: 18px;height:4ex;margin:10px 20px 0px 20px;border-radius:15px;}
-.container {height:auto;width:1200px;border:5px solid gray;margin:25px auto;padding: 0px}
+.attraccontainer {height:auto;width:1200px;border:5px solid gray;margin:25px auto;padding: 0px}
 #travel {border:1px solid gray;width:100%;height:auto;margin:10px auto;background-color:white;}
 #map {height: 300px;margin:10px auto}
 #alllist{text-align: center;margin: 15px auto}

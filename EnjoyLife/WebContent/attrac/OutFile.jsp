@@ -6,39 +6,19 @@
 <head>
 <style type="text/css">
 
-	table {
-		
-		border:2px solid black;
-		font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-		font-size: 16px;
-	 	margin: 45px auto; 
-		width: 1000px;
-		text-align: left;
-		border-collapse: collapse;
-		position: relative;
-	 	table-layout:fixed; 
-	}
-	td {
-		font-size: 16px;
-		padding: 8px; 
-		background: #e8edff; 
-		color: #669;
-		border-top:2px solid black;; 
-		border-bottom: 2px solid black;:
-	}
-
-	tr:hover td {
-		background: #d0dafd;
-		color: #339;
-	}
-	#title{text-align:center; border:2px solid black;}
+table {	border:2px solid black;font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+		font-size: 16px;margin: 45px auto;width: 1000px;text-align: left;border-collapse: collapse;
+		position: relative;	table-layout:fixed; }
+td {font-size: 16px;padding: 8px; background: #e8edff; color: #669;border-top:2px solid black;border-bottom: 2px solid black;}
+tr:hover td {background: #d0dafd;color: #339;}
+#title{text-align:center; border:2px solid black;}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-<s:form action="myAction2" namespace="/myNamespace" >
+<s:form action="myAction2" >
 		<s:submit value="Upload to SQL" />
 </s:form>  
 

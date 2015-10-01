@@ -20,28 +20,19 @@ li div {border:5px ridge gray;padding: 5px;margin-bottom:5px;word-break:break-al
 li div img {width:200px;margin:5px auto;display:block;}
 li div p{text-align: center;font-size: 20px;font-family:標楷體;}
 .select{width:140px;font-size: 18px;height:4ex;border-radius:15px;margin:5px auto}
-#creattable {border:2px double black;
-		font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-		font-size: 20px;
-	 	margin: 0px auto; 
-		width: 600px;
-		text-align: left;
-		border-collapse: collapse;
-		position: relative;
-	 	table-layout:fixed;}
+#creattable {border:2px double black;font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+		font-size: 20px;margin: 0px auto;width: 600px;text-align: left;border-collapse: collapse;position: relative;table-layout:fixed;}
 table {	border:2px double black;font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;font-size: 20px;
 	 	margin: 0px auto; width: 850px;text-align: left;border-collapse: collapse;position: relative;table-layout:fixed;}
-td {	font-size: 22px;padding: 8px;background: #e8edff;color: #669;border-top:2px double black;border-bottom: 2px double black;}
+td {	font-size: 22px;padding: 8px;background: #e8edff;color: #669;border-top:2px double black;border-bottom: 2px double black;vertical-align: middle;}
 tr:hover td {background: #d0dafd;color: #339;}
 .input{	width: 450px;}
 .xbody{height:100px;width:450px;resize:none;overflow:auto;}
 #title{text-align:center; border:2px double black;font-size: 22px;width:130px;}
 #cate1no {font-size: 18px;height:4ex}
 #cate2no {font-size: 18px;height:4ex}
-*{max-width: 1280px}
-.homepage{
-	padding-top:110px;
-}
+
+.homepage{padding-top:110px;}
 </style>
 </head>
 <body class="homepage">
@@ -203,7 +194,6 @@ tr:hover td {background: #d0dafd;color: #339;}
 	var lilen=oli.length;
 	var offset=0;
 	var door=true;
-// 	loadimg.style.display="inline";
 	$.ajax({
 		url:"GetCate1.jsp",
 		type:"get",
@@ -349,8 +339,6 @@ tr:hover td {background: #d0dafd;color: #339;}
 		})
 	});
 	function getlist(){	
-// 		var img=$("<img></img>").attr("src","Data/ajax-loader2.gif").attr("height","15").attr("width","350").attr("id","listloader");
-// 		$("#listdiv").prepend(img);
 		loadimg.style.display="inline";
 		$.ajax({
 	 		url:"GetPhoto2.jsp",
@@ -366,7 +354,6 @@ tr:hover td {background: #d0dafd;color: #339;}
 	 				loadimg.style.display="none";
 	 				return;
 	 			}
-// 	 			$("#listloader").remove();
 				loadimg.style.display="none";
 	 			$.each(data,function(){
 	 					var index=getShort();
@@ -395,7 +382,6 @@ tr:hover td {background: #d0dafd;color: #339;}
 
 	$("#ul1 li").on('click','div',function(){
 		loadimg.style.display="inline";
-		alert($(this).attr("src"))
 		$.ajax({
 	 		url:"GetAttracDetail.jsp",
 	 		type:"get",

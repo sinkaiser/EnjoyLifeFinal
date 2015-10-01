@@ -32,7 +32,7 @@
 			<a href="${pageContext.request.contextPath}/attrac/Attracdesign.jsp"><button type="button" class="btn btn-primary" style="width:100px;margin-left:20px" >規劃</button></a>
 		</div>	
 </nav>
-<div class="container" >
+<div class="attraccontainer" >
 	<div class="row">
 		<div class="col-md-8" style="padding: 0px">
 	       <select id="select1" class="select" >            

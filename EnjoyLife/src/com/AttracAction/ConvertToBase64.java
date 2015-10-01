@@ -36,8 +36,8 @@ public class ConvertToBase64 {
 				
 				double w=bufferedImage.getWidth();
 				double h=bufferedImage.getHeight();
-				int dw=500;          //指定壓縮大小 w爲500
-			    int dh=(int) (500/(w/h));
+				int dw=300;          //指定壓縮大小 w爲500
+			    int dh=(int) (300/(w/h));
 			    BufferedImage tag= new BufferedImage(dw,dh,BufferedImage.TYPE_INT_RGB); 
 		        tag.getGraphics().drawImage(bufferedImage.getScaledInstance(dw, dh, Image.SCALE_SMOOTH), 0, 0,  null);
 				

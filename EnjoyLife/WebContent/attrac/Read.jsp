@@ -28,7 +28,7 @@
 住宿
 <h1>6f4e0b9b-8cb1-4b1d-a5c4-febd90f62469</h1>
 	
-    <s:form action="myAction" namespace="/myNamespace" method="post" >
+    <s:form action="myAction"  method="post" >
 		<s:textfield name="src" label="Rid" />
 		<s:submit value="read" />
     </s:form> 
