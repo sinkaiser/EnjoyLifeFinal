@@ -140,16 +140,7 @@
 					else{
 						$('#tablefoot').append("<div><span name='back'>上一頁</span><span style='margin-right:10px;margin-left:10px'>現在第"+pagee+"頁</span><span name='next'>下一頁</span></div>")
 					}
-					 $('#tablefoot').one("click","span[name='next']",function(){
-						 page=page+1;
-						 $('#tablefoot').empty();
-						 first(page);
-					 });
- 					 $('#tablefoot').one("click","span[name='back']",function(){
- 						page=page-1;
- 						$('#tablefoot').empty();
- 						first(page);
-					 });
+					
 					 
 					
 				$.each(data,function(){
@@ -246,6 +237,16 @@
 				}})
 			});
 			
+			 $('#tablefoot').on("click","span[name='next']",function(){
+				 page=page+1;
+				 $('#tablefoot').empty();
+				 first(page);
+			 });
+				 $('#tablefoot').on("click","span[name='back']",function(){
+					page=page-1;
+					$('#tablefoot').empty();
+					first(page);
+			 });
 			
 		}(jQuery));
 					
