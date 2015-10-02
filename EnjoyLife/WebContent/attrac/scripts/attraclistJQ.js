@@ -3,11 +3,13 @@
 		$("#select2").change(addr);
 		$("#select4").change(addr);
 		$.ajax({
-			url:"${pageContext.request.contextPath}/GetCate1Servlet",
+			url:"GetCate1.jsp",
 			type:"get",
 			dataType:"json",
 			success:function(data){
 				$.each(data,function(){
+					var a="${pageContext.request.contextPath}";
+					alert("1"+a)
 					if(this.cate1no!=null){
 						var cate1no=this.cate1no;
 						var cate1name=this.cate1name;
@@ -22,11 +24,13 @@
 				})							
 		
 				$.ajax({
-					url:"${pageContext.request.contextPath}/GetCateDistServlet",
+					url:"GetCateDist.jsp",
 					type:"get",
 					dataType:"json",
 					data:{"cate1no":$("#select1").val(),"countyno":$("#select3").val()},
 					success:function(data){
+						var a="${pageContext.request.contextPath}";
+						alert("2"+a)
 						$.each(data,function(){
 							if(this.cate2no!=null){
 								var cate2no=this.cate2no;
@@ -49,11 +53,13 @@
 			
 		$("#select1").change(function (){
 			$.ajax({
-				url:"${pageContext.request.contextPath}/GetCate2Servlet",
+				url:"GetCate2.jsp",
 				type:"get",
 				dataType:"json",
 				data:{"cate1no":$("#select1").val()},
 				success:function(data){
+					var a="${pageContext.request.contextPath}";
+					alert("3"+a)
 					$("#select2 option").remove();
 					$.each(data,function(){
 						var cate2no=this.cate2no;
@@ -68,11 +74,13 @@
 		});
 		$("#select3").change(function (){
 			$.ajax({
-				url:"${pageContext.request.contextPath}/GetDistServlet",
+				url:"GetDist.jsp",
 				type:"get",
 				dataType:"json",
 				data:{"countyno":$("#select3").val()},
 				success:function(data){
+					var a="${pageContext.request.contextPath}";
+					alert("4"+a)
 					$("#select4 option").remove();
 					$.each(data,function(){
 						var distno=this.distno;
@@ -97,6 +105,8 @@
 					"countyno":$("#select3").val(),
 					"distno":$("#select4").val()},
 				success:function(data){
+					var a="${pageContext.request.contextPath}";
+					alert("5"+a)
 					listloadimg.style.visibility="hidden";
 					$("#attracinfo").empty();
 					$("#menu li").remove();
