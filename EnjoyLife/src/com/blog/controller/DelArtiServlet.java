@@ -12,53 +12,35 @@ import org.hibernate.Session;
 import org.json.simple.JSONValue;
 
 import com.blog.model.BlogDAO;
-import com.blog.model.BlogReportDAO;
-import com.blog.model.BlogReportVO;
 import com.blog.model.Hibernate.BlogDAOHibernate;
-import com.blog.model.Hibernate.BlogReportDAOHibernate;
 import com.util.HibernateUtil;
 
-@WebServlet("/ReportArtiServlet")
-public class ReportArtiServlet extends HttpServlet {
+@WebServlet("/DelArtiServlet")
+public class DelArtiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public ReportArtiServlet() {
-        super();
        
+    public DelArtiServlet() {
+        super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  
-		String atrtic = request.getParameter("ArticleNo");
-		String reason = request.getParameter("report");
-		String member = request.getParameter("memId");
-		String returnValue ="T";
+		String articleNo = request.getParameter("ArticleNo");		
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		BlogDAO dao  = new BlogDAOHibernate(session);
 		session.beginTransaction();
-		BlogDAO blogDao = new BlogDAOHibernate(session);
-		BlogReportDAO ReportDao = new BlogReportDAOHibernate(session);
-		boolean flagChange = blogDao.reportChange("T", atrtic);
-		if(!flagChange){
+		boolean result = dao.deletePost(new java.util.Date(), "T", articleNo);
+		if(!result){
 			session.getTransaction().rollback();
-			returnValue ="F";
+		}else{
+			session.getTransaction().commit();
 		}
-		BlogReportVO bean = new BlogReportVO();
-		bean.setMemberId(member);
-		bean.setPostNo(atrtic);
-		bean.setReason(reason);
-		boolean insertResult = ReportDao.insert(bean);
-		if(!insertResult){
-			session.getTransaction().rollback();
-			returnValue ="F";
-		}
-		session.getTransaction().commit();
 		response.setContentType("text/html;charset=UTF-8");
-		String jsonString = JSONValue.toJSONString(returnValue);
+		String jsonString = JSONValue.toJSONString(result);
 		response.getWriter().write(jsonString);
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doGet(request, response);
 	}
 
