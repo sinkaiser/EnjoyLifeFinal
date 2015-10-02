@@ -7,57 +7,51 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.AttracModel.Cate1Bean;
 import com.AttracModel.Cate2Bean;
 import com.AttracModel.Cate2Dao;
+import com.util.HibernateUtil;
 
 public class Cate2DaoHiber implements Cate2Dao {
-	private static final String URL = "jdbc:sqlserver://localhost:1433;database=Attractions";
-	private static final String USERNAME = "sa";
-	private static final String PASSWORD = "passw0rd";
-	
 	private static final String SELECT_ALL =
-			"select * from cate2";
+			"from Cate2Bean";
 	@Override
 	public List<Cate2Bean> selectall() {
 		List<Cate2Bean> result = null;
-		ResultSet rset = null;
-		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			PreparedStatement stmt = conn.prepareStatement(SELECT_ALL);) {			
-			rset = stmt.executeQuery();
-			result= new ArrayList<Cate2Bean>();
-			while (rset.next()) {
-				Cate2Bean bean = new Cate2Bean();
-				bean.setCate2no(rset.getInt("cate2no"));
-				bean.setCate2name(rset.getString("cate2name"));
-				bean.setCate1no(rset.getInt("cate1no"));
-				result.add(bean);
-			} 
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;
+		try {			
+			tx=session.beginTransaction();
+			Query query = session.createQuery(SELECT_ALL);
+			result = query.list();
+			tx.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
 		}
 		return result;
 	}
 	
 	private static final String SELECT_BY_ID =
-			"select *  from cate2 where cate1no=?";	
+			"from Cate2Bean where cate1no=?";	
 	@Override
 	public List<Cate2Bean> select(int id) {
 		List<Cate2Bean> result = null;
-		ResultSet rset = null;
-		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID);) {	
-			stmt.setInt(1, id);
-			rset = stmt.executeQuery();
-			result= new ArrayList<Cate2Bean>();
-			while (rset.next()) {
-				Cate2Bean bean = new Cate2Bean();
-				bean.setCate2no(rset.getInt("cate2no"));
-				bean.setCate2name(rset.getString("cate2name"));
-				bean.setCate1no(rset.getInt("cate1no"));
-				result.add(bean);
-			} 
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;
+		try {	
+			tx=session.beginTransaction();
+			Query query = session.createQuery(SELECT_BY_ID);
+			query.setParameter(0, id);
+			result = query.list();
+			tx.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
 		}
 		return result;
 	}
@@ -65,7 +59,7 @@ public class Cate2DaoHiber implements Cate2Dao {
 	public static void main(String[] args) {
 		Cate2DaoHiber dao=new Cate2DaoHiber();
 		List<Cate2Bean> beans= new ArrayList<Cate2Bean>();
-		beans=dao.select(20);
+		beans=dao.select(101);
 //		beans=distdao.selectall();
 		for(Cate2Bean bean:beans){
 			System.out.println(bean);
