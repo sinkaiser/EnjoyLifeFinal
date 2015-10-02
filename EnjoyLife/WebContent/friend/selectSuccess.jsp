@@ -33,7 +33,10 @@
 					<td>${row.FriendVO.friendId}</td>
 					<td><a name="${row.FriendVO.friendId}" data-toggle="modal" data-target=".bs-example-modal-sm">${row.FriendName}</a></td>
 					<td><span class="badge">${row.Count}</span></td>
-					<td><a href="${pageContext.request.contextPath}/friend/deleteFriend.do?id=${row.FriendVO.friendId}"/> <input type="button" class="btn btn-primary btn-xs" value="刪除好友"></a></td>
+<%-- 					<td><a href="${pageContext.request.contextPath}/friend/deleteFriend.do?id=${row.FriendVO.friendId}"/> <input type="button" class="btn btn-primary btn-xs" value="刪除好友"></a></td> --%>
+					<td><button type="button" class="btn btn-primary btn-xs delete" data-toggle="modal" id="${row.FriendVO.friendId}" data-target="#myModal">
+  						 刪除好友
+						</button></td>
 				</tr>
 			</c:if>	
 		</c:forEach>
@@ -77,6 +80,23 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" data-target=".bs-example-modal-sm"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="text-align: center">刪除好友</h4>
+      </div>
+      <div class="modal-body" style="text-align: center">
+       		<h2> 您確定要刪除?</h2>
+      </div>
+      <div class="modal-footer" style="text-align: center">
+        <button type="button" class="btn btn-success" data-dismiss="modal">關閉</button>
+        <button type="button" class="btn btn-danger" id="checkdelete">刪除</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
 $('a[data-toggle="modal"]').click(function(){
 	var aa=$(this).attr("name");	
@@ -99,7 +119,14 @@ $('a[data-toggle="modal"]').click(function(){
  		}
 	});
 	
-})
+});
+var value;
+$('.delete').click(function(){
+	value = $(this).attr('id');	
+});
+$('#checkdelete').click(function(){
+	window.location="${pageContext.request.contextPath}/friend/deleteFriend.do?id="+value;
+});
 </script>
 <a href="${pageContext.request.contextPath}/friend/friend.jsp">好友首頁</a>
 </body>
