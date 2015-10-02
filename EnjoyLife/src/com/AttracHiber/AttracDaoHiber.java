@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,7 +13,7 @@ import org.hibernate.transform.Transformers;
 
 import com.AttracModel.AttracBean;
 import com.AttracModel.AttracDao;
-
+import com.blog.model.BlogVO;
 import com.util.HibernateUtil;
 
 
@@ -175,6 +176,24 @@ public class AttracDaoHiber implements AttracDao {
 			session.getTransaction().rollback();
 			e.printStackTrace();
 		}		
+		return result;
+	}
+	
+	public List<AttracBean> selectByShow(String show,int page){
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		List<AttracBean> result=null;
+		String sql="from AttracBean where show=?";
+		
+		try {
+			Query query = session.createQuery(sql);
+			query.setParameter(0, show);
+			query.setFirstResult(page*10);
+			query.setMaxResults(10);
+			result=query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 }
