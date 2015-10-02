@@ -96,7 +96,7 @@ body {
 			<li style="line-height:30px;float:right">							
 				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'" style="margin-bottom:25px"> 
 				<label style="height:30px;margin-bottom:26px;font-size:25px;font-family:微軟正黑體;" >${member.memberName}</label>
-				<button type="button" class="btn btn-primary" id="logout" data-toggle="modal"
+				<button type="button" class="btn btn-info" id="logout" data-toggle="modal"
 						data-target="#myModalout" style="margin-bottom:26px" >登出</button>
 			</li>
 		</c:if>
@@ -134,7 +134,7 @@ body {
 					</ul>
 				</div>
 				<div class="form-group"
-					style="margin-right: 20px; width: 300px; margin-left: 80px">
+					style="margin-right: 0px; width: 280px; margin-left: 80px">
 					<form action="SearchServlet" id="jsearch" method="post">
 						<input type="text" class="form-control" placeholder="Search"
 							id="inputAdd" name="eventTitleContent" value="${inputAdd}" />
@@ -151,7 +151,7 @@ body {
 							type="button" class="btn btn-default" id="btn-right-list">列表</button></a>
 				</div>
 				<div class="btn-group" style="margin-left: 100px; float: right;">
-					<button type="button" class="btn btn-info" data-toggle="modal"
+					<button type="button" class="btn btn-primary" data-toggle="modal"
 						data-target="#newPartner"
 						onclick="createEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}')">
 						我要新增找伴活動</button>
