@@ -17,7 +17,7 @@
 <table class="table table-hover" style="margin: 10px;width: 500px">
 	<thead>
 	<tr>
-		<td></td><th>好友列表</th><th>找伴活動</th><td></td>
+		<td></td><th>帳號</th><th>好友列表</th><th>找伴活動</th><td></td>
 <!-- 		<th>好友</th> -->
 		
 	</tr>
@@ -30,6 +30,7 @@
 					<td width="50">
 					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35"  onerror="this.style.display='none'">
 					</td>
+					<td>${row.FriendVO.friendId}</td>
 					<td><a name="${row.FriendVO.friendId}" data-toggle="modal" data-target=".bs-example-modal-sm">${row.FriendName}</a></td>
 					<td><span class="badge">${row.Count}</span></td>
 					<td><a href="${pageContext.request.contextPath}/friend/deleteFriend.do?id=${row.FriendVO.friendId}"/> <input type="button" class="btn btn-primary btn-xs" value="刪除好友"></a></td>
@@ -37,26 +38,28 @@
 			</c:if>	
 		</c:forEach>
 		
-		<tr><td></td><th>申請中好友</th><td></td></tr>
+		<tr><td></td><th>帳號</th><th>申請中好友</th><td></td></tr>
 		<c:forEach var="row" items="${selectFriend}">
 			<c:if test="${row.FriendVO.unfriend==0}">
 				<tr>
 					<td>
 					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35"  onerror="this.style.display='none'">
 					</td>
+					<td>${row.FriendVO.friendId}</td>
 					<td style="color:#606060">${row.FriendName}</td>
 					<td><a href="${pageContext.request.contextPath}/friend/deleteFriend.do?id=${row.FriendVO.friendId}"/> <input type="button" class="btn btn-primary btn-xs" value="取消申請"></a></td>					
 				</tr>
 			</c:if>	
 		</c:forEach>
 		
-		<tr><td></td><th>好友邀請確認</th><td></td></tr>
+		<tr><td></td><th>帳號</th><th>好友邀請確認</th><td></td></tr>
 		<c:forEach var="row" items="${selectFriend}">
 			<c:if test="${row.FriendVO.unfriend==1}">
 				<tr>
 					<td>
 					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35" onerror="this.style.display='none'">
 					</td>
+					<td>${row.FriendVO.friendId}</td>
 					<td style="color:#009FCC">${row.FriendName}</td>					
 					<td><a href="${pageContext.request.contextPath}/friend/updateFriend.do?id=${row.FriendVO.friendId}"/> <input type="button" class="btn btn-primary btn-xs" value="確認"></a></td>
 				</tr>
@@ -84,8 +87,7 @@ $('a[data-toggle="modal"]').click(function(){
  	 	 			var EventContent=this.EventContent;
  	 	 			var Addr=this.Addr;
  	 	 			var ImgNo=this.ImgNo;
- 	 	 				$('div[id="no"]').append("<table style='border-style:inset;' class='table table-striped'><tr><td>找伴類型:"+EventType+"</td></tr>"+"<tr><td>內容:"+EventContent+"</td></tr>"+"<tr><td>照片:"+"<img src='${pageContext.request.contextPath}/GetImg?imgid="+ImgNo+"'height='150' width='200' style='display:block; margin:auto;'>"+"</td></tr>"+"<tr><td>地址:"+Addr+"</td></tr>"+"</table>");
- 	 	 				
+ 	 	 				$('div[id="no"]').append("<table style='border-style:inset;' class='table table-striped'><tr><td>找伴類型:"+EventType+"</td></tr>"+"<tr><td>內容:"+EventContent+"</td></tr>"+"<tr><td>照片:"+"<img src='${pageContext.request.contextPath}/GetImg?imgid="+ImgNo+"'height='150' width='200' style='display:block; margin:auto;'>"+"</td></tr>"+"<tr><td>地址:"+Addr+"</td></tr>"+"</table>"); 	 	 				
  	 		})
  		}		
  		else{
