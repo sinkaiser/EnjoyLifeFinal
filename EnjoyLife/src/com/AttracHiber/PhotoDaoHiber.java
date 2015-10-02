@@ -30,9 +30,6 @@ import com.AttracModel.PhotoDao;
 import com.util.HibernateUtil;
 
 public class PhotoDaoHiber implements PhotoDao {
-	private static final String URL = "jdbc:sqlserver://localhost:1433;database=Attractions";
-	private static final String USERNAME = "sa";
-	private static final String PASSWORD = "passw0rd";
 
 	private static final String SELECT_PK =		
 			"select photono from PhotoBean group by photono order by photono desc";

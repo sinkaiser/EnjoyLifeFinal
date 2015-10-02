@@ -1,8 +1,16 @@
 package com.AttracAction;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
+import org.apache.commons.codec.binary.Base64;
 
 import com.AttracModel.AttracBean;
 import com.AttracModel.AttracService;
@@ -23,9 +31,33 @@ public class updateAction {
 		ConvertNo convert=new ConvertNo();
 		PhotoBean pbean=new PhotoBean();
 		String[] photos =picstring.split("\\[");
+		ByteArrayOutputStream baos=null;
+		String base64pic=null;
 		for(int i=1;i<photos.length;i++){
-			String pic=photos[i].substring(0, photos[i].lastIndexOf("]"));
-			pic64.add(pic);
+			try {
+				String pic = photos[i].substring(0, photos[i].lastIndexOf("]"));
+				int first = pic.indexOf(",");
+				String picbase = pic.substring(first + 1);
+				byte[] source = Base64.decodeBase64(picbase);
+				InputStream ins = new ByteArrayInputStream(source);
+				BufferedImage bufferedImage = ImageIO.read(ins);
+				double w = bufferedImage.getWidth();
+				double h = bufferedImage.getHeight();
+				int dw = 300; //指定壓縮大小 w爲500
+				int dh = (int) (300 / (w / h));
+				BufferedImage tag = new BufferedImage(dw, dh, BufferedImage.TYPE_INT_RGB);
+				tag.getGraphics().drawImage(bufferedImage.getScaledInstance(dw, dh, Image.SCALE_SMOOTH), 0, 0, null);
+				baos = new ByteArrayOutputStream();
+				ImageIO.write(tag, "jpg", baos);
+				base64pic = "data:image/jpeg;base64,";
+				baos.flush();
+				byte[] originalImgByte = baos.toByteArray();
+				base64pic = base64pic + Base64.encodeBase64String(originalImgByte);
+				baos.close();
+				pic64.add(base64pic);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		String add= bean.getAddress();
 		String county=null;
