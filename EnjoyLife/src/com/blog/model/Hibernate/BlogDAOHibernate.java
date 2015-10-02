@@ -171,8 +171,8 @@ public class BlogDAOHibernate implements BlogDAO {
 	@Override
 	public List<BlogVO> selectByFlagReport(int page) {
 		List<BlogVO> result=null;
-//		String sql="from BlogVO where flagReport=1";
-		String sql="from BlogVO";
+		String sql="from BlogVO where flagReport='T'";
+//		String sql="from BlogVO";
 		try {
 			Query query = session.createQuery(sql);
 			
@@ -183,6 +183,42 @@ public class BlogDAOHibernate implements BlogDAO {
 			e.printStackTrace();
 		}
 		
+		return result;
+	}
+	
+	@Override
+	public List<BlogVO> selectByFlagDelete(int page) {
+		List<BlogVO> result=null;
+		String sql="from BlogVO where flagDelete='T'";
+		
+		try {
+			Query query = session.createQuery(sql);
+			
+			query.setFirstResult(page*10);
+			query.setMaxResults(10);
+			result=query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	
+	@Override
+	public boolean delete(String postNo) {
+		String sql = "delete from BlogVO where postNo=?";
+		boolean result = false;
+
+		try {
+			Query query = session.createQuery(sql);
+			query.setParameter(0, postNo);
+			
+			int i = query.executeUpdate();
+			result = true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 	

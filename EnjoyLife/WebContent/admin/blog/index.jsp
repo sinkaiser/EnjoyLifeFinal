@@ -24,14 +24,26 @@
   <script src="js/jquery-2.1.4.min.js"></script>  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   
+  
+ 
+				
     <!-- Left column -->
     <div class="templatemo-flex-row">
-
+			
       <!-- Main content --> 
       <div class="templatemo-content col-2 light-gray-bg">
+      
+      	 <h1>網誌管理</h1>
+				
+				<div id="aa">
+				
+					<a href="index.jsp"><button type="button"  class="btn btn-default">被檢舉文章</button></a>
+					<a href="delete.jsp"><button type="button" class="btn btn-primary">被刪除文章</button></a>
+					
+				</div>
         
         <div class="templatemo-content-container">
-        <h1>網誌</h1>
+      
           <div class="templatemo-flex-row flex-content-row">
           
             
@@ -102,7 +114,7 @@
 				</div>
 				<div>
 					<p>評價：</p>
-					<button id="blogdelete" type="button" class="btn btn-danger">刪除</button>
+					<button id="blogdelete" type="button" class="btn btn-danger">移置刪除區</button>
 					<button id="blogok" type="button" class="btn btn-success">沒問題</button>
 				</div>
             </div>

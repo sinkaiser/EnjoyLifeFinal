@@ -22,5 +22,7 @@ public interface BlogDAO {
 	public List<BlogVO> selectAll();
 	public List<BlogVO> selectByFlagReport(int page);
 	public boolean reportChange(String flag, String postNo);
+	public List<BlogVO> selectByFlagDelete(int page);
+	public boolean delete(String postNo);
 	
 }
