@@ -113,7 +113,8 @@ public class Readfile {
 						bean.setDistno(convert.ConvertInt(county, dist));
 					}
 					bean.setInfo(info);
-					bean.setMrt(mrt);																
+					bean.setMrt(mrt);	
+					bean.setShow(1);
 					i++;
 					Beans.add(bean);
 					

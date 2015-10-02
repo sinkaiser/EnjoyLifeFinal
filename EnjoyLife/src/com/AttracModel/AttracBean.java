@@ -5,12 +5,18 @@ import java.util.List;
 
 
 public class AttracBean implements java.io.Serializable{	
-	private int rownumber,cat1no,cat2no,distno,countyno;
+	private int rownumber,cat1no,cat2no,distno,countyno,show;
 	private List<AttracBean> Beans;
 	private String time,stitle,xbody,address,info,mrt,src,cat1,cat2,dist,county;
 	private List<String>file;
 
 	
+	public int getShow() {
+		return show;
+	}
+	public void setShow(int show) {
+		this.show = show;
+	}
 	public int getCat1no() {
 		return cat1no;
 	}

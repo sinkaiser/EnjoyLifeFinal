@@ -75,6 +75,7 @@ public class updateAction {
 		bean.setDist(dist);
 		bean.setCountyno(convert.ConvertInt(county, county));;
 		bean.setDistno(convert.ConvertInt(county, dist));
+		bean.setShow(0);
 		service.insert(bean);
 		bean.setRownumber(service.selectAttracNo(bean));
 		int j=1;
@@ -85,8 +86,8 @@ public class updateAction {
 				pservice.insert(pbean);
 				j++;
 		}
-		System.out.println(bean);
-		System.out.println("100002");		
+//		System.out.println(bean);
+//		System.out.println("100002");		
 		return "success";	        
 	}
 	
