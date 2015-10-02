@@ -3,7 +3,7 @@
 		$("#select2").change(addr);
 		$("#select4").change(addr);
 		$.ajax({
-			url:"GetCate1.jsp",
+			url:"${pageContext.request.contextPath}/GetCate1Servlet",
 			type:"get",
 			dataType:"json",
 			success:function(data){
@@ -22,7 +22,7 @@
 				})							
 		
 				$.ajax({
-					url:"GetCateDist.jsp",
+					url:"${pageContext.request.contextPath}/GetCateDistServlet",
 					type:"get",
 					dataType:"json",
 					data:{"cate1no":$("#select1").val(),"countyno":$("#select3").val()},
@@ -49,7 +49,7 @@
 			
 		$("#select1").change(function (){
 			$.ajax({
-				url:"GetCate2.jsp",
+				url:"${pageContext.request.contextPath}/GetCate2Servlet",
 				type:"get",
 				dataType:"json",
 				data:{"cate1no":$("#select1").val()},
@@ -68,7 +68,7 @@
 		});
 		$("#select3").change(function (){
 			$.ajax({
-				url:"GetDist.jsp",
+				url:"${pageContext.request.contextPath}/GetDistServlet",
 				type:"get",
 				dataType:"json",
 				data:{"countyno":$("#select3").val()},
