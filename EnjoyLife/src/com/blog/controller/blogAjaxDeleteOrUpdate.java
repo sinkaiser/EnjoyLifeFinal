@@ -80,6 +80,19 @@ public class blogAjaxDeleteOrUpdate extends HttpServlet {
 			response.getWriter().write("ok");
 			return;
 			}
+			else if(type.equals("back")){
+				try {
+					session.beginTransaction();
+					dao.deletePost(new java.util.Date(), "F", postNo);
+					session.beginTransaction().commit();
+				} catch (HibernateException e) {
+					response.getWriter().write("error");
+					session.getTransaction().rollback();
+					return;
+				}
+				response.getWriter().write("ok");
+				return;
+			}
 		}
 		response.getWriter().write("what");
 		return;

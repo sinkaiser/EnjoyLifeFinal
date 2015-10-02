@@ -171,7 +171,7 @@ public class BlogDAOHibernate implements BlogDAO {
 	@Override
 	public List<BlogVO> selectByFlagReport(int page) {
 		List<BlogVO> result=null;
-		String sql="from BlogVO where flagReport='T'";
+		String sql="from BlogVO where flagReport='T' and flagDelete='F'";
 //		String sql="from BlogVO";
 		try {
 			Query query = session.createQuery(sql);

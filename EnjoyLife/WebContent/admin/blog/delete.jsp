@@ -39,6 +39,7 @@
 				
 					<a href="index.jsp"><button type="button" class="btn btn-primary">被檢舉文章</button></a>
 					<a href="delete.jsp"><button type="button" class="btn btn-default">被刪除文章</button></a>
+					<p id='p' class="btn btn-info" style="margin-left:200px">請選擇一篇文章</p>
 					
 				</div>
         
@@ -185,16 +186,19 @@
 					
 					AttractionsNo=this.AttractionsNo
 					
-					$('#bd').append("<tr name='oneBlog'><td name='postNo'>"+postNo+"</td><td>"+postType+"</td><td name='postTitle'>"+postTitle+"</td><td>"+postDate+"</td><td name='hidden'>"+modifyDate+"<input name='AttractionsNo' type='hidden' value="+AttractionsNo+"><input name='flagReport' type='hidden' value="+flagReport+"><input name='flagDelete' type='hidden' value="+flagDelete+"><input name='viewTotal' type='hidden' value="+viewTotal+"><input name='qtyToScore' type='hidden' value="+qtyToScore+"><input name='avgScore' type='hidden' value="+avgScore+"><input name='memberId' type='hidden' value="+memberId+"><input name='pathPhoto' type='hidden' value="+pathPhoto+"><input name='postContext' type='hidden' value="+postContext+"></td></tr>")
+					$('#bd').append("<tr name='oneBlog' value="+postNo+"><td name='postNo'>"+postNo+"</td><td>"+postType+"</td><td name='postTitle'>"+postTitle+"</td><td>"+postDate+"</td><td name='hidden'>"+modifyDate+"<input name='AttractionsNo' type='hidden' value="+AttractionsNo+"><input name='flagReport' type='hidden' value="+flagReport+"><input name='flagDelete' type='hidden' value="+flagDelete+"><input name='viewTotal' type='hidden' value="+viewTotal+"><input name='qtyToScore' type='hidden' value="+qtyToScore+"><input name='avgScore' type='hidden' value="+avgScore+"><input name='memberId' type='hidden' value="+memberId+"><input name='pathPhoto' type='hidden' value="+pathPhoto+"><input name='postContext' type='hidden' value="+postContext+"></td></tr>")
 
 				});
 				$('#bd').on('click','tr[name="oneBlog"]',function(){
+					
+					
 					pathPhoto=$(this).find("input[name='pathPhoto']").val();
 					memberId=$(this).find("input[name='memberId']").val();
 					postContext=$(this).find("input[name='postContext']").val();
 					
 					a=$(this).find('td[name="postNo"]').text();
 					
+					$('#p').text('文章編號'+a);
 					
 					$("#img").attr("src","${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=a&&pathImg="+pathPhoto);
 					$("#memberId").text(memberId);
@@ -210,26 +214,33 @@
 			}) };
 			//outside
 			
-			$('#blogdelete').bind('click',function(){
 			
-				$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":a,"type":"delete"},"success":function(data){
-					alert(a);
+
+			
+			$('#back').bind('click',function(){
+			
+				$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":a,"type":"back"},"success":function(data){
 					if(data=="ok"){
-						alert("成功");
+						$('tr[value='+a+']').remove();
+						$('#p').text('文章編號'+a+'移至檢舉區');
+						
 					}else{
-						alert("失敗");
+					
+						$('#p').text('文章編號'+a+'移動失敗');
 					}
 					
 				}})
 			});
 			
-			$('#blogok').bind('click',function(){
-				alert(a);
-				$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":a,"type":"ok"},"success":function(data){
+			$('#delete').bind('click',function(){
+				$.ajax({"url":"${pageContext.request.contextPath}/AdminDeleteByPostNo","data":{"postNo":a},"success":function(data){
 					if(data=="ok"){
-						alert("取消檢舉");
+						$('tr[value='+a+']').remove();
+						$('#p').text('文章編號'+a+'刪除成功');
+						
 					}else{
-						alert("失敗");
+						
+						$('#p').text('文章編號'+a+'刪除失敗');
 					}
 					
 				}})

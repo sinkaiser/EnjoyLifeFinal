@@ -39,7 +39,7 @@
 				
 					<a href="index.jsp"><button type="button"  class="btn btn-default">被檢舉文章</button></a>
 					<a href="delete.jsp"><button type="button" class="btn btn-primary">被刪除文章</button></a>
-					
+					<p id='p' class="btn btn-info" style="margin-left:200px">請選擇一篇文章</p>
 				</div>
         
         <div class="templatemo-content-container">
@@ -56,7 +56,7 @@
       
                     <thead>
                       <tr>
-                        <td>會員編號</td>
+                        <td>網誌編號</td>
                         <td>日誌類型</td>
                         <td>日誌標題</td>
                         <td>發佈日期/時間</td>
@@ -113,7 +113,7 @@
 				  </div>
 				</div>
 				<div>
-					<p>評價：</p>
+					
 					<button id="blogdelete" type="button" class="btn btn-danger">移置刪除區</button>
 					<button id="blogok" type="button" class="btn btn-success">沒問題</button>
 				</div>
@@ -131,8 +131,8 @@
                       <img class="media-object img-circle" src="images/sunset.jpg" alt="Sunset">
                   </div>
                   <div class="media-body">
-                    <h2 class="media-heading text-uppercase">Consectur Fusce Enim</h2>
-                    <p>Phasellus dapibus nulla quis risus auctor, non placerat augue consectetur.</p>  
+                    <h2 class="media-heading text-uppercase">回覆者名稱</h2>
+                    <p>回覆內容</p>  
                   </div>
                 </div>                
               </div>    		
@@ -146,8 +146,8 @@
                       <img class="media-object img-circle" src="images/sunset.jpg" alt="Sunset">
                   </div>
                   <div class="media-body">
-                    <h2 class="media-heading text-uppercase">Consectur Fusce Enim</h2>
-                    <p>Phasellus dapibus nulla quis risus auctor, non placerat augue consectetur.</p>  
+                    <h2 class="media-heading text-uppercase">回覆者名稱</h2>
+                    <p>回覆內容</p>  
                   </div>
                 </div>                
               </div>   
@@ -286,7 +286,7 @@
 					
 					AttractionsNo=this.AttractionsNo
 					
-					$('#bd').append("<tr name='oneBlog'><td name='postNo'>"+postNo+"</td><td>"+postType+"</td><td name='postTitle'>"+postTitle+"</td><td>"+postDate+"</td><td name='hidden'>"+modifyDate+"<input name='AttractionsNo' type='hidden' value="+AttractionsNo+"><input name='flagReport' type='hidden' value="+flagReport+"><input name='flagDelete' type='hidden' value="+flagDelete+"><input name='viewTotal' type='hidden' value="+viewTotal+"><input name='qtyToScore' type='hidden' value="+qtyToScore+"><input name='avgScore' type='hidden' value="+avgScore+"><input name='memberId' type='hidden' value="+memberId+"><input name='pathPhoto' type='hidden' value="+pathPhoto+"><input name='postContext' type='hidden' value="+postContext+"></td></tr>")
+					$('#bd').append("<tr name='oneBlog' value="+postNo+"><td name='postNo'>"+postNo+"</td><td>"+postType+"</td><td name='postTitle'>"+postTitle+"</td><td>"+postDate+"</td><td name='hidden'>"+modifyDate+"<input name='AttractionsNo' type='hidden' value="+AttractionsNo+"><input name='flagReport' type='hidden' value="+flagReport+"><input name='flagDelete' type='hidden' value="+flagDelete+"><input name='viewTotal' type='hidden' value="+viewTotal+"><input name='qtyToScore' type='hidden' value="+qtyToScore+"><input name='avgScore' type='hidden' value="+avgScore+"><input name='memberId' type='hidden' value="+memberId+"><input name='pathPhoto' type='hidden' value="+pathPhoto+"><input name='postContext' type='hidden' value="+postContext+"></td></tr>")
 // 					$('td[name=hidden]').append("<input name='postContent' type='hidden' value="+postContent+">");
 // 					$('td[name=hidden]').append("<input name='pathPhoto' type='hidden' value="+pathPhoto+">");
 // 					$('td[name=hidden]').append("<input name='memberId' type='hidden' value="+memberId+">");
@@ -303,7 +303,7 @@
 					postContext=$(this).find("input[name='postContext']").val();
 					
 					a=$(this).find('td[name="postNo"]').text();
-					
+					$('#p').text('選擇文章編號'+a);
 					
 					$("#img").attr("src","${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=a&&pathImg="+pathPhoto);
 					$("#memberId").text(memberId);
@@ -384,23 +384,40 @@
 			$('#blogdelete').bind('click',function(){
 			
 				$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":a,"type":"delete"},"success":function(data){
-					alert(a);
+					
 					if(data=="ok"){
-						alert("成功");
+						
+						$('tr[value='+a+']').remove();
+						$('#p').text('文章編號'+a+'移至刪除區');
+	
+						
 					}else{
-						alert("失敗");
+						$('#p').text('文章編號'+a+'移至刪除區失敗');
+					
+						
 					}
 					
 				}})
 			});
 			
 			$('#blogok').bind('click',function(){
-				alert(a);
+				
 				$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":a,"type":"ok"},"success":function(data){
 					if(data=="ok"){
-						alert("取消檢舉");
+						
+						$('tr[value='+a+']').remove();
+						
+						$("#avgScore").attr("style","width:0%");
+						$("#qtyToScore").attr("style","width:0%");
+						$("#viewTotal").attr("style","width:0%");
+						$('#blogReply').empty()
+						
+						$('#p').text('文章編號'+a+'取消檢舉成功');
+						
+						
 					}else{
-						alert("失敗");
+						
+						$('#p').text('文章編號'+a+'取消檢舉失敗');
 					}
 					
 				}})
