@@ -67,12 +67,18 @@ public class FindByIDServlet extends HttpServlet {
 			Map<String,Object> map = new HashMap<String,Object>();
 			MemberVO a=dao.SelectById(vo.getMemberId());
 			int imgNo=a.getPicture();
-			//List<AttendPartnerVO> b = apservice.selectByEventNoPartner(eventNo, memberId);
-			//String partnerId = ((AttendPartnerVO) b).getPartner();
+			
+		
+			int eventNo = vo.getEventNo();
+			List<AttendPartnerVO> b = apservice.selectByEventNo(eventNo);
+
+//			List<AttendPartnerVO> dd = apservice.getAll();
+//			Integer ddeventNo = ((AttendPartnerVO) dd).getEventNo();
+			
 			//List<AttendPartnerVO> b = apservice.selectByEventNoPartner(memberId,memberId);
 			//String aname = ((AttendPartnerVO) b).getPartner();
 			//map.put("aname",aname);
-			//map.put("partnerId",partnerId);
+			map.put("partner",b);
 			map.put("PartnerVO",vo);
 			map.put("imgNo",imgNo);
 			mp.add(map);

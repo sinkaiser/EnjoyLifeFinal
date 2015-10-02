@@ -15,7 +15,7 @@ public class AttendPartnerDAO implements AttendPartnerDAO_interface {
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/xxx");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/ELDB");
 		} catch (NamingException e) {
 			System.out.println("DataSource錯誤");
 			e.printStackTrace();
@@ -173,6 +173,7 @@ public class AttendPartnerDAO implements AttendPartnerDAO_interface {
 				// partnerVO 也稱為 Domain objects
 				attendPartnerVO = new AttendPartnerVO();
 				attendPartnerVO.setEventNo(rs.getInt("eventNo"));
+				attendPartnerVO.setPartner(rs.getString("partner"));
 				list.add(attendPartnerVO); // Store the row in the list
 			}
 

@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.attendpartner.model.AttendPartnerDAO;
+import com.attendpartner.model.AttendPartnerDAO_interface;
+import com.attendpartner.model.AttendPartnerVO;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDAO_interface;
 import com.member.model.MemberVO;
@@ -50,7 +53,7 @@ public class FindByIDOverServlet extends HttpServlet {
 		}
 		
 		PartnerService service = new PartnerService();
-		
+		AttendPartnerDAO_interface apservice = new AttendPartnerDAO();
 		MemberDAO_interface dao = new MemberDAO();
 		List<Map<String,Object>> mp = new ArrayList<Map<String,Object>>();
 		List<PartnerVO> list = service.findByIdOver(memberId);
@@ -58,6 +61,11 @@ public class FindByIDOverServlet extends HttpServlet {
 			Map<String,Object> map = new HashMap<String,Object>();
 			MemberVO a=dao.SelectById(vo.getMemberId());
 			int imgNo=a.getPicture();
+			
+			int eventNo = vo.getEventNo();
+			List<AttendPartnerVO> b = apservice.selectByEventNo(eventNo);
+			
+			map.put("partner",b);
 			map.put("PartnerVO",vo);
 			map.put("imgNo",imgNo);
 			mp.add(map);

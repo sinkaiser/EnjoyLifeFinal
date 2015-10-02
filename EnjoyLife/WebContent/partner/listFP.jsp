@@ -191,7 +191,7 @@ body {
 													height="30" width="30" onerror="this.style.display='none'">
 													<p style="float: left">${mem.PartnerVO.memberName}</p> 
 													<a href="#" data-toggle="modal" data-target="#myModal3"
-													onclick="attend('${mem.PartnerVO.eventNo}','${member.memberName}','${mem.PartnerVO.memberId}')">
+													onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${mem.PartnerVO.memberId}')">
 													<img style="margin-left:130px" src="img/plusone2.png" id="plusone"
 														title="我要參加" width="32" height="32" alt="+1"></a>
 												</div>
@@ -532,7 +532,7 @@ body {
 
 					<form name="insertMemberFormC" action="${pageContext.request.contextPath}/message/writeMessage.do" id="jmessage" method="POST">
 						<input id='xxxeno' style="text-align: left" name="eno" type="hidden" size="14"> 
-						<input id='xxx1' style="text-align: left" id="messageFrom" name="messageFrom" value="${member.memberName}" type="hidden" size="14">
+						<input id='xxx1' style="text-align: left" id="messageFrom" name="messageFrom" value="${member.memberId}" type="hidden" size="14">
 						<input id='xxx2' style="text-align: left" id="messageTo" name="messageTo" type="hidden" size="14">
 						<label>你還想說:</label><br>
 						<textarea id="xxx3" name="message" class="form-textarea"></textarea>

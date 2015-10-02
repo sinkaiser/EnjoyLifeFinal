@@ -222,7 +222,10 @@ body {
 														${formattedDate}
 													</a>
 													<br>
-													參加者：${mem.partnerId}
+													參加者：
+													<c:forEach var="attend" varStatus="statusX" items="${mem.partner}">
+													${attend.partner}
+													</c:forEach>
 												</div>
 											</td>
 										</tr>
