@@ -7,13 +7,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import com.AttracModel.CountyBean;
 import com.AttracModel.CountyDao;
+import com.util.HibernateUtil;
 
 public class CountyDaoHiber implements CountyDao{
-	private static final String URL = "jdbc:sqlserver://localhost:1433;database=Attractions";
-	private static final String USERNAME = "sa";
-	private static final String PASSWORD = "passw0rd";
 
 	public static void main(String[] args) {
 		List<CountyBean> beans =new ArrayList<CountyBean>();
@@ -25,23 +27,20 @@ public class CountyDaoHiber implements CountyDao{
 	}
 	
 	private static final String SELECT_ALL =
-			"select * from counties";
+			"from CountyBean";
 	@Override
 	public List<CountyBean> selectall() {
 		List<CountyBean> result = null;
-		ResultSet rset = null;
-		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			PreparedStatement stmt = conn.prepareStatement(SELECT_ALL);) {			
-			rset = stmt.executeQuery();
-			result= new ArrayList<CountyBean>();
-			while (rset.next()) {
-				CountyBean bean = new CountyBean();
-				bean.setCountyno(rset.getInt("countyno"));
-				bean.setCountyname(rset.getString("countyname"));
-				result.add(bean);
-			} 
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;
+		try{			
+			tx=session.beginTransaction();
+			Query query = session.createQuery(SELECT_ALL);
+			result = query.list();
+			tx.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
 		}
 		return result;
 	}

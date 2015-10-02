@@ -8,61 +8,55 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.AttracModel.AttracBean;
 import com.AttracModel.Cate1Bean;
 import com.AttracModel.Cate1Dao;
+import com.util.HibernateUtil;
 
 public class Cate1DaoHiber implements Cate1Dao {
-	private static final String URL = "jdbc:sqlserver://localhost:1433;database=Attractions";
-	private static final String USERNAME = "sa";
-	private static final String PASSWORD = "passw0rd";
 
 	private static final String SELECT_ALL =
-			"select * from cate1";
+			"from Cate1Bean";
 	@Override
 	public List<Cate1Bean> selectall() {
 		List<Cate1Bean> result = null;
-		ResultSet rset = null;
-		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			PreparedStatement stmt = conn.prepareStatement(SELECT_ALL);) {			
-			rset = stmt.executeQuery();
-			result= new ArrayList<Cate1Bean>();
-			while (rset.next()) {
-				Cate1Bean bean = new Cate1Bean();
-				bean.setCate1no(rset.getInt("cate1no"));
-				bean.setCate1name(rset.getString("cate1name"));
-				result.add(bean);
-			} 
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;
+		try {			
+			tx=session.beginTransaction();
+			Query query = session.createQuery(SELECT_ALL);
+			result = query.list();
+			tx.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
 		}
 		return result;
 	}
 
 
 	private static final String SELECT_BY_ID =
-			"select * from cate1 where cate1no=?";
+			"from Cate1Bean where cate1no=?";
 	@Override
 	public Cate1Bean select(int id) {
 		Cate1Bean result=null;
-		ResultSet rset = null;		
-		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID);){			
-			stmt.setInt(1, id);
-			rset = stmt.executeQuery();
-			if (rset.next()) {
-				result = new Cate1Bean();
-				result.setCate1no(rset.getInt("cate1no"));
-				result.setCate1name(rset.getString("cate1name"));			
-			} 
-		} catch (SQLException e) {
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;
+		try {
+			tx=session.beginTransaction();
+			Query query = session.createQuery(SELECT_BY_ID);
+			query.setParameter(0, id);
+			List<Cate1Bean> list = query.list();
+			result=list.get(0);
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
 			e.printStackTrace();
-		} finally {
-			try {
-				rset.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		} 
 		return result;
 	}
 

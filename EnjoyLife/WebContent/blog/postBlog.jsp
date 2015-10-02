@@ -5,11 +5,13 @@
 <head>
 <title>ENJOY LIFE</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<%@include file="/includes/link" %>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.min.css" />
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" >
-	<script	type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.4.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.4.min.js"></script>
+	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/bootstrap.min.css' type="text/css" />
+	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/jquery-ui.min.css' type="text/css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>	
 	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/skel-noscript.css' type="text/css" />
 	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/style.css' type="text/css" />
@@ -186,10 +188,10 @@
 		<!-- Copyright -->
 		<div id="copyright">
 			<div class="container">
-				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+				Enjoy Life
 			</div>
 		</div>
-		<%@include file="/includes/login" %>
+		<%@include file="/includes/logout" %>
 </body>
 <script type="text/javascript">
 (function($){

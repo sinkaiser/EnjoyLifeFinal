@@ -8,57 +8,50 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import com.AttracModel.DistBean;
 import com.AttracModel.DistDao;
+import com.util.HibernateUtil;
 
 public class DistDaoHiber implements DistDao {
-	private static final String URL = "jdbc:sqlserver://localhost:1433;database=Attractions";
-	private static final String USERNAME = "sa";
-	private static final String PASSWORD = "passw0rd";
-	
 	
 	private static final String SELECT_BY_ID =
-			"select *  from dist where countyno=?";	
+			"from DistBean where countyno=?";	
 	@Override
 	public List<DistBean> select(int id) {
 		List<DistBean> result = null;
-		ResultSet rset = null;
-		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID);) {	
-			stmt.setInt(1, id);
-			rset = stmt.executeQuery();
-			result= new ArrayList<DistBean>();
-			while (rset.next()) {
-				DistBean bean = new DistBean();
-				bean.setDistno(rset.getInt("distno"));
-				bean.setDistname(rset.getString("distname"));
-				bean.setCountyno(rset.getInt("countyno"));
-				result.add(bean);
-			} 
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;
+		try{	
+			tx=session.beginTransaction();
+			Query query = session.createQuery(SELECT_BY_ID);
+			query.setParameter(0, id);
+			result = query.list();
+			tx.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
 		}
 		return result;
 	}
 	private static final String SELECT_ALL =
-			"select * from dist";
+			"from DistBean";
 	@Override
 	public List<DistBean> selectall() {
 		List<DistBean> result = null;
-		ResultSet rset = null;
-		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			PreparedStatement stmt = conn.prepareStatement(SELECT_ALL);) {			
-			rset = stmt.executeQuery();
-			result= new ArrayList<DistBean>();
-			while (rset.next()) {
-				DistBean bean = new DistBean();
-				bean.setDistno(rset.getInt("distno"));
-				bean.setDistname(rset.getString("distname"));
-				bean.setCountyno(rset.getInt("countyno"));
-				result.add(bean);
-			} 
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;
+		try{			
+			tx=session.beginTransaction();
+			Query query = session.createQuery(SELECT_ALL);
+			result = query.list();
+			tx.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
 		}
 		return result;
 	}
@@ -66,7 +59,7 @@ public class DistDaoHiber implements DistDao {
 	public static void main(String[] args) {
 		DistDaoHiber distdao=new DistDaoHiber();
 		List<DistBean> beans= new ArrayList<DistBean>();
-		beans=distdao.select(10);
+		beans=distdao.select(20);
 //		beans=distdao.selectall();
 		for(DistBean bean:beans){
 			System.out.println(bean);
