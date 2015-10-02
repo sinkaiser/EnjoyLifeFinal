@@ -3,22 +3,22 @@
                                          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/ELDB</property>
+<!-- 		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/ELDB</property> -->
 <!-- 		<property name="hibernate.connection.datasource">java:comp/env/jdbc/xxx</property> -->
 		<!-- 連線池c3p0設定 -->
-<!-- 		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
-<!-- 		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=EnjoyLife</property> -->
-<!-- 		<property name="hibernate.connection.username">sa</property> -->
-<!-- 		<property name="hibernate.connection.password">sa123456</property> -->
-<!-- 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> -->
-<!-- 		<property name="hibernate.c3p0.min_size">5</property> -->
-<!-- 		<property name="hibernate.c3p0.max_size">20</property> -->
-<!-- 		<property name="hibernate.c3p0.timeout">1800</property> -->
-<!-- 		<property name="hibernate.c3p0.max_statements">50</property> -->
+		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="hibernate.connection.url">jdbc:sqlserver://i7zjbwchx7.database.windows.net:1433;database=EnjoyLife</property>
+		<property name="hibernate.connection.username">enjoylife</property>
+		<property name="hibernate.connection.password">P@ssw0rd</property>      
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.max_size">20</property>
+		<property name="hibernate.c3p0.timeout">1800</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
 
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
 		<property name="hibernate.show_sql">true</property>
-		<property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+<!-- 		<property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property> -->
 		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
 		<property name="hibernate.current_session_context_class">thread</property>
 
@@ -26,6 +26,7 @@
 		<mapping resource="com/blog/model/BlogReplyVO.hbm.xml" />
 		<mapping resource="com/blog/model/BlogSortVO.hbm.xml" />
 		<mapping resource="com/blog/model/BlogTagsVO.hbm.xml" />
+		<mapping resource="com/blog/model/BlogReportVO.hbm.xml" />
 		<mapping resource="com/blog/model/ElSettingVO.hbm.xml" />
 		<mapping resource="com/attendpartner/model/attendpartner.hbm.xml" />
 		<mapping resource="com/partner/model/partner.hbm.xml" />

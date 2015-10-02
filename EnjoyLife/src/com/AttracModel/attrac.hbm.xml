@@ -5,18 +5,18 @@
     <class name="com.AttracModel.AttracBean" table="attrac">
         
         
-        <id name="rownumber" column="AttracNo" type="integer" />
-        
-        <property name="stitle" column="stitle" type="string" />
-        <property name="time" column="time" type="string" />
-        <property name="xbody" column="xbody" type="string" />
-        <property name="cat1no" column="cate1no" type="integer" />
-        <property name="cat2no" column="cate2no" type="integer" />
-        <property name="mrt" column="mrt" type="string" />
-        <property name="info" column="info" type="string" />
-        <property name="countyno" column="countyno" type="integer" />
-        <property name="distno" column="distno" type="integer" />
-        <property name="address" column="addr" type="string" />
-     	<property name="show" column="show" type="integer" />
+        <id name="rownumber" column="AttracNo" />
+       
+        <property name="stitle" column="stitle"  />
+        <property name="time" column="time"  />
+        <property name="xbody" column="xbody"  />
+        <property name="cat1no" column="cate1no" />
+        <property name="cat2no" column="cate2no"  />
+        <property name="mrt" column="mrt" />
+        <property name="info" column="info"  />
+        <property name="countyno" column="countyno"  />
+        <property name="distno" column="distno" />
+        <property name="address" column="addr"/>
+     	<property name="show" column="show"/>
     </class>
 </hibernate-mapping>

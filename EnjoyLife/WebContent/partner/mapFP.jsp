@@ -107,7 +107,7 @@ body {
 							</ul>
 						</div>
 						<div class="form-group"
-							style="margin-right: 20px; width: 300px; margin-left: 80px">
+							style="margin-right: 0px; width: 280px; margin-left: 80px">
 							<input type="text" class="form-control" placeholder="Search"
 								id="inputAdd" value="${inputAdd}" />
 						</div>

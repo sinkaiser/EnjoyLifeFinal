@@ -18,4 +18,6 @@ public interface AttracDao {
 	public abstract Integer selectAttracNo(AttracBean bean);
 	
 	public abstract Integer selectPK();
+	
+	public abstract List<AttracBean> selectByShow(String show,int page);
 }
