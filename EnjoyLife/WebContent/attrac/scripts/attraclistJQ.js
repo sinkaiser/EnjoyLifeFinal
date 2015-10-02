@@ -8,8 +8,7 @@
 			dataType:"json",
 			success:function(data){
 				$.each(data,function(){
-					var a="${pageContext.request.contextPath}";
-					alert("1"+a)
+					
 					if(this.cate1no!=null){
 						var cate1no=this.cate1no;
 						var cate1name=this.cate1name;
@@ -29,8 +28,8 @@
 					dataType:"json",
 					data:{"cate1no":$("#select1").val(),"countyno":$("#select3").val()},
 					success:function(data){
-						var a="${pageContext.request.contextPath}";
-						alert("2"+a)
+						
+						
 						$.each(data,function(){
 							if(this.cate2no!=null){
 								var cate2no=this.cate2no;
@@ -58,8 +57,8 @@
 				dataType:"json",
 				data:{"cate1no":$("#select1").val()},
 				success:function(data){
-					var a="${pageContext.request.contextPath}";
-					alert("3"+a)
+					
+					
 					$("#select2 option").remove();
 					$.each(data,function(){
 						var cate2no=this.cate2no;
@@ -79,8 +78,8 @@
 				dataType:"json",
 				data:{"countyno":$("#select3").val()},
 				success:function(data){
-					var a="${pageContext.request.contextPath}";
-					alert("4"+a)
+					
+					
 					$("#select4 option").remove();
 					$.each(data,function(){
 						var distno=this.distno;
@@ -105,8 +104,8 @@
 					"countyno":$("#select3").val(),
 					"distno":$("#select4").val()},
 				success:function(data){
-					var a="${pageContext.request.contextPath}";
-					alert("5"+a)
+					
+					
 					listloadimg.style.visibility="hidden";
 					$("#attracinfo").empty();
 					$("#menu li").remove();
