@@ -93,12 +93,12 @@ body {
 			href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
 
 		<c:if test="${!empty member}">
-			<li><a
-				href="${pageContext.request.contextPath}/secure/logout.jsp">登出</a></li>
-			<li><img
-				src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}"
-				height="35" width="35" onerror="this.style.display='none'">
-				${member.memberName}</li>
+			<li style="line-height:30px;float:right">							
+				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'" style="margin-bottom:25px"> 
+				<label style="height:30px;margin-bottom:26px;font-size:25px;font-family:微軟正黑體;" >${member.memberName}</label>
+				<button type="button" class="btn btn-primary" id="logout" data-toggle="modal"
+						data-target="#myModalout" style="margin-bottom:26px" >登出</button>
+			</li>
 		</c:if>
 	</ul>
 	</nav> <nav class="navbar navbar-inverse" role="navigation">
@@ -108,7 +108,7 @@ body {
 			id="bs-example-navbar-collapse-1">
 
 			<div class="navbar-form navbar-left" role="search"
-				style="width: 1280px; text-align: center;">
+				style="width: 1150px; text-align: center;">
 				<!-- Split button -->
 				<div class="btn-group">
 					<button type="button" class="btn btn-primary">我的徵求</button>
@@ -151,7 +151,7 @@ body {
 							type="button" class="btn btn-default" id="btn-right-list">列表</button></a>
 				</div>
 				<div class="btn-group" style="margin-left: 100px; float: right;">
-					<button type="button" class="btn btn-primary" data-toggle="modal"
+					<button type="button" class="btn btn-info" data-toggle="modal"
 						data-target="#newPartner"
 						onclick="createEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}')">
 						我要新增找伴活動</button>
@@ -242,8 +242,28 @@ body {
 	</div>
 
 
-
-
+	
+	<!-- 登出Modal -->
+  	<div class="modal fade" id="myModalout" role="dialog" aria-labelledby="" tabindex="-1">
+    	<div class="modal-dialog" style="width:350px">
+    
+      	<!-- Modal content-->
+      	<div class="modal-content">
+        	<div class="modal-header" style="padding:35px 50px;height:30px">
+          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+          	<h4><span class="glyphicon glyphicon-lock"></span> 登出</h4>
+        	</div>
+        	<div class="modal-body" style="padding:40px 50px;">
+        		<form role="form" action="${pageContext.request.contextPath}/logout.do"" method="post">
+          		<h3>您確定要登出?</h3>
+          		<button type="submit" class="btn btn-danger btn-block"><span class="glyphicon glyphicon-off"></span> 登出</button>   
+          		</form>     
+        	</div>
+	        
+	      </div>
+      
+    	</div>
+  	</div>
 
 	<!-- 新增找伴活動Modal -->
 	<div class="modal fade" id="newPartner" tabindex="-1" role="dialog"

@@ -143,7 +143,7 @@ body {
 							type="button" class="btn btn-default" id="btn-right-list">列表</button></a>
 				</div>
 				<div class="btn-group" style="margin-left: 100px; float: right;">
-					<button type="button" class="btn btn-primary" data-toggle="modal"
+					<button type="button" class="btn btn-info" data-toggle="modal"
 						data-target="#newPartner"
 						onclick="createEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}')">
 						我要新增找伴活動</button>
@@ -246,7 +246,7 @@ body {
 		</div>
 	</div>
 
-	<!-- Modal -->
+	<!-- 登出Modal -->
   	<div class="modal fade" id="myModalout" role="dialog" aria-labelledby="" tabindex="-1">
     	<div class="modal-dialog" style="width:350px">
     
@@ -267,20 +267,6 @@ body {
       
     	</div>
   	</div> 
-
-<!-- <script>
- 	$().ready(function(){
-     	$("#logout").click(function(){
-         	$("#myModalout").modal();
-      	});
- 	$("#modalout").click(function() {
- 
-     	      location.reload();
- 
- 		});     
-     
- 	});
- </script> -->
 
 
 

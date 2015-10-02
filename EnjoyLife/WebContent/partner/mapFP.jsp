@@ -68,7 +68,7 @@ body {
 					<li style="line-height:30px;float:right">							
 					<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'" style="margin-bottom:25px"> 
 					<label style="height:30px;margin-bottom:26px;font-size:25px;font-family:微軟正黑體;" >${member.memberName}</label>
-					<button type="button" class="btn btn-primary" id="logout" data-toggle="modal"
+					<button type="button" class="btn btn-info" id="logout" data-toggle="modal"
 						data-target="#myModalout" style="margin-bottom:26px" >登出</button>
 					</li>
 				</c:if>
