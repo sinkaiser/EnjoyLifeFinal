@@ -71,6 +71,9 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div id='no' ></div>
+      <div class="modal-footer" style="text-align: center">
+        <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">關閉</button>
+      </div>
     </div>
   </div>
 </div>

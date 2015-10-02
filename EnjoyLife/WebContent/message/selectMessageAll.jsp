@@ -51,7 +51,7 @@
     <div class="modal-content">
       <div id='no' ></div>
       <div class="modal-footer" style="text-align: center">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">關閉</button>
+        <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">關閉</button>
       </div>
     </div>
   </div>
