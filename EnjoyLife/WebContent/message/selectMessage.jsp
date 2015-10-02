@@ -37,7 +37,10 @@
 <%-- 					<td>${row.message}</td> --%>
 					<fmt:formatDate value="${row.MessageVO.talkDate}" var="formattedDate" type="date" pattern="yyyy年M月d日 H:mm" />
 					<td>${formattedDate}</td>
-					<td><a href="${pageContext.request.contextPath}/message/updateMessage1.do?mid=${row.MessageVO.messageNo}"/> <input class="btn btn-primary btn-xs" type="button" value="刪除訊息"></a></td>
+<%-- 					<td><a href="${pageContext.request.contextPath}/message/updateMessage1.do?mid=${row.MessageVO.messageNo}"/> <input class="btn btn-primary btn-xs" type="button" value="刪除訊息"></a></td> --%>
+					<td><button type="button" class="btn btn-primary btn-xs delete" data-toggle="modal" id="${row.MessageVO.messageNo}" data-target="#myModal">
+  						 刪除訊息
+						</button></td>
 				</tr>	
 			</c:if>	
 		</c:forEach>							
@@ -48,6 +51,26 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div id='no' ></div>
+      <div class="modal-footer" style="text-align: center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">關閉</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" data-target=".bs-example-modal-sm"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="text-align: center">刪除訊息</h4>
+      </div>
+      <div class="modal-body" style="text-align: center">
+       		<h2> 您確定要刪除?</h2>
+      </div>
+      <div class="modal-footer" style="text-align: center">
+        <button type="button" class="btn btn-success" data-dismiss="modal">關閉</button>
+        <button type="button" class="btn btn-danger" id="checkdelete">刪除</button>
+      </div>
     </div>
   </div>
 </div>
@@ -66,7 +89,14 @@ $('a[data-toggle="modal"]').click(function(){
 			$('div[id="no"]').append("<table class='table table-hover'><tr><td><h3>會員帳號:"+MessageTo+"</h3></td></tr>"+"<tr><td><h3>信件主旨:"+MessageTitle+"</h3></td></tr>"+"<tr><td><h3>訊息內容:"+Message+"</h3></td></tr>"+"<tr><td><h3>訊息時間:"+TalkDate+"</h3></td></tr></table>");				
 	});
 	
-})
+});
+var value;
+$('.delete').click(function(){
+	value = $(this).attr('id');	
+});
+$('#checkdelete').click(function(){
+	window.location="${pageContext.request.contextPath}/message/updateMessage1.do?mid="+value;
+});
 </script>
 <a href="${pageContext.request.contextPath}/message/message.jsp">訊息首頁</a>
 </html>
