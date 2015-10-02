@@ -199,6 +199,20 @@
 			});
 			
 			
+			$.getJSON("${pageContext.request.contextPath}/AdminSelectByShow",{"page":0,"show":0},function(data){
+				var attracno;
+				
+				$.each(data,function(){
+				
+					attracno=this.attracno
+					
+					
+				})
+				
+				
+			});
+			
+			
 			
 		}(jQuery));
 					

@@ -185,11 +185,13 @@ public class AttracDaoHiber implements AttracDao {
 		String sql="from AttracBean where show=?";
 		
 		try {
+			session.beginTransaction();
 			Query query = session.createQuery(sql);
-			query.setParameter(0, show);
+			query.setParameter(0, Integer.parseInt(show));
 			query.setFirstResult(page*10);
 			query.setMaxResults(10);
 			result=query.list();
+			session.beginTransaction().commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
