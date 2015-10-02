@@ -14,19 +14,11 @@
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/filter.css">
 
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
-
-
-<link rel="stylesheet"
-	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel='stylesheet' href='${pageContext.request.contextPath}/css/bootstrap.min.css' type="text/css" />
+<link rel='stylesheet' href='${pageContext.request.contextPath}/css/jquery-ui.min.css' type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link rel='stylesheet' href='css/skel-noscript.css' type="text/css" />
 <link rel='stylesheet' href='css/style.css' type="text/css" />
 <link rel='stylesheet' href='css/style-desktop.css' type="text/css" />
@@ -267,7 +259,7 @@ body {
         	<div class="modal-body" style="padding:40px 50px;">
         		<form role="form" action="${pageContext.request.contextPath}/logout.do"" method="post">
           		<h3>您確定要登出?</h3>
-          		<button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> 登出</button>   
+          		<button type="submit" class="btn btn-danger btn-block"><span class="glyphicon glyphicon-off"></span> 登出</button>   
           		</form>     
         	</div>
 	        

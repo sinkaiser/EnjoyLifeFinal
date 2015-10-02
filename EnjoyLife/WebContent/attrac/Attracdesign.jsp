@@ -5,11 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>規劃頁</title>
-<%@include file="/includes/link" %>
+<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 <script src="scripts/jquery-2.1.4.min.js"></script>
 <script src="scripts/jquery.tinyMap-3.2.18.min.js"></script>
 <script src="scripts/jquery-ui.js"></script>
 <script src="scripts/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/jquery-ui.css">
 <link rel="stylesheet" href="scripts/bootstrap.min.css">
 <link rel='stylesheet' href='../css/skel-noscript.css' type="text/css" />
 <link rel='stylesheet' href='../css/style.css' type="text/css" />

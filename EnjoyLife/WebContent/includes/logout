@@ -14,7 +14,7 @@
         <div class="modal-body" style="padding:40px 50px;">
         	<form role="form" action="${pageContext.request.contextPath}/logout.do"" method="post">
           	<h3>您確定要登出?</h3>
-          	<button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> 登出</button>   
+          	<button type="submit" class="btn btn-danger btn-block"><span class="glyphicon glyphicon-off"></span> 登出</button>   
           	</form>     
         </div>
         

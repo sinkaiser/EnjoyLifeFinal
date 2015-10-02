@@ -7,7 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <!-- <script src="https://maps.google.com/maps/api/js?sensor=false"></script> -->
-<%@include file="/includes/link"%>
+<!-- <script src="https://maps.google.com/maps/api/js?sensor=false"></script> -->
+<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.4.min.js"></script>
+<link rel='stylesheet' href='${pageContext.request.contextPath}/css/bootstrap.min.css' type="text/css" />
+<link rel='stylesheet' href='${pageContext.request.contextPath}/css/jquery-ui.min.css' type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link rel='stylesheet' href='css/skel-noscript.css' type="text/css" />
 <link rel='stylesheet' href='css/style.css' type="text/css" />
 <link rel='stylesheet' href='css/style-desktop.css' type="text/css" />
@@ -59,9 +66,10 @@ body {
 
 				<c:if test="${!empty member}">
 					<li style="line-height:30px;float:right">							
-						<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'" style="margin-bottom:25px" > 
-						<label style="height:30px;margin-bottom:26px;font-size:25px;font-family:微軟正黑體;" >${member.memberName}</label>
-						<button type="submit" class="btn btn-primary" id="logout" style="margin-bottom:26px" >登出</button>
+					<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'" style="margin-bottom:25px"> 
+					<label style="height:30px;margin-bottom:26px;font-size:25px;font-family:微軟正黑體;" >${member.memberName}</label>
+					<button type="button" class="btn btn-primary" id="logout" data-toggle="modal"
+						data-target="#myModalout" style="margin-bottom:26px" >登出</button>
 					</li>
 				</c:if>
 			</ul>
@@ -210,5 +218,26 @@ body {
 	</script>
 	<script async defer
 		src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
+<!-- Modal -->
+  	<div class="modal fade" id="myModalout" role="dialog" aria-labelledby="" tabindex="-1">
+    	<div class="modal-dialog" style="width:350px">
+    
+      	<!-- Modal content-->
+      	<div class="modal-content">
+        	<div class="modal-header" style="padding:35px 50px;height:30px">
+          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+          	<h4><span class="glyphicon glyphicon-lock"></span> 登出</h4>
+        	</div>
+        	<div class="modal-body" style="padding:40px 50px;">
+        		<form role="form" action="${pageContext.request.contextPath}/logout.do"" method="post">
+          		<h3>您確定要登出?</h3>
+          		<button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> 登出</button>   
+          		</form>     
+        	</div>
+	        
+	      </div>
+      
+    	</div>
+  	</div>
 </body>
 </html>
