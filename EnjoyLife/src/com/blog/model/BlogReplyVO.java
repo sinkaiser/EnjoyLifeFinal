@@ -3,6 +3,8 @@ package com.blog.model;
 import java.io.Serializable;
 
 public class BlogReplyVO implements Serializable{
+
+	private static final long serialVersionUID = -9040050680657637922L;
 	private String postNo;
 	private int replyNo;
 	private String replyContext;

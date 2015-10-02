@@ -33,6 +33,8 @@
 		width:240px;
 		height:430px;
 		box-shadow:5px 5px 15px rgba(10,125,225,0.4);
+		border-top-left-radius:15px;
+		border-top-right-radius:15px;
 	}
 	.layoutSide{
 		display:block;
@@ -100,6 +102,20 @@
 	.deldiv_css span{
 		font-size: 8pt;
 		color:#00BBFF;
+	}
+	.msgdiv_css{
+		width:305px;
+		padding:5px;
+		border:1px solid #FF88C2;
+		font-size: 8pt;
+		border-top-left-radius:15px;
+		border-bottom-right-radius:15px;
+		background-color:#FFB7DD;
+		box-shadow:10px 10px 0px #DDDDDD;
+		margin-bottom:15px
+	}
+	.msgdiv_css input{
+		margin-left:10px;
 	}
 </style>
 <script type="text/javascript">
@@ -172,7 +188,6 @@
 				var obj = data;
 				var rDate = data.postDate.substring(1,16);
 				$('#postModalLabel').text(data.postTitle);				 
-				$('#fullImg').attr("src","${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=F&&pathImg="+data.pathPhoto);			 	
 				$('#artiNo').text(' '+data.postNo);
 				$('#artiMem').text(' '+data.memberId);
 				$('#artiPlace').text(' '+data.AttractionsNo);
@@ -183,28 +198,32 @@
 				
 				var memId = "${member.memberId}";
 				$('#delDiv').empty();
-				
+				$('#msgDiv').empty();
 				var eleA1 = document.createElement("a");
 				eleA1.setAttribute("href", "#");
 				eleA1.setAttribute("class", "del_report_css");
+				eleA1.setAttribute("name", "reportAttr");
 					
 				var eleSpan1 = document.createElement("span");
 				var txt1 = document.createTextNode("  檢舉");
 				eleSpan1.appendChild(txt1);
 				eleA1.appendChild(eleSpan1);
+				
 				$('#delDiv').append((eleA1));	
 				if(memId == data.memberId){
 					var eleA2 = document.createElement("a");
 					eleA2.setAttribute("href", "#");
 					eleA2.setAttribute("class", "del_report_css");
+					eleA2.setAttribute("name", "delAttr");
 					
 					var eleSpan2 = document.createElement("span");
 					var txt2 = document.createTextNode("  刪除");
 					eleSpan2.appendChild(txt2);
-					eleA2.appendChild(eleSpan2);
-			
+					eleA2.appendChild(eleSpan2);				
 					$('#delDiv').append(eleA2);
 				}
+				$('#fullImg').attr("src","${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=F&&pathImg="+data.pathPhoto);			 	
+
 				
 // 				var childWindow = document.getElementById("myFrame").contentWindow;//mainFrame這個id是父頁面iframe的id 
 //  			childWindow.document;//獲取子頁面中的document對象； txtBlogNo
@@ -214,6 +233,7 @@
 		 });
 	getAllReply(ArticleNo);
 	}
+	
 </script>
 </head>
 <body class="homepage">
@@ -310,6 +330,7 @@
 							        		<label class="lab_reply">星級</label> <span id="artiScore" class="arti"></span>
 							        		<label class="lab_reply">瀏覽次數</label><span id="artiView" class="arti"></span><br>							        							 
 											<div id="delDiv" class="deldiv_css"></div>
+											<div id="msgDiv" class=""></div>
 			
 											<div id="replyDiv" class="replyfomat"></div>			
 											<textarea class="form-control" rows='3' placeholder="回點什麼吧..."
@@ -366,7 +387,7 @@
 	 
 	 $('#previous').click(function(){
 		 var index = $("[name='Index']").val();
-		 var newIndex = parseInt(index)-10;
+		 var newIndex = parseInt(index)-9;
 		 if(newIndex<0){
 			 $("[name='Index']").val('0');
 		 }else{
@@ -376,7 +397,7 @@
 	 });
 	 $('#next').click(function(){
 		 var index = $("[name='Index']").val();
-		 var newIndex = parseInt(index)+10;
+		 var newIndex = parseInt(index)+9;
 		 $("[name='Index']").val(newIndex);
 		 $('#btnSend').click();		 
 	 });
@@ -414,7 +435,130 @@
 		$('#artiScore').text='';
 		$('#artiView').text='';
 		$('#replyDiv').empty();	
+		$('#delDiv').empty();
+		$('#msgDiv').empty();
+		$('#msgDiv').attr("class","");
 	}) 
+	
+	$('#delDiv').on("click","a[name='reportAttr']",function(){ //按下檢舉的動作
+		$('#msgDiv').attr("class","msgdiv_css");
+		$('#msgDiv').empty();
+		var eleDiv =  document.createElement("div");
+		eleDiv.setAttribute("class", "del_div_css");
+		var eleP01 =  document.createElement("span");
+		var txt01 = document.createTextNode("請選擇檢舉原因");
+		var optTxt01 = document.createTextNode("此內容是廣告文");
+		var optTxt02 = document.createTextNode("此內容是垃圾文");
+		var optTxt03 = document.createTextNode("此內容違反智慧財產權");
+		var optTxt04 = document.createTextNode("此內容包含暴力或色情");
+				
+		var eleSelect = document.createElement("select");
+		eleSelect.setAttribute("name","reportContext");
+		eleSelect.setAttribute("id","reportSelect");
+					
+		var eleOpt1 = document.createElement("option");
+		var eleOpt2 = document.createElement("option");
+		var eleOpt3 = document.createElement("option");
+		var eleOpt4 = document.createElement("option");
+		eleOpt1.setAttribute("value", "1");
+		eleOpt1.appendChild(optTxt01);
+		eleOpt2.setAttribute("value", "2");
+		eleOpt2.appendChild(optTxt02);
+		eleOpt3.setAttribute("value", "3");
+		eleOpt3.appendChild(optTxt03);
+		eleOpt4.setAttribute("value", "4");
+		eleOpt4.appendChild(optTxt04);
+		eleSelect.appendChild(eleOpt1);
+		eleSelect.appendChild(eleOpt2);
+		eleSelect.appendChild(eleOpt3);
+		eleSelect.appendChild(eleOpt4);
+					
+		var eleBtn1 = document.createElement("input");
+		var eleBtn2 = document.createElement("input");
+		eleBtn1.setAttribute("type", "button");
+		eleBtn1.setAttribute("class", "btn btn-sm btn-info");
+		eleBtn1.setAttribute("value", "確定");
+		eleBtn1.setAttribute("name", "reportOK");
+				
+		eleBtn2.setAttribute("type", "button");
+		eleBtn2.setAttribute("class", "btn btn-sm btn-info");					
+		eleBtn2.setAttribute("value", "取消");
+		eleBtn2.setAttribute("name", "reportCancel");
+					
+		eleP01.appendChild(txt01);
+		eleDiv.appendChild(eleP01);
+		$('#msgDiv').append(eleDiv);
+		$('#msgDiv').append(eleSelect);
+		$('#msgDiv').append(eleBtn1);
+		$('#msgDiv').append(eleBtn2);
+					
+	})
+	$('#delDiv').on("click","a[name='delAttr']",function(){
+		$('#msgDiv').attr("class","msgdiv_css");
+		$('#msgDiv').empty();
+		var txt01 = document.createTextNode("確定要刪除此文章?");
+		var eleBtn1 = document.createElement("input");
+		var eleBtn2 = document.createElement("input");
+		eleBtn1.setAttribute("type", "button");
+		eleBtn1.setAttribute("class", "btn btn-sm btn-info");
+		eleBtn1.setAttribute("value", "確定");
+		eleBtn1.setAttribute("name", "delOK");
+				
+		eleBtn2.setAttribute("type", "button");
+		eleBtn2.setAttribute("class", "btn btn-sm btn-info");					
+		eleBtn2.setAttribute("value", "取消");
+		eleBtn2.setAttribute("name", "delCancel");
+		$('#msgDiv').append(txt01);
+		$('#msgDiv').append(eleBtn1);
+		$('#msgDiv').append(eleBtn2);
+	})
+	$('#msgDiv').on("click","input[name='reportOK']",function(){
+		var ArticleNo = $('#artiNo').text().trim();
+		var memId = $('#artiMem').text().trim();
+		var report = $('#reportSelect').val();
+		$.ajax({
+			type:"get",
+			url:"${pageContext.request.contextPath}/ReportArtiServlet",
+			dataType:"json",
+			data:{"ArticleNo":ArticleNo,"report":report,"memId":memId},
+			success:function(data){		
+		
+				if(data=='failed'){
+					alert('檢舉失敗，請重試一次');
+				}else{
+					$('#msgDiv').attr("class","");
+					$('#msgDiv').empty();
+					$('#msgDiv').html('<p>已檢舉成功</p>')	;
+				}	
+			}	
+		})		
+	})
+	$('#msgDiv').on("click","input[name='reportCancel']",function(){
+		$('#msgDiv').attr("class","");
+		$('#msgDiv').empty();				
+	})
+	$('#msgDiv').on("click","input[name='delOK']",function(){
+		var ArticleNo = $('#artiNo').text().trim();
+		$.ajax({
+			type:"get",
+			url:"${pageContext.request.contextPath}/DelArtiServlet",
+			dataType:"json",
+			data:{"ArticleNo":ArticleNo},
+			success:function(data){		
+
+				if(data=='failed'){
+					alert('刪除文章失敗，請重試一次');
+				}else{
+					$('#btnSend').click();
+				}	
+			}	
+		})			
+	})
+	$('#msgDiv').on("click","input[name='delCancel']",function(){
+		$('#msgDiv').attr("class","");
+		$('#msgDiv').empty();				
+	})
+	
  }(jQuery));
  </script>
 </html>
