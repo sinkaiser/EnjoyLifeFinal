@@ -17,6 +17,6 @@
         <property name="countyno" column="countyno" type="integer" />
         <property name="distno" column="distno" type="integer" />
         <property name="address" column="addr" type="string" />
-      
+     	<property name="show" column="show" type="integer" />
     </class>
 </hibernate-mapping>
