@@ -28,6 +28,7 @@
 		<mapping resource="com/blog/model/BlogTagsVO.hbm.xml" />
 		<mapping resource="com/blog/model/BlogReportVO.hbm.xml" />
 		<mapping resource="com/blog/model/ElSettingVO.hbm.xml" />
+		
 		<mapping resource="com/attendpartner/model/attendpartner.hbm.xml" />
 		<mapping resource="com/partner/model/partner.hbm.xml" />
 		<mapping resource="com/comment/model/comment.hbm.xml" />

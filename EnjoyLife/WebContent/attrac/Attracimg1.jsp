@@ -196,7 +196,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 	var offset=0;
 	var door=true;
 	$.ajax({
-		url:"GetCate1.jsp",
+		url:"${pageContext.request.contextPath}/GetCate1Servlet",
 		type:"get",
 		dataType:"json",
 		success:function(data){
@@ -217,7 +217,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 			})							
 	
 			$.ajax({
-				url:"GetCateDist.jsp",
+				url:"${pageContext.request.contextPath}/GetCateDistServlet",
 				type:"get",
 				dataType:"json",
 				data:{"cate1no":$("#select1").val(),"countyno":$("#select3").val()},
@@ -279,7 +279,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 	});	
 	$("#cate1no").change(function (){
 		$.ajax({
-			url:"GetCate2.jsp",
+			url:"${pageContext.request.contextPath}/GetCate2Servlet",
 			type:"get",
 			dataType:"json",
 			data:{"cate1no":$("#cate1no").val()},
@@ -296,7 +296,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 	});
 	$("#select1").change(function (){
 		$.ajax({
-			url:"GetCate2.jsp",
+			url:"${pageContext.request.contextPath}/GetCate2Servlet",
 			type:"get",
 			dataType:"json",
 			data:{"cate1no":$("#select1").val()},
@@ -316,7 +316,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 	});
 	$("#select3").change(function (){
 		$.ajax({
-			url:"GetDist.jsp",
+			url:"${pageContext.request.contextPath}/GetDistServlet",
 			type:"get",
 			dataType:"json",
 			data:{"countyno":$("#select3").val()},

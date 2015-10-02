@@ -170,7 +170,7 @@
 										
 									});
 									
-									$('#insert').bind('click',function(){
+									$('#insert').on('click',function(){
 										$('#thead').append("<tr><td name='elfNo'>#</td><td>"+targetlist+"</td><td>"+typelist+"</td><td><input name='nevin' type='text' class='form-control'></td><td><input  name='beginTime' type='datetime-local'  class='form-control'></td><td><input name='endTime' type='datetime-local' class='form-control'></td><td><button type='button' class='btn btn-success' name='insertlittle'>新增</button></td><td><button type='button' name='delete1' class='btn btn-danger'>刪除</button></td></tr>")
 										
 										//資料庫新增

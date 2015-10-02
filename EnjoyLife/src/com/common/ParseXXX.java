@@ -20,7 +20,7 @@ public class ParseXXX {
 	public java.util.Date parseDate(String xxx){
 		java.util.Date result=null;
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
 		try {
 			result = sdf.parse(xxx);

@@ -26,6 +26,13 @@
 <style>
 	*{
 		max-width:1280px;
+		margin:0 auto;
+		
+	}
+	.blogType_css{
+		box-shadow:5px 5px 15px rgba(10,125,225,0.4);
+		margin-bottom:10px;
+		padding:0px;
 	}
 	.blogList{
 		border:2px solid #428bca;
@@ -45,7 +52,7 @@
 	}
 	.blogImg{
 		border:5px solid gray;
-		margin:10px;
+		margin-bottom:10px;
 		width:220px;
 		float:left;
 		overflow:hidden;
@@ -64,15 +71,16 @@
 		border:1px solid #DDDDDD;
 		display:block;
 		margin-bottom:5px;
-		max-height:870px;
+		max-height:640px;
 		overflow: auto;
+		width:270px
 	}
 	.fomatA{
 		border:1px solid #DDDDDD;
 	}
 	.fomatF{
 		display:block;
-		width:60px;	
+		width:40px;	
 		height:60px;
 		float:left; 
 		margin:5px auto;
@@ -81,17 +89,12 @@
 		display:inline-block;
  		line-height: 10px; 
 		margin:5px auto;
-		width:250px;
+		width:200px;
 		word-break: break-all;
-/* 		background-image:url('${pageContext.request.contextPath}/images/reply.png'); */
-/* 		background-size:100% 100%; */
+		padding-left:20px;
+		box-shadow:10px 10px 15px rgba(10,125,225,0.4);
 	}	
-	.mainBody{
-/* 		margin-top:50px; */
-	}
-/* 	.modal-headerX{ */
-/* 		min-height:16.43px;padding:15px;border-bottom:1px solid #DDDDDD; */
-/* 		} */
+
 	.lab_reply{
 		font-family:微軟正黑體;
 		font-weight: bold;
@@ -99,14 +102,17 @@
 	}
 	.deldiv_css{
 		text-align: right;
-		width:300px;
+		width:250px;
+	}
+	#reportSelect{
+		width:130px;
 	}
 	.deldiv_css span{
 		font-size: 8pt;
 		color:#00BBFF;
 	}
 	.msgdiv_css{
-		width:305px;
+		width:240px;
 		padding:5px;
 		border:1px solid #FF88C2;
 		font-size: 8pt;
@@ -117,7 +123,14 @@
 		margin-bottom:15px
 	}
 	.msgdiv_css input{
-		margin-left:10px;
+		margin-left:2px;
+	}
+	.p_rp_memid{
+		color:#003C9D;
+	}
+	.p_rp_context{
+	}
+	.p_rp_date{
 	}
 </style>
 <script type="text/javascript">
@@ -145,7 +158,7 @@
 					
 					var eleP1 = document.createElement("p");
 					var eleA  = document.createElement("a");
-					var txtP1  = document.createTextNode("說:");
+					var txtP1  = document.createTextNode(" 說:");
 					var txtA  = document.createTextNode(value.replyMemberId);
 					eleA.setAttribute("href", "#");
 					eleA.appendChild(txtA);
@@ -158,7 +171,7 @@
 					eleP2.appendChild(txtP2);
 					eleP2.setAttribute("class", "p_rp_context");
 					
-					var rDate = value.replyDate.substring(1,16);
+					var rDate = value.replyDate.substring(0,16);
 					var eleP3 = document.createElement("p");
 					var txtP3  = document.createTextNode(rDate);
 					eleP3.appendChild(txtP3);
@@ -188,7 +201,7 @@
 			data:{"PostNo":ArticleNo},
 			success:function(data){
 				var obj = data;
-				var rDate = data.postDate.substring(1,16);
+				var rDate = data.postDate.substring(0,16);
 				$('#postModalLabel').text(data.postTitle);				 
 				$('#artiNo').text(' '+data.postNo);
 				$('#artiMem').text(' '+data.memberId);
@@ -243,7 +256,7 @@
 <%@include file="/includes/newheader" %>	
 		<!-- Main -->
 		<div id="main">
-			<div class="row mainBody">
+			<div class="row">
 					<div class="col-md-3 layoutSide">
 						<a href="${pageContext.request.contextPath}/BlogListServlet?Index=0&&pType=ALL" class="btn btn-default btn-lg active btn-block" role="button">日誌列表</a><br>
 						<a href="${pageContext.request.contextPath}/blog/postBlog.jsp" class="btn btn-default btn-lg active btn-block" role="button">新增日誌</a><br>
@@ -252,7 +265,7 @@
 					<div class="col-md-7">
 						<form action="${pageContext.request.contextPath}/BlogListServlet" method="GET">
 						
-							<div class="" >
+							<div class="blogType_css" >
 								<span>選擇日誌類型</span>
 								<input type="radio" name="pType" id="type1" value="ALL" checked>全部
 								<input type="radio" name="pType" id="type2" value="TL" > 旅遊					
@@ -283,7 +296,7 @@
 										<c:when test="${lists.postType=='OT'}"><span class="label label-primary lab-size">類型</span><span class="dataFont">&nbsp;其他</span></c:when>
 									</c:choose>
 									<fmt:formatDate value="${lists.postDate}" 
-													var="formattedDate" type="date" pattern="yyyy年M月d日 HH:mm" />
+													var="formattedDate" type="date" pattern="yyyy年MM月dd日 HH:mm" />
 									<span class="label label-primary lab-size">標題 </span><span class="dataFont">&nbsp;${lists.postTitle}</span><br>
 									<span class="label label-primary">星級評分</span>&nbsp;${lists.avgScore}顆星
 									<span class="label label-primary">瀏覽人數</span>&nbsp;${lists.viewTotal}
@@ -307,7 +320,7 @@
 			
 						<!-- 互動視窗 -->
 						<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true" >
-						  <div class="modal-dialog modal-lg">
+						  <div class="modal-dialog modal-md">
 						    <div class="modal-content" id="postModalA">
 						      <div class="modal-header">		
 						        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -318,26 +331,27 @@
 						      <div class="modal-body" id="postModalBody">
 						      		<div class="row">
 										<!-- Blog顯示完整文章 -->			  
-							        	<div class="col-md-6 thumbnail" style="padding-left:0px;margin-left:55px">
-							        		<img src="" id="fullImg" style="width:400px;">
+							        	<div class="col-md-6 thumbnail" style="padding-left:0px;margin-left:40px">
+							        		<img src="" id="fullImg" style="width:350px;">
 							        	</div>
 			
-							        	<div class="col-md-5" style="padding-left:0px;margin-left:15px"">
-							        		<label class="lab_reply">日誌編號</label> <span id="artiNo" class="arti"></span><br><br>
-							        		<span id="artiMem" class="arti"></span>
-							        		<label class="lab_reply">在--</label><span id="artiPlace" class="arti"></span><br><br>
-							        		<label class="lab_reply">於</label><span id="artiDate" class="arti"></span>
-							        		<label class="lab_reply">說</label><br>
-							        		<span id="artiContext" class="arti"></span><br><br>
-							        		<label class="lab_reply">星級</label> <span id="artiScore" class="arti"></span>
-							        		<label class="lab_reply">瀏覽次數</label><span id="artiView" class="arti"></span><br>							        							 
-											<div id="delDiv" class="deldiv_css"></div>
-											<div id="msgDiv" class=""></div>
-			
+							        	<div class="col-md-5" style="padding-left:0px;margin-left:0px">
+							        		<div style="padding-left:10px;">
+								        		<label class="lab_reply">日誌編號</label> <span id="artiNo" class="arti"></span><br><br>
+								        		<span id="artiMem" class="arti"></span>
+								        		<label class="lab_reply">在--</label><span id="artiPlace" class="arti"></span><br><br>
+								        		<label class="lab_reply">於</label><span id="artiDate" class="arti"></span>
+								        		<label class="lab_reply">說</label><br>
+								        		<span id="artiContext" class="arti"></span><br><br>
+								        		<label class="lab_reply">星級</label> <span id="artiScore" class="arti"></span>
+								        		<label class="lab_reply">瀏覽次數</label><span id="artiView" class="arti"></span><br>							        							 
+												<div id="delDiv" class="deldiv_css"></div>
+												<div id="msgDiv" class=""></div>
+											</div>
 											<div id="replyDiv" class="replyfomat"></div>			
 											<textarea class="form-control" rows='3' placeholder="回點什麼吧..."
-												style="resize: none;width:300px;float:left" id="txtRely"></textarea>
-											<input type="button" class="btn btn-primary" value="留言" style="float: right;" id="btnReply">
+												style="resize: none;width:200px;float:left" id="txtRely"></textarea>
+											<input type="button" class="btn btn-primary" value="留言" style="margin-left:0px" id="btnReply">
 							        	</div>
 						        	</div>
 						      </div>
@@ -462,13 +476,13 @@
 		var eleOpt2 = document.createElement("option");
 		var eleOpt3 = document.createElement("option");
 		var eleOpt4 = document.createElement("option");
-		eleOpt1.setAttribute("value", "1");
+		eleOpt1.setAttribute("value", "此內容是廣告文");
 		eleOpt1.appendChild(optTxt01);
-		eleOpt2.setAttribute("value", "2");
+		eleOpt2.setAttribute("value", "此內容是垃圾文");
 		eleOpt2.appendChild(optTxt02);
-		eleOpt3.setAttribute("value", "3");
+		eleOpt3.setAttribute("value", "此內容違反智慧財產權");
 		eleOpt3.appendChild(optTxt03);
-		eleOpt4.setAttribute("value", "4");
+		eleOpt4.setAttribute("value", "此內容包含暴力或色情");
 		eleOpt4.appendChild(optTxt04);
 		eleSelect.appendChild(eleOpt1);
 		eleSelect.appendChild(eleOpt2);
@@ -524,8 +538,8 @@
 			dataType:"json",
 			data:{"ArticleNo":ArticleNo,"report":report,"memId":memId},
 			success:function(data){		
-		
-				if(data=='failed'){
+				alert(data);
+				if(data=='F'){
 					alert('檢舉失敗，請重試一次');
 				}else{
 					$('#msgDiv').attr("class","");
@@ -547,10 +561,10 @@
 			dataType:"json",
 			data:{"ArticleNo":ArticleNo},
 			success:function(data){		
-
-				if(data=='failed'){
+				if(!data){
 					alert('刪除文章失敗，請重試一次');
 				}else{
+					alert('刪除文章成功');
 					$('#btnSend').click();
 				}	
 			}	

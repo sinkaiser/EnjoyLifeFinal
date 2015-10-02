@@ -33,7 +33,6 @@ public class GetReplyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String postNo = request.getParameter("ArticleNo");
 		List result =new ArrayList();
-		String returnValue ="";
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		BlogReplyDAO dao = new BlogReplyDAOHibernate(session);
 		MemberDAO memDao = new MemberDAO();
@@ -54,10 +53,8 @@ public class GetReplyServlet extends HttpServlet {
 				result.add(map);
 			}
 			session.getTransaction().commit();
-			returnValue = "sucess";
 		}else{
 			session.getTransaction().rollback();
-			returnValue = "failed";
 		}
 		response.setContentType("text/html;charset=UTF-8");
 		String jsonString = JSONValue.toJSONString(result);

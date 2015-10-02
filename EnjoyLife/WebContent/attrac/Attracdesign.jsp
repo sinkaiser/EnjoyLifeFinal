@@ -93,11 +93,7 @@
 <script src="scripts/attractravel.js"></script>
 <script src="scripts/html2canvas.js"></script>
 <script>		
-(function($){
-// 	$('#myModal').modal('toggle')	
-//   	$('.modal-content').innerHTML="show"
-	
-})(jQuery);
+
 </script>
 </body>
 </html>
