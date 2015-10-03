@@ -335,21 +335,26 @@
 					 
 					 
 					 //img				 
-					 $.getJSON("${pageContext.request.contextPath}/attrac/GetAttracDetail.jsp",{"attracno":p},function(data0){				 
-						 $.each(data0,function(){
-							 $.each(this.photodata,function(){
-								 
+					 $.getJSON("${pageContext.request.contextPath}/attrac/GetAttracDetail.jsp",{"attracno":p},function(data){							 
+						 $.each(data,function(){
 							 var photodata=this.photodata;
-							 $('#gallery').empty();
-							
+// 							 console.log(xbody)
+// 							 console.log(this.photodata)
+							 $.each(photodata,function(){	
+							 var datalen=photodata.length;
+							 var datat= photodata[0];
+							 for(var i=0;i<=datalen;i++){
+								 data= photodata[i];
+							 console.log(data)
+							 }
+							 $('#gallery').empty();					 
+							 $('#gallery').append('<li class="ui-widget-content ui-corner-tr"><h5 class="ui-widget-header">圖片名稱</h5><img src='+datat+'  width="96" height="72"><a href="" title="放大" class="ui-icon ui-icon-zoomin"></a><a href="link/to/trash/script/when/we/have/js/off" title="放入" class="ui-icon ui-icon-trash"></a></li>');
+// 							 $('#gallery').append('');
+// 							 $('#gallery').append('');
+// 							 $('#gallery').append('');
+// 							 $('#gallery').append('');
+// 							 $('#gallery').append('');
 							 
-// 							 console.log($(this).photodata[0])
-							 $('#gallery').append('<li class="ui-widget-content ui-corner-tr"><h5 class="ui-widget-header">圖片名稱</h5><img src='+this.photodata+'  width="96" height="72"><a href="" title="放大" class="ui-icon ui-icon-zoomin"></a><a href="link/to/trash/script/when/we/have/js/off" title="放入" class="ui-icon ui-icon-trash"></a></li>');
-// 							 $('#gallery').append('');
-// 							 $('#gallery').append('');
-// 							 $('#gallery').append('');
-// 							 $('#gallery').append('');
-// 							 $('#gallery').append('');
 							 });
 						 	
 						 })
