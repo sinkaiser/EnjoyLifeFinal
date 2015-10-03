@@ -14,11 +14,19 @@
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/filter.css">
 
-<link rel='stylesheet' href='${pageContext.request.contextPath}/css/bootstrap.min.css' type="text/css" />
-<link rel='stylesheet' href='${pageContext.request.contextPath}/css/jquery-ui.min.css' type="text/css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+
+
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link rel='stylesheet' href='css/skel-noscript.css' type="text/css" />
 <link rel='stylesheet' href='css/style.css' type="text/css" />
 <link rel='stylesheet' href='css/style-desktop.css' type="text/css" />
@@ -28,7 +36,7 @@
 <style type="text/css">
 #contentp {
 	padding: 2px 0;
-	width: 200px;
+	width: 225px;
 	font-size: 1em;
 }
 
@@ -76,11 +84,11 @@ body {
 	<ul>
 		<li><a href="${pageContext.request.contextPath}/indexMember.jsp">會員</a></li>
 		<li><a
-			href="${pageContext.request.contextPath}/attrac/Attracimg1.jsp">景點</a></li>
+			href="${pageContext.request.contextPath}/attrac/Attracdesign.jsp">規劃</a></li>
 		<li><a
-			href="${pageContext.request.contextPath}/BlogListServlet?Index=0&&pType=ALL">日誌</a></li>
+			href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
 		<li><a
-			href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet">找伴</a></li>
+			href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li>
 		<li><a
 			href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
 
@@ -186,19 +194,15 @@ body {
 										<tr>
 											<td>
 												<div>
-													<img style="float: left"
-													src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
+													<img style="float: left" src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
 													height="30" width="30" onerror="this.style.display='none'">
 													<p style="float: left">${mem.PartnerVO.memberName}</p> 
-													<a href="#" data-toggle="modal" data-target="#myModal3"
-													onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${member.memberName}','${mem.PartnerVO.memberId}')">
-													<img style="margin-left:130px" src="img/plusone2.png" id="plusone"
-														title="我要參加" width="32" height="32" alt="+1"></a>
+													<br>
 												</div>
 												<div style="margin: 5px auto">
-													<p id="contentp">${mem.PartnerVO.eventContent}</p> <img
-													src="${pageContext.request.contextPath}/GetImg?imgid=${mem.PartnerVO.imgNo}"
-													width="220">
+													<br>
+													<p id="contentp">${mem.PartnerVO.eventContent}</p>
+													<img src="${pageContext.request.contextPath}/GetImg?imgid=${mem.PartnerVO.imgNo}" width="220">
 												</div>
 												<div class="post_meta" style="margin: 0">
 
@@ -211,25 +215,18 @@ body {
 													<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="yyyy年M月d日 H:mm" />
 													<a href="#" title="${formattedDate}">
 														<img src="../partner/img/icon-time.png">
-														<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="M月d日 H:mm" /> ${formattedDate}</a> 
+														<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="M月d日 H:mm" />
+														${formattedDate}
+													</a>
+													<c:if test="${!empty mem.partner}">
 														<br>
-														<c:if test="${!mem.PartnerVO.memberId.equals(member.memberId)}">
-															<a href="#" data-toggle="modal" data-target="#myModal2"
-																onclick="openNewWindow(${mem.PartnerVO.eventNo})"><img
-																src="../partner/img/icon-more.png">檢舉</a>
-														</c:if>
-														<c:if
-															test="${mem.PartnerVO.memberId.equals(member.memberId)}">
-															<a href="#" data-toggle="modal" data-target="#myModal"
-																onclick="editEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}','${mem.PartnerVO.imgNo}')"><img
-																src="../partner/img/icon-more.png")">編輯</a>
-														</c:if>
-														<c:if test="${mem.PartnerVO.memberId.equals(member.memberId)}">
-															<a href="#" data-toggle="modal" data-target="#deleteModal" onclick="deleteEvent(${mem.PartnerVO.eventNo})">
-															<img src="../partner/img/icon-more.png")">刪除
-															</a>
-														</c:if>
-												</div></td>
+														想參加的人：<br>
+														<c:forEach var="attend" varStatus="statusX" items="${mem.partner}">
+															<div style="float:left">${attend.partner}</div><div style="text-align:right"><button>同意</button><button>拒絕</button><br></div>
+														</c:forEach>
+													</c:if>
+												</div>
+											</td>
 										</tr>
 									</table>
 
@@ -246,6 +243,8 @@ body {
 		</div>
 	</div>
 
+
+	
 	<!-- 登出Modal -->
   	<div class="modal fade" id="myModalout" role="dialog" aria-labelledby="" tabindex="-1">
     	<div class="modal-dialog" style="width:350px">
@@ -266,9 +265,7 @@ body {
 	      </div>
       
     	</div>
-  	</div> 
-
-
+  	</div>
 
 	<!-- 新增找伴活動Modal -->
 	<div class="modal fade" id="newPartner" tabindex="-1" role="dialog"
@@ -530,25 +527,28 @@ body {
 				</div>
 				<div class="modal-body">
 
-					<form name="insertMemberFormC" action="${pageContext.request.contextPath}/message/writeMessage.do" id="jmessage" method="POST">
-						<input id='xxxeno' style="text-align: left" name="eno" type="text" size="14"> 
-						<input id='xxx1' style="text-align: left" id="messageFrom" name="messageFrom" value="${member.memberId}" type="text" size="14">
-						<input id='xxx2' style="text-align: left" id="memberName" name="memberName" value="${member.memberName}" type="text" size="14">
-						<input id='xxx3' style="text-align: left" id="messageTo" name="messageTo" value="${mem.PartnerVO.memberId}" type="text" size="14">
-						<label>你還想說:</label><br>
-						<textarea id="xxx4" name="message" class="form-textarea"></textarea>
+					<form name="insertMemberFormC"
+						action="${pageContext.request.contextPath}/message/writeMessage.do"
+						id="jmessage" method="POST">
+						<input id='xxxeno' style="text-align: left" name="eno"
+							type="hidden" size="14"> <input id='xxx1'
+							style="text-align: left" id="messageFrom" name="messageFrom"
+							value="${member.memberId}" type="hidden" size="14"> <input
+							id='xxx2' style="text-align: left" id="messageTo"
+							name="messageTo" type="hidden" size="14"> <label>你還想說:</label><br>
+						<textarea id="xxx3" name="message" class="form-textarea"></textarea>
 					</form>
 
 				</div>
 				<div class="modal-footer">
-					<button type="button" id="btn2" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" id="btn2" class="btn btn-default"
+						data-dismiss="modal">取消</button>
 					<button type="button" id="btn1" class="btn btn-primary">確定</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
+
 
 
 
@@ -560,10 +560,9 @@ body {
             data: {
             		"eno": $("#xxxeno").val(),
             		"messageFrom": $("#xxx1").val(),
-            		"memberName": $("#xxx2").val(),
-            		"messageTo": $("#xxx3").val(),
+            		"messageTo": $("#xxx2").val(),
             		//"messageTitle": $("#xxx3").val(),
-            		"message": $("#xxx4").val()
+            		"message": $("#xxx3").val()
             	  },
             type:"POST",
             dataType:'text',
@@ -740,11 +739,10 @@ body {
 // 		$("[name='imgNo']").val();
 // 	}
 	
-	function attend(xxxeno,xxx1,xxx2,xxx3){
+	function attend(xxxeno,xxx1,xxx2){
 		$("[name='eno']").val(xxxeno);
  		$("[name='messageFrom']").val(xxx1);
- 		$("[name='memberName']").val(xxx2);
- 		$("[name='messageTo']").val(xxx3);
+ 		$("[name='messageTo']").val(xxx2);
  		//$("[name='message']").val(xxx3);
 	}
 	

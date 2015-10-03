@@ -95,7 +95,7 @@ public class FindByIDOverServlet extends HttpServlet {
 		
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("listFP22.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("myfpend.jsp");
 		rd.forward(request, response);
 	}
 

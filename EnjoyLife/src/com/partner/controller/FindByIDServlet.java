@@ -71,6 +71,7 @@ public class FindByIDServlet extends HttpServlet {
 		
 			int eventNo = vo.getEventNo();
 			List<AttendPartnerVO> b = apservice.selectByEventNo(eventNo);
+			//List<AttendPartnerVO> c = apservice.selectCountByEventNo(eventNo);
 
 //			List<AttendPartnerVO> dd = apservice.getAll();
 //			Integer ddeventNo = ((AttendPartnerVO) dd).getEventNo();
@@ -79,6 +80,7 @@ public class FindByIDServlet extends HttpServlet {
 			//String aname = ((AttendPartnerVO) b).getPartner();
 			//map.put("aname",aname);
 			map.put("partner",b);
+			//map.put("countpartner",c);
 			map.put("PartnerVO",vo);
 			map.put("imgNo",imgNo);
 			mp.add(map);
@@ -108,7 +110,7 @@ public class FindByIDServlet extends HttpServlet {
 		
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("listFP22.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("myfp.jsp");
 		rd.forward(request, response);
 	}
 

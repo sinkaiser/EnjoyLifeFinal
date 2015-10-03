@@ -35,7 +35,6 @@ public class AttendPartnerDAO implements AttendPartnerDAO_interface {
 		      "UPDATE attendpartner set eventNo=?, partner=?, attend=1";
 	private static final String UPDATE_ATTEND =
 			"UPDATE attendpartner set attend = 1 where eventNo = ?";
-	
 
 
 	@Override

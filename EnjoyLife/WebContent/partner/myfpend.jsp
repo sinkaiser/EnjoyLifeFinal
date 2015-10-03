@@ -36,7 +36,7 @@
 <style type="text/css">
 #contentp {
 	padding: 2px 0;
-	width: 200px;
+	width: 225px;
 	font-size: 1em;
 }
 
@@ -197,13 +197,10 @@ body {
 													<img style="float: left" src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
 													height="30" width="30" onerror="this.style.display='none'">
 													<p style="float: left">${mem.PartnerVO.memberName}</p> 
-													<a href="#" data-toggle="modal" data-target="#myModal3"
-														onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${mem.PartnerVO.memberId}')">
-														<img style="margin-left:130px" src="img/plusone2.png" id="plusone"
-														title="我要參加" width="32" height="32" alt="+1">
-													</a>
+													<br>
 												</div>
 												<div style="margin: 5px auto">
+													<br>
 													<p id="contentp">${mem.PartnerVO.eventContent}</p>
 													<img src="${pageContext.request.contextPath}/GetImg?imgid=${mem.PartnerVO.imgNo}" width="220">
 												</div>
@@ -221,11 +218,13 @@ body {
 														<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="M月d日 H:mm" />
 														${formattedDate}
 													</a>
-													<br>
-													參加者：
-													<c:forEach var="attend" varStatus="statusX" items="${mem.partner}">
-													${attend.partner}
-													</c:forEach>
+													<c:if test="${!empty mem.partner}">
+														<br>
+														夥伴：<br>
+														<c:forEach var="attend" varStatus="statusX" items="${mem.partner}">
+															<div style="float:left">${attend.partner}</div>
+														</c:forEach>
+													</c:if>
 												</div>
 											</td>
 										</tr>

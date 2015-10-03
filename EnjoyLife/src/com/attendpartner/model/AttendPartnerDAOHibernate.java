@@ -107,7 +107,7 @@ public class AttendPartnerDAOHibernate implements AttendPartnerDAO_interface {
 		}
 		return result;
 	}
-
+	
 	@Override
 	public List<AttendPartnerVO> getAll() {
 		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();

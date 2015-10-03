@@ -31,6 +31,7 @@ public class AjaxMessage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String eno=request.getParameter("eno");
 		String messageFrom=request.getParameter("messageFrom");
+		String memberName=request.getParameter("memberName");
 		String messageTo=request.getParameter("messageTo");
 		String messageTitle="您有新的活動請求";
 		String message=request.getParameter("message");
@@ -41,7 +42,7 @@ public class AjaxMessage extends HttpServlet {
 		Integer ieventNo = Integer.parseInt(eno);
 		Integer attend =0;
 		attendPartnerVO.setEventNo(ieventNo);
-		attendPartnerVO.setPartner(messageFrom);
+		attendPartnerVO.setPartner(memberName);
 		attendPartnerVO.setAttend(attend);
 		
 		
