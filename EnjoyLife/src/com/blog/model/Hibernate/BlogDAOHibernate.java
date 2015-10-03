@@ -134,7 +134,7 @@ public class BlogDAOHibernate implements BlogDAO {
 	
 	private String SQL_UPDATE_AvgScore="UPDATE blog SET avgScore=? ,qtyToScore=? WHERE postNo=?";
 	@Override
-	public boolean updateAvgScore(int score,String postNo){
+	public boolean updateAvgScore(double score,String postNo){
 		String sql = "UPDATE BlogVO SET avgScore=? ,qtyToScore=? WHERE postNo=?";
 		boolean result = false;
 		
