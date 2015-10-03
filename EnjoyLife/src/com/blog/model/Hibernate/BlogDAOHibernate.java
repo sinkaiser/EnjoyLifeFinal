@@ -78,6 +78,23 @@ public class BlogDAOHibernate implements BlogDAO {
 	}
 
 	@Override
+	public List<BlogVO> selectByViews() {
+		String sql = "FROM BlogVO WHERE flagDelete='F' AND flagReport='F' ORDER BY viewTotal, postDate DESC";
+		List<BlogVO> list = null;
+		
+		try {
+			Query query = session.createQuery(sql);
+			query.setFirstResult(0);
+			query.setMaxResults(5);
+			list = (List<BlogVO>)query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
 	public boolean insertPost(BlogVO bean) {
 		boolean result = false;
 		

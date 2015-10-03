@@ -10,6 +10,8 @@ public interface BlogDAO {
 	
 	public abstract List<BlogVO> selectByMember(String memberId);
 	
+	public abstract List<BlogVO> selectByViews();
+	
 	public abstract boolean insertPost(BlogVO bean);
 	
 	public abstract boolean deletePost(java.util.Date date,String flag,String postNo);

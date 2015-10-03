@@ -16,4 +16,5 @@ public interface PartnerDAO_interface {
           public List<PartnerVO> getAll();
           public List<PartnerVO> getAllAdmin();
           public List<PartnerVO> selectByIndex(int index);
+          public List<PartnerVO> selectTop5ByDate();
 }

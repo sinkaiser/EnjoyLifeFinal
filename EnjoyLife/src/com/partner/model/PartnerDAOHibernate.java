@@ -274,5 +274,23 @@ public class PartnerDAOHibernate implements PartnerDAO_interface {
 		}
 		return result;
 	}
+	@Override
+	public List<PartnerVO> selectTop5ByDate() {
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		List<PartnerVO> result = null;
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from PartnerVO where hidden=0 and closed=0 order by eventDate DESC");			
+			query.setFirstResult(0);
+			query.setMaxResults(5);
+			result = query.list();
+			
+			session.beginTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }
