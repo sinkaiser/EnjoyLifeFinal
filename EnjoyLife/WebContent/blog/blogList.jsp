@@ -141,8 +141,8 @@
 	.p_rp_date{
 	}
 	.newestDiv{
-		border:3px solid black;
-		width:200px;
+		border:3px groove #DDDDDD;
+		width:220px;
 		height:600px;
 		margin-left:-20px;
 		overflow: auto;
@@ -155,15 +155,27 @@
 		text-shadow:3px 3px #cccccc;
 	}
 	.newestList{
-		width:175px;
-		font-size:8pt;
+		width:195px;
 		border:2px dotted black;
 		padding:5px;
-/* 		background-image: url('../images/r_bgi.JPG'); */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(235,241,246,1)), color-stop(49%,rgba(171,211,238,1)), color-stop(49%,rgba(171,211,238,1)), color-stop(100%,rgba(137,195,235,1)), color-stop(100%,rgba(213,235,251,1)), color-stop(102%,rgba(137,195,235,1)));
 		
 	}
 	.newestList p{
 		margin-bottom:0px 
+	}
+	.nr_p_ccs1{
+		font-weight: bold;
+		font-size:8pt;
+		color:#003C9D;
+		font-family: Comic Sans MS,arial,helvetica,sans-serif;
+	}
+	.nr_p_ccs2{
+		font-weight: bold;
+		font-size:10pt;
+		font-style: italic;
+		color:#003C9D;
+		font-family: Comic Sans MS,arial,helvetica,sans-serif;
 	}
 </style>
 <script type="text/javascript">
@@ -179,23 +191,38 @@
 				for(var i=0;i<data.length;i++){
 					var eleDiv1 = document.createElement("div");
 					eleDiv1.setAttribute('class','newestList');
+					eleDiv1.setAttribute("id","blog"+i);
 					
 					var eleP1 = document.createElement("p");
 					var txt1 = document.createTextNode(data[i].memid+"在"+data[i].postno);
+					eleP1.setAttribute("class","nr_p_ccs1");
 					eleP1.appendChild(txt1);
 					var eleP2 = document.createElement("p");
 					var txt2 = document.createTextNode('留下了訊息:');
+					eleP2.setAttribute("class","nr_p_ccs1")
 					eleP2.appendChild(txt2);
 					var eleP3 = document.createElement("p");
 					var txt3 = document.createTextNode(data[i].context);
+					eleP3.setAttribute("class","nr_p_ccs2")
 					eleP3.appendChild(txt3);
+					
+					var eleText = document.createElement("input");
+					eleText.setAttribute("type","text");
+					eleText.setAttribute("style","display:none");
+					eleText.setAttribute("value",data[i].postno);
 					
 					eleDiv1.appendChild(eleP1);
 					eleDiv1.appendChild(eleP2);
 					eleDiv1.appendChild(eleP3);
+					eleDiv1.appendChild(eleText);
 					
 					$('#newestDiv').append(eleDiv1);
 				}
+				for(var j=0;j<10;j++){				
+					$('#blog'+j).on('click',function(e){						
+						alert(j);
+					})					
+				}	
 			}
 		})
 		t=setTimeout("getNewestReply()",30000);
