@@ -27,8 +27,8 @@
 			
 			<c:if test="${!empty member}">
 				<li style="line-height:30px;">
-				<div style="position:relative;top:-46px;height:70px;">							
-				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" style="height:80px;width:65px;box-shadow:0px 0px 10px 7px #F5FAFF;"> 
+				<div style="position:relative;top:-30px;height:70px;">							
+				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" class="img-circle" style="height:65px;width:60px;box-shadow:0px 0px 10px 7px #F5FAFF;"> 
 				<label style="height:30px;font-size:26px;font-family:微軟正黑體;" >${member.memberName}</label>
 				<button type="button" class="btn btn-info" id="logout" data-toggle="modal" data-target="#myModalout" style="margin-bottom:26px" >登出</button>
 				</div>

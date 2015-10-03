@@ -72,6 +72,9 @@ body {
 	width: 500px;
 	height: 150px;
 }
+#btnsearch{
+	height:35px;
+}
 </style>
 
 </head>
@@ -88,13 +91,13 @@ body {
 		<li><a
 			href="${pageContext.request.contextPath}/blog/blogList.jsp">日誌</a></li>
 		<li><a
-			href="${pageContext.request.contextPath}/partner/mapFP.jsp">找伴</a></li>
+			href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet">找伴</a></li>
 		<li><a
 			href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
 
 		<c:if test="${!empty member}">
 			<li style="line-height:30px;float:right">							
-				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" height="35" width="35" onerror="this.style.display='none'" style="margin-bottom:25px"> 
+				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" class="img-circle" style="height:35px;width:35px;margin-bottom:30px;box-shadow:0px 0px 10px 7px #F5FAFF;"> 
 				<label style="height:30px;margin-bottom:26px;font-size:25px;font-family:微軟正黑體;" >${member.memberName}</label>
 				<button type="button" class="btn btn-info" id="logout" data-toggle="modal"
 						data-target="#myModalout" style="margin-bottom:26px" >登出</button>
@@ -134,7 +137,7 @@ body {
 					</ul>
 				</div>
 				<div class="form-group"
-					style="margin-right: 0px; width: 280px; margin-left: 80px">
+					style="margin-right: 0px; width: 250px; margin-left: 80px">
 					<form action="SearchServlet" id="jsearch" method="post">
 						<input type="text" class="form-control" placeholder="Search"
 							id="inputAdd" name="eventTitleContent" value="${inputAdd}" />
@@ -144,12 +147,6 @@ body {
 					class="btn btn-default" id="button1">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 				</button>
-				<div class="btn-group" id="button-toggle" style="left: 100px;">
-					<a href="${pageContext.request.contextPath}/partner/mapFP.jsp"><button
-							type="button" class="btn btn-default" id="btn-left">地圖</button></a> <a
-						href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet"><button
-							type="button" class="btn btn-default" id="btn-right-list">列表</button></a>
-				</div>
 				<div class="btn-group" style="margin-left: 100px; float: right;">
 					<button type="button" class="btn btn-primary" data-toggle="modal"
 						data-target="#newPartner"
