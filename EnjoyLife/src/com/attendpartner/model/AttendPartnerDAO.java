@@ -29,6 +29,8 @@ public class AttendPartnerDAO implements AttendPartnerDAO_interface {
 		      "SELECT * FROM attendpartner where eventNo=? AND partner=? order by eventDate desc";
 	private static final String SELECT_BY_EVENTNO =
 		      "SELECT * FROM attendpartner where eventNo = ? order by eventNo desc";
+	private static final String SELECT_BY_EVENTNO_ATTEND =
+			"SELECT * FROM attendpartner where eventNo = ? and attend=1 order by eventNo desc";
 	private static final String INSERT =
 		      "INSERT INTO attendpartner (eventType,eventTitle,eventContent,addr,eventDate,modifyDate,eventPhoto,memberId,hidden) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String UPDATE =
@@ -207,6 +209,61 @@ public class AttendPartnerDAO implements AttendPartnerDAO_interface {
 		return list;
 	}
 	
+	@Override
+	public List<AttendPartnerVO> selectByEventNoAttend(Integer eventNo) {
+		List<AttendPartnerVO> list = new ArrayList<AttendPartnerVO>();
+		AttendPartnerVO attendPartnerVO = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(SELECT_BY_EVENTNO_ATTEND);
+
+			pstmt.setInt(1, eventNo);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				// partnerVO 也稱為 Domain objects
+				attendPartnerVO = new AttendPartnerVO();
+				attendPartnerVO.setEventNo(rs.getInt("eventNo"));
+				attendPartnerVO.setPartner(rs.getString("partner"));
+				list.add(attendPartnerVO); // Store the row in the list
+			}
+
+			// Handle any driver errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
 	
 	@Override
 	public AttendPartnerVO insert(AttendPartnerVO attendPartnerVO) {

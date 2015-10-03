@@ -109,6 +109,27 @@ public class AttendPartnerDAOHibernate implements AttendPartnerDAO_interface {
 	}
 	
 	@Override
+	public List<AttendPartnerVO> selectByEventNoAttend(Integer eventNo) {
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		List<AttendPartnerVO> result = new ArrayList<AttendPartnerVO>();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from AttendPartnerVO where eventNo=? and attend=1");
+			query.setParameter(0, eventNo);
+			List<Object> list = query.list();
+			for(Object item :list){
+				result.add((AttendPartnerVO)item);
+			}
+			
+			session.beginTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	@Override
 	public List<AttendPartnerVO> getAll() {
 		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
 		List<AttendPartnerVO> result = null;

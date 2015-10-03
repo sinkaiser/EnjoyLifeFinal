@@ -140,7 +140,12 @@
 	}
 	.p_rp_date{
 	}
-	
+	.newestDiv{
+		border:3px solid black;
+		width:180px;
+		height:650px;
+		margin-left:0px
+	}
 </style>
 <script type="text/javascript">
 	function getAllReply(ArticleNo){
@@ -381,7 +386,11 @@
 						</div>		
 							
 					</div>
-					<div class="col-md-2 layoutSide"></div>	
+					<div class="col-md-2 layoutSide">
+						<label>最新留言回覆</label>
+						<div class="newestDiv"></div>
+					
+					</div>	
 			</div>			
 		</div>
 		

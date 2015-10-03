@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link href="${pageContext.request.contextPath}/admin/blog/css/font-awesome.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/admin/blog/css/templatemo-style.css" rel="stylesheet">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-2.1.4.min.js"></script>  
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
@@ -334,19 +334,30 @@
 					 $('#info').find('p[name="target"]').text(info);
 					 
 					 
-					 //img
-					 $.getJSON("${pageContext.request.contextPath}/attrac/GetAttracDetail.jsp",{"attracno":p},function(data){
-						 alert(data)
-// 						 $.each(data.photodata,function(){
+					 //img				 
+					 $.getJSON("${pageContext.request.contextPath}/attrac/GetAttracDetail.jsp",{"attracno":p},function(data){							 
+						 $.each(data,function(){
+							 var photodata=this.photodata;
+// 							 console.log(xbody)
+// 							 console.log(this.photodata)
+							 $.each(photodata,function(){	
+							 var datalen=photodata.length;
+							 var datat= photodata[0];
+							 for(var i=0;i<=datalen;i++){
+								 data= photodata[i];
+							 console.log(data)
+							 }
+							 $('#gallery').empty();					 
+							 $('#gallery').append('<li class="ui-widget-content ui-corner-tr"><h5 class="ui-widget-header">圖片名稱</h5><img src='+datat+'  width="96" height="72"><a href="" title="放大" class="ui-icon ui-icon-zoomin"></a><a href="link/to/trash/script/when/we/have/js/off" title="放入" class="ui-icon ui-icon-trash"></a></li>');
+// 							 $('#gallery').append('');
+// 							 $('#gallery').append('');
+// 							 $('#gallery').append('');
+// 							 $('#gallery').append('');
+// 							 $('#gallery').append('');
 							 
-// 							 $('#gallery').append('<li class="ui-widget-content ui-corner-tr">');
-// 							 $('#gallery').append('<h5 class="ui-widget-header">圖片名稱</h5>');
-// 							 $('#gallery').append('<img src="images/high_tatras_min.jpg"  width="96" height="72">');
-// 							 $('#gallery').append('<a href="images/high_tatras.jpg" title="放大" class="ui-icon ui-icon-zoomin"></a>');
-// 							 $('#gallery').append('<a href="link/to/trash/script/when/we/have/js/off" title="放入" class="ui-icon ui-icon-trash"></a>');
-// 							 $('#gallery').append('</li>');
+							 });
 						 	
-// 						 })
+						 })
 					 
 					 })
 					 

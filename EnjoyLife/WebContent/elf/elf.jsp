@@ -110,7 +110,8 @@
 						else if(rans[1]==2){
 							$('#say').attr("class","btn btn-success")
 							$('#xxx').attr("src","img/dog2.gif");
-							$('#say').text("廣告:"+rans[0]);
+							
+							$('#say').html("優惠資訊:"+rans[0]);
 						}
 						else if(rans[1]==3){
 							$('#say').attr("class","btn btn-info")
