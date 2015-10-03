@@ -63,7 +63,7 @@ public class FindByIDOverServlet extends HttpServlet {
 			int imgNo=a.getPicture();
 			
 			int eventNo = vo.getEventNo();
-			List<AttendPartnerVO> b = apservice.selectByEventNo(eventNo);
+			List<AttendPartnerVO> b = apservice.selectByEventNoAttend(eventNo);
 			
 			map.put("partner",b);
 			map.put("PartnerVO",vo);

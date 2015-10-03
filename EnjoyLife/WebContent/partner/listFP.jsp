@@ -183,7 +183,7 @@ body {
 										<tr>
 											<td>
 												<div>
-													<img style="float: left"
+													<img style="float: left" class="img-circle"
 													src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
 													height="30" width="30" onerror="this.style.display='none'">
 													<p style="float: left">${mem.PartnerVO.memberName}</p> 
@@ -218,12 +218,16 @@ body {
 														<c:if
 															test="${mem.PartnerVO.memberId.equals(member.memberId)}">
 															<a href="#" data-toggle="modal" data-target="#myModal"
-																onclick="editEvent('${mem.PartnerVO.eventNo}','${mem.PartnerVO.eventType}','${mem.PartnerVO.eventContent}','${mem.PartnerVO.addr}','${mem.PartnerVO.imgNo}')"><img
-																src="../partner/img/icon-more.png")">編輯</a>
+																onclick="editEvent('${mem.PartnerVO.eventNo}',
+																'${mem.PartnerVO.eventType}',
+																'${mem.PartnerVO.eventContent}',
+																'${mem.PartnerVO.addr}',
+																'${mem.PartnerVO.imgNo}')">
+																<img src="../partner/img/icon-more.png">編輯</a>
 														</c:if>
 														<c:if test="${mem.PartnerVO.memberId.equals(member.memberId)}">
 															<a href="#" data-toggle="modal" data-target="#deleteModal" onclick="deleteEvent(${mem.PartnerVO.eventNo})">
-															<img src="../partner/img/icon-more.png")">刪除
+															<img src="../partner/img/icon-more.png">刪除
 															</a>
 														</c:if>
 												</div></td>
