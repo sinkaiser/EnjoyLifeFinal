@@ -11,4 +11,5 @@ public interface LittleDao {
 	public int insert(LittleBean littleBean);
 	public int update(LittleBean littleBean);
 	public int delete(Integer id);
+	public int deleteByTime();
 }
