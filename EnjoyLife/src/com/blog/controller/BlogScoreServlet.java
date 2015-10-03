@@ -30,7 +30,7 @@ public class BlogScoreServlet extends HttpServlet {
 		
 		session.beginTransaction();
 		BlogDAO dao = new BlogDAOHibernate(session);
-		boolean result = dao.updateAvgScore(Integer.parseInt(score), ArticleNo);
+		boolean result = dao.updateAvgScore(Double.parseDouble(score), ArticleNo);
 		if(!result){
 			session.getTransaction().rollback();
 		}

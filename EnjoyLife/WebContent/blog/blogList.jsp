@@ -35,10 +35,10 @@
 	}
 	.blogList{
 		border:2px solid #428bca;
-		padding:5px;
-		margin: 5px;
+		padding:3px;
+		margin: 3px;
 		display:inline-block;
-		width:240px;
+		width:230px;
 		height:430px;
 		box-shadow:5px 5px 15px rgba(10,125,225,0.6);
 		border-top-left-radius:15px;
@@ -142,12 +142,64 @@
 	}
 	.newestDiv{
 		border:3px solid black;
-		width:180px;
-		height:650px;
-		margin-left:0px
+		width:200px;
+		height:600px;
+		margin-left:-20px;
+		overflow: auto;
+	}
+	.lists_css {
+		
+		margin-left:-6px;
+	}
+	#starmsg {
+		text-shadow:3px 3px #cccccc;
+	}
+	.newestList{
+		width:175px;
+		font-size:8pt;
+		border:2px dotted black;
+		padding:5px;
+/* 		background-image: url('../images/r_bgi.JPG'); */
+		
+	}
+	.newestList p{
+		margin-bottom:0px 
 	}
 </style>
 <script type="text/javascript">
+	window.onload = getNewestReply ;
+	function getNewestReply(){
+		$.ajax({
+			type:"get",
+			url:"${pageContext.request.contextPath}/GetNewstReplyServlet",
+			dataType:"json",
+			data:{},
+			success:function(data){
+				$('#newestDiv').empty();
+				for(var i=0;i<data.length;i++){
+					var eleDiv1 = document.createElement("div");
+					eleDiv1.setAttribute('class','newestList');
+					
+					var eleP1 = document.createElement("p");
+					var txt1 = document.createTextNode(data[i].memid+"在"+data[i].postno);
+					eleP1.appendChild(txt1);
+					var eleP2 = document.createElement("p");
+					var txt2 = document.createTextNode('留下了訊息:');
+					eleP2.appendChild(txt2);
+					var eleP3 = document.createElement("p");
+					var txt3 = document.createTextNode(data[i].context);
+					eleP3.appendChild(txt3);
+					
+					eleDiv1.appendChild(eleP1);
+					eleDiv1.appendChild(eleP2);
+					eleDiv1.appendChild(eleP3);
+					
+					$('#newestDiv').append(eleDiv1);
+				}
+			}
+		})
+		t=setTimeout("getNewestReply()",30000);
+	}
 	function getAllReply(ArticleNo){
 		$.ajax({
 			type:"get",
@@ -284,7 +336,7 @@
 						<a href="${pageContext.request.contextPath}/blog/postBlog.jsp" class="btn btn-default btn-lg active btn-block" role="button">新增日誌</a><br>
 						<a href="#" class="btn btn-default btn-lg active btn-block" role="button">我的日誌</a>
 					</div>
-					<div class="col-md-7">
+					<div class="col-md-7" style="margin-left:-20px">
 						<form action="${pageContext.request.contextPath}/BlogListServlet" method="GET">
 						
 							<div class="blogType_css" >
@@ -301,7 +353,7 @@
 							<% request.getSession().getAttribute("listIndex");%>
 							<% request.getSession().getAttribute("selType");%>
 							<% request.getSession().getAttribute("member");%>
-							<div class="row">
+							<div class="row lists_css">
 							<c:if test="${blogList.size() == 0}"><br><h3>此類型沒有任何文章</h3></c:if>
 							<c:forEach var="lists" items="${blogList}">
 								<input type="hidden" id="role" value="T" />
@@ -367,7 +419,7 @@
 								        		<span id="artiContext" class="arti"></span><br><br>
 								        		<label class="lab_reply">星級</label> <span id="artiScore" class="arti"></span>
 								        		<label class="lab_reply">瀏覽次數</label><span id="artiView" class="arti"></span><br>							        							 
-												<div class="starbox" style="width:165px"></div>												
+												<div class="starbox" style="width:165px"></div><span id="starmsg"></span>												
 												<div id="delDiv" class="deldiv_css"></div>
 												<div id="msgDiv" class=""></div>
 											</div>
@@ -388,7 +440,10 @@
 					</div>
 					<div class="col-md-2 layoutSide">
 						<label>最新留言回覆</label>
-						<div class="newestDiv"></div>
+						<div class="newestDiv" id="newestDiv">
+							
+							
+						</div>
 					
 					</div>	
 			</div>			
@@ -427,6 +482,7 @@
 		 $("[name='Index']").val('0');
 		 $('#btnSend').click();
 	 })
+	 
 	 
 	 $('#previous').click(function(){
 		 var index = $("[name='Index']").val();
@@ -467,7 +523,7 @@
 			})
 		}
 	})
-	
+
 	$('#postModal').on('hidden.bs.modal',function(){	       
 		$('#fullImg').attr('src','');
 		$('#artiNo').text='';
@@ -481,6 +537,7 @@
 		$('#delDiv').empty();
 		$('#msgDiv').empty();
 		$('#msgDiv').attr("class","");
+		$('#starmsg').text('');
 	}) 
 	
 	$('#delDiv').on("click","a[name='reportAttr']",function(){ //按下檢舉的動作
@@ -614,7 +671,7 @@
 				if(!data){
 					alert('評分失敗，請重試一次');
 				}else{					
-					
+					$('#starmsg').text('已經完成評分');
 				}	
 			}	
 		})		

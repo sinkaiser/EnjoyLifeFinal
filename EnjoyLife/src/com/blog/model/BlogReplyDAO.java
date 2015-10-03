@@ -6,6 +6,8 @@ public interface BlogReplyDAO {
 		
 	public abstract List<BlogReplyVO> selectByPostNo(String postNo);
 	
+	public abstract List<BlogReplyVO> SelectTop10();
+	
 	public abstract int getReplyNo(String postNo);
 		
 	public abstract boolean insertReply(BlogReplyVO bean);
