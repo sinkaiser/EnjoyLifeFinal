@@ -9,6 +9,7 @@
 <script src="scripts/jquery-2.1.4.min.js"></script>
 <link rel="stylesheet" href="scripts/bootstrap.min.css">
 <script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/jquery-ui.js"></script>
 <link rel='stylesheet' href='../css/skel-noscript.css' type="text/css" />
 <link rel='stylesheet' href='../css/style.css' type="text/css" />
 <link rel='stylesheet' href='../css/style-desktop.css' type="text/css" />
@@ -34,6 +35,9 @@ tr:hover td {background: #d0dafd;color: #339;}
 #cate2no {font-size: 18px;height:4ex}
 
 .homepage{padding-top:110px;}
+#imgti{border:0px;padding: 0px;margin-bottom:0px;width:202px;}
+#imgti > label,#imgti > button{position:relative;top:-35px;left:61px;}
+#headerimg{height:65px;width:60px;margin:0px;display:block;margin-right:0px}
 </style>
 </head>
 <body class="homepage">
