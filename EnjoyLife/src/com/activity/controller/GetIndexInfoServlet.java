@@ -40,7 +40,7 @@ public class GetIndexInfoServlet extends HttpServlet {
 		}else{
 			session.getTransaction().rollback();
 		}
-		
+		 
 		PartnerDAO_interface parterdao = new PartnerDAOHibernate();
 		List<PartnerVO> parterlist = parterdao.selectTop5ByDate();
 	
