@@ -18,10 +18,9 @@
 	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/style-desktop.css' type="text/css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>	
 	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
-	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/rater.css' type="text/css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.rater.js"></script>	
-	
+	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->	
+	<link href="${pageContext.request.contextPath}/css/jstarbox.css" rel="stylesheet"></link>
+	<script src="${pageContext.request.contextPath}/js/jstarbox.js"></script>
 
 <style>
 	*{
@@ -30,7 +29,7 @@
 		
 	}
 	.blogType_css{
-		box-shadow:5px 5px 15px rgba(10,125,225,0.4);
+		box-shadow:5px 5px 15px rgba(10,125,225,0.6);
 		margin-bottom:10px;
 		padding:0px;
 	}
@@ -41,9 +40,11 @@
 		display:inline-block;
 		width:240px;
 		height:430px;
-		box-shadow:5px 5px 15px rgba(10,125,225,0.4);
+		box-shadow:5px 5px 15px rgba(10,125,225,0.6);
 		border-top-left-radius:15px;
 		border-top-right-radius:15px;
+		border-bottom-left-radius:15px;
+		border-bottom-right-radius:15px;
 	}
 	.layoutSide{
 		display:block;
@@ -79,11 +80,18 @@
 		border:1px solid #DDDDDD;
 	}
 	.fomatF{
+		border:1px solid #DDDDDD;
+		box-shadow:0px 10px 10px rgba(60,60,60,0.6);
 		display:block;
-		width:40px;	
-		height:60px;
+		width:55px;	
+		height:70px;
 		float:left; 
 		margin:5px auto;
+		margin-left:5px;
+	}
+	.fomatF img{
+		width:55px;	
+		height:70px;
 	}
 	.fomatB{
 		display:inline-block;
@@ -131,6 +139,12 @@
 	.p_rp_context{
 	}
 	.p_rp_date{
+	}
+	.newestDiv{
+		border:3px solid black;
+		width:180px;
+		height:650px;
+		margin-left:0px
 	}
 </style>
 <script type="text/javascript">
@@ -238,13 +252,21 @@
 					$('#delDiv').append(eleA2);
 				}
 				$('#fullImg').attr("src","${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=F&&pathImg="+data.pathPhoto);			 	
-
+				$('.starbox').starbox({
+				    average: data.avgScore/5,
+				    changeable: 'once',
+				    autoUpdateAverage: true,
+				    ghosting: true,
+				    stars:5,
+				    buttons:10
+				});
 				
 // 				var childWindow = document.getElementById("myFrame").contentWindow;//mainFrame這個id是父頁面iframe的id 
 //  			childWindow.document;//獲取子頁面中的document對象； txtBlogNo
 // 				var childBlogNo = childWindow.document.getElementById("txtBlogNo");
 // 				childBlogNo.value = data.postNo;
 			}
+			
 		 });
 	getAllReply(ArticleNo);
 	}
@@ -319,8 +341,8 @@
 						</nav>
 			
 						<!-- 互動視窗 -->
-						<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true" >
-						  <div class="modal-dialog modal-md">
+						<div class="modal fade " id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true" >
+						  <div class="modal-dialog">
 						    <div class="modal-content" id="postModalA">
 						      <div class="modal-header">		
 						        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -345,6 +367,7 @@
 								        		<span id="artiContext" class="arti"></span><br><br>
 								        		<label class="lab_reply">星級</label> <span id="artiScore" class="arti"></span>
 								        		<label class="lab_reply">瀏覽次數</label><span id="artiView" class="arti"></span><br>							        							 
+												<div class="starbox" style="width:165px"></div>												
 												<div id="delDiv" class="deldiv_css"></div>
 												<div id="msgDiv" class=""></div>
 											</div>
@@ -363,7 +386,11 @@
 						</div>		
 							
 					</div>
-					<div class="col-md-2 layoutSide"></div>	
+					<div class="col-md-2 layoutSide">
+						<label>最新留言回覆</label>
+						<div class="newestDiv"></div>
+					
+					</div>	
 			</div>			
 		</div>
 		
@@ -575,6 +602,23 @@
 		$('#msgDiv').empty();				
 	})
 	
+	$('.starbox').on('click',function(){
+		var score = $('.starbox').starbox("getValue");
+		var ArticleNo = $('#artiNo').text().trim();
+		$.ajax({
+			type:"get",
+			url:"${pageContext.request.contextPath}/BlogScoreServlet",
+			dataType:"json",
+			data:{"ArticleNo":ArticleNo,"score":score*5},
+			success:function(data){		
+				if(!data){
+					alert('評分失敗，請重試一次');
+				}else{					
+					
+				}	
+			}	
+		})		
+	})
  }(jQuery));
  </script>
 </html>

@@ -1,5 +1,7 @@
 package com.little.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -95,6 +97,30 @@ public class LittleDaoHibernate implements LittleDao{
 			session.beginTransaction();
 			LittleBean bean=(LittleBean)session.get(LittleBean.class, id);
 			session.delete(bean);
+			session.beginTransaction().commit();
+			result++;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+	
+	@Override
+	public int deleteByTime() {
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		
+		int result=0;
+		
+		try {
+			session.beginTransaction();
+			Date date=new Date();
+			
+			Query query=session.createQuery("Delete from LittleBean where endTime<?");
+			query.setParameter(0, date);
+			query.executeUpdate();
+			
 			session.beginTransaction().commit();
 			result++;
 		} catch (HibernateException e) {

@@ -12,6 +12,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+.img-circle{
+border-radius:500px
+}
+</style>
 </head>
 <body>
 <table class="table table-hover" style="margin: 10px;width: 500px">
@@ -28,7 +33,7 @@
 			<c:if test="${row.FriendVO.unfriend==2}">
 				<tr>
 					<td width="50">
-					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35"  onerror="this.style.display='none'">
+					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35" class="img-circle" onerror="this.style.display='none'">
 					</td>
 					<td>${row.FriendVO.friendId}</td>
 					<td><a name="${row.FriendVO.friendId}" data-toggle="modal" data-target=".bs-example-modal-sm">${row.FriendName}</a></td>
@@ -46,7 +51,7 @@
 			<c:if test="${row.FriendVO.unfriend==0}">
 				<tr>
 					<td>
-					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35"  onerror="this.style.display='none'">
+					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35" class="img-circle"  onerror="this.style.display='none'">
 					</td>
 					<td>${row.FriendVO.friendId}</td>
 					<td style="color:#606060">${row.FriendName}</td>
@@ -60,7 +65,7 @@
 			<c:if test="${row.FriendVO.unfriend==1}">
 				<tr>
 					<td>
-					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35" onerror="this.style.display='none'">
+					<img src="${pageContext.request.contextPath}/GetImg?imgid=${row.Picture}" height="35" width="35" class="img-circle" onerror="this.style.display='none'">
 					</td>
 					<td>${row.FriendVO.friendId}</td>
 					<td style="color:#009FCC">${row.FriendName}</td>					
