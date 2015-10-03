@@ -84,10 +84,10 @@
   <sql:query var="rs" dataSource="${blog}">
   			Select top 1 [photoPath] from activity 
   </sql:query>
-<%--   <sql:query var="rd" dataSource="${blog}"> --%>
-<!--   			Select top 10 [photoPath] from (select ROW_NUMBER() OVER(ORDER BY activityNo)  -->
-<!--   			AS 'RowNo', * from [activity]) as t where t.RowNo between 2 and 5 -->
-<%--   </sql:query> --%>
+  <sql:query var="rd" dataSource="${blog}">
+  			Select top 10 [photoPath] from (select ROW_NUMBER() OVER(ORDER BY activityNo) 
+  			AS 'RowNo', * from [activity]) as t where t.RowNo between 2 and 5
+  </sql:query>
 <body class="homepage">
 		<!-- Header -->
 <%@include file="/includes/header" %>	

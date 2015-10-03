@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <!DOCTYPE html >
 <html>
 <head>
@@ -32,6 +33,19 @@
 	}
 </style>		
 </head>
+<sql:setDataSource dataSource="jdbc/ELDB" var="blog" scope="application"/>
+  <sql:query var="rs" dataSource="${blog}">
+  			Select top 1 [photoPath] from activity 
+  </sql:query>
+  <sql:query var="rd" dataSource="${blog}">
+  			Select top 10 [photoPath] from (select ROW_NUMBER() OVER(ORDER BY activityNo) 
+  			AS 'RowNo', * from [activity]) as t where t.RowNo between 2 and 5
+  </sql:query>
+<%--   <sql:query var="rf" dataSource="${blog}"> --%>
+<!--   			select top 1 partner.eventContent,partner.eventDate,partner.imgNo,ImgList.imgName,ImgList.imgNo,ImgList.imgContent,ImgList.imgType -->
+<!--   			from partner inner join ImgList on partner.imgNo=ImgList.imgNo -->
+<!--   			order by eventDate desc; -->
+<%--   </sql:query> --%>
 <body class="homepage">
 		<!-- Header -->
 <%@include file="/includes/newheader" %>	
@@ -48,43 +62,82 @@
 							</script>
 	
 						</c:if>
-					<div id="content" class="8u skel-cell-important">
+					<div id="content" class="7u skel-cell-important">
 						<section>
 							<header>
 								<h2>BLOG</h2>
 								<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
 							</header>
-							<a href="#" class="image full"><img src="images/pic07.jpg" alt="" /></a>
-							<p>This is <strong>Iridium</strong>, a responsive HTML5 site template freebie by <a href="http://templated.co">TEMPLATED</a>. Released for free under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so use it for whatever (personal or commercial) &ndash; just give us credit! Check out more of our stuff at <a href="http://templated.co">our site</a> or follow us on <a href="http://twitter.com/templatedco">Twitter</a>.</p>
-							<p>Sed etiam vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue justo quis nisl. Fusce mattis viverra elit. Fusce quis tortor. Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget lorem ipsum dolor.</p>
+							...
 						</section>
 					</div>
 					
 					<!-- Sidebar -->
-					<div id="sidebar" class="4u">
+					<div id="sidebar" class="5u">
 						<section>
-							<header>
-								<h2>HOT</h2>
+							<header style="height:50px;">
+								<p style="font-size:35px;" >活動</p>
 							</header>
 							<ul class="style">
 								<li>
-									<p class="posted">August 11, 2002  |  (10 )  Comments</p>
-									<img src="images/pic04.jpg" alt="" />
-									<p class="text">Nullam non wisi a sem eleifend. Donec mattis libero eget urna. Pellentesque viverra enim.</p>
-								</li>
+									<div id="carousel-example-generic" class="carousel slide"
+									data-ride="carousel" style="width: 220px;">
+									<!-- Indicators -->
+
+									<!-- Wrapper for slides -->
+									<div class="carousel-inner" role="listbox">
+										<c:forEach var="row" items="${rs.rows}" varStatus="status">
+											<div class="item active" style="width: 220px;">
+												<img src="<c:out value='${row.photoPath}' default=""/>"
+													alt="..." style="width: 220px; height: 200px;">
+												<div class="carousel-caption">...</div>
+											</div>
+										</c:forEach>
+										<c:forEach var="row" items="${rd.rows}" varStatus="status">
+											<div class="item" style="width: 220px;">
+												<img src="<c:out value='${row.photoPath}' default=""/>"
+													alt="..." style="width: 220px; height: 200px;">
+												<div class="carousel-caption"></div>
+											</div>
+										</c:forEach>
+
+									</div>
+
+									<!-- Controls -->
+								</div>
+							</li>
 								<li>
-									<p class="posted">August 11, 2002  |  (10 )  Comments</p>
-									<img src="images/pic05.jpg" alt="" />
-									<p class="text">Nullam non wisi a sem eleifend. Donec mattis libero eget urna. Pellentesque viverra enim.</p>
-								</li>
-								<li>
-									<p class="posted">August 11, 2002  |  (10 )  Comments</p>
-									<img src="images/pic06.jpg" alt="" />
-									<p class="text">Nullam non wisi a sem eleifend. Donec mattis libero eget urna. Pellentesque viverra enim.</p>
+									<div id="carousel-example-generic" class="carousel slide"
+									data-ride="carousel" style="width: 220px;">
+									<!-- Indicators -->
+
+									<!-- Wrapper for slides -->
+									<div class="carousel-inner" role="listbox">
+										<c:forEach var="mem" varStatus="statusX" items="${AllPartners}">
+											<div class="item active" style="width: 220px;">
+												<p>${mem.PartnerVO.eventContent}</p>
+												<img src="${pageContext.request.contextPath}/GetImg?imgid=${mem.PartnerVO.imgNo}' default=""/>"
+													alt="..." style="width: 220px; height: 200px;">
+												<div class="carousel-caption">...</div>
+											</div>
+										</c:forEach>
+										<c:forEach var="row" items="${rd.rows}" varStatus="status">
+											<div class="item" style="width: 220px;">
+												<img src="<c:out value='${row.photoPath}' default=""/>"
+													alt="..." style="width: 220px; height: 200px;">
+												<div class="carousel-caption"></div>
+											</div>
+										</c:forEach>
+
+									</div>
+
+									<!-- Controls -->
+								</div>
 								</li>
 							</ul>
 						</section>
 					</div>
+					
 				</div>
 			</div>
 		</div>
