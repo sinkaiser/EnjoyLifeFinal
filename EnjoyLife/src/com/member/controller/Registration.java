@@ -20,6 +20,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.AttracAction.Compressionbase64;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDAO_interface;
 import com.member.model.MemberVO;
@@ -89,14 +90,18 @@ try {
 			    }else{			    	
 			    	 long sizeInBytes = item.getSize();	
 			    	 byte[] data = item.get();
-			    	 if(data!=null){
-			    		
+			    	 Compressionbase64 compress=new Compressionbase64();
+			    	 byte[] compressdata=compress.CompressionUserimg(data);
+			    	 
+			    	 
+			    	 
+			    	 if(data!=null){			    		
 			    	 String fileName = item.getName();
 			    	 String[] b=fileName.split("\\.");
 			    	 if (fileName != null && !"".equals(fileName)) {
 			    	 ibean.setImgName(b[0]);
 			    	 ibean.setImgType(b[1]);			    	 
-			    	 ibean.setImgContent(data);
+			    	 ibean.setImgContent(compressdata);
 			    	 picture=idao.insert(ibean);	
 			    	 	}
 			    	 }
