@@ -54,7 +54,7 @@ public class BugForSale {
 			p=ul.select("p").text();
 			href=ul.select(".link > a").attr("href");
 //			System.out.println("<a href="+xx+href+">"+p+"</a>");
-			bean.setNevin("href="+xx+href+">"+p);
+			bean.setNevin("<a href="+xx+href+">"+p+"</a>");
 			dao.insert(bean);
 			
 			result++;

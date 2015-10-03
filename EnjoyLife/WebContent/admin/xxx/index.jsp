@@ -336,7 +336,7 @@
 					 
 					 //img
 					 $.getJSON("${pageContext.request.contextPath}/attrac/GetAttracDetail.jsp",{"attracno":p},function(data){
-						 alert(data)
+						 console.log(data);
 // 						 $.each(data.photodata,function(){
 							 
 // 							 $('#gallery').append('<li class="ui-widget-content ui-corner-tr">');
