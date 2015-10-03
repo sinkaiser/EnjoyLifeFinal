@@ -143,9 +143,9 @@ public class BlogDAOHibernate implements BlogDAO {
 		int newQtyToScore = bean.getQtyToScore() +1;
 		try {
 			Query query = session.createQuery(sql);
-			query.setParameter(0, postNo);
 			query.setParameter(0, newScore/newQtyToScore);
-			query.setParameter(0, newQtyToScore);
+			query.setParameter(1, newQtyToScore);
+			query.setParameter(2, postNo);
 			int i = query.executeUpdate();
 			result = true;
 		} catch (HibernateException e) {
