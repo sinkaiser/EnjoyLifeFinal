@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+.img-circle{
+border-radius:500px
+}
+</style>
 </head>
 <body>
 <table class="table table-hover" style="margin: 10px;width: 650px">
@@ -29,7 +34,7 @@
 		<c:forEach var="row" items="${Message}">
 			<c:if test="${row.MessageVO.unMessage==0}">
 				<tr>
-					<td><img src="${pageContext.request.contextPath}/GetImg?imgid=${row.MemberVO.picture}" height="35" width="35" "></td>
+					<td><img src="${pageContext.request.contextPath}/GetImg?imgid=${row.MemberVO.picture}" class="img-circle" height="35" width="35" "></td>
 					<td>${row.MessageVO.messageFrom}</td>
 					<td>${row.MemberVO.memberName}</td>
 					<td><a name="${row.MessageVO.messageNo}" data-toggle="modal" data-target=".bs-example-modal-sm">${row.MessageVO.messageTitle}</a></td>
