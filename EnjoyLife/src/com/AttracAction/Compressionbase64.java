@@ -68,4 +68,26 @@ public class Compressionbase64 {
 		}
 		return originalImgByte;	
 	}
+	public byte[] CompressionEventImg(byte[] source){
+		byte[] originalImgByte = null;
+		ByteArrayOutputStream baos = null;
+		try {
+			InputStream ins = new ByteArrayInputStream(source);
+			BufferedImage bufferedImage = ImageIO.read(ins);
+			double w = bufferedImage.getWidth();
+			double h = bufferedImage.getHeight();
+			int dw = 250; //指定壓縮大小 w爲300
+			int dh = (int) (250 / (w / h));
+			BufferedImage tag = new BufferedImage(dw, dh, BufferedImage.TYPE_INT_RGB);
+			tag.getGraphics().drawImage(bufferedImage.getScaledInstance(dw, dh, Image.SCALE_SMOOTH), 0, 0, null);
+			baos = new ByteArrayOutputStream();
+			ImageIO.write(tag, "jpg", baos);
+			baos.flush();
+			originalImgByte = baos.toByteArray();
+			baos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return originalImgByte;	
+	}
 }

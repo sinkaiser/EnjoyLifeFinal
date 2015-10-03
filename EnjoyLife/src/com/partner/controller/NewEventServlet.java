@@ -22,6 +22,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.AttracAction.Compressionbase64;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDAO_interface;
 import com.member.model.MemberVO;
@@ -53,7 +54,7 @@ public class NewEventServlet extends HttpServlet {
 		
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload sfu = new ServletFileUpload(factory);
-		
+		Compressionbase64 compress=new Compressionbase64();
 		try {
 			
 			List items = sfu.parseRequest(request);
@@ -90,7 +91,7 @@ public class NewEventServlet extends HttpServlet {
 			    	 byte[] data = item.get();
 			    	 String fileName=item.getName();
 			    	 ImgListBean bean = new ImgListBean();
-			    	
+			    	 byte[] compressdata=compress.CompressionEventImg(data);
 			    	 if(fileName.trim().equals("")){
 			    	
 			    		 partnerVO.setImgNo(0);
@@ -98,7 +99,7 @@ public class NewEventServlet extends HttpServlet {
 			    		 System.out.println(1);
 			    		 String[] aa=fileName.split("\\.");
 				    	 System.out.println(aa[0]+"||"+aa[1]);
-				    	 bean.setImgContent(data);
+				    	 bean.setImgContent(compressdata);
 				    	 bean.setImgName(aa[0]);
 				    	 bean.setImgType(aa[1]);
 				    	 ImgListDao dao = new ImgListDaoHibernate();
