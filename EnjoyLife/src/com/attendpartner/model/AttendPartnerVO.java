@@ -1,8 +1,10 @@
 package com.attendpartner.model;
 
 public class AttendPartnerVO implements java.io.Serializable{
+	private static final long serialVersionUID = 1L;
 	private Integer eventNo;
 	private String partner;
+	private String partnerId;
 	private Integer attend;
 	
 	public Integer getEventNo() {
@@ -16,6 +18,12 @@ public class AttendPartnerVO implements java.io.Serializable{
 	}
 	public void setPartner(String partner) {
 		this.partner = partner;
+	}
+	public String getPartnerId() {
+		return partnerId;
+	}
+	public void setPartnerId(String partnerId) {
+		this.partnerId = partnerId;
 	}
 	public Integer getAttend() {
 		return attend;

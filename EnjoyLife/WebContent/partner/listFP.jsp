@@ -158,14 +158,15 @@ body {
 
 				<div class="detail">
 					<p id="filters" class="cxbtn_group">
-						<a class="cxbtn" href="javascript://" data-filter="all">全部類別</a> <a
-							class="cxbtn" href="javascript://" data-filter="購物">購物</a> <a
-							class="cxbtn" href="javascript://" data-filter="餐飲">餐飲</a> <a
-							class="cxbtn" href="javascript://" data-filter="娛樂">娛樂</a> <a
-							class="cxbtn" href="javascript://" data-filter="運動">運動</a> <a
-							class="cxbtn" href="javascript://" data-filter="藝文">藝文</a> <a
-							class="cxbtn" href="javascript://" data-filter="交通">交通</a> <a
-							class="cxbtn" href="javascript://" data-filter="其他">其他</a>
+						<a class="cxbtn" href="javascript://" data-filter="all">全部類別</a> 
+						<a class="cxbtn" href="javascript://" data-filter="購物">購物</a> 
+						<a class="cxbtn" href="javascript://" data-filter="餐飲">餐飲</a> 
+						<a class="cxbtn" href="javascript://" data-filter="娛樂">娛樂</a> 
+						<a class="cxbtn" href="javascript://" data-filter="運動">運動</a> 
+						<a class="cxbtn" href="javascript://" data-filter="藝文">藝文</a> 
+						<a class="cxbtn" href="javascript://" data-filter="交通">交通</a> 
+						<a class="cxbtn" href="javascript://" data-filter="旅遊">旅遊</a> 
+						<a class="cxbtn" href="javascript://" data-filter="其他">其他</a>
 					</p>
 				</div>
 
@@ -202,7 +203,7 @@ body {
 													<a href="${pageContext.request.contextPath}/partner/FindByTypeServlet?mType=${mem.PartnerVO.eventType}">
 														<img src="../partner/img/icon-tag.png">${mem.PartnerVO.eventType}
 													</a>
-													<a href="mapFP.jsp?inputAdd=${mem.PartnerVO.addr}" title="${mem.PartnerVO.addr}">
+													<a href="#" title="${mem.PartnerVO.addr}">
 														<img src="../partner/img/icon-location.png">${mem.PartnerVO.getAddr().toString().substring(0,3)}
 													</a>
 													<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="yyyy年M月d日 H:mm" />
@@ -294,6 +295,8 @@ body {
 								<option>運動</option>
 								<option>藝文</option>
 								<option>交通</option>
+								<option>旅遊</option>
+								<option>其他</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -532,10 +535,10 @@ body {
 				<div class="modal-body">
 
 					<form name="insertMemberFormC" action="${pageContext.request.contextPath}/message/writeMessage.do" id="jmessage" method="POST">
-						<input id='xxxeno' style="text-align: left" name="eno" type="text" size="14"> 
-						<input id='xxx1' style="text-align: left" id="messageFrom" name="messageFrom" value="${member.memberId}" type="text" size="14">
-						<input id='xxx2' style="text-align: left" id="memberName" name="memberName" value="${member.memberName}" type="text" size="14">
-						<input id='xxx3' style="text-align: left" id="messageTo" name="messageTo" value="${mem.PartnerVO.memberId}" type="text" size="14">
+						<input id='xxxeno' style="text-align: left" name="eno" type="hidden" size="14"> 
+						<input id='xxx1' style="text-align: left" id="messageFrom" name="messageFrom" value="${member.memberId}" type="hidden" size="14">
+						<input id='xxx2' style="text-align: left" id="memberName" name="memberName" value="${member.memberName}" type="hidden" size="14">
+						<input id='xxx3' style="text-align: left" id="messageTo" name="messageTo" value="${mem.PartnerVO.memberId}" type="hidden" size="14">
 						<label>你還想說:</label><br>
 						<textarea id="xxx4" name="message" class="form-textarea"></textarea>
 					</form>

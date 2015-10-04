@@ -24,6 +24,8 @@ import com.attendpartner.model.AttendPartnerVO;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDAO_interface;
 import com.member.model.MemberVO;
+import com.message.model.MessageDAO;
+import com.message.model.MessageVO;
 import com.partner.model.PartnerService;
 import com.partner.model.PartnerVO;
 
@@ -42,6 +44,22 @@ public class CloseEventServlet extends HttpServlet {
 
 		// 設定輸入資料的編碼
 		request.setCharacterEncoding("UTF-8");
+		
+		
+		
+		String messageFrom=request.getParameter("messageFrom");
+		//String memberName=request.getParameter("memberName");
+		String messageTo=request.getParameter("messageTo");
+		String messageTitle="您的請求被答應了";
+		//String message=request.getParameter("message");
+		MessageVO vo=new MessageVO();
+		vo.setMessage(messageFrom+"答應你的請求了。 <a target='blank' href='http://enjoylife.cloudapp.net/EnjoyLife/partner/ShowAllPartnerServlet'>去找伴專區看看吧</a>");
+		vo.setMessageFrom(messageFrom);
+		vo.setMessageTitle(messageTitle);
+		vo.setMessageTo(messageTo);
+		MessageDAO mdao = new MessageDAO();
+	    mdao.insertmessage(vo);
+		
 		
 		String eventNo = request.getParameter("eno3");
 		if (eventNo == null || eventNo.trim().length() == 0) {

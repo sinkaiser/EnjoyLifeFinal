@@ -166,14 +166,15 @@ body {
 
 				<div class="detail">
 					<p id="filters" class="cxbtn_group">
-						<a class="cxbtn" href="javascript://" data-filter="all">全部類別</a> <a
-							class="cxbtn" href="javascript://" data-filter="購物">購物</a> <a
-							class="cxbtn" href="javascript://" data-filter="餐飲">餐飲</a> <a
-							class="cxbtn" href="javascript://" data-filter="娛樂">娛樂</a> <a
-							class="cxbtn" href="javascript://" data-filter="運動">運動</a> <a
-							class="cxbtn" href="javascript://" data-filter="藝文">藝文</a> <a
-							class="cxbtn" href="javascript://" data-filter="交通">交通</a> <a
-							class="cxbtn" href="javascript://" data-filter="其他">其他</a>
+						<a class="cxbtn" href="javascript://" data-filter="all">全部類別</a> 
+						<a class="cxbtn" href="javascript://" data-filter="購物">購物</a> 
+						<a class="cxbtn" href="javascript://" data-filter="餐飲">餐飲</a> 
+						<a class="cxbtn" href="javascript://" data-filter="娛樂">娛樂</a> 
+						<a class="cxbtn" href="javascript://" data-filter="運動">運動</a> 
+						<a class="cxbtn" href="javascript://" data-filter="藝文">藝文</a> 
+						<a class="cxbtn" href="javascript://" data-filter="交通">交通</a> 
+						<a class="cxbtn" href="javascript://" data-filter="旅遊">旅遊</a> 
+						<a class="cxbtn" href="javascript://" data-filter="其他">其他</a>
 					</p>
 				</div>
 
@@ -287,6 +288,8 @@ body {
 								<option>運動</option>
 								<option>藝文</option>
 								<option>交通</option>
+								<option>旅遊</option>
+								<option>其他</option>
 							</select>
 						</div>
 						<div class="form-group">

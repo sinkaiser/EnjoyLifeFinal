@@ -166,14 +166,15 @@ body {
 
 				<div class="detail">
 					<p id="filters" class="cxbtn_group">
-						<a class="cxbtn" href="javascript://" data-filter="all">全部類別</a> <a
-							class="cxbtn" href="javascript://" data-filter="購物">購物</a> <a
-							class="cxbtn" href="javascript://" data-filter="餐飲">餐飲</a> <a
-							class="cxbtn" href="javascript://" data-filter="娛樂">娛樂</a> <a
-							class="cxbtn" href="javascript://" data-filter="運動">運動</a> <a
-							class="cxbtn" href="javascript://" data-filter="藝文">藝文</a> <a
-							class="cxbtn" href="javascript://" data-filter="交通">交通</a> <a
-							class="cxbtn" href="javascript://" data-filter="其他">其他</a>
+						<a class="cxbtn" href="javascript://" data-filter="all">全部類別</a> 
+						<a class="cxbtn" href="javascript://" data-filter="購物">購物</a> 
+						<a class="cxbtn" href="javascript://" data-filter="餐飲">餐飲</a> 
+						<a class="cxbtn" href="javascript://" data-filter="娛樂">娛樂</a> 
+						<a class="cxbtn" href="javascript://" data-filter="運動">運動</a> 
+						<a class="cxbtn" href="javascript://" data-filter="藝文">藝文</a> 
+						<a class="cxbtn" href="javascript://" data-filter="交通">交通</a> 
+						<a class="cxbtn" href="javascript://" data-filter="旅遊">旅遊</a> 
+						<a class="cxbtn" href="javascript://" data-filter="其他">其他</a>
 					</p>
 				</div>
 
@@ -194,6 +195,8 @@ body {
 													<img style="float: left" src="${pageContext.request.contextPath}/GetImg?imgid=${mem.imgNo}"
 													height="30" width="30" onerror="this.style.display='none'">
 													<p style="float: left">${mem.PartnerVO.memberName}</p> 
+													
+													<input id="closeid" type="hidden" value="${mem.PartnerVO.memberId}">
 													<br>
 												</div>
 												<div style="margin: 5px auto">
@@ -223,7 +226,8 @@ body {
 														<c:forEach var="attend" varStatus="statusX" items="${mem.partner}">
 															<div name="attendclose">
 																<div style="float:left">${attend.partner}</div>
-																<input name="partner" type="hidden" value="${attend.partner}">
+																<input id="partnerId" type="text" value="${attend.partnerId}">
+																<input name="partner" type="text" value="${attend.partner}">
 																<div style="text-align:right">
 																	<button name="closebutton">同意</button><button>拒絕</button><br>
 																	<input name="eno3" type="hidden" value="${attend.eventNo}">
@@ -270,6 +274,8 @@ body {
 			url: "${pageContext.request.contextPath}/partner/CloseEventServlet",
             data: {
             		"eno3": $(this).parents('div[name="attendclose"]').find('input[name="eno3"]').val(),
+            		"messageTo": $("#partnerId").val(),
+            		"messageFrom": $("#closeid").val(),
             		"partner": $(this).parents('div[name="attendclose"]').find('input[name="partner"]').val() 
             	  },
             type:"POST",
@@ -343,6 +349,8 @@ body {
 								<option>運動</option>
 								<option>藝文</option>
 								<option>交通</option>
+								<option>旅遊</option>
+								<option>其他</option>
 							</select>
 						</div>
 						<div class="form-group">
