@@ -163,32 +163,7 @@
 				  <input accept="image/*" id="uploadImage" type="file">
   <img id="img" src="">
   
-  <script>
-    $("#uploadImage").change(function(){
-      readImage( this );
-    });
- 
-    function readImage(input) {
-      if ( input.files && input.files[0] ) {
-    	var data;
-    	var name;
-        var FR= new FileReader();
-        FR.onload = function(e) {
-        	
-        	data=e.target.result;
-        	name=$(uploadImage).val();
-        	
-        	$('#gallery').append('<li class="ui-widget-content ui-corner-tr"><h5 class="ui-widget-header">'+name+'</h5><img src='+data+'  width="96" height="72"><a href='+data+' title="放大" class="ui-icon ui-icon-zoomin"></a><a href="link/to/trash/script/when/we/have/js/off" title="放入" class="ui-icon ui-icon-trash"></a></li>');
-	
-        };       
-        FR.readAsDataURL( input.files[0] );
-        
-        
-        
-        	
-      }
-    }
-  </script>
+
 				
 				<div>
 					<ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
@@ -381,39 +356,44 @@
 							 
 							 });
 						 	
-						
 						 ui();
+						 
 					 })
 					 
 					 
 			 });
 				
 				 
-				
 				 
 				 
 				 
-// 				 $('#fileupload').fileupload({
-// 					    done: function (e, data) {
-// 					        $.each(data.result, function (index, file) {
-// 					            $('<p/>').text(file.name + ' uploaded').appendTo($("body"));
-					            
-					           
-// 					        });
-// 					    }
-// 					});
+				   $("#uploadImage").change(function(){
+					      readImage( this );
+					    });
 					 
-				 $("#fileupload_input").fileupload({  
-					    url:"files/upload",//文件上传地址，当然也可以直接写在input的data-url属性内  
-					    formData:{param1:"p1",param2:"p2"},//如果需要额外添加参数可以在这里添加  
-					    done:function(e,result){  
-					        //done方法就是上传完毕的回调函数，其他回调函数可以自行查看api  
-					        //注意result要和jquery的ajax的data参数区分，这个对象包含了整个请求信息  
-					        //返回的数据在result.result中，假设我们服务器返回了一个json对象  
-					        console.log(JSON.stringify(result.result));  
-					    }  
-					})  				 
-				 
+					    function readImage(input) {
+					      if ( input.files && input.files[0] ) {
+					    	var data;
+					    	var name;
+					        var FR= new FileReader();
+					        FR.onload = function(e) {
+					        	
+					        	data=e.target.result;
+					        	name=$(uploadImage).val();
+					        	var c=name.split("\\");
+					        	var d=c.length;
+					        	name=c[d-1];
+					        	
+					        	$('#gallery').append('<li class="ui-widget-content ui-corner-tr"><h5 class="ui-widget-header">'+name+'</h5><img src='+data+'  width="96" height="72"><a href='+data+' title="放大" class="ui-icon ui-icon-zoomin"></a><a href="link/to/trash/script/when/we/have/js/off" title="放入" class="ui-icon ui-icon-trash"></a></li>');
+					    
+					        };       
+					        FR.readAsDataURL( input.files[0] );
+					        
+					        
+					        
+					        	
+					      }
+					    }
 				 
 				 
 				 
