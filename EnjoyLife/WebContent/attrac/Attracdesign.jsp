@@ -60,7 +60,7 @@
 	   		    </div> 
 		    </div>   
        </div>
-       <div class="col-md-4" style="position:relative;height:910px;padding: 0px">
+       <div class="col-md-4" style="position:relative;height:950px;padding: 0px">
        			<h1 id="alllist">清單列表</h1>
        			<img  id="listloader"src="Data/ajax-loader2.gif" style="margin-left:20px;width: 350px;height:15px;visibility:hidden;">
 			    <ul id="menu" class="attraclist">	       			
