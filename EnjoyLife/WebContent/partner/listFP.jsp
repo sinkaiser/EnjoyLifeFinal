@@ -90,9 +90,9 @@ body {
 		<c:if test="${!empty member}">
 			<li style="line-height:30px;float:right">							
 				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" class="img-circle" style="height:35px;width:35px;margin-bottom:30px;box-shadow:0px 0px 10px 7px #F5FAFF;"> 
-				<label style="height:30px;margin-bottom:26px;font-size:25px;font-family:微軟正黑體;" >${member.memberName}</label>
+				<label style="height:30px;margin-bottom:26px;font-size:25px;position:relative;top:-8px;font-family:微軟正黑體;" >${member.memberName}</label>
 				<button type="button" class="btn btn-info" id="logout" data-toggle="modal"
-						data-target="#myModalout" style="margin-bottom:26px" >登出</button>
+						data-target="#myModalout" style="margin-bottom:32px" >登出</button>
 			</li>
 		</c:if>
 	</ul>

@@ -79,7 +79,7 @@ public class BlogDAOHibernate implements BlogDAO {
 
 	@Override
 	public List<BlogVO> selectByViews() {
-		String sql = "FROM BlogVO WHERE flagDelete='F' AND flagReport='F' ORDER BY viewTotal, postDate DESC";
+		String sql = "FROM BlogVO WHERE flagDelete='F' AND flagReport='F' ORDER BY viewTotal DESC";
 		List<BlogVO> list = null;
 		
 		try {

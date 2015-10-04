@@ -9,7 +9,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<h1><a href="${pageContext.request.contextPath}/BlogListServlet?Index=0&&pType=ALL">Enjoy Life</a></h1>
+					<h1><a href="${pageContext.request.contextPath}/GetIndexInfoServlet">Enjoy Life</a></h1>
 				</div>
 				
 				
