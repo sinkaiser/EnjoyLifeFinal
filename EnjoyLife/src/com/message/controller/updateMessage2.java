@@ -44,7 +44,7 @@ public class updateMessage2 extends HttpServlet {
 		mbean.setMessageNo(Integer.parseInt(messageNo));
 		mservice.updateMessage2(mbean);
 		response.sendRedirect(
-		response.encodeRedirectURL(request.getContextPath()+"/message/message.jsp"));
+		response.encodeRedirectURL(request.getContextPath()+"/message/selectMessageAll.do"));
 		return;	
 					
 		}

@@ -45,7 +45,7 @@ public class updateFriend extends HttpServlet {
 		fbean2.setMemberId(friendId);
 		fservice.updateFriend2(fbean2);
 		response.sendRedirect(
-		response.encodeRedirectURL(request.getContextPath()+"/friend/friend.jsp"));
+		response.encodeRedirectURL(request.getContextPath()+"/friend/selectFriend.do"));
 		return;	
 					
 		}
