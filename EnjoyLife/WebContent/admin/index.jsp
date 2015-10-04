@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  
 <!DOCTYPE html>
 <html lang="UTF-8">
 <head>
@@ -51,13 +53,11 @@
 				</ul>
 				
 			</div>
-		
-			
-				<iframe name="frame" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" width="800" src="${pageContext.request.contextPath}/AdminPageServlet" height="850" frameborder="o" scrolling="yes" style='background-color:#efefef'>
 				
-				</iframe>
 			
-		
+		                <iframe name="frame" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" width="800" src="${pageContext.request.contextPath}/AdminPageServlet" height="850" frameborder="o" scrolling="yes" style='background-color:#efefef'>
+						</iframe>
+		      
 			</div>
 	</div>
 	<script

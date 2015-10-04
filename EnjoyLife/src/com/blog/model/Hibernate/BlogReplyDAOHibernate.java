@@ -38,10 +38,12 @@ public class BlogReplyDAOHibernate implements BlogReplyDAO {
 	
 	@Override
 	public List<BlogReplyVO> SelectTop10() {
-		String SQL_SELECT_TOP_10="FROM BlogReplyVO ORDER BY replyDate";
+		String SQL_SELECT_TOP_10="FROM BlogReplyVO ORDER BY replyDate DESC";
 		List<BlogReplyVO> list = null;
 		Query query = session.createQuery(SQL_SELECT_TOP_10);
+		
 		try {
+			query.setFirstResult(0);
 			query.setMaxResults(10);
 			list = (List<BlogReplyVO>) query.list();
 		} catch (HibernateException e) {		

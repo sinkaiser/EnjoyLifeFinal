@@ -217,10 +217,22 @@ body {
 													</a>
 													<c:if test="${!empty mem.partner}">
 														<br>
+														
+														<div name="attendclose222">
 														想參加的人：<br>
 														<c:forEach var="attend" varStatus="statusX" items="${mem.partner}">
-															<div style="float:left">${attend.partner}</div><div style="text-align:right"><button>同意</button><button>拒絕</button><br></div>
+															<div name="attendclose">
+																<div style="float:left">${attend.partner}</div>
+																<input name="partner" type="hidden" value="${attend.partner}">
+																<div style="text-align:right">
+																	<button name="closebutton">同意</button><button>拒絕</button><br>
+																	<input name="eno3" type="hidden" value="${attend.eventNo}">
+																</div>
+															</div>
 														</c:forEach>
+														</div>
+														
+														
 													</c:if>
 												</div>
 											</td>
@@ -241,6 +253,50 @@ body {
 	</div>
 
 
+
+	
+	<script type="text/javascript">
+	
+	
+
+    
+	
+	$('[name="closebutton"]').click(function() {
+		a=$(this).parents('div[name="attendclose"]').find('input[value="partner"]').val();
+		var b=$(this);
+		
+		
+		$.ajax({
+			url: "${pageContext.request.contextPath}/partner/CloseEventServlet",
+            data: {
+            		"eno3": $(this).parents('div[name="attendclose"]').find('input[name="eno3"]').val(),
+            		"partner": $(this).parents('div[name="attendclose"]').find('input[name="partner"]').val() 
+            	  },
+            type:"POST",
+            dataType:'text',
+
+            success: function(msg){
+            	var c=b.parents('div[name="attendclose222"]');
+            	b.parents('div[name="attendclose222"]').empty();
+            	
+        		c.append("想參加的人：<br><p>"+a+"</p>")
+            	alert(msg);
+            	
+            },
+
+             error:function(xhr, ajaxOptions, thrownError){ 
+                alert(xhr.status); 
+                alert(thrownError); 
+             }
+        });
+	});
+
+	</script>
+	
+	
+	
+	
+	
 	
 	<!-- 登出Modal -->
   	<div class="modal fade" id="myModalout" role="dialog" aria-labelledby="" tabindex="-1">
@@ -428,11 +484,10 @@ body {
 					<h4 class="modal-title" id="myModalLabel">檢舉貼文</h4>
 				</div>
 				<div class="modal-body">
-					<form name="insertMemberFormA"
-						action="../comment/NewCommentServlet" id="jcomment" method="POST">
-						<input name="eno" id="eno" type="hidden" size="54"
-							value="${param.t}"> <label>檢舉原因:</label> <select
-							id="selectoption" name="content">
+					<form name="insertMemberFormA" action="../comment/NewCommentServlet" id="jcomment" method="POST">
+						<input name="eno" id="eno" type="hidden" size="54" value="${param.t}"> 
+						<label>檢舉原因:</label>
+						<select id="selectoption" name="content">
 							<option>這則貼文是垃圾訊息或詐騙</option>
 							<option>這則貼文是廣告</option>
 							<option>色情內容</option>
@@ -485,7 +540,7 @@ body {
 		$.ajax({
 			url: "${pageContext.request.contextPath}/comment/NewCommentServlet",
             data: {
-            		"content": $("#selectoption").val(),
+            		"content": $("#selectoption").val(), //getParameter("content") 表單ID#selectoption
             		"eno": $("#eno").val() 
             	  },
             type:"POST",

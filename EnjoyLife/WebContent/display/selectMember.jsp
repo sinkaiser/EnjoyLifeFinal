@@ -60,7 +60,7 @@
 			</div>
 			<div class="form-group">
 				<label for="picture" class="col-sm-1 control-label">大頭貼：</label>
-				<p><img src="${pageContext.request.contextPath}/GetImg?imgid=${search.picture}" height="35" width="35" onerror="this.style.display='none'"></p>
+				<p><img src="${pageContext.request.contextPath}/GetImg?imgid=${search.picture}" class="img-circle" style="height:65px;width:60px;box-shadow:0px 0px 10px 7px #F5FAFF;"></p>
 			</div>
 		</fieldset>	
 		

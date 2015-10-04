@@ -146,6 +146,7 @@
 		height:600px;
 		margin-left:-20px;
 		overflow: auto;
+		
 	}
 	.lists_css {
 		
@@ -156,10 +157,10 @@
 	}
 	.newestList{
 		width:195px;
-		border:2px dotted black;
+		border:1px solid black;
 		padding:5px;
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(235,241,246,1)), color-stop(49%,rgba(171,211,238,1)), color-stop(49%,rgba(171,211,238,1)), color-stop(100%,rgba(137,195,235,1)), color-stop(100%,rgba(213,235,251,1)), color-stop(102%,rgba(137,195,235,1)));
-		
+		word-break: break-all;
 	}
 	.newestList p{
 		margin-bottom:0px 
@@ -176,6 +177,10 @@
 		font-style: italic;
 		color:#003C9D;
 		font-family: Comic Sans MS,arial,helvetica,sans-serif;
+	}
+	.nr_p_ccs3{
+		font-size:6pt;
+		color:#888888;
 	}
 </style>
 <script type="text/javascript">
@@ -206,6 +211,11 @@
 					eleP3.setAttribute("class","nr_p_ccs2")
 					eleP3.appendChild(txt3);
 					
+					var eleP4 = document.createElement("p");
+					var txt4 = document.createTextNode(data[i].date);
+					eleP4.setAttribute("class","nr_p_ccs3")
+					eleP4.appendChild(txt4);
+					
 					var eleText = document.createElement("input");
 					eleText.setAttribute("type","text");
 					eleText.setAttribute("style","display:none");
@@ -214,18 +224,74 @@
 					eleDiv1.appendChild(eleP1);
 					eleDiv1.appendChild(eleP2);
 					eleDiv1.appendChild(eleP3);
+					eleDiv1.appendChild(eleP4);
 					eleDiv1.appendChild(eleText);
 					
 					$('#newestDiv').append(eleDiv1);
 				}
-				for(var j=0;j<10;j++){				
-					$('#blog'+j).on('click',function(e){						
-						alert(j);
-					})					
-				}	
+				$('#blog0').click(function(){
+					var postno = $('#blog0 input').val();
+					viewArticle(postno);
+					$('#postModal').modal();
+					
+				})
+				$('#blog1').click(function(){
+					var postno = $('#blog1 input').val();
+					viewArticle(postno);
+					$('#postModal').modal();
+					
+				})
+				$('#blog2').click(function(){
+					var postno = $('#blog2 input').val();
+					viewArticle(postno);
+					$('#postModal').modal();
+					
+				})
+				$('#blog3').click(function(){
+					var postno = $('#blog3 input').val();
+					viewArticle(postno);
+					$('#postModal').modal();
+					
+				})
+				$('#blog4').click(function(){
+					var postno = $('#blog4 input').val();
+					viewArticle(postno);
+					$('#postModal').modal();
+					
+				})
+				$('#blog5').click(function(){
+					var postno = $('#blog5 input').val();
+					viewArticle(postno);
+					$('#postModal').modal();
+					
+				})
+				$('#blog6').click(function(){
+					var postno = $('#blog6 input').val();
+					viewArticle(postno);
+					$('#postModal').modal();
+					
+				})
+				$('#blog7').click(function(){
+					var postno = $('#blog7 input').val();
+					viewArticle(postno);
+					$('#postModal').modal();
+					
+				})
+				$('#blog8').click(function(){
+					var postno = $('#blog8 input').val();
+					viewArticle(postno);
+					$('#postModal').modal();
+					
+				})
+				$('#blog9').click(function(){
+					var postno = $('#blog9 input').val();
+					viewArticle(postno);
+					$('#postModal').modal();
+					
+				})
 			}
 		})
-		t=setTimeout("getNewestReply()",30000);
+		t=setTimeout("getNewestReply()",60000);
 	}
 	function getAllReply(ArticleNo){
 		$.ajax({
@@ -361,7 +427,7 @@
 					<div class="col-md-3 layoutSide">
 						<a href="${pageContext.request.contextPath}/BlogListServlet?Index=0&&pType=ALL" class="btn btn-default btn-lg active btn-block" role="button">日誌列表</a><br>
 						<a href="${pageContext.request.contextPath}/blog/postBlog.jsp" class="btn btn-default btn-lg active btn-block" role="button">新增日誌</a><br>
-						<a href="#" class="btn btn-default btn-lg active btn-block" role="button">我的日誌</a>
+<!-- 						<a href="#" class="btn btn-default btn-lg active btn-block" role="button">我的日誌</a> -->
 					</div>
 					<div class="col-md-7" style="margin-left:-20px">
 						<form action="${pageContext.request.contextPath}/BlogListServlet" method="GET">
@@ -703,6 +769,7 @@
 			}	
 		})		
 	})
+	
  }(jQuery));
  </script>
 </html>

@@ -18,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import com.attendpartner.model.AttendPartnerDAO;
+import com.attendpartner.model.AttendPartnerDAO_interface;
+import com.attendpartner.model.AttendPartnerVO;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDAO_interface;
 import com.member.model.MemberVO;
@@ -45,6 +48,8 @@ public class CloseEventServlet extends HttpServlet {
 			errorMessage.add("必須輸入編號");
 		}
 		
+		String partner = request.getParameter("partner");
+		
 		
 		// 如果有錯誤，呼叫view元件，送回錯誤訊息
 		if (!errorMessage.isEmpty()) {
@@ -56,50 +61,74 @@ public class CloseEventServlet extends HttpServlet {
 					
 		Integer ieventNo = Integer.parseInt(eventNo);
 		
-		// MemberBean 扮演封裝輸入資料的角色
  		
  		PartnerVO partnerVO = new PartnerVO();
  		partnerVO.setEventNo(ieventNo);
  		
+ 		response.setContentType("text/html; charset=UTF-8");
  		
- 		try {
- 			PartnerService service = new PartnerService();
- 			List<PartnerVO> vo = (List<PartnerVO>) service.findByNo(Integer.parseInt(eventNo));
- 			
- 			
- 			MemberDAO_interface dao = new MemberDAO();
-			service.closeEvent(partnerVO);
-			System.out.println(partnerVO.getMemberId());
-			Map<String,Object> map = new HashMap<String,Object>();
-			MemberVO a=dao.SelectById(vo.get(0).getMemberId());
-			int imgNo=a.getPicture();
-			map.put("PartnerVO",partnerVO);
-			map.put("imgNo",imgNo);
- 			
- 			
- 			
- 			
- 			
- 			//mfio.hiddenEvent(partnerVO);
- 			request.setAttribute("partnerBean", map);
- 			// 依照執行的結果挑選適當的view元件，送回相關訊息
- 			// 產生 RequestDispatcher 物件 rd
+ 		
+ 		AttendPartnerVO attendPartnerVO = new AttendPartnerVO();
+ 		attendPartnerVO.setEventNo(ieventNo);
+ 		attendPartnerVO.setPartner(partner);
+ 		
+ 		AttendPartnerDAO_interface dao = new AttendPartnerDAO();
+ 		//AttendPartnerService apservice = new AttendPartnerService();
+ 		dao.attend(attendPartnerVO);
+ 		
+ 		
+ 		
+ 		PartnerService service = new PartnerService();
+ 		PartnerVO result = service.closeEvent(partnerVO);
+ 		
+ 		if(result==null){
+			response.getWriter().write("已替您自動回覆");
+			return;
+
+	    }else{
+			response.getWriter().write("網路傳輸速度緩慢");
+			return;
+		}
+ 		
+ 		
+// 		try {
+// 			PartnerService service = new PartnerService();
+// 			List<PartnerVO> vo = (List<PartnerVO>) service.findByNo(Integer.parseInt(eventNo));
+// 			
+// 			
+// 			MemberDAO_interface dao = new MemberDAO();
+//			service.closeEvent(partnerVO);
+//			System.out.println(partnerVO.getMemberId());
+//			Map<String,Object> map = new HashMap<String,Object>();
+//			MemberVO a=dao.SelectById(vo.get(0).getMemberId());
+//			int imgNo=a.getPicture();
+//			map.put("PartnerVO",partnerVO);
+//			map.put("imgNo",imgNo);
+// 			
+// 			
+// 			
+// 			
+// 			
+// 			//mfio.hiddenEvent(partnerVO);
+// 			request.setAttribute("partnerBean", map);
+// 			// 依照執行的結果挑選適當的view元件，送回相關訊息
+// 			// 產生 RequestDispatcher 物件 rd
+//// 			RequestDispatcher rd = request
+//// 					.getRequestDispatcher("ShowAllPartnerServlet");
+//// 			// 請容器代為呼叫下一棒程式
+//// 			rd.forward(request, response);
+// 			response.sendRedirect(request.getContextPath()+"/partner/ShowAllPartnerServlet");
+// 			return;
+// 		} catch (IOException e) {
+// 			// 依照執行的結果挑選適當的view元件，送回相關訊息
+// 			// 產生 RequestDispatcher 物件 rd
+// 			errorMessage.add("IO錯誤:" + e.getMessage());
 // 			RequestDispatcher rd = request
-// 					.getRequestDispatcher("ShowAllPartnerServlet");
+// 					.getRequestDispatcher("/partner/InsertPartnerError.jsp");
 // 			// 請容器代為呼叫下一棒程式
 // 			rd.forward(request, response);
- 			response.sendRedirect(request.getContextPath()+"/partner/ShowAllPartnerServlet");
- 			return;
- 		} catch (IOException e) {
- 			// 依照執行的結果挑選適當的view元件，送回相關訊息
- 			// 產生 RequestDispatcher 物件 rd
- 			errorMessage.add("IO錯誤:" + e.getMessage());
- 			RequestDispatcher rd = request
- 					.getRequestDispatcher("/partner/InsertPartnerError.jsp");
- 			// 請容器代為呼叫下一棒程式
- 			rd.forward(request, response);
- 			return;
- 		} 
+// 			return;
+// 		} 
 	}
 		
 

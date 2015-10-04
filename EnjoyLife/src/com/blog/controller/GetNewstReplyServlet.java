@@ -1,6 +1,7 @@
 package com.blog.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.infinispan.container.SimpleDataContainer;
 import org.json.simple.JSONValue;
 
 import com.blog.model.BlogReplyDAO;
@@ -35,12 +37,14 @@ public class GetNewstReplyServlet extends HttpServlet {
 		BlogReplyDAO dao = new BlogReplyDAOHibernate(session);
 		List<BlogReplyVO> list = dao.SelectTop10();
 		List resultList = new ArrayList<>();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 hh:mm:ss");
 		if(list!=null){
 			for(BlogReplyVO bean:list){
 				Map<String,String> map = new HashMap<String,String>();
 				map.put("memid", bean.getReplyMemberId());
 				map.put("postno", bean.getPostNo());
 				map.put("context", bean.getReplyContext());
+				map.put("date", sdf.format(bean.getReplyDate()));
 				resultList.add(map);
 			}	
 			session.getTransaction().commit();
