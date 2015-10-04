@@ -1,5 +1,7 @@
 package com.log.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -24,7 +26,7 @@ public class AdminLogDaoHibernate implements AdminLogDao{
 
 		try {
 			session.beginTransaction();
-			Query query=session.createQuery("from AdminLogBean where executeAction=?  order by logNo ");
+			Query query=session.createQuery("from AdminLogBean where executeAction=?  order by logNo desc ");
 			query.setParameter(0, "登入");
 			result=query.list();	
 			session.beginTransaction().commit();
@@ -40,22 +42,33 @@ public class AdminLogDaoHibernate implements AdminLogDao{
 	@Override
 	public Map<String,List<AdminLogBean>> getAllByday() {
 		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
-		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date=new Date();
-		long time=date.getTime();
+		String d=sdf.format(date);
+		long time=0;
+		try {
+			time=sdf.parse(d).getTime();
+		} catch (ParseException e1) {
+			
+			e1.printStackTrace();
+		}
+		
+		
+		
+		
 		long date1=time-1000*60*60*24;
 		long date2=time-1000*60*60*24*2;
 		long date3=time-1000*60*60*24*3;
 		long date4=time-1000*60*60*24*4;
 		long date5=time-1000*60*60*24*5;
 		long date6=time-1000*60*60*24*6;
-		long date7=time-1000*60*60*24*6;
+
 		Map<String,List<AdminLogBean>> map=new HashMap<String,List<AdminLogBean>>();
 		
 		List<AdminLogBean> result=null;
 		try {
 			session.beginTransaction();
-			Query query=session.createQuery("from AdminLogBean where executeAction !=? order by logNo ");
+			Query query=session.createQuery("from AdminLogBean where executeAction !=? order by logNo desc ");
 			query.setParameter(0, "登入");
 			result=query.list();	
 			List<AdminLogBean> day1=new LinkedList<AdminLogBean>();
@@ -67,20 +80,20 @@ public class AdminLogDaoHibernate implements AdminLogDao{
 			List<AdminLogBean> day7=new LinkedList<AdminLogBean>();
 			
 			for(AdminLogBean bean:result){
-				if(bean.getLogDate().getTime()>date1){
+				if(bean.getLogDate().getTime()>time){
 					day1.add(bean);
-				}else if(bean.getLogDate().getTime()>date2){
+				}else if(bean.getLogDate().getTime()>date1){
 					day2.add(bean);
-				}else if(bean.getLogDate().getTime()>date3){
+				}else if(bean.getLogDate().getTime()>date2){
 					day3.add(bean);
-				}else if(bean.getLogDate().getTime()>date4){
+				}else if(bean.getLogDate().getTime()>date3){
 					day4.add(bean);
-				}else if(bean.getLogDate().getTime()>date5){
+				}else if(bean.getLogDate().getTime()>date4){
 					day5.add(bean);
-				}else if(bean.getLogDate().getTime()>date6){
+				}else if(bean.getLogDate().getTime()>date5){
 					day6.add(bean);
-				}else if(bean.getLogDate().getTime()>date7){
-				day7.add(bean);
+				}else if(bean.getLogDate().getTime()>date6){
+					day7.add(bean);
 				}
 			}
 			map.put("day1", day1);

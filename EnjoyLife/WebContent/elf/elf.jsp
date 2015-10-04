@@ -57,7 +57,7 @@
 					
 					if(time){
 						if((new Date()-new Date(time))>new Date(1000*60*60*24*30*3)){
-							alert("超過");
+							
 							flag1=true;
 						}
 					}
@@ -185,7 +185,7 @@
 						end=b[0]+" "+b[1];
 								$.ajax({"type":"post","url":"${pageContext.request.contextPath}/Little","dataType":"text","data":{"do":"insert","targetNo":4,"typeNo":4,"beginTime":begin,"endTime":end,"nevin":nevin+"?name="+name+"imgid="+imgid},
 									"success":function(da){
-									alert("成功")
+									
 									$('#ooo').text("");
 									$('#ooo').attr("type","hidden");
 									$('#say').text("訊息已經送出");

@@ -43,12 +43,10 @@
 			<div class="col-sm-3 col-md-2 sidebar">
 				
 				<ul class="nav nav-sidebar">
-
+					<li><a href="page.jsp" target="frame">紀錄查詢</a></li>
 					<li><a target="frame" href="${pageContext.request.contextPath}/Manager">會員管理</a></li>
-					<li><a href="">景點管理</a></li>
-					<li><a href="">糾團管理</a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/xxx/index.jsp" target="frame">景點管理</a></li>
 					<li><a href="blog/index.jsp" target="frame">文章管理</a></li>
-					<li><a href="">活動管理</a></li>
 					<li><a href="efl/little.jsp" target="frame">小精靈設定</a></li>
 				</ul>
 				

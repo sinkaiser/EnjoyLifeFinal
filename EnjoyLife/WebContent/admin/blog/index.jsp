@@ -20,7 +20,7 @@
     <link href="${pageContext.request.contextPath}/admin/blog/css/templatemo-style.css" rel="stylesheet">
     
   </head>
-  <body>  
+  <body style='background-color:#efefef'>  
   <script src="js/jquery-2.1.4.min.js"></script>  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   

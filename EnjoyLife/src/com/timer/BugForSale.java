@@ -11,6 +11,7 @@ import org.jsoup.select.Elements;
 
 import com.little.controller.LittleDaoHibernate;
 import com.little.model.LittleBean;
+import com.log.controller.AdminLogService;
 
 
 public class BugForSale {
@@ -39,7 +40,7 @@ public class BugForSale {
 		Elements uls = xmlDoc.select("ul");
 		
 		LittleDaoHibernate dao=new LittleDaoHibernate();
-		
+		AdminLogService service=new AdminLogService();
 		for(Element ul:uls){
 			
 			
@@ -51,7 +52,13 @@ public class BugForSale {
 			bean.setTargetNo(4);
 			bean.setTypeNo(2);
 			
+			
+		
+		
+			
 			p=ul.select("p").text();
+			
+			service.add("小幫手", "排程器", "本機", p, "新增");
 			href=ul.select(".link > a").attr("href");
 //			System.out.println("<a href="+xx+href+">"+p+"</a>");
 			bean.setNevin("<a target='_blank' href="+xx+href+">"+p+"</a>");

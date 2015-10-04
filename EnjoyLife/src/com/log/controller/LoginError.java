@@ -31,7 +31,7 @@ public class LoginError extends HttpServlet {
 			executorIp="127.0.0.1";
 		}
 		AdminLogService service=new AdminLogService();
-		service.add("管理頁面", "管理員", executorIp, "登入失敗", "登入");
+		service.add("管理頁面", "管理員", executorIp, "失敗", "登入");
 		
 		response.setContentType ("text/html; charset=UTF-8" );
 		response.getWriter().append("登入失敗").append(request.getContextPath());

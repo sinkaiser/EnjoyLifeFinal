@@ -119,10 +119,9 @@ public class LittleDaoHibernate implements LittleDao{
 			
 			Query query=session.createQuery("Delete from LittleBean where endTime<?");
 			query.setParameter(0, date);
-			query.executeUpdate();
+			result=query.executeUpdate();
 			
 			session.beginTransaction().commit();
-			result++;
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}

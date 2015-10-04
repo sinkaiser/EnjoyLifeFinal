@@ -44,7 +44,12 @@ public class AdminPage extends HttpServlet {
 		AdminLogService service=new AdminLogService();
 		
 		AdminLogDaoHibernate dao=new AdminLogDaoHibernate();
+		HttpSession session=request.getSession();
 		
+		if(session.getAttribute("admin")!="ok"){
+			session.setAttribute("admin","ok");
+			service.add("管理頁面", "管理員", executorIp, "成功", "登入");
+		}
 		
 		List<AdminLogBean> loginList=dao.selectAllLogin();
 		Map<String,List<AdminLogBean>> AdminLog=dao.getAllByday();
@@ -69,15 +74,12 @@ public class AdminPage extends HttpServlet {
 		map1.put("six", f);
 	
 		
-		HttpSession session=request.getSession();
+		
 		session.setAttribute("loginList", loginList);
 		session.setAttribute("AdminLog", AdminLog);
 		session.setAttribute("date", map1);
 		
-		if(session.getAttribute("admin")!="ok"){
-			session.setAttribute("admin","ok");
-			service.add("管理頁面", "管理員", executorIp, "登入成功", "登入");
-		}
+
 		String path=request.getContextPath();
 		response.sendRedirect(path+"/admin/page.jsp");
 		return;

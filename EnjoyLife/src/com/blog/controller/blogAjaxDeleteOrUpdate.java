@@ -13,6 +13,7 @@ import org.hibernate.Session;
 
 import com.blog.model.BlogVO;
 import com.blog.model.Hibernate.BlogDAOHibernate;
+import com.log.controller.AdminLogService;
 import com.util.HibernateUtil;
 
 /**
@@ -44,12 +45,24 @@ public class blogAjaxDeleteOrUpdate extends HttpServlet {
 			try {
 				session.beginTransaction();
 				dao.deletePost(new java.util.Date(), "T", postNo);
+				
 				session.beginTransaction().commit();
 			} catch (HibernateException e) {
 				response.getWriter().write("error");
 				session.getTransaction().rollback();
 				return;
 			}
+			
+			String executorIp=request.getRemoteAddr();
+			if(executorIp.equals("0:0:0:0:0:0:0:1")){
+				executorIp="127.0.0.1";
+			}
+			
+			
+			String user="admin";
+			
+			AdminLogService service=new AdminLogService();
+			service.add("網誌", user, executorIp, "編號:"+postNo, "移入");
 			response.getWriter().write("ok");
 			return;
 			
@@ -58,12 +71,26 @@ public class blogAjaxDeleteOrUpdate extends HttpServlet {
 				try {
 					session.beginTransaction();
 					dao.deletePost(new java.util.Date(), "F", postNo);
+					
+					
+					
 					session.beginTransaction().commit();
 				} catch (HibernateException e) {
 					response.getWriter().write("error");
 					session.getTransaction().rollback();
 					return;
 				}
+				String executorIp=request.getRemoteAddr();
+				if(executorIp.equals("0:0:0:0:0:0:0:1")){
+					executorIp="127.0.0.1";
+				}
+				
+				
+				String user="admin";
+				
+				AdminLogService service=new AdminLogService();
+				service.add("網誌", user, executorIp, "編號:"+postNo, "移出");
+				
 			response.getWriter().write("ok");
 			return;
 			}
@@ -71,12 +98,24 @@ public class blogAjaxDeleteOrUpdate extends HttpServlet {
 				try {
 					session.beginTransaction();
 						dao.reportChange("F", postNo);
+						
+						
 					session.beginTransaction().commit();
 				} catch (HibernateException e) {
 					response.getWriter().write("error");
 					session.getTransaction().rollback();
 					return;
 				}
+				String executorIp=request.getRemoteAddr();
+				if(executorIp.equals("0:0:0:0:0:0:0:1")){
+					executorIp="127.0.0.1";
+				}
+				
+				
+				String user="admin";
+				
+				AdminLogService service=new AdminLogService();
+				service.add("網誌", user, executorIp, "編號:"+postNo, "解除");
 			response.getWriter().write("ok");
 			return;
 			}
@@ -84,12 +123,25 @@ public class blogAjaxDeleteOrUpdate extends HttpServlet {
 				try {
 					session.beginTransaction();
 					dao.deletePost(new java.util.Date(), "F", postNo);
+					
+					
+					
 					session.beginTransaction().commit();
 				} catch (HibernateException e) {
 					response.getWriter().write("error");
 					session.getTransaction().rollback();
 					return;
 				}
+				String executorIp=request.getRemoteAddr();
+				if(executorIp.equals("0:0:0:0:0:0:0:1")){
+					executorIp="127.0.0.1";
+				}
+				
+				
+				String user="admin";
+				
+				AdminLogService service=new AdminLogService();
+				service.add("網誌", user, executorIp, "編號:"+postNo, "移出");
 				response.getWriter().write("ok");
 				return;
 			}

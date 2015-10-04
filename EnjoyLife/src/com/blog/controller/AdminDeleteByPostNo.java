@@ -11,6 +11,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import com.blog.model.Hibernate.BlogDAOHibernate;
+import com.log.controller.AdminLogService;
 import com.util.HibernateUtil;
 
 /**
@@ -43,6 +44,18 @@ public class AdminDeleteByPostNo extends HttpServlet {
 				session.beginTransaction();
 				dao.delete(postNo);
 				session.beginTransaction().commit();
+				
+				String executorIp=request.getRemoteAddr();
+				if(executorIp.equals("0:0:0:0:0:0:0:1")){
+					executorIp="127.0.0.1";
+				}
+				
+				
+				String user="admin";
+				
+				AdminLogService service=new AdminLogService();
+				service.add("網誌", user, executorIp, "編號:"+postNo, "刪除");
+				
 			} catch (HibernateException e) {
 				session.beginTransaction().rollback();
 				

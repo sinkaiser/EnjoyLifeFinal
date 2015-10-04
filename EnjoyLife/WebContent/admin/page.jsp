@@ -35,15 +35,9 @@
       <!-- Main content --> 
       <div class="templatemo-content col-2 light-gray-bg">
       
-      	 <h1>網誌管理</h1>
+      	 <h1>後台管理</h1>
 				
-				<div id="aa">
 				
-					<a href="index.jsp"><button type="button" class="btn btn-primary">被檢舉文章</button></a>
-					<a href="delete.jsp"><button type="button" class="btn btn-default">被刪除文章</button></a>
-					<p id='p' class="btn btn-info" style="margin-left:200px">請選擇一篇文章</p>
-					
-				</div>
         
         <div class="templatemo-content-container">
       
@@ -55,8 +49,8 @@
                 <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">紀錄列表</h2></div>
                 <div class="table-responsive">
 			<div name="accordion" >
-					  <h3>今天</h3>
-					  <div>
+					  <h3 name="title">今天</h3>
+					  <div name="day">
 					  	
 						  <table class="table">
 						  	  <thead>
@@ -69,7 +63,7 @@
 						  	  		<td>內容</td>
 						  	  	</tr>
 						  	  </thead>
-							  <c:forEach var="aa" items="${AdminLog.day1}">
+							  <c:forEach var="aa" varStatus="status" items="${AdminLog.day1}">
 							  <tr>
 							  	<td>${aa.executor}</td>
 							  	<td><fmt:formatDate value="${aa.logDate}" var="formattedDate" type="date" pattern="HH:mm" />${formattedDate}</td>
@@ -78,12 +72,15 @@
 							  	<td>${aa.executeAction}</td>
 							  	<td>${aa.targetDescription}</td>			  	
 							  </tr>
+							  <c:if test="${status.last}">
+							   <input type="hidden" value="${status.index+1}">
+							  </c:if>
 								
 							  </c:forEach>
 						  </table>
 					  </div>
-					  <h3>${date.one}</h3>
-					  <div>
+					  <h3 name="title">${date.one}</h3>
+					  <div name="day">
 						  <table class="table">
 						  	  <thead>
 						  	  	<tr>
@@ -95,7 +92,7 @@
 						  	  		<td>內容</td>
 						  	  	</tr>
 						  	  </thead>
-							  <c:forEach var="aa" items="${AdminLog.day2}">
+							  <c:forEach var="aa" varStatus="status" items="${AdminLog.day2}">
 							  <tr>
 							  	<td>${aa.executor}</td>
 							  	<td><fmt:formatDate value="${aa.logDate}" var="formattedDate" type="date" pattern="HH:mm" />${formattedDate}</td>
@@ -104,24 +101,157 @@
 							  	<td>${aa.executeAction}</td>
 							  	<td>${aa.targetDescription}</td>			  	
 							  </tr>
+							  <c:if test="${status.last}">
+							   <input type="hidden" value="${status.index+1}">
+							  </c:if>
 								
 							  </c:forEach>
 						  </table>
 					  </div>
-					  <h3>${date.two}</h3>
-					  <div>
+					  <h3 name="title">${date.two}</h3>
+					  <div name="day">
+					  	  <table class="table">
+						  	  <thead>
+						  	  	<tr>
+						  	  		<td>執行者</td>
+						  	  		<td>時間</td>
+						  	  		<td>IP</td>
+						  	  		<td>對象</td>
+						  	  		<td>動作</td>
+						  	  		<td>內容</td>
+						  	  	</tr>
+						  	  </thead>
+							  <c:forEach var="aa" varStatus="status" items="${AdminLog.day3}">
+							  <tr>
+							  	<td>${aa.executor}</td>
+							  	<td><fmt:formatDate value="${aa.logDate}" var="formattedDate" type="date" pattern="HH:mm" />${formattedDate}</td>
+							  	<td>${aa.executorIp}</td>
+							  	<td>${aa.executeTarget}</td>
+							  	<td>${aa.executeAction}</td>
+							  	<td>${aa.targetDescription}</td>			  	
+							  </tr>
+							  <c:if test="${status.last}">
+							   <input type="hidden" value="${status.index+1}">
+							  </c:if>
+								
+							  </c:forEach>
+						  </table>
 					  </div>
-					  <h3>${date.three}</h3>
-					  <div>
+					  <h3 name="title">${date.three}</h3>
+					  <div name="day">
+					  		<table class="table">
+						  	  <thead>
+						  	  	<tr>
+						  	  		<td>執行者</td>
+						  	  		<td>時間</td>
+						  	  		<td>IP</td>
+						  	  		<td>對象</td>
+						  	  		<td>動作</td>
+						  	  		<td>內容</td>
+						  	  	</tr>
+						  	  </thead>
+							  <c:forEach var="aa" varStatus="status" items="${AdminLog.day4}">
+							  <tr>
+							  	<td>${aa.executor}</td>
+							  	<td><fmt:formatDate value="${aa.logDate}" var="formattedDate" type="date" pattern="HH:mm" />${formattedDate}</td>
+							  	<td>${aa.executorIp}</td>
+							  	<td>${aa.executeTarget}</td>
+							  	<td>${aa.executeAction}</td>
+							  	<td>${aa.targetDescription}</td>			  	
+							  </tr>
+							  <c:if test="${status.last}">
+							   <input type="hidden" value="${status.index+1}">
+							  </c:if>
+								
+							  </c:forEach>
+						  </table>
 					  </div>
-					  <h3>${date.four}</h3>
-					  <div>
+					  <h3 name="title">${date.four}</h3>
+					  <div name="day">
+						  <table class="table">
+						  	  <thead>
+						  	  	<tr>
+						  	  		<td>執行者</td>
+						  	  		<td>時間</td>
+						  	  		<td>IP</td>
+						  	  		<td>對象</td>
+						  	  		<td>動作</td>
+						  	  		<td>內容</td>
+						  	  	</tr>
+						  	  </thead>
+							  <c:forEach var="aa" varStatus="status" items="${AdminLog.day5}">
+							  <tr>
+							  	<td>${aa.executor}</td>
+							  	<td><fmt:formatDate value="${aa.logDate}" var="formattedDate" type="date" pattern="HH:mm" />${formattedDate}</td>
+							  	<td>${aa.executorIp}</td>
+							  	<td>${aa.executeTarget}</td>
+							  	<td>${aa.executeAction}</td>
+							  	<td>${aa.targetDescription}</td>			  	
+							  </tr>
+							  <c:if test="${status.last}">
+							   <input type="hidden" value="${status.index+1}">
+							  </c:if>
+								
+							  </c:forEach>
+						  </table>
 					  </div>
-					  <h3>${date.five}</h3>
-					  <div>
+					  <h3 name="title">${date.five}</h3>
+					  <div name="day">
+						  <table class="table">
+						  	  <thead>
+						  	  	<tr>
+						  	  		<td>執行者</td>
+						  	  		<td>時間</td>
+						  	  		<td>IP</td>
+						  	  		<td>對象</td>
+						  	  		<td>動作</td>
+						  	  		<td>內容</td>
+						  	  	</tr>
+						  	  </thead>
+							  <c:forEach var="aa" varStatus="status" items="${AdminLog.day6}">
+							  <tr>
+							  	<td>${aa.executor}</td>
+							  	<td><fmt:formatDate value="${aa.logDate}" var="formattedDate" type="date" pattern="HH:mm" />${formattedDate}</td>
+							  	<td>${aa.executorIp}</td>
+							  	<td>${aa.executeTarget}</td>
+							  	<td>${aa.executeAction}</td>
+							  	<td>${aa.targetDescription}</td>			  	
+							  </tr>
+							  <c:if test="${status.last}">
+							   <input type="hidden" value="${status.index+1}">
+							  </c:if>
+								
+							  </c:forEach>
+						  </table>
 					  </div>
-					  <h3>${date.six}</h3>
-					  <div>
+					  <h3 name="title">${date.six}</h3>
+					  <div name="day">
+						  <table class="table">
+						  	  <thead>
+						  	  	<tr>
+						  	  		<td>執行者</td>
+						  	  		<td>時間</td>
+						  	  		<td>IP</td>
+						  	  		<td>對象</td>
+						  	  		<td>動作</td>
+						  	  		<td>內容</td>
+						  	  	</tr>
+						  	  </thead>
+							  <c:forEach var="aa" varStatus="status" items="${AdminLog.day7}">
+							  <tr>
+							  	<td>${aa.executor}</td>
+							  	<td><fmt:formatDate value="${aa.logDate}" var="formattedDate" type="date" pattern="HH:mm" />${formattedDate}</td>
+							  	<td>${aa.executorIp}</td>
+							  	<td>${aa.executeTarget}</td>
+							  	<td>${aa.executeAction}</td>
+							  	<td>${aa.targetDescription}</td>			  	
+							  </tr>
+							  <c:if test="${status.last}">
+							   <input type="hidden" value="${status.index+1}">
+							  </c:if>
+								
+							  </c:forEach>
+						  </table>
 				 	  </div> 
 					</div>		
 
@@ -137,40 +267,45 @@
           
           
           <div class=col-md-4>
-                 <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden" style="display: inline ;width:600px;">              
-                <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">登入紀錄</h2></div>
-                <div class="table-responsive">
-			<div name="accordion">
-					  <h3>今天</h3>
-					  <div>
-					  </div>
-					  <h3>${date.one}</h3>
-					  <div>
-					  </div>
-					  <h3>${date.two}</h3>
-					  <div>
-					  </div>
-					  <h3>${date.three}</h3>
-					  <div>
-					  </div>
-					  <h3>${date.four}</h3>
-					  <div>
-					  </div>
-					  <h3>${date.five}</h3>
-					  <div>
-					  </div>
-					  <h3>${date.six}</h3>
-					  <div>
-				 	  </div> 
-			</div>		
+           <div class="templatemo-flex-row flex-content-row">
 
-                  
-                </div> 
+             <div class="col-2">
+              <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
+                
+                <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">網誌列表</h2></div>
+                <div class="table-responsive">
+                  <table class="table table-striped table-bordered table-hover">
+					<thead>
+						<tr>
+							<td>帳號</td>
+							<td>時間</td>
+							<td>IP</td>
+							<td>動作</td>
+							<td>結果</td>
+						</tr>
+					</thead>
+					 <c:forEach var="aa" items="${loginList}">
+							  <tr>
+							  	<td>admin</td>
+							  	<td><fmt:formatDate value="${aa.logDate}" var="formattedDate" type="date" pattern="MM-dd HH:mm" />${formattedDate}</td>
+							  	<td>${aa.executorIp}</td>
+							  	<td>${aa.executeAction}</td>
+							  	<td>${aa.targetDescription}</td>			  	
+							  </tr>
+
+					 </c:forEach>	
+				</table>
+				
                 </div>  
-                </div>
+                
+                                        
+              </div>
+              
+             </div>
+          </div>
                                         
              
-              
+              </div>
              
           </div>
 
@@ -181,13 +316,22 @@
       </div>
     </div>
   
+  
+      
  
  
     <script>
   $(function() {
+	  
+	    $('h3[name="title"]').click(function(){
+	    	var c=$(this).next().find("input[type='hidden']").val()
+	    	$('div[name="day"]').css({"height":80+c*45});
+	    })
     $('div[name="accordion"]').accordion({
       
     });
+
+    
   });
   </script>
 </body>

@@ -10,9 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.common.ParseXXX;
 import com.little.model.LittleBean;
+import com.log.controller.AdminLogService;
+import com.member.model.MemberVO;
 
 /**
  * Servlet implementation class Little
@@ -50,7 +53,9 @@ public class Little extends HttpServlet {
 		String temp5=request.getParameter("nevin");
 		String temp6=request.getParameter("do");
 		String temp7=request.getParameter("elfNo");
+		HttpSession session=request.getSession();
 		
+		MemberVO vo=(MemberVO)session.getAttribute("member");
 		Map<String,String>errorM=new HashMap<String,String>();
 		System.out.println(temp1);
 		ParseXXX parse=new ParseXXX();
@@ -100,6 +105,22 @@ public class Little extends HttpServlet {
 				if(elfNo!=-1000){
 					bean.setElfNo(elfNo);
 					Integer aa=dao.update(bean);
+					
+					String executorIp=request.getRemoteAddr();
+					if(executorIp.equals("0:0:0:0:0:0:0:1")){
+						executorIp="127.0.0.1";
+					}
+					String user;
+					
+					if(vo!=null){
+						user=vo.getMemberName();
+					}else{
+						user="admin";
+					}
+					
+					AdminLogService service=new AdminLogService();
+					service.add("小幫手", user, executorIp, nevin, "更新");
+					
 					response.setContentType("text/html;charset=UTF-8");
 					PrintWriter out=response.getWriter();
 					out.write("0A"+aa.toString()); 
@@ -112,6 +133,26 @@ public class Little extends HttpServlet {
 			}
 				
 			Integer b=dao.insert(bean);
+			
+			String executorIp=request.getRemoteAddr();
+			if(executorIp.equals("0:0:0:0:0:0:0:1")){
+				executorIp="127.0.0.1";
+			}
+			String user;
+			
+			if(vo!=null){
+				user=vo.getMemberName();
+			}else{
+				user="admin";
+			}
+			System.out.println(nevin);
+			
+			String[] aa=nevin.split("\\?");
+			
+			AdminLogService service=new AdminLogService();
+			service.add("小幫手", user, executorIp, aa[0], "新增");
+			
+			
 			System.out.println(b);
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out=response.getWriter();
