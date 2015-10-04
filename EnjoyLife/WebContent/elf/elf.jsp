@@ -26,6 +26,20 @@
         <script>
 			(function($){
 				var time="${member.registerDate}" //time
+					var name="${member.memberName}" //name
+					var member="${member}" //true
+					var imgid="${member.picture}"
+				
+				if(name==""){
+					name="訪客";
+					}
+				
+				
+				$('#say').attr("class","btn btn-info")
+				$('#xxx').attr("src","img/dog2.gif");
+				$('#say').text(name+"你好");
+				
+				var time="${member.registerDate}" //time
 				var name="${member.memberName}" //name
 				var member="${member}" //true
 				var imgid="${member.picture}"
