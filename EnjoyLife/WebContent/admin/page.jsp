@@ -54,7 +54,7 @@
                 
                 <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">紀錄列表</h2></div>
                 <div class="table-responsive">
-			<div name="accordion">
+			<div name="accordion" >
 					  <h3>今天</h3>
 					  <div>
 					  	
@@ -84,6 +84,29 @@
 					  </div>
 					  <h3>${date.one}</h3>
 					  <div>
+						  <table class="table">
+						  	  <thead>
+						  	  	<tr>
+						  	  		<td>執行者</td>
+						  	  		<td>時間</td>
+						  	  		<td>IP</td>
+						  	  		<td>對象</td>
+						  	  		<td>動作</td>
+						  	  		<td>內容</td>
+						  	  	</tr>
+						  	  </thead>
+							  <c:forEach var="aa" items="${AdminLog.day2}">
+							  <tr>
+							  	<td>${aa.executor}</td>
+							  	<td><fmt:formatDate value="${aa.logDate}" var="formattedDate" type="date" pattern="HH:mm" />${formattedDate}</td>
+							  	<td>${aa.executorIp}</td>
+							  	<td>${aa.executeTarget}</td>
+							  	<td>${aa.executeAction}</td>
+							  	<td>${aa.targetDescription}</td>			  	
+							  </tr>
+								
+							  </c:forEach>
+						  </table>
 					  </div>
 					  <h3>${date.two}</h3>
 					  <div>
