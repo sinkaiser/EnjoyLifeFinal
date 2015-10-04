@@ -48,9 +48,15 @@
 	       <div id="attraccanvans">
 		       <div id="map">	       
 		       </div>
+		       <div id="allcanvan">
 		       <div id="travel">
-			       	<div name="default" class="traveldiv" style="text-align:center"><h1 id="alllist1">請增加景點</h1></div>	
+			       	<div name="default" class="traveldiv" style="text-align:center"><h1>請增加景點</h1></div>	
 		       </div>
+			    <div id="right-panel" style="display:inline;width:auto;">
+	   		    <div id="panel" style="border:5px ridge gray;font-size:16px;background-color: white;">
+	   		    </div>
+	   		    </div> 
+	   		    </div> 
 		    </div>   
        </div>
        <div class="col-md-4" style="position:relative;height:910px;padding: 0px">
