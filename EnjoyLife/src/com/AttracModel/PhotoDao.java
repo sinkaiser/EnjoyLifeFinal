@@ -8,4 +8,6 @@ public interface PhotoDao {
 	public abstract boolean insert(PhotoBean bean);
 	public abstract boolean delete(int id);
 	public abstract Integer selectPK();
+	public List<PhotoBean> selectImgByAttracNo(String attracNo);
+	public PhotoBean selectByNo(int photono);
 }

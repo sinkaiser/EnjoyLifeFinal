@@ -26,7 +26,7 @@ import org.hibernate.Transaction;
 import com.AttracModel.AttracBean;
 import com.AttracModel.PhotoBean;
 import com.AttracModel.PhotoDao;
-
+import com.little.model.LittleBean;
 import com.util.HibernateUtil;
 
 public class PhotoDaoHiber implements PhotoDao {
@@ -83,6 +83,40 @@ public class PhotoDaoHiber implements PhotoDao {
 			tx = session.beginTransaction();
 			Query query = session.createQuery(SELECT_ALL);
 			result = query.list();
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	@Override
+	public List<PhotoBean> selectImgByAttracNo(String attracNo) {
+		List<PhotoBean> result= null;
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;		
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("from PhotoBean where attracNo=?");
+			query.setParameter(0, attracNo);
+			result = query.list();
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	@Override
+	public PhotoBean selectByNo(int photono) {
+		PhotoBean result=null;
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;	
+		try {
+			tx = session.beginTransaction();
+			result=(PhotoBean)session.get(PhotoBean.class,photono);
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
