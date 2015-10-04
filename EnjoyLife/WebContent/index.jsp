@@ -35,15 +35,8 @@
 	#blogside{
 		border-bottom:2px solid #E0E0E0;
 		margin-bottom:20px;
-		width:650px;
+		width:500px;
 		padding-bottom:20px;
-	}
-	#blogpage{
-		width:300px;
-		border:2px solid;
-		border-radius:10% 10% 5% 5%;
-		padding-left:22px;
-		background-color:#C4E1FF;
 	}
 </style>		
 </head>
@@ -79,26 +72,51 @@
 					<div id="content" class="7u skel-cell-important">
 					<section style="border:0px;" >
 						<header>
-							<h2>HOT</h2>
+							<h2 style="font-size:30px;" >HOT</h2>
 						</header>
-						<%
-							request.getSession().getAttribute("bloglist");
-						%>
-						<c:forEach var="lists" items="${bloglist}">
-							<div class="item active" id="blogside">
-								<div id="blogpage">
-									<p style="font-size:25pt;">${lists.postTitle}</p>
-									<img
-										src="${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=T&&pathImg=${lists.pathPhoto}"
-										alt="..." style="width: 250px; height: 230px;position:relative;top:-15px;"><br>
-									<span class="glyphicon glyphicon-user" aria-hidden="true" >${lists.memberId}</span>
-									<span class="glyphicon glyphicon-eye-open" aria-hidden="true" style="margin:0px 40px 0px 10px;" >${lists.viewTotal}</span>
-									<fmt:formatDate value="${lists.postDate}" var="formattedDate" type="date" pattern="MM月dd日 HH:mm" />
-									<span>${formattedDate}</span>
-									<div class="carousel-caption">...</div>
-								</div>
+						<div id="carousel-example-generic" class="carousel slide"
+							data-ride="carousel" style="width: 550px;" data-interval="4000">
+							<!-- Indicators -->
+
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner" role="listbox" style="width: 550px;">
+							<%request.getSession().getAttribute("bloglist");%>
+								<c:forEach var="lists" items="${bloglist}" begin="0" end="0">
+									<div class="item active" id="blogside">
+											<p style="font-size: 25pt;">${lists.postTitle}</p>
+											<img
+												src="${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=T&&pathImg=${lists.pathPhoto}"
+												alt="..."
+												style="width: 500px; height: 400px; position: relative; top: -15px;"><br>
+											<span class="glyphicon glyphicon-user" aria-hidden="true">${lists.memberId}</span>
+											<span class="glyphicon glyphicon-eye-open" aria-hidden="true"
+												style="margin-left:10px;">${lists.viewTotal}</span>
+											<fmt:formatDate value="${lists.postDate}" var="formattedDate"
+												type="date" pattern="MM月dd日 HH:mm" />
+											<span style="float:right;" >${formattedDate}</span>
+											<div class="carousel-caption">...</div>
+									</div>
+								</c:forEach>
+								<c:forEach var="lists" items="${bloglist}" begin="1" end="4">
+									<div class="item" id="blogside">
+											<p style="font-size: 25pt;">${lists.postTitle}</p>
+											<img
+												src="${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=T&&pathImg=${lists.pathPhoto}"
+												alt="..."
+												style="width: 500px; height: 400px; position: relative; top: -15px;"><br>
+											<span class="glyphicon glyphicon-user" aria-hidden="true">${lists.memberId}</span>
+											<span class="glyphicon glyphicon-eye-open" aria-hidden="true"
+												style="margin: 0px 40px 0px 10px;">${lists.viewTotal}</span>
+											<fmt:formatDate value="${lists.postDate}" var="formattedDate"
+												type="date" pattern="MM月dd日 HH:mm" />
+											<span style="float:right;">${formattedDate}</span>
+											<div class="carousel-caption">...</div>
+									</div>
+								</c:forEach>
 							</div>
-						</c:forEach>
+
+							<!-- Controls -->
+						</div>
 					</section>
 				</div>
 					
@@ -111,28 +129,27 @@
 							<ul class="style">
 								<li>
 									<div id="carousel-example-generic" class="carousel slide"
-									data-ride="carousel" style="width: 350px;" data-interval="3000">
+									data-ride="carousel" style="width: 330px;" data-interval="3000">
 									<!-- Indicators -->
 
 									<!-- Wrapper for slides -->
-									<div class="carousel-inner" role="listbox" style="width:350px;">
-									<% request.getSession().getAttribute("bloglist") ;%>
+									<div class="carousel-inner" role="listbox" style="width:330px;">
 									<% request.getSession().getAttribute("parterlist") ; %>
 										<c:forEach var="list2" items="${parterlist}" begin="0" end="0">
-											<div class="item active" style="width: 350px;">
+											<div class="item active" style="width: 330px;">
 												<p style="font-size:15px;">${list2.eventContent}</p>
 												<img src="${pageContext.request.contextPath}/GetImg?imgid=${list2.imgNo}"
-													alt="..." style="width: 350px; height: 280px;"><br>
+													alt="..." style="width: 330px; height: 250px;"><br>
 												<span class="glyphicon glyphicon-user" aria-hidden="true" >${list2.memberId}</span>
 												<span class="glyphicon glyphicon-tag" aria-hidden="true" style="margin-left:20px;" >${list2.eventNo}</span>
 												<div class="carousel-caption">...</div>
 											</div>
 										</c:forEach>
 										<c:forEach var="list2" items="${parterlist}" begin="1" end="4">
-											<div class="item" style="width: 350px;">
+											<div class="item" style="width: 300px;">
 												<p style="font-size:15px;">${list2.eventContent}</p>
 												<img src="${pageContext.request.contextPath}/GetImg?imgid=${list2.imgNo}"
-													alt="..." style="width: 350px; height: 280px;"><br>
+													alt="..." style="width: 330px; height: 250px;"><br>
 												<span class="glyphicon glyphicon-user" aria-hidden="true" >${list2.memberId}</span>
 												<span class="glyphicon glyphicon-tag" aria-hidden="true" style="margin-left:20px;">${list2.eventNo}</span>
 												<div class="carousel-caption"></div>
