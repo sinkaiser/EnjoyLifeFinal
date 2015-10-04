@@ -39,7 +39,7 @@
 							</li>
 						</c:if>
 						<c:if test="${!empty member}">
-						<div style="position:relative;top:-46px;height:70px;">
+						<div style="position:relative;top:-30px;height:70px;">
 				<li style="line-height:30px;float:right">
 				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" class="img-circle" style="height:65px;width:60px;box-shadow:0px 0px 10px 7px #F5FAFF;"> 
 				<label style="height:30px;font-size:26px;font-family:微軟正黑體;" >${member.memberName}</label>

@@ -56,7 +56,49 @@
 <%--   </sql:query> --%>
 <body class="homepage">
 		<!-- Header -->
-<%@include file="/includes/newheader" %>	
+<nav class="navbar-fixed-top">	
+	<div class="header1">	
+		<div id="header" >
+				
+				<!-- Logo -->
+				<div id="logo">
+					<h1><a href="${pageContext.request.contextPath}/GetIndexInfoServlet">Enjoy Life</a></h1>
+				</div>
+				
+				<div style="width:750px;margin-left:200px;">
+					<img id="xxx" src="images/dog2.gif" class="img-circle" height="60px" width="60px">
+					<button id="say" type="button" class="btn btn-default" style="margin-bottom:15px;"></button>
+					<br>
+					<input id="ooo" value="請輸入" type="hidden">
+					<input id="sumit" value="送出資料" type="hidden">
+				</div>
+				
+				
+		</div>
+		<div>
+			<!-- Nav -->
+				<nav id="nav">
+					<ul>
+			<li><a href="${pageContext.request.contextPath}/indexMember.jsp">會員</a></li>
+			<li><a href="${pageContext.request.contextPath}/attrac/Attracimg1.jsp">景點</a></li>
+			<li><a href="${pageContext.request.contextPath}/BlogListServlet?Index=0&&pType=ALL">日誌</a></li>
+			<li><a href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet">找伴</a></li>
+			<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
+			
+			<c:if test="${!empty member}">
+				<li style="line-height:30px;">
+				<div id="imgti" style="position:relative;top:-30px;height:70px;">							
+				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" id="headerimg" class="img-circle" style="height:65px;width:60px;box-shadow:0px 0px 10px 7px #F5FAFF;"> 
+				<label style="height:30px;font-size:26px;font-family:微軟正黑體;" >${member.memberName}</label>
+				<button type="button" class="btn btn-info" id="logout" data-toggle="modal" data-target="#myModalout" style="margin-bottom:26px" >登出</button>
+				</div>
+			</li>
+			</c:if>
+		</ul>
+				</nav>
+		</div>
+	</div>
+	</nav>	
 		<!-- Main -->
 		<div id="main">
 			<div class="container">
@@ -137,22 +179,26 @@
 									<div class="carousel-inner" role="listbox" style="width:330px;">
 									<% request.getSession().getAttribute("parterlist") ; %>
 										<c:forEach var="list2" items="${parterlist}" begin="0" end="0">
-											<div class="item active" style="width: 330px;">
+											<div class="item active" style="width: 330px;cursor:pointer;" onclick="location.href='${pageContext.request.contextPath}/partner/ShowAllPartnerServlet'">
 												<p style="font-size:15px;height:45px;">${list2.eventContent}</p>
 												<img src="${pageContext.request.contextPath}/GetImg?imgid=${list2.imgNo}"
 													alt="..." style="width: 330px; height: 250px;"><br>
-												<span class="glyphicon glyphicon-user" aria-hidden="true" >${list2.memberId}</span>
-												<span class="glyphicon glyphicon-tag" aria-hidden="true" style="margin-left:20px;" >${list2.eventNo}</span>
+												<span class="glyphicon glyphicon-user" aria-hidden="true" >${list2.memberName}</span>
+												<fmt:formatDate value="${list2.eventDate}" var="formattedDate1"
+												type="date" pattern="MM月dd日 HH:mm" />
+												<span class="glyphicon glyphicon-tag" aria-hidden="true" style="margin-left:20px;float:right" >${formattedDate1}</span>
 												<div class="carousel-caption">...</div>
 											</div>
 										</c:forEach>
 										<c:forEach var="list2" items="${parterlist}" begin="1" end="4">
-											<div class="item" style="width: 330px;">
+											<div class="item" style="width: 330px;cursor:pointer;" onclick="location.href='${pageContext.request.contextPath}/partner/ShowAllPartnerServlet'">
 												<p style="font-size:15px;height:45px;">${list2.eventContent}</p>
 												<img src="${pageContext.request.contextPath}/GetImg?imgid=${list2.imgNo}"
 													alt="..." style="width: 330px; height: 250px;"><br>
-												<span class="glyphicon glyphicon-user" aria-hidden="true" >${list2.memberId}</span>
-												<span class="glyphicon glyphicon-tag" aria-hidden="true" style="margin-left:20px;">${list2.eventNo}</span>
+												<span class="glyphicon glyphicon-user" aria-hidden="true" >${list2.memberName}</span>
+												<fmt:formatDate value="${list2.eventDate}" var="formattedDate1"
+												type="date" pattern="MM月dd日 HH:mm" />
+												<span class="glyphicon glyphicon-tag" aria-hidden="true" style="margin-left:20px;float:right">${formattedDate1}</span>
 												<div class="carousel-caption"></div>
 											</div>
 										</c:forEach>
@@ -209,6 +255,182 @@
 				Enjoy Life
 			</div>
 		</div>
+		<script>
+			(function($){
+				var time="${member.registerDate}" //time
+					var name="${member.memberName}" //name
+					var member="${member}" //true
+					var imgid="${member.picture}"
+				
+				if(name==""){
+					name="訪客";
+					}
+				
+				
+				$('#say').attr("class","btn btn-info")
+				$('#xxx').attr("src","images/dog2.gif");
+				$('#say').text(name+"你好");
+				
+				var time="${member.registerDate}" //time
+				var name="${member.memberName}" //name
+				var member="${member}" //true
+				var imgid="${member.picture}"
+				
+				
+				$.getJSON("${pageContext.request.contextPath}/GetLittleJson",{"id":1},function(data){
+					
+					var elfNo;
+					var targetNo;
+					var nevin;
+					var typeNo;
+					var beginTime;
+					var endTime;
+					var flag1=false;
+					
+					if(time){
+						if((new Date()-new Date(time))>new Date(1000*60*60*24*30*3)){
+							alert("超過");
+							flag1=true;
+						}
+					}
+					var arrayObj=new Array(0);
+					var date=new Date();
+					var begin;
+					var end;
+					console.log(time)
+					$.each(data,function(){
+						
+						beginTime=this.beginTime;
+						endTime=this.endTime;
+					
+						begin=new Date(beginTime);
+						end=new Date(endTime);
+						
+						elfNo=this.elfNo;
+						targetNo=this.targetNo;
+						nevin=this.nevin;
+						typeNo=this.typeNo;
+						
+						
+						if(date<end && date>begin){  //文章沒過期
+							if(member){     //是會員
+							
+							
+							
+								if(flag1){		     //老會員
+									if(targetNo==3||targetNo==4){
+// 										alert("老會員")
+										arrayObj.push(nevin+"A0A"+typeNo);
+									}
+								}			
+								else{				//新會員
+									if(targetNo==2||targetNo==4||targetNo==3){
+// 										alert("新會員")
+										arrayObj.push(nevin+"A0A"+typeNo);
+									}
+								}
+							}
+							else{					//不是會員
+								if(targetNo==2||targetNo==1){
+// 									alert("不是會員")
+
+									arrayObj.push(nevin+"A0A"+typeNo);
+								}
+							}
+						}
+					});
+					
+					function aa(){
+						var ran=Math.floor(Math.random()*arrayObj.length);
+						console.log(arrayObj[ran]);
+						var rans=arrayObj[ran].split("A0A");
+						
+							
+						console.log(rans[1]);
+						
+						if(rans[1]==1){
+							$('#say').attr("class","btn btn-primary")
+							$('#xxx').attr("src","images/dog2.gif");
+							$('#say').text("公告:"+rans[0]);
+						}
+						else if(rans[1]==2){
+							$('#say').attr("class","btn btn-success")
+							$('#xxx').attr("src","images/dog2.gif");
+							
+							$('#say').html("優惠資訊:"+rans[0]);
+						}
+						else if(rans[1]==3){
+							$('#say').attr("class","btn btn-info")
+							$('#xxx').attr("src","images/dog2.gif");
+							$('#say').text("提醒:"+rans[0]);
+						}
+						else if(rans[1]==4){
+							
+							$('#say').attr("class","btn btn-info")
+							var imgid=rans[0].split("imgid=");
+							var name=imgid[0].split("?name=");
+							$('#xxx').attr("src","${pageContext.request.contextPath}/GetImg?imgid="+imgid[1]);
+							$('#say').text("會員["+name[1]+"]:"+name[0]);
+						}
+					}
+					
+					var flag=true;
+					var angle=0;
+					function bb(){
+						
+						if(flag){
+							
+							angle=angle+10
+							$("#xxx").rotate(angle);
+							if(angle>45){
+								flag=false;
+							}
+						}else{
+						
+							angle=angle-10;
+							$("#xxx").rotate(angle);
+							if(angle<0){
+								flag=true;
+							}
+						}
+					}
+					
+					var timeoutId=setInterval(aa, 5000);
+					var timeoutId=setInterval(bb, 250);
+					
+				})
+				if(member){
+					$('#xxx').dblclick(function(){
+						$('#say').text("讓我幫你昭告天下");
+						$('#ooo').attr("type","text");
+						$('#sumit').attr("type","button").click(function(){
+							
+						var nevin=$('#ooo').val();
+						var begin=new Date();
+						var end=new Date(1000*60*5+ begin.getTime());
+						
+						begin=begin.format("isoDateTime");
+						var a=begin.split("T");
+						end=end.format("isoDateTime");
+						var b=end.split("T");
+						begin=a[0]+" "+a[1];
+						end=b[0]+" "+b[1];
+								$.ajax({"type":"post","url":"${pageContext.request.contextPath}/Little","dataType":"text","data":{"do":"insert","targetNo":4,"typeNo":4,"beginTime":begin,"endTime":end,"nevin":nevin+"?name="+name+"imgid="+imgid},
+									"success":function(da){
+									alert("成功")
+									$('#ooo').text("");
+									$('#ooo').attr("type","hidden");
+									$('#say').text("訊息已經送出");
+									$('#sumit').attr("type","hidden")
+									}
+								});			
+						});			
+					})
+				}
+					
+			}(jQuery));
+		
+		</script>
 		<%@include file="/includes/logout" %>
 	</body>
 </html>
