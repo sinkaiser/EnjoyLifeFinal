@@ -39,6 +39,18 @@
 		height: 600px;
 		padding-bottom:20px;
 	}
+	.indextitle{
+		width:250px;
+		margin-top:25px;
+	}
+	.indextitle > div{
+		display:block;
+		margin:10px;
+		width:120px;
+		height:80px;
+		font-size:10px;
+		letter-spacing:3px
+	}
 </style>		
 </head>
 <sql:setDataSource dataSource="jdbc/ELDB" var="blog" scope="application"/>
@@ -104,18 +116,32 @@
 			<div class="container">
 				<div class="row" style="width:1280px;" > 
 					<!-- Sidebar -->
-					<div id="sidebar" class="2u">
+					<div id="sidebar" class="2u" style="padding-left:0px;">
 						<section>
-							<header style="height:50px;">
-								<p style="font-size:35px;" >活動</p>
-							</header>
+							<div>
+								<p style="font-size:40px;letter-spacing:5px;margin-bottom:10px;font-weight:900;">Enjoy</p>
+								<p style="font-size:20px;line-height:3px;margin-left:15px;">with</p>
+								<span style="font-size:35px;font-weight:900;margin-left:30px;">your</span>
+								<span style="font-size:60px;font-weight:900;margin-left:150px;letter-spacing:8px;">life</span>
+								<div class="indextitle">
+										<div style="float:left;">
+											<p>想出遊卻沒有方向？EnjoyLife幫助你輕鬆規畫行程</p>
+										</div>
+										<div style="margin-left:150px;padding-top:30px;">
+											<p>用四格漫畫的方式留下各種足跡以及各種心情</p>
+										</div>
+										<div style="margin-top:55px;">
+											<p>總是缺一人享用優惠價？EnjoyLife讓你輕鬆找到伴</p>
+										</div>
+								</div>
+							</div> 
 						</section>
 					</div>
 					<!-- Content -->
 					<div id="content" class="5u skel-cell-important" style="margin-left:100px;">
 					<section style="border:0px;" >
 						<header>
-							<h2 style="font-size:30px;" >HOT</h2>
+							<h2 style="font-size:35px;" >HOT</h2>
 						</header>
 						<div id="carousel-example-generic" class="carousel slide"
 							data-ride="carousel" style="width: 450px;" data-interval="4000">

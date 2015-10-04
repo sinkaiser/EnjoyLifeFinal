@@ -71,6 +71,21 @@
 		height:30px;
 		padding:0px;
 	}
+	#content > section > p{
+		font-size:25px;
+	}
+	.indextitle{
+		width:320px;
+		margin-top:25px;
+	}
+	.indextitle > div{
+		display:block;
+		margin:10px;
+		width:200px;
+		height:100px;
+		font-size:18px;
+		letter-spacing:3px
+	}
 	
 </style>		
 </head>
@@ -98,9 +113,26 @@
 				<div class="row"> 
 					
 					<!-- Content -->
-					<div id="content" class="6u skel-cell-important">
+					<div id="content" class="6u skel-cell-important" style="padding-left:100px;padding-top:50px;">
 						<section>
-					</section>
+							<div>
+								<p style="font-size:80px;letter-spacing:5px;margin-bottom:30px;font-weight:900;">Enjoy</p>
+								<p style="font-size:40px;line-height:3px;margin-left:25px;">with</p>
+								<span style="font-size:65px;font-weight:900;margin-left:50px;">your</span>
+								<span style="font-size:120px;font-weight:900;margin-left:60px;letter-spacing:8px;">life</span>
+								<div class="indextitle">
+										<div style="float:left;">
+											<p>想出遊卻沒有方向？EnjoyLife幫助你輕鬆規畫行程</p>
+										</div>
+										<div style="margin-left:220px;padding-top:25px;">
+											<p>用四格漫畫的方式留下各種足跡以及各種心情</p>
+										</div>
+										<div style="margin-top:40px;">
+											<p>總是缺一人享用優惠價？EnjoyLife讓你輕鬆找到伴</p>
+										</div>
+								</div>
+							</div>       
+						</section>
 					</div>
 					
 					<!-- Sidebar -->
