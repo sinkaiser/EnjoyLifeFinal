@@ -78,14 +78,14 @@
 									}
 								}			
 								else{				//新會員
-									if(targetNo==2||targetNo==4){
+									if(targetNo==2||targetNo==4||targetNo==3){
 // 										alert("新會員")
 										arrayObj.push(nevin+"A0A"+typeNo);
 									}
 								}
 							}
 							else{					//不是會員
-								if(targetNo==2||targetNo==4){
+								if(targetNo==2||targetNo==1){
 // 									alert("不是會員")
 
 									arrayObj.push(nevin+"A0A"+typeNo);

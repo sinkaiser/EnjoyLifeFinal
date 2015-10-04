@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/10/4 ?W?? 09:13:07 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.log.model.AdminLogBean" table="ADMINLOG">
+        <id name="logNo" type="java.lang.Integer">
+            <column name="LOGNO" />
+            <generator class="identity" />
+        </id>
+        <property name="logDate" type="java.util.Date">
+            <column name="LOGDATE" />
+        </property>
+        <property name="executor" type="java.lang.String">
+            <column name="EXECUTOR" />
+        </property>
+        <property name="executorIp" type="java.lang.String">
+            <column name="EXECUTORIP" />
+        </property>
+        <property name="executeTarget" type="java.lang.String">
+            <column name="EXECUTETARGET" />
+        </property>
+        <property name="executeAction" type="java.lang.String">
+            <column name="EXECUTEACTION" />
+        </property>
+        <property name="targetDescription" type="java.lang.String">
+            <column name="TARGETDESCRIPTION" />
+        </property>
+    </class>
+</hibernate-mapping>

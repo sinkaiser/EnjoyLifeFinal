@@ -53,7 +53,7 @@
 			</div>
 		
 			
-				<iframe name="frame" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" width="800" src="page.jsp" height="850" frameborder="o" scrolling="yes" style='background-color:#efefef'>
+				<iframe name="frame" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" width="800" src="${pageContext.request.contextPath}/AdminPageServlet" height="850" frameborder="o" scrolling="yes" style='background-color:#efefef'>
 				
 				</iframe>
 			
