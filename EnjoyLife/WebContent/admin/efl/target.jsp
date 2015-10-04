@@ -5,10 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/efl/css/bootstrap.min.css">
-<script src="${pageContext.request.contextPath}/efl/js/jquery-2.1.4.min.js"></script>
-<script src="${pageContext.request.contextPath}/efl/js/moment-with-locales.js"></script>
-<script src="${pageContext.request.contextPath}/efl/js/bootstrap-datetimepicker.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/admin/css/bootstrap.min.css">
+<script src="${pageContext.request.contextPath}/admin/js/jquery-2.1.4.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/moment-with-locales.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/bootstrap-datetimepicker.js"></script>
 </head>
 <body>
 <h1 class="page-header">小精靈管理</h1>

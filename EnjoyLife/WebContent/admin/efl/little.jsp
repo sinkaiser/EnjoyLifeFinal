@@ -24,7 +24,7 @@
 					<a href="target.jsp"><button type="button" id="target" class="btn btn-primary">對象</button></a>
 					
 					
-					
+					<p id='p' class="btn btn-info" style="margin-left:200px">請選擇一篇文章</p>
 				</div>
 					
 				
@@ -126,10 +126,12 @@
 												
 												var dd=dd.split("A");
 												if(dd[0]==0){
-													alert("編號"+dd[1]+"刪除成功");
+													
+													$('#p').text("編號"+dd[1]+"刪除成功");
 													tt.parents('tr').remove();}
 												else{
-													alert("編號"+dd[1]+"刪除失敗");
+											
+													$('#p').text("編號"+dd[1]+"刪除失敗");
 												}
 												}
 												
@@ -162,8 +164,8 @@
 												update.parents('tr').find('td[name="nevin"]').children().val(nevin2);
 												update.parents('tr').find('td[name="beginTime"]').children().val(beginTime3);
 												update.parents('tr').find('td[name="endTime"]').children().val(endTime3);
+												$('#p').text("編號"+elfNo2+"更新成功");
 												
-												alert("編號"+elfNo2+"更新成功");
 											}
 										});
 											
@@ -196,9 +198,9 @@
 														var aa=da.split("A");
 														
 														if(aa[0]==0){
-							
+															
 																													
-															$.getJSON("/lab/GetLittleJson",{"id":1,"No":aa[1]},function(data4){
+															$.getJSON("${pageContext.request.contextPath}/GetLittleJson",{"id":1,"No":aa[1]},function(data4){
 																$.each(data4,function(){
 																beginTime=this.beginTime;
 																endTime=this.endTime;
@@ -215,11 +217,12 @@
 																});
 															});
 															button.parents('tr').remove();
-															alert('成功');
+															
+															$('#p').text("新增成功");
 														}
 															
 														else{
-															alert(data);
+															$('#p').text("新增失敗");
 														}
 													}
 												});

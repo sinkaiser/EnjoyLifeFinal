@@ -142,15 +142,20 @@ public class Little extends HttpServlet {
 			
 			if(vo!=null){
 				user=vo.getMemberName();
+				String[] aa=nevin.split("\\?");
+				
+				AdminLogService service=new AdminLogService();
+				service.add("小幫手", user, executorIp, aa[0], "新增");
 			}else{
 				user="admin";
+				
+				
+				AdminLogService service=new AdminLogService();
+				service.add("小幫手", user, executorIp, nevin, "新增");
 			}
-			System.out.println(nevin);
 			
-			String[] aa=nevin.split("\\?");
 			
-			AdminLogService service=new AdminLogService();
-			service.add("小幫手", user, executorIp, aa[0], "新增");
+			
 			
 			
 			System.out.println(b);

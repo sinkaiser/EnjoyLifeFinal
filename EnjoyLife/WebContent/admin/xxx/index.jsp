@@ -154,6 +154,9 @@
 <!--               	//ui -->
               	
 				<div class="ui-widget ui-helper-clearfix">
+				<input class="file" type="file" id="file1" multiple="multiple">
+				
+				
 				<div>
 					<ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
 					
@@ -368,6 +371,19 @@
 				
 				 
 				 
+				 
+				 $('#file1').change(function(){
+					 var reader=new FileReader();
+					 reader.onload=function(e){
+						 var fileContent=e.target.result;
+						 console.log(fileContent);
+					 }
+					 
+					
+					
+					
+				 });
+					 
 				 
 				 
 				 

@@ -60,8 +60,9 @@ public class LittleDaoHibernate implements LittleDao{
 		try {
 			session.beginTransaction();
 			session.save(littleBean);
+			result=(int)session.getIdentifier(littleBean);
+			
 			session.beginTransaction().commit();
-			result++;
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
@@ -97,8 +98,9 @@ public class LittleDaoHibernate implements LittleDao{
 			session.beginTransaction();
 			LittleBean bean=(LittleBean)session.get(LittleBean.class, id);
 			session.delete(bean);
+			result=(int)session.getIdentifier(bean);
 			session.beginTransaction().commit();
-			result++;
+			
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
