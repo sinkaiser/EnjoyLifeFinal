@@ -96,7 +96,7 @@
 		<%@include file="/includes/logout" %>
 </body>
 <script src="scripts/attraclistJQ.js"></script>
-<script src="scripts/attractravel.js"></script>
+<script src="scripts/googletravel.js"></script>
 <script src="scripts/html2canvas.js"></script>
 <script>		
 
