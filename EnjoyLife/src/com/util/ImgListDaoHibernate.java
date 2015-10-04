@@ -11,7 +11,7 @@ public class ImgListDaoHibernate implements ImgListDao {
 
 	@Override
 	public List<ImgListBean> getAll() {
-		Session session = com.member.hibernate1.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
 		
 		List<ImgListBean> result=null;
 		
@@ -29,7 +29,7 @@ public class ImgListDaoHibernate implements ImgListDao {
 
 	@Override
 	public String selectType(int id) {
-		Session session = com.member.hibernate1.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
 		
 		String result=null;
 		
@@ -51,7 +51,7 @@ public class ImgListDaoHibernate implements ImgListDao {
 
 	@Override
 	public ImgListBean select(int id) {
-		Session session = com.member.hibernate1.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
 		
 		ImgListBean result=null;
 
@@ -70,7 +70,7 @@ public class ImgListDaoHibernate implements ImgListDao {
 
 	@Override
 	public int insert(ImgListBean imgListBean) {
-		Session session = com.member.hibernate1.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
 		
 		int result=0;
 		
@@ -89,7 +89,7 @@ public class ImgListDaoHibernate implements ImgListDao {
 
 	@Override
 	public int update(ImgListBean imgListBean) {
-		Session session = com.member.hibernate1.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
 		
 	int result=0;
 		
@@ -108,7 +108,7 @@ public class ImgListDaoHibernate implements ImgListDao {
 
 	@Override
 	public int delete(Integer id) {
-		Session session = com.member.hibernate1.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = com.util.HibernateUtil.getSessionFactory().getCurrentSession();
 		
 		int result=0;
 		

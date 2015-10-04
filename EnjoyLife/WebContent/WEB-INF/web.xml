@@ -6,6 +6,12 @@
     <res-auth>Container</res-auth>
     <res-sharing-scope>Shareable</res-sharing-scope>
   </resource-ref>
+  <resource-ref>
+    <res-ref-name>jdbc/little</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+  </resource-ref>
   <welcome-file-list>
     <welcome-file>indexfix.html</welcome-file>
     <welcome-file>indexfix.jsp</welcome-file>

@@ -41,7 +41,7 @@ public class deleteFriend extends HttpServlet {
 		fservice.deleteFriend(friendId,memberId);
 		fservice.deleteFriend(memberId,friendId);
 		response.sendRedirect(
-		response.encodeRedirectURL(request.getContextPath()+"/friend/friend.jsp"));
+		response.encodeRedirectURL(request.getContextPath()+"/friend/selectFriend.do"));
 		return;	
 					
 		}
