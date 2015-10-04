@@ -60,7 +60,7 @@
 					<div id="content" class="6u skel-cell-important">
 						<section>
 							<p>${row.activityContent}</p>
-							
+							<p style="text-align:center;font-size:15px;"><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp" style="text-decoration:none;" >回列表</a></p>
 						</section>
 					</div>
 					</c:forEach>

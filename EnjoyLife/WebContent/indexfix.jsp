@@ -99,29 +99,6 @@
 					<!-- Content -->
 					<div id="content" class="6u skel-cell-important">
 						<section>
-					<div id="carousel-example-generic" class="carousel slide"
-						data-ride="carousel" style="width:550px;">
-						<!-- Indicators -->
-
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner" role="listbox">
-							<c:forEach var="row" items="${rs.rows}" varStatus="status">
-							<div class="item active" style="width:550px;">
-								<img src="<c:out value='${row.photoPath}' default=""/>" alt="..." style="width:500px;height:500px;">
-								<div class="carousel-caption">...</div>
-							</div>
-							</c:forEach>
-							<c:forEach var="row" items="${rd.rows}" varStatus="status">
-							<div class="item" style="width:550px;">
-								<img src="<c:out value='${row.photoPath}' default=""/>" alt="..." style="width:500px;height:500px;">
-								<div class="carousel-caption"></div>
-							</div>
-							</c:forEach>
-							
-						</div>
-
-						<!-- Controls -->
-					</div>
 					</section>
 					</div>
 					
@@ -240,7 +217,7 @@
 				
 				
 				$('#say').attr("class","btn btn-info")
-				$('#xxx').attr("src","img/dog2.gif");
+				$('#xxx').attr("src","images/dog2.gif");
 				$('#say').text(name+"你好");
 				
 				var time="${member.registerDate}" //time
@@ -322,18 +299,18 @@
 						
 						if(rans[1]==1){
 							$('#say').attr("class","btn btn-primary")
-							$('#xxx').attr("src","img/dog2.gif");
+							$('#xxx').attr("src","images/dog2.gif");
 							$('#say').text("公告:"+rans[0]);
 						}
 						else if(rans[1]==2){
 							$('#say').attr("class","btn btn-success")
-							$('#xxx').attr("src","img/dog2.gif");
+							$('#xxx').attr("src","images/dog2.gif");
 							
 							$('#say').html("優惠資訊:"+rans[0]);
 						}
 						else if(rans[1]==3){
 							$('#say').attr("class","btn btn-info")
-							$('#xxx').attr("src","img/dog2.gif");
+							$('#xxx').attr("src","images/dog2.gif");
 							$('#say').text("提醒:"+rans[0]);
 						}
 						else if(rans[1]==4){

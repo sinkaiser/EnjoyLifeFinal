@@ -43,7 +43,7 @@
 </head>
 <sql:setDataSource dataSource="jdbc/ELDB" var="blog" scope="application"/>
   <sql:query var="rs" dataSource="${blog}">
-  			Select top 5 [photoPath],[activityDepiction],[activityName] from activity order by activityNo
+  			Select top 5 [photoPath],[activityDepiction],[activityName],[activityNo] from activity order by activityNo
   </sql:query>
 <%--   <sql:query var="rd" dataSource="${blog}"> --%>
 <!--   			Select top 10 [photoPath] from (select ROW_NUMBER() OVER(ORDER BY activityNo)  -->
@@ -170,7 +170,7 @@
 									<!-- Wrapper for slides -->
 									<div class="carousel-inner" role="listbox">
 										<c:forEach var="row" items="${rs.rows}" varStatus="status" begin="0" end="0">
-											<div class="item active" style="width: 250px;">
+											<div class="item active" style="width: 250px;cursor:pointer;" onclick="location.href='${pageContext.request.contextPath}/view/id/<c:out value='${row.activityNo}' default=""/>.jsp'">
 												<p style="font-size:15px;" ><c:out value='${row.activityName}' default=""/></p>
 												<img src="<c:out value='${row.photoPath}' default=""/>"
 													alt="..." style="width: 250px; height: 200px;"><br>
@@ -178,7 +178,7 @@
 											</div>
 										</c:forEach>
 										<c:forEach var="row" items="${rs.rows}" varStatus="status" begin="1" end="4">
-											<div class="item" style="width: 250px;">
+											<div class="item" style="width: 250px;cursor:pointer;" onclick="location.href='${pageContext.request.contextPath}/view/id/<c:out value='${row.activityNo}' default=""/>.jsp'">
 												<p style="font-size:15px;" ><c:out value='${row.activityName}' default=""/></p>
 												<img src="<c:out value='${row.photoPath}' default=""/>"
 													alt="..." style="width: 250px; height: 200px;"><br>
