@@ -35,7 +35,8 @@
 	#blogside{
 		border-bottom:2px solid #E0E0E0;
 		margin-bottom:20px;
-		width:500px;
+		width:400px;
+		height: 600px;
 		padding-bottom:20px;
 	}
 </style>		
@@ -59,27 +60,27 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="container">
-				<div class="row"> 
-					
+				<div class="row" style="width:1280px;" > 
+					<!-- Sidebar -->
+					<div id="sidebar" class="2u">
+						<section>
+							<header style="height:50px;">
+								<p style="font-size:35px;" >活動</p>
+							</header>
+						</section>
+					</div>
 					<!-- Content -->
-					<c:if test="${!empty regisOK }">
-							<c:remove var="regisOK" scope="session" />
-							<script type="text/javascript">
-								alert("註冊成功");
-							</script>
-	
-						</c:if>
-					<div id="content" class="7u skel-cell-important">
+					<div id="content" class="5u skel-cell-important" style="margin-left:100px;">
 					<section style="border:0px;" >
 						<header>
 							<h2 style="font-size:30px;" >HOT</h2>
 						</header>
 						<div id="carousel-example-generic" class="carousel slide"
-							data-ride="carousel" style="width: 550px;" data-interval="4000">
+							data-ride="carousel" style="width: 450px;" data-interval="4000">
 							<!-- Indicators -->
 
 							<!-- Wrapper for slides -->
-							<div class="carousel-inner" role="listbox" style="width: 550px;">
+							<div class="carousel-inner" role="listbox" style="width: 450px;">
 							<%request.getSession().getAttribute("bloglist");%>
 								<c:forEach var="lists" items="${bloglist}" begin="0" end="0">
 									<div class="item active" id="blogside">
@@ -87,7 +88,7 @@
 											<img
 												src="${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=T&&pathImg=${lists.pathPhoto}"
 												alt="..."
-												style="width: 500px; height: 400px; position: relative; top: -15px;"><br>
+												style="width: 400px; height: 450px; position: relative; top: -15px;"><br>
 											<span class="glyphicon glyphicon-user" aria-hidden="true">${lists.memberId}</span>
 											<span class="glyphicon glyphicon-eye-open" aria-hidden="true"
 												style="margin-left:10px;">${lists.viewTotal}</span>
@@ -103,7 +104,7 @@
 											<img
 												src="${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=T&&pathImg=${lists.pathPhoto}"
 												alt="..."
-												style="width: 500px; height: 400px; position: relative; top: -15px;"><br>
+												style="width: 400px; height: 450px; position: relative; top: -15px;"><br>
 											<span class="glyphicon glyphicon-user" aria-hidden="true">${lists.memberId}</span>
 											<span class="glyphicon glyphicon-eye-open" aria-hidden="true"
 												style="margin: 0px 40px 0px 10px;">${lists.viewTotal}</span>
@@ -121,7 +122,7 @@
 				</div>
 					
 					<!-- Sidebar -->
-					<div id="sidebar" class="5u">
+					<div id="sidebar" class="4u" >
 						<section>
 							<header style="height:50px;">
 								<p style="font-size:35px;" >活動</p>
@@ -137,7 +138,7 @@
 									<% request.getSession().getAttribute("parterlist") ; %>
 										<c:forEach var="list2" items="${parterlist}" begin="0" end="0">
 											<div class="item active" style="width: 330px;">
-												<p style="font-size:15px;">${list2.eventContent}</p>
+												<p style="font-size:15px;height:45px;">${list2.eventContent}</p>
 												<img src="${pageContext.request.contextPath}/GetImg?imgid=${list2.imgNo}"
 													alt="..." style="width: 330px; height: 250px;"><br>
 												<span class="glyphicon glyphicon-user" aria-hidden="true" >${list2.memberId}</span>
@@ -146,8 +147,8 @@
 											</div>
 										</c:forEach>
 										<c:forEach var="list2" items="${parterlist}" begin="1" end="4">
-											<div class="item" style="width: 300px;">
-												<p style="font-size:15px;">${list2.eventContent}</p>
+											<div class="item" style="width: 330px;">
+												<p style="font-size:15px;height:45px;">${list2.eventContent}</p>
 												<img src="${pageContext.request.contextPath}/GetImg?imgid=${list2.imgNo}"
 													alt="..." style="width: 330px; height: 250px;"><br>
 												<span class="glyphicon glyphicon-user" aria-hidden="true" >${list2.memberId}</span>
