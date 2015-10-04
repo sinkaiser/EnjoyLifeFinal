@@ -79,7 +79,7 @@
 					<div class="col-md-3">
 						<a href="${pageContext.request.contextPath}/BlogListServlet?Index=0&&pType=ALL" class="btn btn-default btn-lg active btn-block" role="button">日誌列表</a><br>
 						<a href="${pageContext.request.contextPath}/blog/postBlog.jsp" class="btn btn-default btn-lg active btn-block" role="button">新增日誌</a><br>
-						<a href="#" class="btn btn-default btn-lg active btn-block" role="button">我的日誌</a>
+<!-- 						<a href="#" class="btn btn-default btn-lg active btn-block" role="button">我的日誌</a> -->
 					</div>
 					<div class="col-md-8">
 						<form action="${pageContext.request.contextPath}/BlogPostServlet" method="post" enctype="application/x-www-form-urlencoded">
