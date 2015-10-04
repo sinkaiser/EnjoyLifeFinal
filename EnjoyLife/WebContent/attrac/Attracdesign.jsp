@@ -8,7 +8,8 @@
 <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
 <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 <script src="scripts/jquery-2.1.4.min.js"></script>
-<script src="scripts/jquery.tinyMap-3.2.18.min.js"></script>
+<!-- <script src="scripts/jquery.tinyMap-3.2.18.min.js"></script> -->
+<script type="text/javascript"src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script src="scripts/jquery-ui.js"></script>
 <script src="scripts/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/jquery-ui.css">
