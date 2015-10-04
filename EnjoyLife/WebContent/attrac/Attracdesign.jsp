@@ -68,6 +68,7 @@
 		       <div id="attracinfo">
 		       </div>
 		       <input id="canvans" type="button" value="輸出行程圖檔"  >
+		       <input id="mapimg" type="button" value="輸出路程圖檔" >
 		       <input id="attracadd" type="button" value="加入行程" >
 		       <input type="hidden" id="number" name="attracnum">
 		       <input type="hidden" id="addr">

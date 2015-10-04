@@ -14,8 +14,9 @@
 #travel {border:1px solid gray;width:100%;height:auto;margin:10px auto;background-color:white;}
 #map {height: 300px;margin:10px auto}
 #alllist{text-align: center;margin: 15px auto}
-#attracadd{position:absolute; left:55%;bottom:1%; width:130px;font-size: 18px;height:4ex;}
-#canvans {position:absolute; left:15%;bottom:1%; width:130px;font-size: 18px;height:4ex;}
+#attracadd{position:absolute; left:55%;bottom:6%; width:130px;font-size: 18px;height:4ex;}
+#canvans {position:absolute; left:15%;bottom:6%; width:130px;font-size: 18px;height:4ex;}
+#mapimg {position:absolute; left:15%;bottom:1%; width:130px;font-size: 18px;height:4ex;}
 .nextdirection{margin:5px;font-size: 20px;font-family:標楷體;color:red}
 .distance{margin:5px;font-size: 20px;font-family:標楷體;color:blue}
 .duration{margin:5px;font-size: 20px;font-family:標楷體;color:blue}
