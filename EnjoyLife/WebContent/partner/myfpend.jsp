@@ -217,7 +217,7 @@ body {
 													</a>
 													<c:if test="${!empty mem.partner}">
 														<br>
-														夥伴：<br>
+														已成行的夥伴：<br>
 														<c:forEach var="attend" varStatus="statusX" items="${mem.partner}">
 															<div style="float:left">${attend.partner}</div>
 														</c:forEach>

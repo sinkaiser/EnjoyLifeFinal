@@ -36,7 +36,7 @@ public class AttendPartnerDAO implements AttendPartnerDAO_interface {
 	private static final String UPDATE =
 		      "UPDATE attendpartner set eventNo=?, partner=?, attend=1";
 	private static final String UPDATE_ATTEND =
-			"UPDATE attendpartner set attend = 1 where eventNo = ?";
+			"UPDATE attendpartner set attend = 1 where eventNo = ? and partner=?";
 
 
 	@Override
@@ -361,6 +361,7 @@ public class AttendPartnerDAO implements AttendPartnerDAO_interface {
 			pstmt = con.prepareStatement(UPDATE_ATTEND);
 
 			pstmt.setInt(1, attendPartnerVO.getEventNo());
+			pstmt.setString(2, attendPartnerVO.getPartner());
 
 			pstmt.executeUpdate();
 
