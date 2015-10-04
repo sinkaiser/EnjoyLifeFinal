@@ -226,7 +226,7 @@ body {
 														<c:forEach var="attend" varStatus="statusX" items="${mem.partner}">
 															<div name="attendclose">
 																<div style="float:left">${attend.partner}</div>
-																<input id="partnerId" type="text" value="${attend.partnerId}">
+																<input name="partnerId" type="text" value="${attend.partnerId}">
 																<input name="partner" type="text" value="${attend.partner}">
 																<div style="text-align:right">
 																	<button name="closebutton">同意</button><button>拒絕</button><br>
@@ -266,7 +266,8 @@ body {
     
 	
 	$('[name="closebutton"]').click(function() {
-		a=$(this).parents('div[name="attendclose"]').find('input[value="partner"]').val();
+		a=$(this).parents('div[name="attendclose"]').find('input[name="partner"]').val();
+		
 		var b=$(this);
 		
 		
@@ -274,7 +275,7 @@ body {
 			url: "${pageContext.request.contextPath}/partner/CloseEventServlet",
             data: {
             		"eno3": $(this).parents('div[name="attendclose"]').find('input[name="eno3"]').val(),
-            		"messageTo": $("#partnerId").val(),
+            		"messageTo": $("input[name='partnerId']").val(),
             		"messageFrom": $("#closeid").val(),
             		"partner": $(this).parents('div[name="attendclose"]').find('input[name="partner"]').val() 
             	  },
@@ -283,9 +284,9 @@ body {
 
             success: function(msg){
             	var c=b.parents('div[name="attendclose222"]');
-            	b.parents('div[name="attendclose222"]').empty();
+            	//b.parents('div[name="attendclose222"]').empty();
             	
-        		c.append("想參加的人：<br><p>"+a+"</p>")
+        		c.append("已成行的夥伴：<br><p>"+a+"</p>")
             	alert(msg);
             	
             },

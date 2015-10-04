@@ -175,6 +175,7 @@ public class AttendPartnerDAO implements AttendPartnerDAO_interface {
 				attendPartnerVO = new AttendPartnerVO();
 				attendPartnerVO.setEventNo(rs.getInt("eventNo"));
 				attendPartnerVO.setPartner(rs.getString("partner"));
+				attendPartnerVO.setPartnerId(rs.getString("partnerId"));
 				list.add(attendPartnerVO); // Store the row in the list
 			}
 

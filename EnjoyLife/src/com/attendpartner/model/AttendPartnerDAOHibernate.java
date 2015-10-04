@@ -96,8 +96,10 @@ public class AttendPartnerDAOHibernate implements AttendPartnerDAO_interface {
 			session.beginTransaction();
 			Query query = session.createQuery("from AttendPartnerVO where eventNo=?");
 			query.setParameter(0, eventNo);
-			List<Object> list = query.list();
-			for(Object item :list){
+			List<AttendPartnerVO> list = query.list();
+			for(AttendPartnerVO item :list){
+				
+				System.out.println(item.getPartnerId());
 				result.add((AttendPartnerVO)item);
 			}
 			

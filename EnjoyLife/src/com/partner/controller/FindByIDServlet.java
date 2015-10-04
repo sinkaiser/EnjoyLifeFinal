@@ -66,13 +66,15 @@ public class FindByIDServlet extends HttpServlet {
 		for(PartnerVO vo:list){
 			Map<String,Object> map = new HashMap<String,Object>();
 			MemberVO a=dao.SelectById(vo.getMemberId());
+			
+			
 			int imgNo=a.getPicture();
 			
 		
 			int eventNo = vo.getEventNo();
 			List<AttendPartnerVO> b = apservice.selectByEventNo(eventNo);
 			//List<AttendPartnerVO> c = apservice.selectCountByEventNo(eventNo);
-
+			
 //			List<AttendPartnerVO> dd = apservice.getAll();
 //			Integer ddeventNo = ((AttendPartnerVO) dd).getEventNo();
 			
