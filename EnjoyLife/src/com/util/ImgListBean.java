@@ -1,6 +1,7 @@
 package com.util;
 
-public class ImgListBean {
+public class ImgListBean implements java.io.Serializable{
+	private static final long serialVersionUID = 1L;
 	private int imgNo;
 	private byte[] imgContent;
 	private String imgType;
