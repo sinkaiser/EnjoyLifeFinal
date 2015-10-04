@@ -43,9 +43,8 @@ public class GetReplyServlet extends HttpServlet {
 				Map<String,String> map = new HashMap<String,String>();
 				map.put("replyMemberId", bean.getReplyMemberId());
 				MemberVO memBean = memDao.SelectById(bean.getReplyMemberId());
-				System.out.println(bean.getReplyMemberId());
 				int picNo = memBean.getPicture();
-				System.out.println(picNo);
+				map.put("replyMemberName", memBean.getMemberName());
 				map.put("memPic", String.valueOf(picNo));
 				map.put("replyContext", bean.getReplyContext());
 				map.put("replyDate", bean.getReplyDate()+"");

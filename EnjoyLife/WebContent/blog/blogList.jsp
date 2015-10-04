@@ -199,7 +199,7 @@
 					eleDiv1.setAttribute("id","blog"+i);
 					
 					var eleP1 = document.createElement("p");
-					var txt1 = document.createTextNode(data[i].memid+"在"+data[i].postno);
+					var txt1 = document.createTextNode(data[i].memName+"在"+data[i].postno);
 					eleP1.setAttribute("class","nr_p_ccs1");
 					eleP1.appendChild(txt1);
 					var eleP2 = document.createElement("p");
@@ -318,7 +318,7 @@
 					var eleP1 = document.createElement("p");
 					var eleA  = document.createElement("a");
 					var txtP1  = document.createTextNode(" 說:");
-					var txtA  = document.createTextNode(value.replyMemberId);
+					var txtA  = document.createTextNode(value.replyMemberName);
 					eleA.setAttribute("href", "#");
 					eleA.appendChild(txtA);
 					eleP1.appendChild(eleA);
@@ -363,7 +363,7 @@
 				var rDate = data.postDate.substring(0,16);
 				$('#postModalLabel').text(data.postTitle);				 
 				$('#artiNo').text(' '+data.postNo);
-				$('#artiMem').text(' '+data.memberId);
+				$('#artiMem').text(' '+data.memberName);
 				$('#artiPlace').text(' '+data.AttractionsNo);
 				$('#artiDate').text(' '+rDate);
 				$('#artiContext').text(' '+data.postContent);

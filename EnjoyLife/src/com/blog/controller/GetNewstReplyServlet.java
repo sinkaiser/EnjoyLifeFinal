@@ -20,6 +20,9 @@ import org.json.simple.JSONValue;
 import com.blog.model.BlogReplyDAO;
 import com.blog.model.BlogReplyVO;
 import com.blog.model.Hibernate.BlogReplyDAOHibernate;
+import com.member.model.MemberDAO;
+import com.member.model.MemberDAO_interface;
+import com.member.model.MemberVO;
 import com.util.HibernateUtil;
 
 @WebServlet("/GetNewstReplyServlet")
@@ -42,6 +45,9 @@ public class GetNewstReplyServlet extends HttpServlet {
 			for(BlogReplyVO bean:list){
 				Map<String,String> map = new HashMap<String,String>();
 				map.put("memid", bean.getReplyMemberId());
+				MemberDAO_interface memDao = new MemberDAO();
+				MemberVO membean = memDao.SelectById(bean.getReplyMemberId());
+				map.put("memName", membean.getMemberName());
 				map.put("postno", bean.getPostNo());
 				map.put("context", bean.getReplyContext());
 				map.put("date", sdf.format(bean.getReplyDate()));
