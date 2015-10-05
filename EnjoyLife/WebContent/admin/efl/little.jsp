@@ -8,7 +8,9 @@
 <script src="${pageContext.request.contextPath}/admin/efl/js/jquery-2.1.4.min.js"></script>
 <script src="${pageContext.request.contextPath}/admin/efl/js/moment-with-locales.js"></script>
 <script src="${pageContext.request.contextPath}/admin/efl/js/bootstrap-datetimepicker.js"></script>
-
+<Style>
+td {}
+</Style>
 </head>
 <body>
 
@@ -96,7 +98,13 @@
 									
 										elfNo=this.elfNo;
 										targetNo=this.targetNo;
+										
+										if(this.nevin.length>50){
+										nevin=this.nevin.slice(-10,-4);
+										}else{
 										nevin=this.nevin;
+										}
+										
 										typeNo=this.typeNo;
 										beginTime=this.beginTime;
 										endTime=this.endTime;
