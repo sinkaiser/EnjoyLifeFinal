@@ -55,8 +55,12 @@
 		border:5px solid gray;
 		margin-bottom:10px;
 		width:220px;
+		height:220px;
 		float:left;
 		overflow:hidden;
+		background-image:url('${pageContext.request.contextPath}/images/loader.gif');
+		background-position:center center;
+		background-repeat:no-repeat;
 	}
 	.arti{
 		color: black;
@@ -499,7 +503,7 @@
 						      		<div class="row">
 										<!-- Blog顯示完整文章 -->			  
 							        	<div class="col-md-6 thumbnail" style="padding-left:0px;margin-left:40px">
-							        		<img src="" id="fullImg" style="width:350px;">
+							        		<img src="" id="fullImg" style="width:350px;height:1050px;background-image:url('${pageContext.request.contextPath}/images/loader.gif');	background-position:center center;background-repeat:no-repeat;">
 							        	</div>
 			
 							        	<div class="col-md-5" style="padding-left:0px;margin-left:0px">

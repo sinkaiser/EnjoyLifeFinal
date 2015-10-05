@@ -54,6 +54,7 @@
 		border: 3px solid #428bca;
 		position: relative ;
 		display:inline-block;
+		background-image:url('${pageContext.request.contextPath}/images/post_bg.png');
 	}
 	.divBox div span{
 		top: 30%; 
