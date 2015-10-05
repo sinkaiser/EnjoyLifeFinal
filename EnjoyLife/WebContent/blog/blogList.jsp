@@ -715,7 +715,6 @@
 			dataType:"json",
 			data:{"ArticleNo":ArticleNo,"report":report,"memId":memId},
 			success:function(data){		
-				alert(data);
 				if(data=='F'){
 					alert('檢舉失敗，請重試一次');
 				}else{

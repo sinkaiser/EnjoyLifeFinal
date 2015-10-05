@@ -3,18 +3,18 @@
                                          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-<!-- 		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/ELDB</property> -->
+		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/ELDB</property>
 <!-- 		<property name="hibernate.connection.datasource">java:comp/env/jdbc/xxx</property> -->
-		<!-- 連線池c3p0設定 -->
-		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-		<property name="hibernate.connection.url">jdbc:sqlserver://i7zjbwchx7.database.windows.net:1433;database=EnjoyLife</property>
-		<property name="hibernate.connection.username">enjoylife</property>
-		<property name="hibernate.connection.password">P@ssw0rd</property>      
-		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
-		<property name="hibernate.c3p0.min_size">5</property>
-		<property name="hibernate.c3p0.max_size">20</property>
-		<property name="hibernate.c3p0.timeout">1800</property>
-		<property name="hibernate.c3p0.max_statements">50</property>
+ 		<!-- 連線池c3p0設定 --> 
+<!-- 		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
+<!-- 		<property name="hibernate.connection.url">jdbc:sqlserver://i7zjbwchx7.database.windows.net:1433;database=EnjoyLife</property> -->
+<!-- 		<property name="hibernate.connection.username">enjoylife</property> -->
+<!-- 		<property name="hibernate.connection.password">P@ssw0rd</property>       -->
+<!-- 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> -->
+<!-- 		<property name="hibernate.c3p0.min_size">5</property> -->
+<!-- 		<property name="hibernate.c3p0.max_size">20</property> -->
+<!-- 		<property name="hibernate.c3p0.timeout">1800</property> -->
+<!-- 		<property name="hibernate.c3p0.max_statements">50</property> -->
 
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
 		<property name="hibernate.show_sql">true</property>
