@@ -667,7 +667,7 @@ input[type="radio"]:checked + label span {
 	          	<div class="form-group">
 				    <div class="checkbox squaredTwo">
 				        <input type="checkbox" id="c1" name="cc" />
-						<label for="c1"><span></span>記住我</label>
+						
 				    </div>				    
 				</div>
 				<div class="form-group">

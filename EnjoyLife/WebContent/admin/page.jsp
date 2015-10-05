@@ -27,7 +27,7 @@
  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 </head>
-<body style="background-color:white">
+<body style='background-color:#efefef'>
  
      <!-- Left column -->
     <div class="templatemo-flex-row">
@@ -42,7 +42,7 @@
         <div class="templatemo-content-container">
       
    
-          <div class=col-md-8>
+          <div class=col-md-7>
           
               <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden" style="display: inline; width:600px;">
                 
@@ -266,13 +266,13 @@
             
           
           
-          <div class=col-md-4>
+          <div class=col-md-5>
            <div class="templatemo-flex-row flex-content-row">
 
              <div class="col-2">
               <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
                 
-                <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">網誌列表</h2></div>
+                <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">登入紀錄</h2></div>
                 <div class="table-responsive">
                   <table class="table table-striped table-bordered table-hover">
 					<thead>
@@ -327,10 +327,17 @@
 	    	var c=$(this).next().find("input[type='hidden']").val()
 	    	$('div[name="day"]').css({"height":80+c*45});
 	    })
+	    
+	    $('h3[name="title"]').dblclick(function(){
+	    	$('div[name="day"]').css({"height":0});
+	    })
+	    
     $('div[name="accordion"]').accordion({
       
     });
-
+	
+	    
+	    $('h3[name="title"]').dblclick();
     
   });
   </script>
