@@ -48,18 +48,18 @@
       <!-- Main content --> 
       <div class="templatemo-content col-2 light-gray-bg">
       
-      	 <h1>網誌管理</h1>
+      	 <h1>景點管理</h1>
 				
 				<div id="aa">
 				
-					<a href="index.jsp"><button type="button"  class="btn btn-default">被檢舉文章</button></a>
-					<a href="delete.jsp"><button type="button" class="btn btn-primary">被刪除文章</button></a>
-					<p id='p' class="btn btn-info" style="margin-left:200px">請選擇一篇文章</p>
+					<a href="index.jsp"><button type="button"  class="btn btn-default">未確認景點</button></a>
+					<a href="delete.jsp"><button type="button" class="btn btn-primary">景點列表</button></a>
+					<p id='p' class="btn btn-info" style="margin-left:200px">請選擇一篇景點</p>
 				</div>
         
         <div class="templatemo-content-container">
       
-          <div class="templatemo-flex-row flex-content-row">
+          <div class="templatemo-flex-row">
           
             
              <div class="col-2">
@@ -104,43 +104,32 @@
                <div class="templatemo-content-widget white-bg">
                 <i class="fa fa-times"></i>
                 <div class="media">
-                  <div class="media-left">
-                      <img class="media-object img-circle" src="images/sunset.jpg" alt="Sunset">
-                  </div>
+
                   <div class="media-body" id="xbody">
-                    <h2 class="media-heading text-uppercase">景點敘述</h2>
-                    <p name="target">回覆內容</p>  
+                    <h2 class="btn btn-default">景點敘述</h2>
+                    <textarea  name="target" cols="30" rows="5"></textarea>
                   </div>
+                  
+                   <hr>
+                  
+                  <div class="media-body" id="info">
+                    <h2 class="btn btn-default">交通資訊</h2>
+                    <textarea  name="target" cols="30" rows="5"></textarea>
+                     
+                  </div>
+                  <hr>
+                  
+                   <div class="media-body" id="addr">
+                    <h2 class="btn btn-default">住址</h2>
+                    <textarea  name="target" cols="30" rows="1"></textarea>  
+                  </div>                 
+                  
+                  
                 </div>                
               </div>    		
               
               
-                        
-              <div class="templatemo-content-widget white-bg">
-                <i class="fa fa-times"></i>
-                <div class="media">
-                  <div class="media-left">
-                      <img class="media-object img-circle" src="images/sunset.jpg" alt="Sunset">
-                  </div>
-                  <div class="media-body" id="info">
-                    <h2 class="media-heading text-uppercase">交通資訊</h2>
-                    <p  name="target">回覆內容</p>  
-                  </div>
-                </div>                
-              </div>   
-              
-               <div class="templatemo-content-widget white-bg">
-                <i class="fa fa-times"></i>
-                <div class="media">
-                  <div class="media-left">
-                      <img class="media-object img-circle" src="images/sunset.jpg" alt="Sunset">
-                  </div>
-                  <div class="media-body" id="addr">
-                    <h2 class="media-heading text-uppercase">住址</h2>
-                    <p  name="target">回覆內容</p>  
-                  </div>
-                </div>                
-              </div>   
+                     
               
             </div>
 <!--            ki -->
@@ -148,11 +137,13 @@
             
           </div>
           
-          <div class="templatemo-flex-row flex-content-row">
+          <div class="templatemo-flex-row">
        
             <div class="templatemo-content-widget white-bg col-2 text-center">
               <i class="fa fa-times"></i>
+              <input type="hidden" id="sumit" value="確認送出" class="btn btn-success" style="float: left">
               <h2 class="templatemo-inline-block">圖片</h2><hr>
+              
               <br>
               	
 <!--               	//ui -->
@@ -161,7 +152,7 @@
 				
 				
 				  <input accept="image/*" id="uploadImage" type="file">
-  <img id="img" src="">
+  
   
 
 				
@@ -172,6 +163,7 @@
 					  
 					</ul>
 				</div>
+				
 				<div id="trash" class="ui-widget-content ui-state-default">
 				  <h4 class="ui-widget-header"><span class="ui-icon ui-icon-trash">Trash</span> 垃圾桶</h4>
 				</div>
@@ -255,12 +247,27 @@
 			
 			function first(page){
 				$('#bd').empty();
+				$('#sumit').attr("type","hidden");
 				var pagee=page+1
+				var count=0;
+				
 				if(page==0){
-					$('#tablefoot').append("<span style='margin-right:10px'>現在第"+pagee+"頁</span><span name='next'>下一頁</span></div>")
+					if(count<10){
+						$('#tablefoot').append("<span style='margin-right:10px'>現在第"+pagee+"頁</span></div>")
+
+					}else{
+						$('#tablefoot').append("<span style='margin-right:10px'>現在第"+pagee+"頁</span><span name='next'>下一頁</span></div>")
+
+					}
 				}
 				else{
-					$('#tablefoot').append("<div><span name='back'>上一頁</span><span style='margin-right:10px;margin-left:10px'>現在第"+pagee+"頁</span><span name='next'>下一頁</span></div>")
+					if(count<10){
+						$('#tablefoot').append("<div><span name='back'>上一頁</span><span style='margin-right:10px;margin-left:10px'>現在第"+pagee+"頁</span></div>")
+
+					}else{
+						$('#tablefoot').append("<div><span name='back'>上一頁</span><span style='margin-right:10px;margin-left:10px'>現在第"+pagee+"頁</span><span name='next'>下一頁</span></div>")
+
+					}
 				}
 				
 				
@@ -331,6 +338,7 @@
 				 var addr;
 				 var info;
 				 $('#bd').on("click","tr[name='onedata']",function(){
+					 $('#sumit').attr("type","button");
 					 var p=$(this).find('td[name="attracno"]').text()
 					 $('#p').text("現在選擇編號為"+p);
 					 
@@ -340,9 +348,9 @@
 					 addr=$(this).find('input[name="address"]').val();
 					 info=$(this).find('input[name="info"]').val();
 					 
-					 $('#xbody').find('p[name="target"]').text(xbody);
-					 $('#addr').find('p[name="target"]').text(addr);
-					 $('#info').find('p[name="target"]').text(info);
+					 $('#xbody').find('textarea[name="target"]').text(xbody);
+					 $('#addr').find('textarea[name="target"]').text(addr);
+					 $('#info').find('textarea[name="target"]').text(info);
 					 
 					 
 					 //img				 
@@ -395,7 +403,7 @@
 					      }
 					    }
 				 
-				 
+					    
 				 
 				 
 				 

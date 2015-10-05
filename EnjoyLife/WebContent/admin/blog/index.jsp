@@ -20,7 +20,7 @@
     <link href="${pageContext.request.contextPath}/admin/blog/css/templatemo-style.css" rel="stylesheet">
     
   </head>
-  <body style='background-color:#efefef'>  
+  <body style='background-color:#efefef;'>  
   <script src="js/jquery-2.1.4.min.js"></script>  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   
@@ -28,10 +28,10 @@
  
 				
     <!-- Left column -->
-    <div class="templatemo-flex-row">
+    <div class="templatemo-flex-row" >
 			
       <!-- Main content --> 
-      <div class="templatemo-content col-2 light-gray-bg">
+      <div class="templatemo-content  light-gray-bg">
       
       	 <h1>網誌管理</h1>
 				
@@ -42,12 +42,12 @@
 					<p id='p' class="btn btn-info" style="margin-left:200px">請選擇一篇文章</p>
 				</div>
         
-        <div class="templatemo-content-container">
+        <div class="templatemo-content-container" >
       
-          <div class="templatemo-flex-row flex-content-row">
+          <div class="templatemo-flex-row " >
           
             
-             <div class="col-2">
+             <div >
               <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
                 
                 <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">網誌列表</h2></div>
@@ -80,7 +80,7 @@
               
              </div>
             
-            <div class="templatemo-content-widget white-bg col-1 text-center" >
+            <div class="templatemo-content-widget white-bg col-md-6 text-center" style="font-size:12px">
               <i class="fa fa-times"></i>
               <h2 id="memberId" class="text-uppercase">使用者ID</h2>
               <h3 id="postContent" class="text-uppercase margin-bottom-10">日誌內文</h3>
@@ -88,7 +88,7 @@
             </div>
           </div>
           
-          <div class="templatemo-flex-row flex-content-row">
+          <div class="templatemo-flex-row">
        
             <div class="templatemo-content-widget white-bg col-2 text-center">
               <i class="fa fa-times"></i>
@@ -154,53 +154,9 @@
               
             </div>
         </div>
-          <footer class="text-right">
-            <p>Copyright &copy; 2084 Company Name 
-            | Designed by <a href="http://www.templatemo.com" target="_parent">templatemo</a></p>
-          </footer>  
-          
          
-<!-- log -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">寄信</h4>
-      </div>
-      <div class="modal-body">
-        <form role="form">
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">對象:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="control-label">訊息:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- log -->
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+          
+     
         
         
       </div>
@@ -228,22 +184,21 @@
 			var AttractionsNo;
 			var page=0;
 			first(page);
+			var count=0;
 			
 			function first(page){
 			$.getJSON("${pageContext.request.contextPath}/AdminGetBlogbyFlagReprot",{"page":page},function(data){
 // 			$.getJSON("${pageContext.request.contextPath}/AdminGetBlogAllJson",{},function(data){
 					$('#bd').empty();
 					var pagee=page+1
-					if(page==0){
-						$('#tablefoot').append("<span style='margin-right:10px'>現在第"+pagee+"頁</span><span name='next'>下一頁</span></div>")
-					}
-					else{
-						$('#tablefoot').append("<div><span name='back'>上一頁</span><span style='margin-right:10px;margin-left:10px'>現在第"+pagee+"頁</span><span name='next'>下一頁</span></div>")
-					}
-
+					
+					
+					
 					 
 					
 				$.each(data,function(){
+					count=count+1;
+				
 					postNo=this.postNo //已取
 					postType=this.postType
 					if(postType=="TL"){
@@ -288,6 +243,25 @@
 // 					$('td[name=hidden]').append("<input name='flagReport' type='hidden' value="+flagReport+">");
 // 					$('td[name=hidden]').append("<input name='AttractionsNo' type='hidden' value="+AttractionsNo+">");
 				});
+					if(page==0){
+						
+						if(count<10){
+							$('#tablefoot').append("<div><span style='margin-right:10px;margin-left:10px'>現在第"+pagee+"頁</div>")
+							
+						}else{
+							$('#tablefoot').append("<span style='margin-right:10px'>現在第"+pagee+"頁</span><span name='next'>下一頁</span></div>")	
+						}
+						}
+					else{
+						if(count<10){
+							
+							$('#tablefoot').append("<div><span name='back'>上一頁</span><span style='margin-right:10px;margin-left:10px'>現在第"+pagee+"頁</div>")
+							
+						}else{
+							$('#tablefoot').append("<div><span name='back'>上一頁</span><span style='margin-right:10px;margin-left:10px'>現在第"+pagee+"頁</span><span name='next'>下一頁</span></div>")
+	
+						}
+					}
 				$('#bd').on('click','tr[name="oneBlog"]',function(){
 					pathPhoto=$(this).find("input[name='pathPhoto']").val();
 					memberId=$(this).find("input[name='memberId']").val();
@@ -432,110 +406,7 @@
 				 
 				 
 				 
-				// pictureUI 
-				// there's the gallery and the trash
-				    var $gallery = $( "#gallery" ),
-				      $trash = $( "#trash" );
-				 
-				    // let the gallery items be draggable
-				    $( "li", $gallery ).draggable({
-				      cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-				      revert: "invalid", // when not dropped, the item will revert back to its initial position
-				      containment: "document",
-				      helper: "clone",
-				      cursor: "move"
-				    });
-				 
-				    // let the trash be droppable, accepting the gallery items
-				    $trash.droppable({
-				      accept: "#gallery > li",
-				      activeClass: "ui-state-highlight",
-				      drop: function( event, ui ) {
-				        deleteImage( ui.draggable );
-				      }
-				    });
-				 
-				    // let the gallery be droppable as well, accepting items from the trash
-				    $gallery.droppable({
-				      accept: "#trash li",
-				      activeClass: "custom-state-active",
-				      drop: function( event, ui ) {
-				        recycleImage( ui.draggable );
-				      }
-				    });
-				 
-				    // image deletion function
-				    var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off' title='Recycle this image' class='ui-icon ui-icon-refresh'>Recycle image</a>";
-				    function deleteImage( $item ) {
-				      $item.fadeOut(function() {
-				        var $list = $( "ul", $trash ).length ?
-				          $( "ul", $trash ) :
-				          $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $trash );
-				 
-				        $item.find( "a.ui-icon-trash" ).remove();
-				        $item.append( recycle_icon ).appendTo( $list ).fadeIn(function() {
-				          $item
-				            .animate({ width: "48px" })
-				            .find( "img" )
-				              .animate({ height: "36px" });
-				        });
-				      });
-				    }
-				 
-				    // image recycle function
-				    var trash_icon = "<a href='link/to/trash/script/when/we/have/js/off' title='Delete this image' class='ui-icon ui-icon-trash'>Delete image</a>";
-				    function recycleImage( $item ) {
-				      $item.fadeOut(function() {
-				        $item
-				          .find( "a.ui-icon-refresh" )
-				            .remove()
-				          .end()
-				          .css( "width", "96px")
-				          .append( trash_icon )
-				          .find( "img" )
-				            .css( "height", "72px" )
-				          .end()
-				          .appendTo( $gallery )
-				          .fadeIn();
-				      });
-				    }
-				 
-				    // image preview function, demonstrating the ui.dialog used as a modal window
-				    function viewLargerImage( $link ) {
-				      var src = $link.attr( "href" ),
-				        title = $link.siblings( "img" ).attr( "alt" ),
-				        $modal = $( "img[src$='" + src + "']" );
-				 
-				      if ( $modal.length ) {
-				        $modal.dialog( "open" );
-				      } else {
-				        var img = $( "<img alt='" + title + "' width='384' height='288' style='display: none; padding: 8px;' />" )
-				          .attr( "src", src ).appendTo( "body" );
-				        setTimeout(function() {
-				          img.dialog({
-				            title: title,
-				            width: 400,
-				            modal: true
-				          });
-				        }, 1 );
-				      }
-				    }
-				 
-				    // resolve the icons behavior with event delegation
-				    $( "ul.gallery > li" ).click(function( event ) {
-				      var $item = $( this ),
-				        $target = $( event.target );
-				 
-				      if ( $target.is( "a.ui-icon-trash" ) ) {
-				        deleteImage( $item );
-				      } else if ( $target.is( "a.ui-icon-zoomin" ) ) {
-				        viewLargerImage( $target );
-				      } else if ( $target.is( "a.ui-icon-refresh" ) ) {
-				        recycleImage( $item );
-				      }
-				 
-				      return false;
-				    });
+				
 				 
 				 
 				 

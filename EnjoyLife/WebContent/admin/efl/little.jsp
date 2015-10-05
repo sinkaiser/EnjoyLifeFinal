@@ -9,7 +9,9 @@
 <script src="${pageContext.request.contextPath}/admin/efl/js/moment-with-locales.js"></script>
 <script src="${pageContext.request.contextPath}/admin/efl/js/bootstrap-datetimepicker.js"></script>
 <Style>
-td {}
+
+.form-control{font-size:8px;margin:0px}
+
 </Style>
 </head>
 <body>
@@ -26,11 +28,11 @@ td {}
 					<a href="target.jsp"><button type="button" id="target" class="btn btn-primary">對象</button></a>
 					
 					
-					<p id='p' class="btn btn-info" style="margin-left:200px">請選擇一篇文章</p>
+					
 				</div>
 					
 				
-				<div class="table-responsive" id="main">
+				<div class="table-responsive" id="main" >
 				</div>
 				
 				
@@ -60,11 +62,11 @@ td {}
 						
 							$.getJSON("${pageContext.request.contextPath}/GetLittleJson",{"id":2},function(data2){
 // 							$.getJSON("2.txt",function(data2){
-							typelist="<select class='form-control' name='typeNo'>";
+							typelist="<select  name='typeNo'>";
 							
 								$.getJSON("${pageContext.request.contextPath}/GetLittleJson",{"id":3},function(data3){
 // 								$.getJSON("3.txt",function(data3){	
-								targetlist="<select class='form-control' name='targetNo'>";
+								targetlist="<select  name='targetNo'>";
 								
 									var typeNo1;
 									var type1;
