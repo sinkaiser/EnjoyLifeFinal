@@ -39,7 +39,7 @@
 		margin: 3px;
 		display:inline-block;
 		width:230px;
-		height:430px;
+		height:450px;
 		box-shadow:5px 5px 15px rgba(10,125,225,0.6);
 		border-top-left-radius:15px;
 		border-top-right-radius:15px;
