@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>景點列表</title>
+<title>ENJOY LIFE</title>
 <script src="scripts/jquery-2.1.4.min.js"></script>
 <link rel="stylesheet" href="scripts/bootstrap.min.css">
 <script src="scripts/bootstrap.min.js"></script>

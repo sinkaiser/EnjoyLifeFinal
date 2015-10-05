@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>規劃頁</title>
+<title>ENJOY LIFE</title>
 <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
 <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 <script src="scripts/jquery-2.1.4.min.js"></script>
