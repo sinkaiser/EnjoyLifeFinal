@@ -197,6 +197,7 @@ body {
 													<p style="float: left">${mem.PartnerVO.memberName}</p> 
 													
 													<input id="closeid" type="hidden" value="${mem.PartnerVO.memberId}">
+													<input id="closename" type="hidden" value="${mem.PartnerVO.memberName}">
 													<br>
 												</div>
 												<div style="margin: 5px auto">
@@ -222,12 +223,12 @@ body {
 														<br>
 														
 														<div name="attendclose222">
-														想參加的人：<br>
+														<br>想參加的人：<br>
 														<c:forEach var="attend" varStatus="statusX" items="${mem.partner}">
 															<div name="attendclose">
 																<div style="float:left">${attend.partner}</div>
-																<input name="partnerId" type="text" value="${attend.partnerId}">
-																<input name="partner" type="text" value="${attend.partner}">
+																<input name="partnerId" type="hidden" value="${attend.partnerId}">
+																<input name="partner" type="hidden" value="${attend.partner}">
 																<div style="text-align:right">
 																	<button name="closebutton">同意</button><button>拒絕</button><br>
 																	<input name="eno3" type="hidden" value="${attend.eventNo}">
@@ -277,6 +278,7 @@ body {
             		"eno3": $(this).parents('div[name="attendclose"]').find('input[name="eno3"]').val(),
             		"messageTo": $("input[name='partnerId']").val(),
             		"messageFrom": $("#closeid").val(),
+            		"memberName": $("#closename").val(),
             		"partner": $(this).parents('div[name="attendclose"]').find('input[name="partner"]').val() 
             	  },
             type:"POST",
@@ -284,7 +286,7 @@ body {
 
             success: function(msg){
             	var c=b.parents('div[name="attendclose222"]');
-            	//b.parents('div[name="attendclose222"]').empty();
+            	b.parents('div[name="attendclose222"]').empty();
             	
         		c.append("已成行的夥伴：<br><p>"+a+"</p>")
             	alert(msg);

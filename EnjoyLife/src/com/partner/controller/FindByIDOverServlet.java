@@ -83,7 +83,7 @@ public class FindByIDOverServlet extends HttpServlet {
 		}
 		if (!errorMessage.isEmpty()) {
 			RequestDispatcher failureView = request
-					.getRequestDispatcher("/partner/InsertPartnerError.jsp");
+					.getRequestDispatcher("/partner/ShowAllPartnerServlet");
 			failureView.forward(request, response);
 			return;//程式中斷
 		}

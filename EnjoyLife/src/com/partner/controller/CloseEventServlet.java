@@ -48,12 +48,18 @@ public class CloseEventServlet extends HttpServlet {
 		
 		
 		String messageFrom=request.getParameter("messageFrom");
-		//String memberName=request.getParameter("memberName");
+		String memberName=request.getParameter("memberName");
 		String messageTo=request.getParameter("messageTo");
 		String messageTitle="您的請求被答應了";
+		
+		System.out.println("===============================");
+		System.out.println(messageFrom);
+		System.out.println(messageTo);
+		System.out.println("===============================");
+		
 		//String message=request.getParameter("message");
 		MessageVO vo=new MessageVO();
-		vo.setMessage(messageFrom+"答應你的請求了。 <a target='blank' href='http://enjoylife.cloudapp.net/EnjoyLife/partner/ShowAllPartnerServlet'>去找伴專區看看吧</a>");
+		vo.setMessage(memberName+"答應你的請求了，歡迎再到找伴專區看看還有什麼你想參加的活動吧。");
 		vo.setMessageFrom(messageFrom);
 		vo.setMessageTitle(messageTitle);
 		vo.setMessageTo(messageTo);
@@ -67,7 +73,10 @@ public class CloseEventServlet extends HttpServlet {
 		}
 		
 		String partner = request.getParameter("partner");
-		
+		System.out.println("===============================");
+		System.out.println(eventNo);
+		System.out.println(partner);
+		System.out.println("===============================");
 		
 		// 如果有錯誤，呼叫view元件，送回錯誤訊息
 		if (!errorMessage.isEmpty()) {
