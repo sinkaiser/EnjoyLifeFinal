@@ -354,6 +354,8 @@ body {
 								<option>運動</option>
 								<option>藝文</option>
 								<option>交通</option>
+								<option>旅遊</option>
+								<option>其他</option>
 							</select>
 						</div>
 						<div class="form-group">
