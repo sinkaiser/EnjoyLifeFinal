@@ -21,6 +21,10 @@ import com.member.model.MemberVO;
 @WebServlet("/friend/addFriend.do") 
 public class addFriend extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -70,7 +74,7 @@ public class addFriend extends HttpServlet {
 		fservice.insertmember(fbean);
 		session.setAttribute("addSuccess", "申請成功");
 		response.sendRedirect(
-		response.encodeRedirectURL(request.getContextPath()+"/friend/friend.jsp"));
+		response.encodeRedirectURL(request.getContextPath()+"/friend/selectFriend.do"));
 		return;	
 					
 		}

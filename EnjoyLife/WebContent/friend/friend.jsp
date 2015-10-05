@@ -39,13 +39,6 @@ div.desc {
 </style>
 </head>
 <body>
-	<c:if test="${!empty addSuccess }">
-	<c:remove var="addSuccess" scope="session" />
-	<script type="text/javascript">
-		alert("申請成功");
-	</script>
-	
-	</c:if>
 	<div class="img">
  		 <a  href="${pageContext.request.contextPath}/friend/addFriend.jsp">
     		<img src="${pageContext.request.contextPath}/images/addFriend.jpg" alt="新增好友" width="110" height="90">

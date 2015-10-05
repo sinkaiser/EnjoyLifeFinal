@@ -19,6 +19,13 @@ border-radius:500px
 </style>
 </head>
 <body>
+<c:if test="${!empty addSuccess }">
+	<c:remove var="addSuccess" scope="session" />
+	<script type="text/javascript">
+		alert("申請成功");
+	</script>
+	
+	</c:if>
 <table class="table table-hover" style="margin: 10px;width: 500px">
 	<thead>
 	<tr>

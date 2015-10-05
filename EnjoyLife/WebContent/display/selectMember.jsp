@@ -40,7 +40,7 @@
 			<legend >會員資料</legend>
 			<div class="form-group">
 				<label for="memberId" class="col-sm-1 control-label">帳號(*)：</label>
-				<p> ${search.memberId}</p>
+				<p> ${search.memberId}<a href="${pageContext.request.contextPath}/friend/addFriend.do?friendId=${search.memberId}"/> <input class="btn btn-primary btn-xs" type="button" value="加入好友"></a></p>
 			</div>
 			<div class="form-group">
 				<label for="memberName" class="col-sm-1 control-label">姓名(*)：</label>
