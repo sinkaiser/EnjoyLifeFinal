@@ -1,5 +1,8 @@
 (function($){
 	$("#menu").on("click",".ui-menu-item",function(){
+		$("#attracinfo").empty();
+		var img=$("<img></img>").attr("src","Data/ajax-loader.gif").attr("height","262").attr("width","350");
+		$("#attracinfo").append(img);
 		$.ajax({
 			url:"GetPhoto2.jsp",
 			type:"get",
@@ -211,6 +214,7 @@
 				        	$("#panel").append("<hr>")
 				        	for(var j=0;j< route.legs[i].steps.length;j++){		
 				        		information=route.legs[i].steps[j].instructions.replace("<div","<br><span style='margin-left:40px'").replace("/div","/span");
+				        		console.log(route.legs[i].steps[j].instructions)
 				        		$("#panel").append("<span style='display:inline-block;width:30px;margin-left:10px'>"+(j+1)+".</span>"+information+"<br>")		        		
 				        		$("#panel").append("<hr>")
 				        	}
