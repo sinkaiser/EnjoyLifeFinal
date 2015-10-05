@@ -11,7 +11,7 @@
     <meta name="author" content="templatemo">
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <link href="${pageContext.request.contextPath}/admin/blog/css/font-awesome.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/admin/blog/css/templatemo-style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -19,7 +19,7 @@
       
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="js/jquery.ui.widget.js"></script>
-	<script src="js/jquery.iframe-transport.js"></script>
+<!-- 	<script src="js/jquery.iframe-transport.js"></script> -->
 	<script src="js/jquery.fileupload.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     
