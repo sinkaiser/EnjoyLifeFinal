@@ -37,7 +37,7 @@
              allowTaint:true,
 		    onrendered: function(canvas) {
 		    	 $("#auto").attr('href', canvas.toDataURL(canvas));
-                 $("#auto").attr('download','行程.png');
+                 $("#auto").attr('download','行程.jpeg');
                  lnk = document.getElementById("auto");
                  lnk.click();
 		    }
@@ -214,8 +214,8 @@
 				        	$("#panel").append("<hr>")
 				        	for(var j=0;j< route.legs[i].steps.length;j++){		
 				        		information=route.legs[i].steps[j].instructions.replace("<div","<br><span style='margin-left:40px'").replace("/div","/span");
-				        		console.log(information)
-				        		$("#panel").append("<span style='display:inline-block;width:30px;margin-left:10px'>"+(j+1)+".</span>"+information+"<br>")		        		
+				        		console.log(information.replace("<div","<br><span style='margin-left:40px'").replace("/div","/span"))
+				        		$("#panel").append("<span style='display:inline-block;width:30px;margin-left:10px'>"+(j+1)+".</span>"+information.replace("<div","<br><span style='margin-left:40px'").replace("/div","/span")+"<br>")		        		
 				        		$("#panel").append("<hr>")
 				        	}
 				        	$("#panel").append("<div style='text-align: center;'><span style='color:blue;font-size:20px'>目的地："+at[i+1].innerHTML.substr(3)+"</span><br></div>")

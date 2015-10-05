@@ -53,14 +53,14 @@
 		       <div id="travel">
 			       	<div name="default" class="traveldiv" style="text-align:center"><h1>請增加景點</h1></div>	
 		       </div>
-			    <div id="right-panel" style="display:inline;width:auto;">
+			    <div id="right-panel" style="display:none;width:auto;">
 	   		    <div id="panel" style="border:5px ridge gray;font-size:16px;background-color: white;">
 	   		    </div>
 	   		    </div> 
 	   		    </div> 
 		    </div>   
        </div>
-       <div class="col-md-4" style="position:relative;height:950px;padding: 0px">
+       <div class="col-md-4" style="position:relative;height:990px;padding: 0px">
        			<h1 id="alllist">清單列表</h1>
        			<img  id="listloader"src="Data/ajax-loader2.gif" style="margin-left:20px;width: 350px;height:15px;visibility:hidden;">
 			    <ul id="menu" class="attraclist">	       			
