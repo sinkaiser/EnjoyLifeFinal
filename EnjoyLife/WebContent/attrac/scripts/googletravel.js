@@ -206,6 +206,9 @@
 						distance = 0;
 						duration = 0;
 						console.log(response)
+						var right=document.getElementById("right-panel");
+						right.style.display="inline";
+
 						$("#panel").empty();
 				        for (var i = 0; i < route.legs.length; i++) {
 				        	distance+=Math.ceil(route.legs[i].distance.value/ 1000, 10);

@@ -53,7 +53,7 @@
 		       <div id="travel">
 			       	<div name="default" class="traveldiv" style="text-align:center"><h1>請增加景點</h1></div>	
 		       </div>
-			    <div id="right-panel" style="display:none;width:auto;">
+			    <div id="right-panel" style="display:none;width:auto;height:50px" >
 	   		    <div id="panel" style="border:5px ridge gray;font-size:16px;background-color: white;">
 	   		    </div>
 	   		    </div> 
