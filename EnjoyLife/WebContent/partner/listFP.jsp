@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- <meta http-equiv="Refresh" content="10"> -->
 
-<title>找伴列表</title>
+<title>ENJOY LIFE</title>
 
 <link rel="stylesheet" href="css/demo.css">
 <link rel="stylesheet" href="css/layout.css">
