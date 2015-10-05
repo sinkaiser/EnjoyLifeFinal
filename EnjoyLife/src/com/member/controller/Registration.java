@@ -170,7 +170,7 @@ try {
 				session.setAttribute("regisOK", "註冊成功");
 				session.setAttribute("member", bean);
 				response.sendRedirect(
-				response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
+				response.encodeRedirectURL(request.getContextPath()+"/GetIndexInfoServlet"));
 				return;	
 			}			
 		}
