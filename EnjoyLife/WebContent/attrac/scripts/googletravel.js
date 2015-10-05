@@ -214,7 +214,7 @@
 				        	$("#panel").append("<hr>")
 				        	for(var j=0;j< route.legs[i].steps.length;j++){		
 				        		information=route.legs[i].steps[j].instructions.replace("<div","<br><span style='margin-left:40px'").replace("/div","/span");
-				        		console.log(route.legs[i].steps[j].instructions)
+				        		console.log(information)
 				        		$("#panel").append("<span style='display:inline-block;width:30px;margin-left:10px'>"+(j+1)+".</span>"+information+"<br>")		        		
 				        		$("#panel").append("<hr>")
 				        	}
