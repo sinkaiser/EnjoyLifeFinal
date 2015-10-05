@@ -35,7 +35,7 @@
       
       	 <h1>網誌管理</h1>
 				
-				<div id="aa">
+				<div id="aa" style="margin-left:30px">
 				
 					<a href="index.jsp"><button type="button"  class="btn btn-default">被檢舉文章</button></a>
 					<a href="delete.jsp"><button type="button" class="btn btn-primary">被刪除文章</button></a>
@@ -324,14 +324,14 @@
 							
 							
 							replyContext=this.replyContext;
-							replyDate=this.replyDate;
+							replyDate=this.replyDate.substr(0,16);
 							flagDelete=this.flagDelete;
 							memPic=this.memPic;
 							
 							if(flagDelete==0){
-							$('#blogReply').append('<div name="oneReply" class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="return" type="button" class="btn btn-success">恢復</button></div></div></div>');
+							$('#blogReply').append('<div name="oneReply" class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><p><br>'+replyContext+'</p><button name="return" type="button" class="btn btn-success">恢復</button></div></div></div>');
 							}else{
-							$('#blogReply').append('<div name="oneReply" class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" name="replyMemberId" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><p>'+replyContext+'</p><button name="delete" type="button" class="btn btn-danger">刪除</button></div></div></div>');
+							$('#blogReply').append('<div name="oneReply" class="templatemo-content-widget white-bg"><i class="fa fa-times"></i><div class="media"><div class="media-left"><img style="width:35px;height:35px" class="media-object img-circle" src="/EnjoyLife/GetImg?imgid='+memPic+'" alt="Sunset"></div><div class="media-body"><h2 class="media-heading text-uppercase" name="replyMemberId" style="float:left">'+replyMemberId+'</h2><p style="float:right">'+replyDate+'</p><br><br><br><p>'+replyContext+'</p><button name="delete" type="button" class="btn btn-danger">刪除</button></div></div></div>');
 							}
 							
 						})

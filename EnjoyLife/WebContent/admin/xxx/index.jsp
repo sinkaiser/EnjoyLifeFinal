@@ -18,9 +18,9 @@
     <script src="js/jquery-2.1.4.min.js"></script>
       
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="js/jquery.ui.widget.js"></script>
+<!--     <script src="js/jquery.ui.widget.js"></script> -->
 <!-- 	<script src="js/jquery.iframe-transport.js"></script> -->
-	<script src="js/jquery.fileupload.js"></script>
+
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     
   <style>
@@ -50,7 +50,7 @@
       
       	 <h1>景點管理</h1>
 				
-				<div id="aa">
+				<div id="aa" style="margin-left:30px">
 				
 					<a href="index.jsp"><button type="button"  class="btn btn-default">未確認景點</button></a>
 					<a href="delete.jsp"><button type="button" class="btn btn-primary">景點列表</button></a>
@@ -212,7 +212,7 @@
 	var cate21,cate22
 	var cate1="<select name=cat1no><option value=101>景點</option><option value=102>住宿</option></select>";
 	var page=0;
-	
+	var p;
 		(function($){
 			$.getJSON("${pageContext.request.contextPath}/attrac/GetCate2.jsp",{"cate1no":101},function(data){
 				var cate2no,cate2name
@@ -248,6 +248,7 @@
 			function first(page){
 				$('#bd').empty();
 				$('#sumit').attr("type","hidden");
+				
 				var pagee=page+1
 				var count=0;
 				
@@ -283,7 +284,7 @@
 					var xbody;
 					var cat1no;
 					var cat2no;
-				    var cat=
+				    
 					$.each(data,function(){
 						
 						address=this.address;
@@ -338,8 +339,11 @@
 				 var addr;
 				 var info;
 				 $('#bd').on("click","tr[name='onedata']",function(){
+					 
+					 $('#trash').html('<h4 class="ui-widget-header"><span class="ui-icon ui-icon-trash">Trash</span> 垃圾桶</h4>')
+						
 					 $('#sumit').attr("type","button");
-					 var p=$(this).find('td[name="attracno"]').text()
+					 p=$(this).find('td[name="attracno"]').text()
 					 $('#p').text("現在選擇編號為"+p);
 					 
 					 xbody=$(this).find('input[name="xbody"]').val();
@@ -370,6 +374,23 @@
 					 
 					 
 			 });
+				
+			     $('#sumit').on('click',function(){
+			  
+					 $.ajax({"type":"post","url":"${pageContext.request.contextPath}/AjaxChangeFlag","dataType":"text","data":{"AttracNo":p},
+
+						 "success":function(da){
+								if(da="ok"){
+								$('#p').text("標號"+p+"更新成功")
+								$('tr[value='+p+']').remove();
+								}
+								else{
+								$('#p').text("標號"+p+"更新失敗")
+								}
+							}
+					 });
+					 
+				 });
 				
 				 
 				 

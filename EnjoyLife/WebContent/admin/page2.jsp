@@ -43,9 +43,10 @@
             <div id="aa" style="margin-left:30px">
 		
 			
-					<a href="page.jsp"><button type="button"  class="btn btn-default">登入紀錄</button></a>
-					<a href="page2.jsp"><button type="button"  class="btn btn-primary">動作紀錄</button></a>
+					<a href="page.jsp"><button type="button"  class="btn btn-primary">登入紀錄</button></a>
+					<a href="page2.jsp"><button type="button"  class="btn btn-default">動作紀錄</button></a>
 					
+					<button id="xx" type="button"  class="btn btn-danger">回復紀錄</button>
 	
 				</div>
    

@@ -35,7 +35,7 @@
       
       	 <h1>網誌管理</h1>
 				
-				<div id="aa">
+				<div id="aa" style="margin-left:30px">
 				
 					<a href="index.jsp"><button type="button" class="btn btn-primary">被檢舉文章</button></a>
 					<a href="delete.jsp"><button type="button" class="btn btn-default">被刪除文章</button></a>
