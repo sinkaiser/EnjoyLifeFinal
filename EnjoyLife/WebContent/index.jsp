@@ -116,7 +116,7 @@
 			<div class="container">
 				<div class="row" style="width:1280px;" > 
 					<!-- Sidebar -->
-					<div id="sidebar" class="2u" style="padding-left:0px;">
+					<div id="sidebar" class="2u" style="padding-left:20px;">
 						<section>
 							<div>
 								<p style="font-size:40px;letter-spacing:5px;margin-bottom:10px;font-weight:900;">Enjoy</p>
