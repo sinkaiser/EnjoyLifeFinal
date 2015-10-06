@@ -190,7 +190,7 @@ body {
 													<p style="float: left">${mem.PartnerVO.memberName}</p> 
 													<a href="#" data-toggle="modal" data-target="#myModal3"
 													onclick="attend('${mem.PartnerVO.eventNo}','${member.memberId}','${member.memberName}','${mem.PartnerVO.memberId}')">
-													<img style="margin-left:130px" src="img/plusone2.png" id="plusone"
+													<img style="margin-left:120px" src="img/plusone2.png" id="plusone"
 														title="我要參加" width="32" height="32" alt="+1"></a>
 												</div>
 												<div style="margin: 5px auto">
@@ -207,7 +207,7 @@ body {
 														<img src="../partner/img/icon-location.png">${mem.PartnerVO.getAddr().toString().substring(0,3)}
 													</a>
 													<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="yyyy年M月d日 H:mm" />
-													<a href="#" title="${formattedDate}">
+													<br><a href="#" title="${formattedDate}">
 														<img src="../partner/img/icon-time.png">
 														<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="M月d日 H:mm" /> ${formattedDate}</a> 
 														<br>

@@ -214,7 +214,7 @@ body {
 														<img src="../partner/img/icon-location.png">${mem.PartnerVO.getAddr().toString().substring(0,3)}
 													</a>
 													<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="yyyy年M月d日 H:mm" />
-													<a href="#" title="${formattedDate}">
+													<br><a href="#" title="${formattedDate}">
 														<img src="../partner/img/icon-time.png">
 														<fmt:formatDate value="${mem.PartnerVO.eventDate}" var="formattedDate" type="date" pattern="M月d日 H:mm" />
 														${formattedDate}
