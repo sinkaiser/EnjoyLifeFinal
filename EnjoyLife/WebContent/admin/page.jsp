@@ -10,7 +10,6 @@
 <!-- 最新編譯和最佳化的 CSS -->
 
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -24,7 +23,7 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <!-- 最新編譯和最佳化的 JavaScript -->
 <script src="js/bootstrap.min.js"></script>
- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+ <script src="js/jquery-ui.js"></script>
 
 </head>
 <body style='background-color:#efefef'>
@@ -46,8 +45,7 @@
 			
 					<a href="page.jsp"><button type="button"  class="btn btn-default">登入紀錄</button></a>
 					<a href="page2.jsp"><button type="button"  class="btn btn-primary">動作紀錄</button></a>
-					
-	
+				
 				</div>
           
           
@@ -70,9 +68,9 @@
 						</tr>
 					</thead>
 					 <c:forEach var="aa" items="${loginList}">
-							  <tr>
-							  	<td>admin</td>
-							  	<td><fmt:formatDate value="${aa.logDate}" var="formattedDate" type="date" pattern="MM-dd HH:mm" />${formattedDate}</td>
+							  <tr >
+							  	<td>admin<input name="logNo" type="hidden" value="${aa.logNo}"> <input name="logDate" type="hidden" value="${aa.logDate}"></td>
+							  	<td><fmt:formatDate value="${aa.logDate}" var="formattedDate" type="date" pattern="MM月dd日 HH時mm分ss秒" />${formattedDate}</td>
 							  	<td>${aa.executorIp}</td>
 							  	<td>${aa.executeAction}</td>
 							  	<td>${aa.targetDescription}</td>			  	
@@ -104,7 +102,39 @@
   
       
  
+ <!-- Button trigger modal -->
+<input type="hidden" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="dilog">
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" id="tab">
+		<table class='table'>
+			<thead>
+				<tr>
+				<td>執行者</td>
+				<td>時間</td>
+				<td>動作</td>
+				
+				<td>內容</td>
+				</tr>
+			</thead>
+			<tbody id="tb">
+			</tbody>
+		</table>
+
+    </div>
+  </div>
+</div>
  
+ 
+ 
+ 
+ 
+ 	
     <script>
   $(function() {
 	  
@@ -123,7 +153,63 @@
 	
 	    
 	    $('h3[name="title"]').dblclick();
+	    
+	   	$('table').on("click",('tr'),function(){
+// 	   		alert($(this).find('input[name=logNo]').val());
+// 	   		alert($(this).next().find('input[name=logNo]').val());
+	  		
+	   		
+	   		var beginTime=$(this).find('input[name=logDate]').val();
+	   		var endTime=$(this).prev().find('input[name=logDate]').val();
+	   		if(endTime){
+	   		endTime=endTime.substr(0,19);	
+// 	   		alert("a");
+	   		}else{
+	   		endTime="2099-12-15 12:00:00";
+// 	   		alert("b");
+	   		
+	   		}
+	   		beginTime=beginTime.substr(0,19);	
+	   		
+	   		$.ajax({"type":"post","url":"${pageContext.request.contextPath}/WhoDoAjax","dataType":"JSON",
+				"data":{"beginTime":beginTime,"endTime":endTime},"success":function(dd){
+					
+					$('#tb').empty();
+					if(dd==""){
+						alert("沒資料")	
+					}else{
+						$.each(dd,function(){
+							console.log(this.executorIp);
+							this.executor
+							this.executorIp
+							this.logDate
+							this.targetDescription
+							if(this.executor!="排程器"){
+							$('#tb').append("<tr><td>"+this.executor+"</td><td>"+this.logDate.substr(0,19)+"</td><td>"+this.executeAction+"</td><td>"+this.targetDescription+"</td></tr>")
+							}
+						})
+						$('#dilog').click();
+					}	
+					
+				}
+				
+			});
+	   		
+	   		
+	   		
+	   	}) 
+
+ 	
+		
     
+	   	
+	   	
+	   	
+	   	
+	   	
+	   	
+	   	
+	   	
   });
   </script>
 </body>

@@ -52,8 +52,8 @@
 				
 				<div id="aa" style="margin-left:30px">
 				
-					<a href="index.jsp"><button type="button"  class="btn btn-default">未確認景點</button></a>
-					<a href="index2.jsp"><button type="button" class="btn btn-primary">景點列表</button></a>
+					<a href="index.jsp"><button type="button"  class="btn btn-primary">未確認景點</button></a>
+					<a href="index2.jsp"><button type="button" class="btn btn-default">景點列表</button></a>
 					<p id='p' class="btn btn-info" style="margin-left:200px">請選擇一篇景點</p>
 				</div>
         
@@ -252,8 +252,7 @@
 				var count=0;
 				
 				
-				
-				$.getJSON("${pageContext.request.contextPath}/AdminSelectByShow",{"page":page,"show":0},function(data){
+				$.getJSON("${pageContext.request.contextPath}/AdminSelectByShow",{"page":page,"show":1},function(data){
 					var attracno;
 					var address;
 					var county;
@@ -299,6 +298,8 @@
 // 						$('tr[value='+attracno+']').find('td[name="hide"]').append("<input type='hidden' name='xbody' value="+xbody+">");
 						
 					})
+				
+					
 					if(page==0){
 						
 						if(count<10){
