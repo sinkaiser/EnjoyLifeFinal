@@ -24,7 +24,7 @@
 
 <style>
 	*{
-		max-width:1280px;
+/* 		max-width:1280px; */
 		margin:0 auto;
 		
 	}
@@ -39,7 +39,7 @@
 		margin: 3px;
 		display:inline-block;
 		width:230px;
-		height:450px;
+		height:520px;
 		box-shadow:5px 5px 15px rgba(10,125,225,0.6);
 		border-top-left-radius:15px;
 		border-top-right-radius:15px;
@@ -124,7 +124,7 @@
 		color:#00BBFF;
 	}
 	.msgdiv_css{
-		width:240px;
+		width:260px;
 		padding:5px;
 		border:1px solid #FF88C2;
 		font-size: 8pt;
@@ -146,7 +146,7 @@
 	}
 	.newestDiv{
 		border:3px groove #DDDDDD;
-		width:220px;
+		width:240px;
 		height:600px;
 		margin-left:-20px;
 		overflow: auto;
@@ -160,7 +160,7 @@
 		text-shadow:3px 3px #cccccc;
 	}
 	.newestList{
-		width:195px;
+		width:210px;
 		border:1px solid black;
 		padding:5px;
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(235,241,246,1)), color-stop(49%,rgba(171,211,238,1)), color-stop(49%,rgba(171,211,238,1)), color-stop(100%,rgba(137,195,235,1)), color-stop(100%,rgba(213,235,251,1)), color-stop(102%,rgba(137,195,235,1)));
@@ -295,7 +295,7 @@
 				})
 			}
 		})
-		t=setTimeout("getNewestReply()",60000);
+		t=setTimeout("getNewestReply()",30000);
 	}
 	function getAllReply(ArticleNo){
 		$.ajax({
@@ -433,7 +433,7 @@
 						<a href="${pageContext.request.contextPath}/blog/postBlog.jsp" class="btn btn-default btn-lg active btn-block" role="button">新增日誌</a><br>
 <!-- 						<a href="#" class="btn btn-default btn-lg active btn-block" role="button">我的日誌</a> -->
 					</div>
-					<div class="col-md-7" style="margin-left:-20px">
+					<div class="col-md-6" style="margin-left:-20px;width:750px">
 						<form action="${pageContext.request.contextPath}/BlogListServlet" method="GET">
 						
 							<div class="blogType_css" >
@@ -693,7 +693,7 @@
 	$('#delDiv').on("click","a[name='delAttr']",function(){
 		$('#msgDiv').attr("class","msgdiv_css");
 		$('#msgDiv').empty();
-		var txt01 = document.createTextNode("確定要刪除此文章?");
+		var txt01 = document.createTextNode("確定刪除此文章?");
 		var eleBtn1 = document.createElement("input");
 		var eleBtn2 = document.createElement("input");
 		eleBtn1.setAttribute("type", "button");

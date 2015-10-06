@@ -18,9 +18,10 @@
 	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/style-desktop.css' type="text/css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+	<link rel="stylesheet" href="http://css-spinners.com/css/spinner/dots.css" type="text/css">
 <style>
 	*{
-		max-width:1280px;
+/* 		max-width:1280px; */
 		margin:0 auto
 	}
 	.drag {
@@ -82,7 +83,7 @@
 						<a href="${pageContext.request.contextPath}/blog/postBlog.jsp" class="btn btn-default btn-lg active btn-block" role="button">新增日誌</a><br>
 <!-- 						<a href="#" class="btn btn-default btn-lg active btn-block" role="button">我的日誌</a> -->
 					</div>
-					<div class="col-md-8">
+					<div class="col-md-8" style="width:855px">
 						<form action="${pageContext.request.contextPath}/BlogPostServlet" method="post" enctype="application/x-www-form-urlencoded">
 						
 						<div class="divPartA form-inline">
@@ -111,8 +112,28 @@
 								</div> 
 							</c:if>
 						</div>
+
+<!-- 						Small modal -->
+<!-- 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button> -->
 						
-						<div class="divPartB">
+<!-- 						<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"> -->
+<!-- 						  <div class="modal-dialog modal-sm"> -->
+<!-- 						    <div class="modal-content" > -->
+<!-- 						    	<div class="modal-body" style="top:300px"> -->
+<!-- 								<div class="dots-loader"><span>日誌產生中....</span></div> -->
+<!-- 								</div> -->
+<!-- 						    </div> -->
+<!-- 						  </div> -->
+<!-- 						</div> -->
+						
+						<div id="divLoad" style="position:absolute; top:40%;left:40%; z-index:10;
+							border:1px solid black; hejght:50px;padding:25px;background-color:#DDDDDD;
+							box-shadow:0px 0px 10px rgb(10,10,10);display:none">
+							<div class="dots-loader"></div>
+							<span style="margin-left:20px;font-size:14pt">日誌產生中....</span>
+						</div>
+						
+						<div class="divPartB" style="z-index:20;">
 							<div id="box1" class="divBox">
 								<canvas id="cvs1" name="bCanvas1" class="pos_abs"></canvas>
 								<div id="dialog1" class="drag pos_abs">
@@ -121,7 +142,7 @@
 								</div>
 							</div>
 							<input id="btnUpload1" type="file" accept="image/*" style="width:80px;display:inline">
-							<label>選擇對話框樣式</label>
+							<label>對話框樣式</label>
 							<select id="selDialog1" name="dialog1"></select>
 							<label>文字大小</label>
 							<select id="selFontsize1" name="fontsize1"></select>	
@@ -130,7 +151,7 @@
 							</div>				
 						</div>
 						
-						<div class="divPartB">
+						<div class="divPartB" style="z-index:20;">
 							<div id="box2" class="divBox">
 								<canvas id="cvs2" name="img2" class="pos_abs"></canvas>
 								<div id="dialog2" class="drag pos_abs">
@@ -139,7 +160,7 @@
 								</div>
 							</div>
 							<input id="btnUpload2" type="file" accept="image/*" style="width:80px;display:inline">
-							<label>選擇對話框樣式</label>
+							<label>對話框樣式</label>
 							<select id="selDialog2" name="dialog2"></select>
 							<label>文字大小</label>
 							<select id="selFontsize2" name="fontsize2"></select>
@@ -147,7 +168,7 @@
 								<input type="text" value="0" name="dialogInfo2" ><input type="text" value="" name="img2Base64" >	
 							</div>				
 						</div>
-						<div class="divPartB">
+						<div class="divPartB" style="z-index:20;">
 							<div id="box3" class="divBox">
 								<canvas id="cvs3" name="img3" class="pos_abs"></canvas>
 								<div id="dialog3" class="drag pos_abs">
@@ -156,7 +177,7 @@
 								</div>
 							</div>
 							<input id="btnUpload3" type="file" accept="image/*" style="width:80px;display:inline">
-							<label>選擇對話框樣式</label>
+							<label>對話框樣式</label>
 							<select id="selDialog3" name="dialog3"></select>
 							<label>文字大小</label>
 							<select id="selFontsize3" name="fontsize3"></select>
@@ -164,7 +185,7 @@
 								<input type="text" value="0" name="dialogInfo3" ><input type="text" value="" name="img3Base64" >		
 							</div>								
 						</div>
-						<div class="divPartB">
+						<div class="divPartB" style="z-index:20;">
 							<div id="box4" class="divBox">
 								<canvas id="cvs4" name="img4" class="pos_abs"></canvas>
 								<div id="dialog4" class="drag pos_abs">
@@ -173,7 +194,7 @@
 								</div>
 							</div>
 							<input id="btnUpload4" type="file" accept="image/*" style="width:80px;display:inline">
-							<label>選擇對話框樣式</label>
+							<label>對話框樣式</label>
 							<select id="selDialog4" name="dialog4"></select>
 							<label>文字大小</label>
 							<select id="selFontsize4" name="fontsize4"></select>			
@@ -397,6 +418,7 @@
 	})		
 	
 	$('#send').click(function(){	
+		$('#divLoad').attr("display","block");
 		var dT1 = $('#dialog1').position().top-$('#cvs1').position().top+',';
 		var dL1 = $('#dialog1').position().left-$('#cvs1').position().left+',';
 		var dW1 = $('#dialog1').css('width') + ','  ;

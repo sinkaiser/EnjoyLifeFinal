@@ -45,8 +45,12 @@ public class GetNewstReplyServlet extends HttpServlet {
 			for(BlogReplyVO bean:list){
 				Map<String,String> map = new HashMap<String,String>();
 				map.put("memid", bean.getReplyMemberId());
+				long a = new java.util.Date().getTime();
 				MemberDAO_interface memDao = new MemberDAO();
 				MemberVO membean = memDao.SelectById(bean.getReplyMemberId());
+				long b = new java.util.Date().getTime();
+				System.out.println(b-a);
+				
 				map.put("memName", membean.getMemberName());
 				map.put("postno", bean.getPostNo());
 				map.put("context", bean.getReplyContext());
