@@ -138,7 +138,8 @@
  	
     <script>
   $(function() {
-	  
+	 
+	   
 	    $('h3[name="title"]').click(function(){
 	    	var c=$(this).next().find("input[type='hidden']").val()
 	    	$('div[name="day"]').css({"height":80+c*45});
@@ -155,11 +156,18 @@
 	    
 	    $('h3[name="title"]').dblclick();
 	    
+	    
+	    $("#p").hide();
+	    
+	    
+	    
+	    
+	    
 	   	$('table').on("click",('tr'),function(){
 // 	   		alert($(this).find('input[name=logNo]').val());
 // 	   		alert($(this).next().find('input[name=logNo]').val());
 	  		
-	   		
+	  		
 	   		var beginTime=$(this).find('input[name=logDate]').val();
 	   		var endTime=$(this).prev().find('input[name=logDate]').val();
 	   		if(endTime){
@@ -171,7 +179,9 @@
 	   		
 	   		}
 	   		beginTime=beginTime.substr(0,19);	
-	   		$('#p').empty();
+	   		
+	   		$("#p").text("讀取中");
+	  		$("#p").show();
 	   		$.ajax({"type":"post","url":"${pageContext.request.contextPath}/WhoDoAjax","dataType":"JSON",
 				"data":{"beginTime":beginTime,"endTime":endTime},"success":function(dd){
 					
@@ -189,6 +199,7 @@
 							$('#tb').append("<tr><td>"+this.executor+"</td><td>"+this.logDate.substr(0,19)+"</td><td>"+this.executeAction+"</td><td>"+this.targetDescription+"</td></tr>")
 							}
 						})
+						 $("#p").hide();
 						$('#dilog').click();
 					}	
 					

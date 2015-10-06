@@ -130,6 +130,8 @@
 			first(page);
 			
 			function first(page){
+				
+		    $('#p').text("讀取中");
 			$.getJSON("${pageContext.request.contextPath}/AdminGetBlogbyDelete",{"page":page},function(data){
 // 			$.getJSON("${pageContext.request.contextPath}/AdminGetBlogAllJson",{},function(data){
 					$('#bd').empty();
@@ -178,8 +180,9 @@
 					AttractionsNo=this.AttractionsNo
 					
 					$('#bd').append("<tr name='oneBlog' value="+postNo+"><td name='postNo'>"+postNo+"</td><td>"+postType+"</td><td name='postTitle'>"+postTitle+"</td><td>"+postDate+"</td><td name='hidden'>"+modifyDate+"<input name='AttractionsNo' type='hidden' value="+AttractionsNo+"><input name='flagReport' type='hidden' value="+flagReport+"><input name='flagDelete' type='hidden' value="+flagDelete+"><input name='viewTotal' type='hidden' value="+viewTotal+"><input name='qtyToScore' type='hidden' value="+qtyToScore+"><input name='avgScore' type='hidden' value="+avgScore+"><input name='memberId' type='hidden' value="+memberId+"><input name='pathPhoto' type='hidden' value="+pathPhoto+"><input name='postContext' type='hidden' value="+postContext+"></td></tr>")
-
+					
 				});
+				 $('#p').text("讀取完畢");
 				$('#bd').on('click','tr[name="oneBlog"]',function(){
 					
 					

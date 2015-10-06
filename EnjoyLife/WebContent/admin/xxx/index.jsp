@@ -252,7 +252,7 @@
 				var count=0;
 				
 				
-				
+				$("#p").text("讀取中");
 				$.getJSON("${pageContext.request.contextPath}/AdminSelectByShow",{"page":page,"show":0},function(data){
 					var attracno;
 					var address;
@@ -299,6 +299,7 @@
 // 						$('tr[value='+attracno+']').find('td[name="hide"]').append("<input type='hidden' name='xbody' value="+xbody+">");
 						
 					})
+					$("#p").text("讀取完畢");
 					if(page==0){
 						
 						if(count<10){
@@ -343,7 +344,7 @@
 						
 					 $('#sumit').attr("type","button");
 					 p=$(this).find('td[name="attracno"]').text()
-					 $('#p').text("現在選擇編號為"+p);
+					 $('#p').text("現在選擇編號為"+p+"讀取中");
 					 
 					 xbody=$(this).find('input[name="xbody"]').val();
 					 
@@ -368,14 +369,14 @@
 							 });
 						 	
 						 ui();
-						 
+						 $('#p').text("現在選擇編號為"+p+"讀取成功");
 					 })
 					 
 					 
 			 });
 				
 			     $('#sumit').on('click',function(){
-			  
+			    	 $('#p').text("傳輸中");
 					 $.ajax({"type":"post","url":"${pageContext.request.contextPath}/AjaxChangeFlag","dataType":"text","data":{"AttracNo":p},
 
 						 "success":function(da){

@@ -187,6 +187,8 @@
 			var count=0;
 			
 			function first(page){
+				$('#p').text("讀取中");
+			
 			$.getJSON("${pageContext.request.contextPath}/AdminGetBlogbyFlagReprot",{"page":page},function(data){
 // 			$.getJSON("${pageContext.request.contextPath}/AdminGetBlogAllJson",{},function(data){
 					$('#bd').empty();
@@ -234,6 +236,7 @@
 					
 					$('#bd').append("<tr name='oneBlog' value="+postNo+"><td name='postNo'>"+postNo+"</td><td>"+postType+"</td><td name='postTitle'>"+postTitle+"</td><td>"+postDate+"</td><td name='hidden'>"+modifyDate+"<input name='AttractionsNo' type='hidden' value="+AttractionsNo+"><input name='flagReport' type='hidden' value="+flagReport+"><input name='flagDelete' type='hidden' value="+flagDelete+"><input name='viewTotal' type='hidden' value="+viewTotal+"><input name='qtyToScore' type='hidden' value="+qtyToScore+"><input name='avgScore' type='hidden' value="+avgScore+"><input name='memberId' type='hidden' value="+memberId+"><input name='pathPhoto' type='hidden' value="+pathPhoto+"><input name='postContext' type='hidden' value="+postContext+"></td></tr>")
 // 					$('td[name=hidden]').append("<input name='postContent' type='hidden' value="+postContent+">");
+					$('#p').text("讀取完畢");
 // 					$('td[name=hidden]').append("<input name='pathPhoto' type='hidden' value="+pathPhoto+">");
 // 					$('td[name=hidden]').append("<input name='memberId' type='hidden' value="+memberId+">");
 // 					$('td[name=hidden]').append("<input name='avgScore' type='hidden' value="+avgScore+">");
@@ -268,7 +271,7 @@
 					postContext=$(this).find("input[name='postContext']").val();
 					
 					a=$(this).find('td[name="postNo"]').text();
-					$('#p').text('選擇文章編號'+a);
+					$('#p').text('讀取文章編號'+a);
 					
 					$("#img").attr("src","${pageContext.request.contextPath}/GetBlogImgServlet?isThumbnail=a&&pathImg="+pathPhoto);
 					$("#memberId").text(memberId);
@@ -340,14 +343,14 @@
 							
 							
 						})
-
+						$('#p').text('文章編號'+a+"讀取完畢");
 					});
 				});
 			}) };
 			//outside
 			
 			$('#blogdelete').bind('click',function(){
-			
+				$('#p').text('傳輸中');
 				$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":a,"type":"delete"},"success":function(data){
 					
 					if(data=="ok"){
@@ -366,7 +369,7 @@
 			});
 			
 			$('#blogok').bind('click',function(){
-				
+				$('#p').text('傳輸中');
 				$.ajax({"url":"${pageContext.request.contextPath}/blogAjaxDeleteOrUpdate","data":{"postNo":a,"type":"ok"},"success":function(data){
 					if(data=="ok"){
 						

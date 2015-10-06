@@ -2,10 +2,6 @@ package com.member.controller;
 
 
 import java.io.IOException;
-
-
-
-
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,14 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.Dispatch;
 
+import com.log.controller.AdminLogService;
 import com.member.model.MemberService;
 import com.member.model.MemberVO;
-import com.oracle.jrockit.jfr.RequestDelegate;
 
 
 @WebServlet("/display/manager.do") 
@@ -49,7 +42,28 @@ public class UpdateManager extends HttpServlet {
 		MemberVO bean = service.selectMemberId(memberId);
 		bean.setPermission(permission2);
 		MemberVO result = service.updatepermission(bean);
-		System.out.println("xxx");
+		//log
+		String executorIp=request.getRemoteAddr();
+		if(executorIp.equals("0:0:0:0:0:0:0:1")){
+			executorIp="127.0.0.1";
+		}
+		
+		if(Integer.parseInt(permission)==0){
+			AdminLogService service1=new AdminLogService();
+			service1.add("會員", "admin", executorIp, "正常", "變更狀態");
+			
+		}else{
+			AdminLogService service1=new AdminLogService();
+			service1.add("會員", "admin", executorIp, "封鎖", "變更狀態");
+		}
+		
+		
+		
+		
+		//log
+		
+		
+		
 		
 			// MemberBean 扮演封裝輸入資料的角色	
 			session.removeAttribute("all");

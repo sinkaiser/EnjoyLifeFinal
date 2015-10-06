@@ -19,7 +19,7 @@
 <table class="table">
 <%-- 	<div><p id="success">${xxx}</p></div> --%>
 		<h2>會員管理</h2>
-		<div id="result">${result}</div>
+		<div id="result" class="btn btn-info">${result}</div>
 		<thead>
 			<tr>				
 				<td>大頭照</td>
@@ -57,11 +57,25 @@
 </table>
 <script type="text/javascript">
 	(function($){
+		
+		if($("#result").text()!=""){
+			$("#result").show();
+		}else{
+			$("#result").hide();
+		}
+		
 		$('a[name="black"]').click(function(){
-			$("#result").text("資料沒有修改")
+			$("#result").show();
+			if($(this).attr("href")=="#"){
+				$("#result").text("資料沒有修改")	
+			}else{
+				$("#result").text("存取中")
+			}
+			
 		});
 		$('select[name="sel"]').change(function(){
 			var aa=$(this).val();
+			
 			var memberId = $(this).parents("tr").attr("name");  
 			$(this).parents("tr").find('a[name="black"]').attr("href","manager.do?memberId="+memberId+"&black="+aa);
 			console.log(aa);
