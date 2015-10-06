@@ -155,7 +155,7 @@ public class NewEventServlet extends HttpServlet {
 		// 如果有錯誤，呼叫view元件，送回錯誤訊息
 		if (!errorMessage.isEmpty()) {
 			RequestDispatcher rd = request
-					.getRequestDispatcher("InsertPartnerError.jsp");
+					.getRequestDispatcher("error.jsp");
 			rd.forward(request, response);
 			return;
 		}
@@ -206,7 +206,7 @@ public class NewEventServlet extends HttpServlet {
  			// 產生 RequestDispatcher 物件 rd
  			errorMessage.add("IO錯誤:" + e.getMessage());
  			RequestDispatcher rd = request
- 					.getRequestDispatcher(request.getContextPath()+"/partner/InsertPartnerError.jsp");
+ 					.getRequestDispatcher(request.getContextPath()+"/partner/error.jsp");
  			// 請容器代為呼叫下一棒程式
  			rd.forward(request, response);
  			return;
