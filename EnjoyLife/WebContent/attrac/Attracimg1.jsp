@@ -367,7 +367,7 @@ tr:hover td {background: #d0dafd;color: #339;}
 					 		dataType:"text",
 					 		data:{"attrno":attracno},
 					 		success:function(data){
-					 			addimg.src=data==null?"Data/nopic.png":data;
+					 			addimg.src=data==""?"${pageContext.request.contextPath}/attrac/Data/nopic.png":data;
 					 		}
 					 	})
 	 					adddiv.id=attracno;					
