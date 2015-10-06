@@ -243,7 +243,7 @@
 				$('#memberId').val("demoId");
 				$('#password').val("11111");
 				$('#passwordCheck').val("11111");
-				$('#memberName').val("大家好");
+				$('#memberName').val("陳彼得");
 				$('#email').val("demo@gmail.com");
 				$('#sex').val("男");
 				$('#birthday').val("1988-05-05");
