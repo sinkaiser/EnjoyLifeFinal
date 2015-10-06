@@ -52,6 +52,8 @@
 	#logo
 	{
 		margin-bottom: 3em;
+		width:350px;
+		float:left;
 	}
 	
 		#logo h1

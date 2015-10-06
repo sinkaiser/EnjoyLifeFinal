@@ -6,7 +6,6 @@
 	<nav class="navbar-fixed-top">	
 	<div class="header1">	
 		<div id="header" >
-			<div class="container" > 
 				
 				<!-- Logo -->
 				<div id="logo">
@@ -21,7 +20,6 @@
 					<input id="sumit" value="送出資料" type="hidden">
 				</div>
 				
-			</div>
 		</div>
 		<div>
 			<!-- Nav -->
