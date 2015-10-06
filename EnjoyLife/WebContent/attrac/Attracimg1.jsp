@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ENJOY LIFE</title>
+<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
 <script src="scripts/jquery-2.1.4.min.js"></script>
 <link rel="stylesheet" href="scripts/bootstrap.min.css">
 <script src="scripts/bootstrap.min.js"></script>
@@ -35,13 +36,48 @@ tr:hover td {background: #d0dafd;color: #339;}
 #cate2no {font-size: 18px;height:4ex}
 
 .homepage{padding-top:110px;}
-#imgti{border:0px;padding: 0px;margin-bottom:0px;width:202px;}
+#imgti{border:0px;padding: 0px;margin-bottom:0px;width:205px;}
 #imgti > label,#imgti > button{position:relative;top:-35px;left:61px;}
 #headerimg{height:65px;width:60px;margin:0px;display:block;margin-right:0px}
 </style>
 </head>
 <body class="homepage">
-<%@include file="/includes/newheader" %>
+<nav class="navbar-fixed-top">	
+	<div class="header1">	
+		<div id="header" >
+				
+				<!-- Logo -->
+				<div id="logo">
+					<h1><a href="${pageContext.request.contextPath}/GetIndexInfoServlet">Enjoy Life</a></h1>
+				</div>
+				
+				
+				
+		</div>
+		<div>
+			<!-- Nav -->
+				<nav id="nav">
+					<ul>
+			<li><a href="${pageContext.request.contextPath}/indexMember.jsp">會員</a></li>
+			<li><a href="${pageContext.request.contextPath}/attrac/Attracimg1.jsp">景點</a></li>
+			<li><a href="${pageContext.request.contextPath}/BlogListServlet?Index=0&&pType=ALL">日誌</a></li>
+			<li><a href="${pageContext.request.contextPath}/partner/ShowAllPartnerServlet">找伴</a></li>
+			<li><a href="${pageContext.request.contextPath}/activityPage/activitySimple1.jsp">活動資訊</a></li>
+			
+			<c:if test="${!empty member}">
+				<li style="line-height:30px;">
+				<div id="imgti" style="position:relative;top:-30px;height:70px;">							
+				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" id="headerimg" class="img-circle" style="height:65px;width:60px;box-shadow:0px 0px 10px 7px #F5FAFF;"> 
+				<label style="height:30px;font-size:26px;font-family:微軟正黑體;position:relative;top:-42px;font-weight:900;" >${member.memberName}</label>
+				<button type="button" class="btn btn-info" id="logout" data-toggle="modal" data-target="#myModalout" style="margin-bottom:26px" >登出</button>
+				</div>
+			</li>
+			</c:if>
+		</ul>
+				</nav>
+		</div>
+	</div>
+	</nav>
 <nav style="width:100%;text-align:center;" >
 		<div class="btn-group" role="group"  style="width:500px;left:30px;" aria-label="..." >
 			<a href="${pageContext.request.contextPath}/attrac/Attracimg1.jsp"><button type="button" class="btn btn-primary" style="width:100px;margin-right:20px" >景點列表</button></a>

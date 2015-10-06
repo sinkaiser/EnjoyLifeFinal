@@ -13,7 +13,7 @@
 					<h1><a href="${pageContext.request.contextPath}/GetIndexInfoServlet">Enjoy Life</a></h1>
 				</div>
 				
-				<div style="width:750px;margin-left:200px;">
+				<div style="width:850px;margin-left:200px;">
 					<img id="xxx" src="images/dog2.gif" class="img-circle" height="60px" width="60px">
 					<button id="say" type="button" class="btn btn-default" style="margin-bottom:15px;"></button>
 					<br>

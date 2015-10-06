@@ -77,7 +77,7 @@
 					<h1><a href="${pageContext.request.contextPath}/GetIndexInfoServlet">Enjoy Life</a></h1>
 				</div>
 				
-				<div style="width:750px;margin-left:200px;">
+				<div style="width:850px;margin-left:200px;">
 					<img id="xxx" src="images/dog2.gif" class="img-circle" height="60px" width="60px">
 					<button id="say" type="button" class="btn btn-default" style="margin-bottom:15px;"></button>
 					<br>
@@ -101,7 +101,7 @@
 				<li style="line-height:30px;">
 				<div id="imgti" style="position:relative;top:-30px;height:70px;">							
 				<img src="${pageContext.request.contextPath}/GetImg?imgid=${member.picture}" id="headerimg" class="img-circle" style="height:65px;width:60px;box-shadow:0px 0px 10px 7px #F5FAFF;"> 
-				<label style="height:30px;font-size:26px;font-family:微軟正黑體;" >${member.memberName}</label>
+				<label style="height:30px;font-size:26px;font-family:微軟正黑體;font-weight:900;position:relative;top:-5px;" >${member.memberName}</label>
 				<button type="button" class="btn btn-info" id="logout" data-toggle="modal" data-target="#myModalout" style="margin-bottom:26px" >登出</button>
 				</div>
 			</li>
@@ -278,7 +278,21 @@
 		<!-- Copyright -->
 		<div id="copyright">
 			<div class="container">
-				Enjoy Life
+<!-- 				<div style="float-left;"> -->
+<!-- 					<p>相關網站</p> -->
+<!-- 					<p></p> -->
+<!-- 					<p></p> -->
+<!-- 					<p></p> -->
+<!-- 					<p></p> -->
+<!-- 				</div> -->
+<!-- 				<div> -->
+<!-- 					<p>更多</p> -->
+<!-- 					<p>聯絡我們</p> -->
+<!-- 					<p>FAQ</p> -->
+<!-- 					<p>隱私權聲明</p> -->
+<!-- 					<p>使用者條款</p> -->
+<!-- 				</div> -->
+				Enjoylife
 			</div>
 		</div>
 		<script>

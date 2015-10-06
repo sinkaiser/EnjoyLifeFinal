@@ -54,14 +54,14 @@
 						</section>
 					</div>
 					<!-- Content -->
-					<div id="sidebar-viewR" class="4u">
+					<div id="sidebar-viewR" class="3u">
 						<section>
 							<ul id="sideview">
 								<li>
-									<img src="${pageContext.request.contextPath}/activityPage/images/love.jpg" alt="" />
+									<img src="${pageContext.request.contextPath}/activityPage/images/love.jpg" alt="" style="width:300px;height:300px;"/>
 								</li>
 								<li>
-									<img src="${pageContext.request.contextPath}/activityPage/images/love1.jpg" alt="" />
+									<img src="${pageContext.request.contextPath}/activityPage/images/love1.jpg" alt="" style="width:300px;height:300px;"/>
 								</li>
 							</ul>
 						</section>
