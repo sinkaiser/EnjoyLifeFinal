@@ -18,7 +18,8 @@
 <body>
 <table class="table">
 <%-- 	<div><p id="success">${xxx}</p></div> --%>
-
+		<h2>會員管理</h2>
+		<div id="result">${result}</div>
 		<thead>
 			<tr>				
 				<td>大頭照</td>
@@ -49,16 +50,19 @@
 					</c:if>
 					
 					</select></td>	
-					<td><a name="black" href=""><input type="button" value="修改"></a></td>
+					<td><a name="black" href="#"><input type="button" value="修改"></a></td>
 				</tr>										
 		</c:forEach>
 		</tbody>
 </table>
 <script type="text/javascript">
 	(function($){
+		$('a[name="black"]').click(function(){
+			$("#result").text("資料沒有修改")
+		});
 		$('select[name="sel"]').change(function(){
 			var aa=$(this).val();
-			var memberId = $(this).parents("tr").attr("name");
+			var memberId = $(this).parents("tr").attr("name");  
 			$(this).parents("tr").find('a[name="black"]').attr("href","manager.do?memberId="+memberId+"&black="+aa);
 			console.log(aa);
 			console.log(memberId);
