@@ -1,32 +1,13 @@
 package com.AttracHiber;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
+
 import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.imageio.ImageIO;
-
-
-
-import org.apache.commons.codec.binary.Base64;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import com.AttracModel.AttracBean;
 import com.AttracModel.PhotoBean;
 import com.AttracModel.PhotoDao;
-import com.little.model.LittleBean;
 import com.util.HibernateUtil;
 
 public class PhotoDaoHiber implements PhotoDao {
@@ -64,6 +45,26 @@ public class PhotoDaoHiber implements PhotoDao {
 			Query query = session.createQuery(SELECT_BY_ID);
 			query.setParameter(0, id);
 			result = query.list();
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public String selectTop1ByAttrNo(int id){
+		String result = "";
+		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;	
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("from PhotoBean where AttracNo=?");
+			query.setParameter(0, id);
+			query.setFirstResult(0);
+			query.setMaxResults(1);
+			PhotoBean bean = (PhotoBean)query.list().get(0);
+			result = bean.getPhotodata();
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();

@@ -29,7 +29,6 @@ if(offset!=null){
 	firstno=Integer.parseInt(offset);
 }
 String cross=crossdistno+"";
-int maxno=0;
 	try {
 		DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
 		Connection conn = DriverManager.getConnection(url2, "enjoylife", "P@ssw0rd");
@@ -55,38 +54,24 @@ int maxno=0;
 			 out.println(jsonString);
  		}
  		if(attracno==null){
-//  			query="select top 1 AttracNo from attrac order by AttracNo desc";
-//  			stmt = conn.prepareStatement(query);
-//  			rset = stmt.executeQuery();
-//  			if(rset.next()) {
-//  				maxno=rset.getInt("AttracNo");
-// 			} 		
-//  			stmt.close();
-//  			rset.close();
 			if((cate2no.equalsIgnoreCase("10")||cate2no.equalsIgnoreCase("200"))
 	 				&&countyno.equalsIgnoreCase("10")){
 				System.out.println("00000");
-				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
-								"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort from photos )APS where sort=1)APS1 "+
-						"full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+				query="select  AttracNo,stitle from attrac where cate1no=? and show=1 order by AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY ";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setInt(2, firstno);			
 			}else if((cate2no.equalsIgnoreCase("10")||cate2no.equalsIgnoreCase("200"))
 					&&distno.equalsIgnoreCase(cross)){
 				System.out.println("11111"+cate1no+countyno);			
-				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
-					"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and countyno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+				query="select  AttracNo,stitle from attrac where cate1no=? and countyno=? and show=1 order by AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, countyno);
 				stmt.setInt(3, firstno);	
 			}else if(countyno.equalsIgnoreCase("10")){
 				System.out.println("22222");
-				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
-						"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-						"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and cate2no =? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+				query="select  AttracNo,stitle from attrac where cate1no=? and cate2no =? and show=1 order by AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, cate2no);
@@ -94,9 +79,7 @@ int maxno=0;
 			}else if((cate2no.equalsIgnoreCase("10")||cate2no.equalsIgnoreCase("200"))
 					&&!countyno.equalsIgnoreCase("10")){
 				System.out.println("33333");
-				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
-					  "from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and countyno=? and distno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+				query="select  AttracNo,stitle from attrac where cate1no=? and countyno=? and distno=? and show=1 order by AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, countyno);
@@ -104,9 +87,7 @@ int maxno=0;
 				stmt.setInt(4, firstno);
 			}else if(distno.equalsIgnoreCase(cross)){
 				System.out.println("44444");
-				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
-					"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-					"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and cate2no = ? and countyno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+				query="select  AttracNo,stitle from attrac where cate1no=? and cate2no = ? and countyno=? and show=1 order by AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, cate2no);
@@ -114,9 +95,7 @@ int maxno=0;
 				stmt.setInt(4, firstno);
 			}else{
 				System.out.println("55555");
-				query="select  attrac.AttracNo,stitle,photodata from( select AttracNo ,photodata, photoname ,sort "+
-						"from ( select  AttracNo ,photodata, photoname ,row_number() over (partition by AttracNo order by photoname asc)as sort "+
-						"from photos )APS where sort=1)APS1 full join attrac on APS1.AttracNo=attrac.AttracNo where cate1no=? and cate2no = ? and countyno=? and distno=? and show=1 order by attrac.AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
+				query="select  AttracNo,stitle from attrac where cate1no=? and cate2no = ? and countyno=? and distno=? and show=1 order by AttracNo OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY";
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, cate1no);
 				stmt.setString(2, cate2no);
@@ -132,7 +111,6 @@ int maxno=0;
 					Map m1 = new HashMap(); 
 					m1.put("attracNo",rset.getString("AttracNo")); 
 					m1.put("stitle", rset.getString("stitle"));
-					m1.put("photodata", rset.getString("photodata"));
 					l1.add(m1);
 			} 
 			

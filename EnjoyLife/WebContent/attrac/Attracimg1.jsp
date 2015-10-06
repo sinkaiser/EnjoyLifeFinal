@@ -359,11 +359,18 @@ tr:hover td {background: #d0dafd;color: #339;}
 	 					var index=getShort();
 	 					var stitle=this.stitle;
 	 					var attracno=this.attracNo;
-	 					var photodata=this.photodata;
 	 					var adddiv=document.createElement("div");
 	 					var addimg=document.createElement("img");
+	 					$.ajax({
+					 		url:"${pageContext.request.contextPath}/GetAttrPhotoServlet",
+					 		type:"get",
+					 		dataType:"text",
+					 		data:{"attrno":attracno},
+					 		success:function(data){
+					 			addimg.src=data==null?"Data/nopic.png":data;
+					 		}
+					 	})
 	 					adddiv.id=attracno;					
-	 					addimg.src=photodata==null?"Data/nopic.png":photodata;
 	 					addimg.style.width="200px";
 	 					adddiv.appendChild(addimg);
 	 					var addp=document.createElement("p");

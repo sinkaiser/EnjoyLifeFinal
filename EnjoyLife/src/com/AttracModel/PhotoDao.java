@@ -10,4 +10,5 @@ public interface PhotoDao {
 	public abstract Integer selectPK();
 	public List<PhotoBean> selectImgByAttracNo(String attracNo);
 	public PhotoBean selectByNo(int photono);
+	public String selectTop1ByAttrNo(int id);
 }
