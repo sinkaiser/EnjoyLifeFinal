@@ -40,20 +40,20 @@
 	</nav>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
+			<div class="col-sm-3 col-md-1 sidebar">
 				
 				<ul class="nav nav-sidebar">
 					<li><a id="a" href="page.jsp" target="frame">紀錄查詢</a></li>
 					<li><a id="b" target="frame" href="${pageContext.request.contextPath}/Manager">會員管理</a></li>
 					<li><a id="c" href="${pageContext.request.contextPath}/admin/xxx/index.jsp" target="frame">景點管理</a></li>
 					<li><a id="d" href="blog/index.jsp" target="frame">文章管理</a></li>
-					<li><a id="e" href="efl/little.jsp" target="frame">小精靈設定</a></li>
+					<li><a id="e" href="efl/little.jsp" target="frame">幫手管理</a></li>
 				</ul>
 				
 			</div>
 				
 			
-		                <iframe name="frame" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" width="800" src="${pageContext.request.contextPath}/AdminPageServlet" height="850" frameborder="o" scrolling="yes" style='background-color:#efefef'>
+		                <iframe name="frame" class="col-sm-9 col-sm-offset-3 col-md-11 col-md-offset-1 main" width="800" src="${pageContext.request.contextPath}/AdminPageServlet" height="830" frameborder="o" scrolling="yes" style='background-color:#efefef'>
 						</iframe>
 
 			</div>

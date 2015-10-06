@@ -44,13 +44,13 @@
 		
 			
 					<a href="page.jsp"><button type="button"  class="btn btn-primary">登入紀錄</button></a>
-					<a href="page2.jsp"><button type="button"  class="btn btn-default">動作紀錄</button></a>
+					<a href="page2.jsp"><button type="button"  class="btn btn-default">管理紀錄</button></a>
 					
 				
 	
 				</div>
    
-          <div class=col-md-7>
+          <div class=col-md-10>
           
               <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden" style="display: inline; width:600px;">
                 

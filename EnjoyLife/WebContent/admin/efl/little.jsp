@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<h1 class="page-header">小精靈管理</h1>
+<h1 class="page-header">小幫手管理</h1>
 				
 				<h2 class="sub-header">資料庫欄位</h2>
 				
@@ -26,7 +26,7 @@
 					<a href="little.jsp"><button type="button" id="elf" class="btn btn-default">主要</button></a>
 					<a href="type.jsp"><button type="button" id="type" class="btn btn-primary">類型</button></a>
 					<a href="target.jsp"><button type="button" id="target" class="btn btn-primary">對象</button></a>
-					
+					<p id='p' class="btn btn-info" style="margin-left:200px">讀取中</p>
 					
 					
 				</div>
@@ -70,7 +70,7 @@
 								
 									var typeNo1;
 									var type1;
-									
+									$('p').text("讀取成功")
 									$.each(data2,function(){
 										typeNo1=this.typeNo;
 										type1=this.type;
@@ -183,6 +183,8 @@
 									});
 									
 									$('#insert').on('click',function(){
+										
+										$('p').text("請輸入資料")
 										$('#thead').append("<tr><td name='elfNo'>#</td><td>"+targetlist+"</td><td>"+typelist+"</td><td><input name='nevin' type='text' class='form-control'></td><td><input  name='beginTime' type='datetime-local'  class='form-control'></td><td><input name='endTime' type='datetime-local' class='form-control'></td><td><button type='button' class='btn btn-success' name='insertlittle'>新增</button></td><td><button type='button' name='delete1' class='btn btn-danger'>刪除</button></td></tr>")
 										
 										//資料庫新增

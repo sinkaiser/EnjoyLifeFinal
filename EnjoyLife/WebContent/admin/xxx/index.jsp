@@ -381,6 +381,7 @@
 
 						 "success":function(da){
 								if(da="ok"){
+								
 								$('#p').text("標號"+p+"更新成功")
 								$('tr[value='+p+']').remove();
 								}

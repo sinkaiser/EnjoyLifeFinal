@@ -37,14 +37,14 @@
 				
 				<div id="aa" style="margin-left:30px">
 				
-					<a href="index.jsp"><button type="button"  class="btn btn-default">被檢舉文章</button></a>
-					<a href="delete.jsp"><button type="button" class="btn btn-primary">被刪除文章</button></a>
+					<a href="index.jsp"><button type="button"  class="btn btn-default">檢舉區</button></a>
+					<a href="delete.jsp"><button type="button" class="btn btn-primary">待刪除區</button></a>
 					<p id='p' class="btn btn-info" style="margin-left:200px">請選擇一篇文章</p>
 				</div>
         
-        <div class="templatemo-content-container" >
+        <div class="templatemo-content-container">
       
-          <div class="templatemo-flex-row " >
+          <div class="templatemo-flex-row" style="width:1150px">
           
             
              <div >
@@ -236,7 +236,7 @@
 					
 					$('#bd').append("<tr name='oneBlog' value="+postNo+"><td name='postNo'>"+postNo+"</td><td>"+postType+"</td><td name='postTitle'>"+postTitle+"</td><td>"+postDate+"</td><td name='hidden'>"+modifyDate+"<input name='AttractionsNo' type='hidden' value="+AttractionsNo+"><input name='flagReport' type='hidden' value="+flagReport+"><input name='flagDelete' type='hidden' value="+flagDelete+"><input name='viewTotal' type='hidden' value="+viewTotal+"><input name='qtyToScore' type='hidden' value="+qtyToScore+"><input name='avgScore' type='hidden' value="+avgScore+"><input name='memberId' type='hidden' value="+memberId+"><input name='pathPhoto' type='hidden' value="+pathPhoto+"><input name='postContext' type='hidden' value="+postContext+"></td></tr>")
 // 					$('td[name=hidden]').append("<input name='postContent' type='hidden' value="+postContent+">");
-					$('#p').text("讀取完畢");
+					
 // 					$('td[name=hidden]').append("<input name='pathPhoto' type='hidden' value="+pathPhoto+">");
 // 					$('td[name=hidden]').append("<input name='memberId' type='hidden' value="+memberId+">");
 // 					$('td[name=hidden]').append("<input name='avgScore' type='hidden' value="+avgScore+">");
@@ -246,6 +246,7 @@
 // 					$('td[name=hidden]').append("<input name='flagReport' type='hidden' value="+flagReport+">");
 // 					$('td[name=hidden]').append("<input name='AttractionsNo' type='hidden' value="+AttractionsNo+">");
 				});
+					$('#p').text("讀取完畢");
 					if(page==0){
 						
 						if(count<10){

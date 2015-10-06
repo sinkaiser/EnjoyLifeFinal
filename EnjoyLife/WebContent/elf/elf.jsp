@@ -66,6 +66,7 @@
 					var begin;
 					var end;
 					console.log(time)
+					console.log(data)
 					$.each(data,function(){
 						
 						beginTime=this.beginTime;

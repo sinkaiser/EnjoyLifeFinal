@@ -19,6 +19,7 @@
 <table class="table">
 <%-- 	<div><p id="success">${xxx}</p></div> --%>
 		<h2>會員管理</h2>
+		
 		<div id="result" class="btn btn-info">${result}</div>
 		<thead>
 			<tr>				

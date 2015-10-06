@@ -26,7 +26,7 @@
  <script src="js/jquery-ui.js"></script>
 
 </head>
-<body style='background-color:#efefef'>
+<body style='background-color:#efefef　'>
  
      <!-- Left column -->
     <div class="templatemo-flex-row">
@@ -44,13 +44,13 @@
 		
 			
 					<a href="page.jsp"><button type="button"  class="btn btn-default">登入紀錄</button></a>
-					<a href="page2.jsp"><button type="button"  class="btn btn-primary">動作紀錄</button></a>
+					<a href="page2.jsp"><button type="button"  class="btn btn-primary">管理紀錄</button></a>
 					<p id='p' class="btn btn-info" style="margin-left:200px"></p>
 					
 				</div>
           
           
-          <div class=col-md-5>
+          <div class=col-md-12>
            <div class="templatemo-flex-row flex-content-row">
 
              <div class="col-2">

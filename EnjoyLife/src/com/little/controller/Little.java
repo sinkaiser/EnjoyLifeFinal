@@ -145,7 +145,7 @@ public class Little extends HttpServlet {
 				String[] aa=nevin.split("\\?");
 				
 				AdminLogService service=new AdminLogService();
-				service.add("小幫手", user, executorIp, aa[0], "新增");
+				service.add("小幫手", user, executorIp, "admin", "新增");
 			}else{
 				user="admin";
 				
