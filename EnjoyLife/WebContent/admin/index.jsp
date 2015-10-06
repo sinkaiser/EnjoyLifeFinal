@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="/Content/AssetsBS3/img/favicon.ico">
-<title>Dashboard Template for Bootstrap</title>
+<title>後台</title>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet">

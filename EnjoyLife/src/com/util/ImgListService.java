@@ -12,11 +12,15 @@ public class ImgListService {
 	 ImgListBean bean=new ImgListBean();
 	 
 	 String type=dao.selectType(id);
+	 if(type==null){
+		 return "errorimg";
+	 }
    	 path=path+"image";
 //   	 System.out.println(path);
    	 File f = new File(path);
    	 File file = new File(path+"\\"+id+"."+type);
-   	 
+   	 	 
+   	 	
 		 if (!f.exists()) {
 			f.mkdirs();
 		 }

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>Visual Admin Dashboard - Home</title>
+
     <meta name="description" content="">
     <meta name="author" content="templatemo">
 
@@ -87,7 +87,7 @@
               <h3 id="postContent" class="text-uppercase margin-bottom-10">日誌內文</h3>
               <img id="img" src="images/bicycle.jpg" alt="Bicycle" class="img-thumbnail" width="150px">
               <hr>
-              <button class="btn btn-danger" id='delete'>刪除</button>
+<!--               <button class="btn btn-danger" id='delete'>刪除</button> -->
               <button  class="btn btn-success" id='back'>復原</button>
             </div>
           </div>

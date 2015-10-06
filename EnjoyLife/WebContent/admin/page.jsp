@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
 <!-- 最新編譯和最佳化的 CSS -->
 
 
@@ -45,7 +45,8 @@
 			
 					<a href="page.jsp"><button type="button"  class="btn btn-default">登入紀錄</button></a>
 					<a href="page2.jsp"><button type="button"  class="btn btn-primary">動作紀錄</button></a>
-				
+					<p id='p' class="btn btn-info" style="margin-left:200px"></p>
+					
 				</div>
           
           
@@ -170,13 +171,13 @@
 	   		
 	   		}
 	   		beginTime=beginTime.substr(0,19);	
-	   		
+	   		$('#p').empty();
 	   		$.ajax({"type":"post","url":"${pageContext.request.contextPath}/WhoDoAjax","dataType":"JSON",
 				"data":{"beginTime":beginTime,"endTime":endTime},"success":function(dd){
 					
 					$('#tb').empty();
 					if(dd==""){
-						alert("沒資料")	
+						$('#p').text("沒資料");
 					}else{
 						$.each(dd,function(){
 							console.log(this.executorIp);
