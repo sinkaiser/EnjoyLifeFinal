@@ -238,6 +238,7 @@
 			</div>
 		</div>
 	<script>
+		
 		(function($) {
 			$('#demo').click(function() {
 				$('#memberId').val("demoId");
@@ -249,9 +250,6 @@
 				$('#birthday').val("1988-05-05");
 				$('#address').val("台北市");
 			});
-
-		}(jQuery));
-		(function($) {
 			var time = "${member.registerDate}" //time
 			var name = "${member.memberName}" //name
 			var member = "${member}" //true
